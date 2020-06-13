@@ -1,9 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
 
 const App = (props) => {
-  // eslint-disable-next-line react/prop-types
   const {promoTitle, promoGenre, promoDate} = props;
 
   return <Main
@@ -11,6 +11,12 @@ const App = (props) => {
     promoGenre = {promoGenre}
     promoDate = {promoDate}
   />;
+};
+
+App.propTypes = {
+  promoTitle: PropTypes.string.isRequired,
+  promoGenre: PropTypes.string.isRequired,
+  promoDate: PropTypes.number.isRequired,
 };
 
 
