@@ -2,31 +2,34 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-const PosterSettrings = {
-  TAG: `img/`,
-  EXTENSION: `.jpg`
+const Url = {
+  IMG: `img`
+};
+
+const FileExtension = {
+  JPG: `jpg`
 };
 
 const MovieCard = (props) => {
-  const {movieTitle, moviePoster} = props;
+  const {title, poster} = props;
 
-  const poster = PosterSettrings.TAG + moviePoster + PosterSettrings.EXTENSION;
+  const posterUrl = `/${Url.IMG}/${poster}.${FileExtension.JPG}`;
 
   return (
     <article className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
-        <img src={poster} alt={movieTitle} width="280" height="175" />
+        <img src={posterUrl} alt={title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{movieTitle}</a>
+        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
       </h3>
     </article>
   );
 };
 
 MovieCard.propTypes = {
-  moviePoster: PropTypes.string.isRequired,
-  movieTitle: PropTypes.string.isRequired
+  poster: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 

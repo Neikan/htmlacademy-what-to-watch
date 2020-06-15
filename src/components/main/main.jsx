@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
+import {generateId} from "../../utils/common.js";
 
 
 const Main = (props) => {
@@ -101,11 +102,11 @@ const Main = (props) => {
           </ul>
 
           <div className="catalog__movies-list">
-            {movies.map((movie, index) =>
+            {movies.map((movie) =>
               <MovieCard
-                key={index}
-                movieTitle = {movie.title}
-                moviePoster = {movie.poster}
+                key={generateId()}
+                title = {movie.title}
+                poster = {movie.poster}
               />)
             }
           </div>
@@ -137,7 +138,10 @@ Main.propTypes = {
   promoTitle: PropTypes.string.isRequired,
   promoGenre: PropTypes.string.isRequired,
   promoDate: PropTypes.number.isRequired,
-  movies: PropTypes.array.isRequired
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired
+  }))
 };
 
 
