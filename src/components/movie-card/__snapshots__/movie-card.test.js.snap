@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieCard MovieCard component is created and rendered correctly 1`] = `
+exports[`Test MovieCard component MovieCard component is created and rendered correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
 >
@@ -16,6 +16,7 @@ exports[`MovieCard MovieCard component is created and rendered correctly 1`] = `
   </div>
   <h3
     className="small-movie-card__title"
+    onClick={[Function]}
   >
     <a
       className="small-movie-card__link"

@@ -11,22 +11,22 @@ const Promo = {
 
 const MOVIES = [
   {
-    id: `m1`,
+    id: `mock-1`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     poster: `fantastic-beasts-the-crimes-of-grindelwald`
   }, {
-    id: `m2`,
+    id: `mock-2`,
     title: `Bohemian Rhapsody`,
     poster: `bohemian-rhapsody`
   }, {
-    id: `m3`,
+    id: `mock-3`,
     title: `Macbeth`,
     poster: `macbeth`
   }
 ];
 
 
-describe(`App`, () => {
+describe(`Test App component`, () => {
   test(`App component is created and rendered correctly`, () => {
     const tree = renderer
       .create(<App

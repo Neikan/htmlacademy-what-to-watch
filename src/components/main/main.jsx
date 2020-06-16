@@ -4,7 +4,7 @@ import MovieCard from "../movie-card/movie-card.jsx";
 
 
 const Main = (props) => {
-  const {promoTitle, promoGenre, promoDate, movies} = props;
+  const {promoTitle, promoGenre, promoDate, movies, onMovieTitleClick} = props;
 
   return (
     <>
@@ -38,7 +38,12 @@ const Main = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoTitle}</h2>
+              <h2
+                onClick={onMovieTitleClick}
+                className="movie-card__title"
+              >
+                {promoTitle}
+              </h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{promoGenre}</span>
                 <span className="movie-card__year">{promoDate}</span>
@@ -106,6 +111,7 @@ const Main = (props) => {
                 key = {movie.id}
                 title = {movie.title}
                 poster = {movie.poster}
+                onMovieTitleClick={onMovieTitleClick}
               />)
             }
           </div>
@@ -137,11 +143,14 @@ Main.propTypes = {
   promoTitle: PropTypes.string.isRequired,
   promoGenre: PropTypes.string.isRequired,
   promoDate: PropTypes.number.isRequired,
+
   movies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired
-  }))
+  })),
+
+  onMovieTitleClick: PropTypes.func.isRequired
 };
 
 

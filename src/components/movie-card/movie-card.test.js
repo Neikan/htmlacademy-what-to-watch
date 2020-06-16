@@ -4,19 +4,20 @@ import MovieCard from "./movie-card.jsx";
 
 
 const Movie = {
-  ID: `m1`,
+  ID: `mock-1`,
   TITLE: `Fantastic Beasts: The Crimes of Grindelwald`,
   POSTER: `fantastic-beasts-the-crimes-of-grindelwald`
 };
 
 
-describe(`MovieCard`, () => {
+describe(`Test MovieCard component`, () => {
   test(`MovieCard component is created and rendered correctly`, () => {
     const tree = renderer
       .create(<MovieCard
         key = {Movie.ID}
         title = {Movie.TITLE}
         poster = {Movie.POSTER}
+        onMovieTitleClick = {() => {}}
       />)
       .toJSON();
 

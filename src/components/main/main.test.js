@@ -11,22 +11,22 @@ const Promo = {
 
 const MOVIES = [
   {
-    id: `m1`,
+    id: `mock-1`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     poster: `fantastic-beasts-the-crimes-of-grindelwald`
   }, {
-    id: `m2`,
+    id: `mock-2`,
     title: `Bohemian Rhapsody`,
     poster: `bohemian-rhapsody`
   }, {
-    id: `m3`,
+    id: `mock-3`,
     title: `Macbeth`,
     poster: `macbeth`
   }
 ];
 
 
-describe(`Main`, () => {
+describe(`Test Main component`, () => {
   test(`Main component is created and rendered correctly`, () => {
     const tree = renderer
       .create(<Main
@@ -34,6 +34,7 @@ describe(`Main`, () => {
         promoGenre = {Promo.GENRE}
         promoDate = {Promo.DATE}
         movies = {MOVIES}
+        onMovieTitleClick = {() => {}}
       />)
       .toJSON();
 
