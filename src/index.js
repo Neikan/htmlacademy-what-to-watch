@@ -15,7 +15,7 @@ const MOVIES = [
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     poster: `fantastic-beasts-the-crimes-of-grindelwald`
   }, {
-    id: `m3`,
+    id: `m2`,
     title: `Bohemian Rhapsody`,
     poster: `bohemian-rhapsody`
   }, {
@@ -93,15 +93,20 @@ const MOVIES = [
   }
 ];
 
-
 const root = document.querySelector(`#root`);
 
-ReactDOM.render(
-    <App
-      promoTitle = {Promo.TITLE}
-      promoGenre = {Promo.GENRE}
-      promoDate = {Promo.DATE}
-      movies = {MOVIES}
-    />,
-    root
-);
+
+const init = () => {
+  ReactDOM.render(
+      <App
+        promoTitle = {Promo.TITLE}
+        promoGenre = {Promo.GENRE}
+        promoDate = {Promo.DATE}
+        movies = {MOVIES}
+      />,
+      root
+  );
+};
+
+
+init();
