@@ -20,3 +20,23 @@ export const MOVIES = [
   }
 ];
 
+
+export const GENRES = [
+  {
+    id: `g1`,
+    title: `All genres`,
+  }, {
+    id: `g2`,
+    title: `Comedies`,
+  }, {
+    id: `g3`,
+    title: `Crime`
+  }
+];
+
+
+export const MarkupElement = {
+  PROMO_TITLE: `movie-card__title`,
+  MOVIE_CARD_TITLE: `small-movie-card__title`,
+  GENRE_LINK: `catalog__genres-link`
+};

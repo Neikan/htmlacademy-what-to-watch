@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
-import {Promo, MOVIES} from "./../consts/test-data";
+import {Promo, MOVIES, GENRES} from "./../../consts/test-data";
 
 
 describe(`Test App component`, () => {
@@ -12,6 +12,7 @@ describe(`Test App component`, () => {
         promoGenre = {Promo.GENRE}
         promoDate = {Promo.DATE}
         movies = {MOVIES}
+        genres = {GENRES}
       />)
       .toJSON();
 

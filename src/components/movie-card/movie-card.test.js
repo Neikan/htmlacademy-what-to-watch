@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MovieCard from "./movie-card.jsx";
-import {MOVIES} from "./../consts/test-data";
+import {MOVIES} from "./../../consts/test-data";
 
 
 describe(`Test MovieCard component`, () => {
