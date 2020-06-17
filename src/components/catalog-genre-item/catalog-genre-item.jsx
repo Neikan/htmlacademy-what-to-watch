@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {GENRES} from "../../consts/common-data";
 
 
-const markupClass = {
+const MarkupClass = {
   DEFAULT: `catalog__genres-item`,
   ACTIVE: `catalog__genres-item--active`
 };
@@ -13,8 +13,8 @@ const CatalogGenreItem = (props) => {
   const {id, title, onTitleClick} = props;
 
   const className = id === GENRES[0].id
-    ? `${markupClass.DEFAULT} ${markupClass.ACTIVE}`
-    : markupClass.DEFAULT;
+    ? `${MarkupClass.DEFAULT} ${MarkupClass.ACTIVE}`
+    : MarkupClass.DEFAULT;
 
   return (
     <li className={className}>
