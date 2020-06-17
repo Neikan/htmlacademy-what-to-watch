@@ -7,12 +7,10 @@ const movieTitleClickHandler = () => {};
 const genreTitleClickHandler = () => {};
 
 const App = (props) => {
-  const {promoTitle, promoGenre, promoDate, movies, genres} = props;
+  const {promo, movies, genres} = props;
 
   return <Main
-    promoTitle = {promoTitle}
-    promoGenre = {promoGenre}
-    promoDate = {promoDate}
+    promo = {promo}
     movies = {movies}
     genres = {genres}
     onMovieTitleClick = {movieTitleClickHandler}
@@ -20,10 +18,9 @@ const App = (props) => {
   />;
 };
 
+
 App.propTypes = {
-  promoTitle: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoDate: PropTypes.number.isRequired,
+  promo: PropTypes.object.isRequired,
   movies: PropTypes.array.isRequired,
   genres: PropTypes.array.isRequired
 };

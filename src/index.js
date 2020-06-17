@@ -8,9 +8,7 @@ const root = document.querySelector(`#root`);
 const init = () => {
   ReactDOM.render(
       <App
-        promoTitle = {Promo.TITLE}
-        promoGenre = {Promo.GENRE}
-        promoDate = {Promo.DATE}
+        promo = {Promo}
         movies = {MOVIES}
         genres = {GENRES}
       />,

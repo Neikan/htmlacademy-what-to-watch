@@ -5,7 +5,7 @@ import CatalogGenreItem from "../catalog-genre-item/catalog-genre-item.jsx";
 
 
 const Main = (props) => {
-  const {promoTitle, promoGenre, promoDate, movies, genres, onMovieTitleClick, onGenreTitleClick} = props;
+  const {promo, movies, genres, onMovieTitleClick, onGenreTitleClick} = props;
 
   return (
     <>
@@ -35,7 +35,7 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promoTitle} width="218" height="327" />
+              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promo.TITLE} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -43,11 +43,11 @@ const Main = (props) => {
                 onClick={onMovieTitleClick}
                 className="movie-card__title"
               >
-                {promoTitle}
+                {promo.TITLE}
               </h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoGenre}</span>
-                <span className="movie-card__year">{promoDate}</span>
+                <span className="movie-card__genre">{promo.GENRE}</span>
+                <span className="movie-card__year">{promo.DATE}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -118,10 +118,13 @@ const Main = (props) => {
   );
 };
 
+
 Main.propTypes = {
-  promoTitle: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoDate: PropTypes.number.isRequired,
+  promo: PropTypes.shape({
+    TITLE: PropTypes.string.isRequired,
+    GENRE: PropTypes.string.isRequired,
+    DATE: PropTypes.number.isRequired
+  }),
 
   movies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
