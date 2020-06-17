@@ -62,7 +62,7 @@ describe(`Test e2e Main component`, () => {
         />
     );
 
-    main.find(`.${MarkupElement.GENRE_LINK}`).map((movieTitle) => movieTitle.props().onClick());
+    main.find(`.${MarkupElement.GENRE_LINK}`).map((genre) => genre.props().onClick());
 
     expect(genresTitleClickHandler.mock.calls.length).toBe(GENRES.length);
   });
