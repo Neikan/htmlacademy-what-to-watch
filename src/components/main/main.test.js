@@ -8,9 +8,7 @@ describe(`Test Main component`, () => {
   test(`Main component is created and rendered correctly`, () => {
     const tree = renderer
       .create(<Main
-        promoTitle = {Promo.TITLE}
-        promoGenre = {Promo.GENRE}
-        promoDate = {Promo.DATE}
+        promo = {Promo}
         movies = {MOVIES}
         genres = {GENRES}
         onMovieTitleClick = {() => {}}

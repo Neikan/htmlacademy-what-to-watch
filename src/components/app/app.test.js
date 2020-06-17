@@ -8,9 +8,7 @@ describe(`Test App component`, () => {
   test(`App component is created and rendered correctly`, () => {
     const tree = renderer
       .create(<App
-        promoTitle = {Promo.TITLE}
-        promoGenre = {Promo.GENRE}
-        promoDate = {Promo.DATE}
+        promo = {Promo}
         movies = {MOVIES}
         genres = {GENRES}
       />)

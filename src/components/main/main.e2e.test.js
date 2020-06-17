@@ -16,9 +16,7 @@ describe(`Test e2e Main component`, () => {
 
     const main = shallow(
         <Main
-          promoTitle = {Promo.TITLE}
-          promoGenre = {Promo.GENRE}
-          promoDate = {Promo.DATE}
+          promo = {Promo}
           movies = {MOVIES}
           genres = {GENRES}
           onMovieTitleClick={promoTitleClickHandler}
@@ -37,9 +35,7 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promoTitle = {Promo.TITLE}
-          promoGenre = {Promo.GENRE}
-          promoDate = {Promo.DATE}
+          promo = {Promo}
           movies = {MOVIES}
           genres = {GENRES}
           onMovieTitleClick={moviesTitleClickHandler}
@@ -58,9 +54,7 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promoTitle = {Promo.TITLE}
-          promoGenre = {Promo.GENRE}
-          promoDate = {Promo.DATE}
+          promo = {Promo}
           movies = {MOVIES}
           genres = {GENRES}
           onMovieTitleClick = {() => {}}
