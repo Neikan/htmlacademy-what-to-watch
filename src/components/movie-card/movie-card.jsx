@@ -11,7 +11,7 @@ const FileExtension = {
 };
 
 const MovieCard = (props) => {
-  const {title, poster, onMovieTitleClick} = props;
+  const {title, poster, onTitleClick} = props;
 
   const posterUrl = `/${Url.IMG}/${poster}.${FileExtension.JPG}`;
 
@@ -21,7 +21,7 @@ const MovieCard = (props) => {
         <img src={posterUrl} alt={title} width="280" height="175" />
       </div>
       <h3
-        onClick={onMovieTitleClick}
+        onClick={onTitleClick}
         className="small-movie-card__title"
       >
         <a className="small-movie-card__link" href="movie-page.html">{title}</a>
@@ -33,7 +33,7 @@ const MovieCard = (props) => {
 MovieCard.propTypes = {
   poster: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  onMovieTitleClick: PropTypes.func.isRequired
+  onTitleClick: PropTypes.func.isRequired
 };
 
 

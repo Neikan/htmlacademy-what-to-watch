@@ -111,7 +111,7 @@ const Main = (props) => {
                 key = {movie.id}
                 title = {movie.title}
                 poster = {movie.poster}
-                onMovieTitleClick={onMovieTitleClick}
+                onTitleClick={onMovieTitleClick}
               />)
             }
           </div>

@@ -25,12 +25,14 @@ describe(`Test e2e MovieCard component`, () => {
           key = {Movie.ID}
           title = {Movie.TITLE}
           poster = {Movie.POSTER}
-          onMovieTitleClick = {movieTitleClickHandler}
+          onTitleClick = {movieTitleClickHandler}
         />
     );
 
     const movieTitle = movieCard.find(`.small-movie-card__title`);
 
     movieTitle.props().onClick();
+
+    expect(movieTitleClickHandler.mock.calls.length).toBe(1);
   });
 });
