@@ -11,7 +11,7 @@ describe(`Test MovieCard component`, () => {
         key = {MOVIES[0].id}
         title = {MOVIES[0].title}
         poster = {MOVIES[0].poster}
-        onTitleClick = {() => {}}
+        onMovieDetailsOpen = {() => {}}
       />)
       .toJSON();
 

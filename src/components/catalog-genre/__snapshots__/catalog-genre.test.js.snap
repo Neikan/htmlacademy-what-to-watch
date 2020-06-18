@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test CatalogGenreItem component First CatalogGenreItem component is created and rendered correctly 1`] = `
+exports[`Test CatalogGenre component Active CatalogGenre component is created and rendered correctly 1`] = `
 <li
   className="catalog__genres-item catalog__genres-item--active"
 >
@@ -14,7 +14,7 @@ exports[`Test CatalogGenreItem component First CatalogGenreItem component is cre
 </li>
 `;
 
-exports[`Test CatalogGenreItem component Second CatalogGenreItem component is created and rendered correctly 1`] = `
+exports[`Test CatalogGenre component Default CatalogGenre component is created and rendered correctly 1`] = `
 <li
   className="catalog__genres-item"
 >

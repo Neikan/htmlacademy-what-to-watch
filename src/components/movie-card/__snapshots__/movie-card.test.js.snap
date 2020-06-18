@@ -6,6 +6,7 @@ exports[`Test MovieCard component MovieCard component is created and rendered co
 >
   <div
     className="small-movie-card__image"
+    onClick={[Function]}
   >
     <img
       alt="Fantastic Beasts: The Crimes of Grindelwald"

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {GENRES} from "../../consts/common-data";
+import {CATALOG_GENRE_DEFAULT} from "../../consts/common-data";
 
 
 const MarkupClass = {
@@ -9,10 +9,10 @@ const MarkupClass = {
 };
 
 
-const CatalogGenreItem = (props) => {
-  const {id, title, onTitleClick} = props;
+const CatalogGenre = (props) => {
+  const {title, onCatalogGenreSwitchOver} = props;
 
-  const className = id === GENRES[0].id
+  const className = title === CATALOG_GENRE_DEFAULT
     ? `${MarkupClass.DEFAULT} ${MarkupClass.ACTIVE}`
     : MarkupClass.DEFAULT;
 
@@ -20,7 +20,7 @@ const CatalogGenreItem = (props) => {
     <li className={className}>
       <a
         href="#"
-        onClick={onTitleClick}
+        onClick={onCatalogGenreSwitchOver}
         className="catalog__genres-link"
       >
         {title}
@@ -29,11 +29,10 @@ const CatalogGenreItem = (props) => {
   );
 };
 
-CatalogGenreItem.propTypes = {
-  id: PropTypes.string.isRequired,
+CatalogGenre.propTypes = {
   title: PropTypes.string.isRequired,
-  onTitleClick: PropTypes.func.isRequired
+  onCatalogGenreSwitchOver: PropTypes.func.isRequired
 };
 
 
-export default CatalogGenreItem;
+export default CatalogGenre;

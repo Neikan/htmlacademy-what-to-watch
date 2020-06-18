@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import MovieCard from "../movie-card/movie-card.jsx";
-import CatalogGenreItem from "../catalog-genre-item/catalog-genre-item.jsx";
+import CatalogGenre from "../catalog-genre/catalog-genre.jsx";
 import {LogoPosition} from "../../consts/common-data.js";
 
 
 const Main = (props) => {
-  const {promo, movies, genres, onMovieTitleClick, onGenreTitleClick} = props;
+  const {promo, movies, genres, onMovieDetailsOpen, onCatalogGenreSwitchOver} = props;
 
   return (
     <>
@@ -28,12 +28,7 @@ const Main = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2
-                onClick={onMovieTitleClick}
-                className="movie-card__title"
-              >
-                {promo.TITLE}
-              </h2>
+              <h2 className="movie-card__title">{promo.TITLE}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{promo.GENRE}</span>
                 <span className="movie-card__year">{promo.DATE}</span>
@@ -64,11 +59,10 @@ const Main = (props) => {
 
           <ul className="catalog__genres-list">
             {genres.map((genre) =>
-              <CatalogGenreItem
+              <CatalogGenre
                 key = {genre.id}
-                id = {genre.id}
                 title = {genre.title}
-                onTitleClick = {onGenreTitleClick}
+                onCatalogGenreSwitchOver = {onCatalogGenreSwitchOver}
               />)
             }
           </ul>
@@ -79,7 +73,7 @@ const Main = (props) => {
                 key = {movie.id}
                 title = {movie.title}
                 poster = {movie.poster}
-                onTitleClick={onMovieTitleClick}
+                onMovieDetailsOpen={onMovieDetailsOpen}
               />)
             }
           </div>
@@ -114,8 +108,8 @@ Main.propTypes = {
     title: PropTypes.string.isRequired
   })),
 
-  onMovieTitleClick: PropTypes.func.isRequired,
-  onGenreTitleClick: PropTypes.func.isRequired
+  onMovieDetailsOpen: PropTypes.func.isRequired,
+  onCatalogGenreSwitchOver: PropTypes.func.isRequired
 };
 
 

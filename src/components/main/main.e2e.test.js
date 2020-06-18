@@ -1,5 +1,5 @@
 import React from "react";
-import {configure, shallow, mount} from "enzyme";
+import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main.jsx";
 import {MarkupElement, Promo, MOVIES, GENRES} from "./../../consts/test-data";
@@ -11,59 +11,41 @@ configure({
 
 
 describe(`Test e2e Main component`, () => {
-  test(`Should movie title be pressed`, () => {
-    const promoTitleClickHandler = jest.fn();
-
-    const main = shallow(
-        <Main
-          promo = {Promo}
-          movies = {MOVIES}
-          genres = {GENRES}
-          onMovieTitleClick={promoTitleClickHandler}
-          onGenreTitleClick = {() => {}}
-        />
-    );
-
-    main.find(`.${MarkupElement.PROMO_TITLE}`).props().onClick();
-
-    expect(promoTitleClickHandler.mock.calls.length).toBe(1);
-  });
-
-
   test(`Should all titles of movies be pressed`, () => {
-    const moviesTitleClickHandler = jest.fn();
+    const handleMovieDetailsOpen = jest.fn();
 
     const main = mount(
         <Main
           promo = {Promo}
           movies = {MOVIES}
           genres = {GENRES}
-          onMovieTitleClick={moviesTitleClickHandler}
-          onGenreTitleClick = {() => {}}
+          onMovieDetailsOpen={handleMovieDetailsOpen}
+          onCatalogGenreSwitchOver = {() => {}}
         />
     );
 
-    main.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).map((movieTitle) => movieTitle.props().onClick());
+    main.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).map((movie) => movie.props().onClick());
+    main.find(`.${MarkupElement.MOVIE_CARD_POSTER}`).map((movie) => movie.props().onClick());
 
-    expect(moviesTitleClickHandler.mock.calls.length).toBe(MOVIES.length);
+    expect(handleMovieDetailsOpen.mock.calls.length).toBe(MOVIES.length * 2);
   });
 
 
   test(`Should all titles of genres be pressed`, () => {
-    const genresTitleClickHandler = jest.fn();
+    const handleCatalogGenreSwitchOver = jest.fn();
 
     const main = mount(
         <Main
           promo = {Promo}
           movies = {MOVIES}
           genres = {GENRES}
-          onMovieTitleClick = {() => {}}
-          onGenreTitleClick = {genresTitleClickHandler}
+          onMovieDetailsOpen = {() => {}}
+          onCatalogGenreSwitchOver = {handleCatalogGenreSwitchOver}
         />
     );
 
     main.find(`.${MarkupElement.GENRE_LINK}`).map((genre) => genre.props().onClick());
 
-    expect(genresTitleClickHandler.mock.calls.length).toBe(GENRES.length);
+    expect(handleCatalogGenreSwitchOver.mock.calls.length).toBe(GENRES.length);
   });
 });

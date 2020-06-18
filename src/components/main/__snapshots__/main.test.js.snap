@@ -80,7 +80,6 @@ Array [
         >
           <h2
             className="movie-card__title"
-            onClick={[Function]}
           >
             The Grand Budapest Hotel poster
           </h2>
@@ -196,6 +195,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Fantastic Beasts: The Crimes of Grindelwald"
@@ -221,6 +221,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Bohemian Rhapsody"
@@ -246,6 +247,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Macbeth"

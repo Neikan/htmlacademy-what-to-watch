@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
 
-const movieTitleClickHandler = () => {};
-const genreTitleClickHandler = () => {};
+const handleMovieDetailsOpen = () => {};
+const handleCatalogGenreSwitchOver = () => {};
 
 const App = (props) => {
   const {promo, movies, genres} = props;
@@ -13,8 +13,8 @@ const App = (props) => {
     promo = {promo}
     movies = {movies}
     genres = {genres}
-    onMovieTitleClick = {movieTitleClickHandler}
-    onGenreTitleClick = {genreTitleClickHandler}
+    onMovieDetailsOpen = {handleMovieDetailsOpen}
+    onCatalogGenreSwitchOver = {handleCatalogGenreSwitchOver}
   />;
 };
 

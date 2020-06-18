@@ -45,5 +45,6 @@ export const GENRES = [
 export const MarkupElement = {
   PROMO_TITLE: `movie-card__title`,
   MOVIE_CARD_TITLE: `small-movie-card__title`,
+  MOVIE_CARD_POSTER: `small-movie-card__image`,
   GENRE_LINK: `catalog__genres-link`
 };

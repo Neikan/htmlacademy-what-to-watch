@@ -129,3 +129,6 @@ export const GENRES = [
     title: `Thrillers`
   }
 ];
+
+
+export const CATALOG_GENRE_DEFAULT = `All genres`;
