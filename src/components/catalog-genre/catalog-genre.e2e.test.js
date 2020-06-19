@@ -11,19 +11,19 @@ configure({
 
 
 describe(`Test e2e CatalogGenre component`, () => {
-  const handleCatalogGenreSwitchOver = jest.fn();
+  const handleGenreSelect = jest.fn();
 
   test(`Should genre title be pressed`, () => {
     const genre = shallow(
         <CatalogGenre
-          key = {GENRES[0].id}
           title = {GENRES[0].title}
-          onCatalogGenreSwitchOver = {handleCatalogGenreSwitchOver}
+          isActive = {GENRES[0].isActive}
+          onGenreSelect = {handleGenreSelect}
         />
     );
 
     genre.find(`.${MarkupElement.GENRE_LINK}`).props().onClick();
 
-    expect(handleCatalogGenreSwitchOver.mock.calls.length).toBe(1);
+    expect(handleGenreSelect.mock.calls.length).toBe(1);
   });
 });

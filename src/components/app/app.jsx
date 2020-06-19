@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
 
-const handleMovieDetailsOpen = () => {};
-const handleCatalogGenreSwitchOver = () => {};
+const handleMovieSelect = () => {};
+const handleGenreSelect = () => {};
+
 
 const App = (props) => {
   const {promo, movies, genres} = props;
@@ -13,16 +14,30 @@ const App = (props) => {
     promo = {promo}
     movies = {movies}
     genres = {genres}
-    onMovieDetailsOpen = {handleMovieDetailsOpen}
-    onCatalogGenreSwitchOver = {handleCatalogGenreSwitchOver}
+    onMovieSelect = {handleMovieSelect}
+    onGenreSelect = {handleGenreSelect}
   />;
 };
 
 
 App.propTypes = {
-  promo: PropTypes.object.isRequired,
-  movies: PropTypes.array.isRequired,
-  genres: PropTypes.array.isRequired
+  promo: PropTypes.shape({
+    TITLE: PropTypes.string.isRequired,
+    GENRE: PropTypes.string.isRequired,
+    DATE: PropTypes.number.isRequired
+  }).isRequired,
+
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired
+  })).isRequired,
+
+  genres: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    isActive: PropTypes.bool.isRequired
+  })).isRequired,
 };
 
 

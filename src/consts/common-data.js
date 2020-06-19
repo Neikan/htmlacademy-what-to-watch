@@ -100,35 +100,42 @@ export const GENRES = [
   {
     id: `g1`,
     title: `All genres`,
+    isActive: true
   }, {
     id: `g2`,
     title: `Comedies`,
+    isActive: false
   }, {
     id: `g3`,
     title: `Crime`,
+    isActive: false
   }, {
     id: `g4`,
     title: `Documentary`,
+    isActive: false
   }, {
     id: `g5`,
     title: `Dramas`,
+    isActive: false
   }, {
     id: `g6`,
     title: `Horror`,
+    isActive: false
   }, {
     id: `g7`,
     title: `Kids & Family`,
+    isActive: false
   }, {
     id: `g8`,
     title: `Romance`,
+    isActive: false
   }, {
     id: `g9`,
     title: `Sci-Fi`,
+    isActive: false
   }, {
     id: `g10`,
-    title: `Thrillers`
+    title: `Thrillers`,
+    isActive: false
   }
 ];
-
-
-export const CATALOG_GENRE_DEFAULT = `All genres`;

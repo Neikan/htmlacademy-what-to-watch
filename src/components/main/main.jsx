@@ -4,11 +4,10 @@ import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import MovieCard from "../movie-card/movie-card.jsx";
 import CatalogGenre from "../catalog-genre/catalog-genre.jsx";
-import {LogoPosition} from "../../consts/common-data.js";
 
 
 const Main = (props) => {
-  const {promo, movies, genres, onMovieDetailsOpen, onCatalogGenreSwitchOver} = props;
+  const {promo, movies, genres, onMovieSelect, onGenreSelect} = props;
 
   return (
     <>
@@ -19,7 +18,7 @@ const Main = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <Header logoPosition = {LogoPosition.HEADER}/>
+        <Header />
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -62,7 +61,8 @@ const Main = (props) => {
               <CatalogGenre
                 key = {genre.id}
                 title = {genre.title}
-                onCatalogGenreSwitchOver = {onCatalogGenreSwitchOver}
+                isActive = {genre.isActive}
+                onGenreSelect = {onGenreSelect}
               />)
             }
           </ul>
@@ -73,7 +73,7 @@ const Main = (props) => {
                 key = {movie.id}
                 title = {movie.title}
                 poster = {movie.poster}
-                onMovieDetailsOpen={onMovieDetailsOpen}
+                onMovieSelect={onMovieSelect}
               />)
             }
           </div>
@@ -83,7 +83,7 @@ const Main = (props) => {
           </div>
         </section>
 
-        <Footer logoPosition = {LogoPosition.FOOTER}/>
+        <Footer />
       </div>
     </>
   );
@@ -95,7 +95,7 @@ Main.propTypes = {
     TITLE: PropTypes.string.isRequired,
     GENRE: PropTypes.string.isRequired,
     DATE: PropTypes.number.isRequired
-  }),
+  }).isRequired,
 
   movies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -105,11 +105,12 @@ Main.propTypes = {
 
   genres: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    isActive: PropTypes.bool.isRequired
   })),
 
-  onMovieDetailsOpen: PropTypes.func.isRequired,
-  onCatalogGenreSwitchOver: PropTypes.func.isRequired
+  onMovieSelect: PropTypes.func.isRequired,
+  onGenreSelect: PropTypes.func.isRequired
 };
 
 

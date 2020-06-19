@@ -8,9 +8,9 @@ describe(`Test CatalogGenre component`, () => {
   test(`Active CatalogGenre component is created and rendered correctly`, () => {
     const tree = renderer
       .create(<CatalogGenre
-        key = {GENRES[0].id}
         title = {GENRES[0].title}
-        onCatalogGenreSwitchOver = {() => {}}
+        isActive = {GENRES[0].isActive}
+        onGenreSelect = {() => {}}
       />)
       .toJSON();
 
@@ -21,9 +21,9 @@ describe(`Test CatalogGenre component`, () => {
   test(`Default CatalogGenre component is created and rendered correctly`, () => {
     const tree = renderer
       .create(<CatalogGenre
-        key = {GENRES[1].id}
         title = {GENRES[1].title}
-        onCatalogGenreSwitchOver = {() => {}}
+        isActive = {GENRES[1].isActive}
+        onGenreSelect = {() => {}}
       />)
       .toJSON();
 

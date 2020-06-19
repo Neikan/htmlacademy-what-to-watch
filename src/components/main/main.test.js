@@ -11,8 +11,8 @@ describe(`Test Main component`, () => {
         promo = {Promo}
         movies = {MOVIES}
         genres = {GENRES}
-        onMovieDetailsOpen = {() => {}}
-        onCatalogGenreSwitchOver = {() => {}}
+        onMovieSelect = {() => {}}
+        onGenreSelect = {() => {}}
       />)
       .toJSON();
 

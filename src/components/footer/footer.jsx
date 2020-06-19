@@ -1,25 +1,18 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Logo from "./../logo/logo.jsx";
+import {LogoPosition} from "../../consts/common-data.js";
 
 
-const Footer = (props) => {
-  const {logoPosition} = props;
-
+const Footer = () => {
   return (
     <footer className="page-footer">
-      <Logo logoPosition = {logoPosition}/>
+      <Logo logoPosition = {LogoPosition.FOOTER}/>
 
       <div className="copyright">
         <p>© 2019 What to watch Ltd.</p>
       </div>
     </footer>
   );
-};
-
-
-Footer.propTypes = {
-  logoPosition: PropTypes.string.isRequired
 };
 
 

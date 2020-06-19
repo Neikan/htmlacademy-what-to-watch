@@ -1,14 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Logo from "./../logo/logo.jsx";
+import {LogoPosition} from "../../consts/common-data.js";
 
 
-const Header = (props) => {
-  const {logoPosition} = props;
-
+const Header = () => {
   return (
     <header className="page-header movie-card__head">
-      <Logo logoPosition = {logoPosition}/>
+      <Logo logoPosition = {LogoPosition.HEADER}/>
 
       <div className="user-block">
         <div className="user-block__avatar">
@@ -17,11 +15,6 @@ const Header = (props) => {
       </div>
     </header>
   );
-};
-
-
-Header.propTypes = {
-  logoPosition: PropTypes.string.isRequired
 };
 
 

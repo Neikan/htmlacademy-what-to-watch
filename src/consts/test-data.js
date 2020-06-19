@@ -32,12 +32,15 @@ export const GENRES = [
   {
     id: `g1`,
     title: `All genres`,
+    isActive: true
   }, {
     id: `g2`,
     title: `Comedies`,
+    isActive: false
   }, {
     id: `g3`,
-    title: `Crime`
+    title: `Crime`,
+    isActive: false
   }
 ];
 

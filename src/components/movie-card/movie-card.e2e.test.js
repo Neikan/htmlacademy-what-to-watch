@@ -11,20 +11,19 @@ configure({
 
 
 describe(`Test e2e MovieCard component`, () => {
-  const handleTitleClick = jest.fn();
+  const handleMovieSelect = jest.fn();
 
   test(`Should movie title be pressed`, () => {
     const movieCard = shallow(
         <MovieCard
-          key = {MOVIES[0].id}
           title = {MOVIES[0].title}
           poster = {MOVIES[0].poster}
-          onMovieDetailsOpen = {handleTitleClick}
+          onMovieSelect = {handleMovieSelect}
         />
     );
 
     movieCard.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).props().onClick();
 
-    expect(handleTitleClick.mock.calls.length).toBe(1);
+    expect(handleMovieSelect.mock.calls.length).toBe(1);
   });
 });
