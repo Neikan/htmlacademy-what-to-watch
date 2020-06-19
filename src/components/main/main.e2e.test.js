@@ -1,5 +1,5 @@
 import React from "react";
-import {configure, mount} from "enzyme";
+import {configure, mount, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main.jsx";
 import {MarkupElement, Promo, MOVIES, GENRES} from "./../../consts/test-data";
@@ -14,7 +14,7 @@ describe(`Test e2e Main component`, () => {
   test(`Should 'play'-button for promo-movie be pressed`, () => {
     const handleMoviePlay = jest.fn();
 
-    const main = mount(
+    const main = shallow(
         <Main
           promo = {Promo}
           movies = {MOVIES}
@@ -35,7 +35,7 @@ describe(`Test e2e Main component`, () => {
   test(`Should 'add to list'-button for promo-movie be pressed`, () => {
     const handleMovieAddToList = jest.fn();
 
-    const main = mount(
+    const main = shallow(
         <Main
           promo = {Promo}
           movies = {MOVIES}
