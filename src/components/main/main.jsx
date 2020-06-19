@@ -4,6 +4,7 @@ import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import MovieCard from "../movie-card/movie-card.jsx";
 import CatalogGenre from "../catalog-genre/catalog-genre.jsx";
+import {promoType, movieType, genreType} from "../../props/prop-types.js";
 
 
 const Main = (props) => {
@@ -91,24 +92,9 @@ const Main = (props) => {
 
 
 Main.propTypes = {
-  promo: PropTypes.shape({
-    TITLE: PropTypes.string.isRequired,
-    GENRE: PropTypes.string.isRequired,
-    DATE: PropTypes.number.isRequired
-  }).isRequired,
-
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired
-  })),
-
-  genres: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    isActive: PropTypes.bool.isRequired
-  })),
-
+  promo: promoType.isRequired,
+  movies: PropTypes.arrayOf(movieType).isRequired,
+  genres: PropTypes.arrayOf(genreType).isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired
 };

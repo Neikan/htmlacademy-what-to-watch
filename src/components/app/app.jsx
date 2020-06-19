@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
+import {movieType, genreType, promoType} from "../../props/prop-types.js";
 
 
 const handleMovieSelect = () => {};
@@ -21,23 +22,9 @@ const App = (props) => {
 
 
 App.propTypes = {
-  promo: PropTypes.shape({
-    TITLE: PropTypes.string.isRequired,
-    GENRE: PropTypes.string.isRequired,
-    DATE: PropTypes.number.isRequired
-  }).isRequired,
-
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired
-  })).isRequired,
-
-  genres: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    isActive: PropTypes.bool.isRequired
-  })).isRequired,
+  promo: promoType.isRequired,
+  movies: PropTypes.arrayOf(movieType).isRequired,
+  genres: PropTypes.arrayOf(genreType).isRequired,
 };
 
 
