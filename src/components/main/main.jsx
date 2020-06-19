@@ -8,7 +8,7 @@ import {promoType, movieType, genreType} from "../../props/prop-types.js";
 
 
 const Main = (props) => {
-  const {promo, movies, genres, onMovieSelect, onGenreSelect} = props;
+  const {promo, movies, genres, onMoviePlay, onMovieAddToList, onMovieSelect, onGenreSelect} = props;
 
   return (
     <>
@@ -35,13 +35,19 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  onClick = {onMoviePlay}
+                  className="btn btn--play movie-card__button" type="button"
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
+                <button
+                  onClick = {onMovieAddToList}
+                  className="btn btn--list movie-card__button" type="button"
+                >
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>
@@ -95,6 +101,8 @@ Main.propTypes = {
   promo: promoType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
   genres: PropTypes.arrayOf(genreType).isRequired,
+  onMoviePlay: PropTypes.func.isRequired,
+  onMovieAddToList: PropTypes.func.isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired
 };

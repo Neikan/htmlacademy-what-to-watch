@@ -11,6 +11,8 @@ describe(`Test Main component`, () => {
         promo = {Promo}
         movies = {MOVIES}
         genres = {GENRES}
+        onMoviePlay = {() => {}}
+        onMovieAddToList = {() => {}}
         onMovieSelect = {() => {}}
         onGenreSelect = {() => {}}
       />)

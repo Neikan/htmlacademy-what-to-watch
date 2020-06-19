@@ -11,6 +11,48 @@ configure({
 
 
 describe(`Test e2e Main component`, () => {
+  test(`Should 'play'-button for promo-movie be pressed`, () => {
+    const handleMoviePlay = jest.fn();
+
+    const main = mount(
+        <Main
+          promo = {Promo}
+          movies = {MOVIES}
+          genres = {GENRES}
+          onMoviePlay = {handleMoviePlay}
+          onMovieAddToList = {() => {}}
+          onMovieSelect = {() => {}}
+          onGenreSelect = {() => {}}
+        />
+    );
+
+    main.find(`.${MarkupElement.PROMO_BTN_PLAY}`).props().onClick();
+
+    expect(handleMoviePlay.mock.calls.length).toBe(1);
+  });
+
+
+  test(`Should 'add to list'-button for promo-movie be pressed`, () => {
+    const handleMovieAddToList = jest.fn();
+
+    const main = mount(
+        <Main
+          promo = {Promo}
+          movies = {MOVIES}
+          genres = {GENRES}
+          onMoviePlay = {() => {}}
+          onMovieAddToList = {handleMovieAddToList}
+          onMovieSelect = {() => {}}
+          onGenreSelect = {() => {}}
+        />
+    );
+
+    main.find(`.${MarkupElement.PROMO_BTN_ADD_TO_LIST}`).props().onClick();
+
+    expect(handleMovieAddToList.mock.calls.length).toBe(1);
+  });
+
+
   test(`Should all titles of movies be pressed`, () => {
     const handleMovieSelect = jest.fn();
 
@@ -19,6 +61,8 @@ describe(`Test e2e Main component`, () => {
           promo = {Promo}
           movies = {MOVIES}
           genres = {GENRES}
+          onMoviePlay = {() => {}}
+          onMovieAddToList = {() => {}}
           onMovieSelect={handleMovieSelect}
           onGenreSelect = {() => {}}
         />
@@ -39,6 +83,8 @@ describe(`Test e2e Main component`, () => {
           promo = {Promo}
           movies = {MOVIES}
           genres = {GENRES}
+          onMoviePlay = {() => {}}
+          onMovieAddToList = {() => {}}
           onMovieSelect = {() => {}}
           onGenreSelect = {handleGenreSelect}
         />

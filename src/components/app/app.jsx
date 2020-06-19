@@ -4,6 +4,8 @@ import Main from "../main/main.jsx";
 import {movieType, genreType, promoType} from "../../props/prop-types.js";
 
 
+const handleMoviePlay = () => {};
+const handleMovieAddToList = () => {};
 const handleMovieSelect = () => {};
 const handleGenreSelect = () => {};
 
@@ -15,6 +17,8 @@ const App = (props) => {
     promo = {promo}
     movies = {movies}
     genres = {genres}
+    onMoviePlay = {handleMoviePlay}
+    onMovieAddToList = {handleMovieAddToList}
     onMovieSelect = {handleMovieSelect}
     onGenreSelect = {handleGenreSelect}
   />;
