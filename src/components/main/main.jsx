@@ -1,10 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Header from "../header/header.jsx";
+import Footer from "../footer/footer.jsx";
 import MovieCard from "../movie-card/movie-card.jsx";
+import CatalogGenre from "../catalog-genre/catalog-genre.jsx";
+import {promoType, movieType, genreType} from "../../props/prop-types.js";
 
 
 const Main = (props) => {
-  const {promoTitle, promoGenre, promoDate, movies} = props;
+  const {promo, movies, genres, onMoviePlay, onMovieAddToList, onMovieSelect, onGenreSelect} = props;
 
   return (
     <>
@@ -15,43 +19,35 @@ const Main = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <Header />
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promoTitle} width="218" height="327" />
+              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promo.TITLE} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoTitle}</h2>
+              <h2 className="movie-card__title">{promo.TITLE}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoGenre}</span>
-                <span className="movie-card__year">{promoDate}</span>
+                <span className="movie-card__genre">{promo.GENRE}</span>
+                <span className="movie-card__year">{promo.DATE}</span>
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  onClick = {onMoviePlay}
+                  className="btn btn--play movie-card__button" type="button"
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
+                <button
+                  onClick = {onMovieAddToList}
+                  className="btn btn--list movie-card__button" type="button"
+                >
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>
@@ -68,36 +64,14 @@ const Main = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
-            </li>
+            {genres.map((genre) =>
+              <CatalogGenre
+                key = {genre.id}
+                title = {genre.title}
+                isActive = {genre.isActive}
+                onGenreSelect = {onGenreSelect}
+              />)
+            }
           </ul>
 
           <div className="catalog__movies-list">
@@ -106,6 +80,7 @@ const Main = (props) => {
                 key = {movie.id}
                 title = {movie.title}
                 poster = {movie.poster}
+                onMovieSelect={onMovieSelect}
               />)
             }
           </div>
@@ -115,33 +90,21 @@ const Main = (props) => {
           </div>
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
 };
 
+
 Main.propTypes = {
-  promoTitle: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoDate: PropTypes.number.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired
-  }))
+  promo: promoType.isRequired,
+  movies: PropTypes.arrayOf(movieType).isRequired,
+  genres: PropTypes.arrayOf(genreType).isRequired,
+  onMoviePlay: PropTypes.func.isRequired,
+  onMovieAddToList: PropTypes.func.isRequired,
+  onMovieSelect: PropTypes.func.isRequired,
+  onGenreSelect: PropTypes.func.isRequired
 };
 
 

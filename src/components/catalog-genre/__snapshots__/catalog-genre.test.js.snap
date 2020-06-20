@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test CatalogGenre component Active CatalogGenre component is created and rendered correctly 1`] = `
+<li
+  className="catalog__genres-item catalog__genres-item--active"
+>
+  <a
+    className="catalog__genres-link"
+    href="#"
+    onClick={[Function]}
+  >
+    All genres
+  </a>
+</li>
+`;
+
+exports[`Test CatalogGenre component Default CatalogGenre component is created and rendered correctly 1`] = `
+<li
+  className="catalog__genres-item"
+>
+  <a
+    className="catalog__genres-link"
+    href="#"
+    onClick={[Function]}
+  >
+    Comedies
+  </a>
+</li>
+`;

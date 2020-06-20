@@ -1,24 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
+import {movieType, genreType, promoType} from "../../props/prop-types.js";
+
+
+const handleMoviePlay = () => {};
+const handleMovieAddToList = () => {};
+const handleMovieSelect = () => {};
+const handleGenreSelect = () => {};
 
 
 const App = (props) => {
-  const {promoTitle, promoGenre, promoDate, movies} = props;
+  const {promo, movies, genres} = props;
 
   return <Main
-    promoTitle = {promoTitle}
-    promoGenre = {promoGenre}
-    promoDate = {promoDate}
+    promo = {promo}
     movies = {movies}
+    genres = {genres}
+    onMoviePlay = {handleMoviePlay}
+    onMovieAddToList = {handleMovieAddToList}
+    onMovieSelect = {handleMovieSelect}
+    onGenreSelect = {handleGenreSelect}
   />;
 };
 
+
 App.propTypes = {
-  promoTitle: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoDate: PropTypes.number.isRequired,
-  movies: PropTypes.array.isRequired
+  promo: promoType.isRequired,
+  movies: PropTypes.arrayOf(movieType).isRequired,
+  genres: PropTypes.arrayOf(genreType).isRequired,
 };
 
 
