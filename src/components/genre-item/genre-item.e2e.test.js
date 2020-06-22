@@ -1,7 +1,7 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import CatalogGenre from "./catalog-genre.jsx";
+import GenreItem from "./genre-item.jsx";
 import {MarkupElement, GENRES} from "../../consts/test-data";
 
 
@@ -10,12 +10,12 @@ configure({
 });
 
 
-describe(`Test e2e CatalogGenre component`, () => {
+describe(`Test e2e GenreItem component`, () => {
   const handleGenreSelect = jest.fn();
 
   test(`Should genre title be pressed`, () => {
     const genre = shallow(
-        <CatalogGenre
+        <GenreItem
           title = {GENRES[0].title}
           isActive = {GENRES[0].isActive}
           onGenreSelect = {handleGenreSelect}

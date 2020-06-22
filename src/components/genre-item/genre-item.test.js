@@ -1,13 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import CatalogGenre from "./catalog-genre.jsx";
+import GenreItem from "./genre-item.jsx";
 import {GENRES} from "../../consts/test-data";
 
 
-describe(`Test CatalogGenre component`, () => {
-  test(`Active CatalogGenre component is created and rendered correctly`, () => {
+describe(`Test GenreItem component`, () => {
+  test(`Active GenreItem component is created and rendered correctly`, () => {
     const tree = renderer
-      .create(<CatalogGenre
+      .create(<GenreItem
         title = {GENRES[0].title}
         isActive = {GENRES[0].isActive}
         onGenreSelect = {() => {}}
@@ -18,9 +18,9 @@ describe(`Test CatalogGenre component`, () => {
   });
 
 
-  test(`Default CatalogGenre component is created and rendered correctly`, () => {
+  test(`Default GenreItem component is created and rendered correctly`, () => {
     const tree = renderer
-      .create(<CatalogGenre
+      .create(<GenreItem
         title = {GENRES[1].title}
         isActive = {GENRES[1].isActive}
         onGenreSelect = {() => {}}
