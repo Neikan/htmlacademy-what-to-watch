@@ -4,7 +4,7 @@ export const LogoPosition = {
 };
 
 
-export const Promo = {
+export const PromoMovie = {
   TITLE: `The Grand Budapest Hotel poster`,
   GENRE: `Drama`,
   DATE: 2014

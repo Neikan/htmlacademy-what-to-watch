@@ -1,92 +1,83 @@
-import {
-  COUNT_COMMENTS_MAX,
-  TITLES,
-  POSTERS,
-  DIRECTORS,
-  SCREEN_WRITERS,
-  ACTORS,
-  COUNTRIES,
-  GENRES,
-  AGE_RATINGS,
-  START_DATE_WATCHED
-} from './film-consts';
-import {
-  getRandomElement,
-  getRandomSubArray,
-  getRandomInt,
-  getRandomBoolean,
-  getRandomDate,
-  formatDate,
-  generateId
-} from '../../utils/common';
-import {generateComments} from '../comments/comment.js';
-import {getRandomDescription, getRandomRating} from './film-utils';
-import {FormatRule} from '../../consts';
-
-
-/**
- * Генерация фильма
- * @return {Object} созданный фильм
- */
-const generateFilm = () => {
-  const titles = getRandomElement(TITLES);
-  const randomDate = getRandomDate(new Date());
-
-  return {
-    id: generateId(),
-    promo: {
-      poster: getRandomElement(POSTERS),
-      age: getRandomElement(AGE_RATINGS),
-    },
-    titles: {
-      translate: titles.translate,
-      original: titles.original
-    },
-    rating: getRandomRating(),
-    details: {
-      director: {
-        name: `Director`,
-        info: getRandomElement(DIRECTORS)
-      },
-      screenwriters: {
-        name: `Writers`,
-        info: getRandomSubArray(SCREEN_WRITERS).join(`, `)
-      },
-      actors: {
-        name: `Actors`,
-        info: getRandomSubArray(ACTORS).join(`, `)
-      },
-      releaseDate: {
-        name: `Release Date`,
-        info: formatDate(randomDate, FormatRule.RELEASE_DATE)
-      },
-      duration: {
-        name: `Runtime`,
-        info: getRandomInt(240)
-      },
-      country: {
-        name: `Country`,
-        info: getRandomElement(COUNTRIES)
-      },
-      genres: getRandomSubArray(GENRES),
-      description: getRandomDescription(),
-      year: formatDate(randomDate, FormatRule.RELEASE_YEAR)
-    },
-    comments: generateComments(getRandomInt(COUNT_COMMENTS_MAX)),
-    isWatch: getRandomBoolean(),
-    isWatched: getRandomBoolean(),
-    watchedDate: getRandomDate(new Date(), new Date([...START_DATE_WATCHED])),
-    isFavorite: getRandomBoolean()
-  };
-};
-
-
-/**
- * Генерация заданного количества фильмов
- * @param {Number} count количество фильмов
- * @return {Array} массив сгенерированных фильмов
- */
-const generateFilms = (count) => new Array(count).fill({}).map(generateFilm);
-
-
-export {generateFilm, generateFilms};
+export const MOVIES = [
+  {
+    id: `m1`,
+    title: `Fantastic Beasts: The Crimes of Grindelwald`,
+    poster: `fantastic-beasts-the-crimes-of-grindelwald`
+  }, {
+    id: `m2`,
+    title: `Bohemian Rhapsody`,
+    poster: `bohemian-rhapsody`
+  }, {
+    id: `m3`,
+    title: `Macbeth`,
+    poster: `macbeth`
+  }, {
+    id: `m4`,
+    title: `Aviator`,
+    poster: `aviator`
+  }, {
+    id: `m5`,
+    title: `We need to talk about Kevin`,
+    poster: `we-need-to-talk-about-kevin`
+  }, {
+    id: `m6`,
+    title: `What We Do in the Shadows`,
+    poster: `what-we-do-in-the-shadows`
+  }, {
+    id: `m7`,
+    title: `Revenant`,
+    poster: `revenant`
+  }, {
+    id: `m8`,
+    title: `Johnny English`,
+    poster: `johnny-english`
+  }, {
+    id: `m9`,
+    title: `Shutter Island`,
+    poster: `shutter-island`
+  }, {
+    id: `m10`,
+    title: `Pulp Fiction`,
+    poster: `pulp-fiction`
+  }, {
+    id: `m11`,
+    title: `No Country for Old Men`,
+    poster: `no-country-for-old-men`
+  }, {
+    id: `m12`,
+    title: `Snatch`,
+    poster: `snatch`
+  }, {
+    id: `m13`,
+    title: `Moonrise Kingdom`,
+    poster: `moonrise-kingdom`
+  }, {
+    id: `m14`,
+    title: `Seven Years in Tibet`,
+    poster: `seven-years-in-tibet`
+  }, {
+    id: `m15`,
+    title: `Midnight Special`,
+    poster: `midnight-special`
+  }, {
+    id: `m16`,
+    title: `War of the Worlds`,
+    poster: `war-of-the-worlds`
+  }, {
+    id: `m17`,
+    title: `Dardjeeling Limited`,
+    poster: `dardjeeling-limited`
+  }, {
+    id: `m18`,
+    title: `Orlando`,
+    poster: `orlando`
+  }, {
+    id: `m19`,
+    title: `Mindhunter`,
+    poster: `mindhunter`
+  }, {
+    id: `m20`,
+    title: `Midnight Special`,
+    poster: `midnight-special`
+  }
+];
