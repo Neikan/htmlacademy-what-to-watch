@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import {movieType} from "../../props/prop-types";
-import { CountMovie } from "../../consts/common-data.js";
+import {CountMovie} from "../../consts/common-data.js";
 
 
 class MoviesList extends PureComponent {
