@@ -48,7 +48,8 @@ export const GENRES = [
 export const MarkupElement = {
   PROMO_BTN_PLAY: `btn--play`,
   PROMO_BTN_ADD_TO_LIST: `btn--list`,
+  MOVIE_CARD: `small-movie-card`,
   MOVIE_CARD_TITLE: `small-movie-card__title`,
-  MOVIE_CARD_POSTER: `small-movie-card__image`,
+  MOVIE_CARD_COVER: `small-movie-card__image`,
   GENRE_LINK: `catalog__genres-link`
 };

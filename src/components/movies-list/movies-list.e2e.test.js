@@ -22,7 +22,7 @@ describe(`Test e2e MoviesList component`, () => {
     );
 
     moviesList.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).map((movie) => movie.props().onClick());
-    moviesList.find(`.${MarkupElement.MOVIE_CARD_POSTER}`).map((movie) => movie.props().onClick());
+    moviesList.find(`.${MarkupElement.MOVIE_CARD_COVER}`).map((movie) => movie.props().onClick());
 
     expect(handleMovieSelect.mock.calls.length).toBe(MOVIES.length * 2);
   });
