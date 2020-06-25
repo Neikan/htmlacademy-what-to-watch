@@ -20,7 +20,7 @@ const MovieCard = (props) => {
     <article
       onMouseOver={onMovieMouseOver}
       onMouseOut={onMovieMouseOut}
-      id = {id}
+      id={id}
       className="small-movie-card catalog__movies-card"
     >
       <div

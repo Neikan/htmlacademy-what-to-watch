@@ -17,7 +17,7 @@ describe(`Test e2e MoviesList component`, () => {
     const moviesList = mount(
         <MoviesList
           movies = {MOVIES}
-          onMovieSelect={handleMovieSelect}
+          onMovieSelect = {handleMovieSelect}
         />
     );
 

@@ -20,8 +20,8 @@ describe(`Test e2e MovieCard component`, () => {
           title = {MOVIES[0].title}
           cover = {MOVIES[0].cover}
           onMovieSelect = {handleMovieSelectTitle}
-          onMovieMouseOver={() => {}}
-          onMovieMouseOut={() => {}}
+          onMovieMouseOver = {() => {}}
+          onMovieMouseOut = {() => {}}
         />
     );
 

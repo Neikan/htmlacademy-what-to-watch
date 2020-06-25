@@ -9,7 +9,7 @@ describe(`Test MoviesList component`, () => {
     const tree = renderer
       .create(<MoviesList
         movies = {MOVIES}
-        onMovieSelect={() => {}}
+        onMovieSelect = {() => {}}
       />)
       .toJSON();
 

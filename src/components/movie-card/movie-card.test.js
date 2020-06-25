@@ -12,8 +12,8 @@ describe(`Test MovieCard component`, () => {
         title = {MOVIES[0].title}
         cover = {MOVIES[0].cover}
         onMovieSelect = {() => {}}
-        onMovieMouseOver={() => {}}
-        onMovieMouseOut={() => {}}
+        onMovieMouseOver = {() => {}}
+        onMovieMouseOut = {() => {}}
       />)
       .toJSON();
 
