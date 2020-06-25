@@ -7,6 +7,9 @@ Array [
   >
     <article
       className="small-movie-card catalog__movies-card"
+      id="mock-1"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -33,6 +36,9 @@ Array [
     </article>
     <article
       className="small-movie-card catalog__movies-card"
+      id="mock-2"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"
@@ -59,6 +65,9 @@ Array [
     </article>
     <article
       className="small-movie-card catalog__movies-card"
+      id="mock-3"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
       <div
         className="small-movie-card__image"

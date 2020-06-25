@@ -16,9 +16,12 @@ describe(`Test e2e MovieCard component`, () => {
   test(`Should movie title be pressed`, () => {
     const movieCard = shallow(
         <MovieCard
+          id = {MOVIES[0].id}
           title = {MOVIES[0].title}
-          poster = {MOVIES[0].poster}
+          cover = {MOVIES[0].cover}
           onMovieSelect = {handleMovieSelect}
+          onMovieMouseOver={() => {}}
+          onMovieMouseOut={() => {}}
         />
     );
 

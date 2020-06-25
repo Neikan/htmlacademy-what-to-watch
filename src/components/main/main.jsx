@@ -36,7 +36,7 @@ const Main = (props) => {
           />
           <MoviesList
             movies = {movies}
-            onMovieSelect={onMovieSelect}
+            onMovieSelect = {onMovieSelect}
           />
         </section>
 

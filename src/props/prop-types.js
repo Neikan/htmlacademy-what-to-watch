@@ -7,11 +7,13 @@ export const promoType = PropTypes.shape({
   DATE: PropTypes.number.isRequired
 });
 
+
 export const movieType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired
+  cover: PropTypes.string.isRequired
 });
+
 
 export const genreType = PropTypes.shape({
   id: PropTypes.string.isRequired,
