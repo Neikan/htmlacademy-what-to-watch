@@ -40,7 +40,7 @@ export const getRandomSubArray = (array) => {
  * Получение случайного значения рейтинга фильма
  * @return {Number} значение рейтинга
  */
-export const getRandomRating = () => Math.fround(Math.random() * RATING_MAX).toFixed(1);
+export const getRandomRating = () => Number(Math.fround(Math.random() * RATING_MAX).toFixed(1));
 
 
 /**
