@@ -11,7 +11,15 @@ export const promoType = PropTypes.shape({
 export const movieType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  cover: PropTypes.string.isRequired
+  cover: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  director: PropTypes.string.isRequired,
+  actors: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
+  year: PropTypes.number.isRequired,
+  genre: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 });
 
 
