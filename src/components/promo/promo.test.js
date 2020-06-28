@@ -9,8 +9,8 @@ describe(`Test Promo component`, () => {
     const tree = renderer
       .create(<Promo
         promo = {PromoMovie}
-        onMoviePlay = {() => {}}
-        onMovieAddToList = {() => {}}
+        onPlay = {() => {}}
+        onAdd = {() => {}}
       />)
       .toJSON();
 

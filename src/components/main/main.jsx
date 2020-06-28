@@ -22,8 +22,8 @@ const Main = (props) => {
         <Header />
         <Promo
           promo = {promo}
-          onMoviePlay = {onMoviePlay}
-          onMovieAddToList = {onMovieAddToList}
+          onPlay = {onMoviePlay}
+          onAdd = {onMovieAddToList}
         />
       </section>
 

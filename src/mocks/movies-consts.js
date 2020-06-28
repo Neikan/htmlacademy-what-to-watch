@@ -2,6 +2,12 @@ export const COUNT_COMMENTS_MAX = 5;
 
 export const START_DATE_FILMS = [1970, 1, 1];
 
+export const StartDate = {
+  YEAR: 1970,
+  MONTH: 1,
+  DAY: 1
+};
+
 export const MOVIE_POSTER = `the-grand-budapest-hotel-poster`;
 
 export const RATING_MAX = 10;

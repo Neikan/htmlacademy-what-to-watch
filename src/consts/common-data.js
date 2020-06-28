@@ -60,3 +60,8 @@ export const CountMovie = {
   ALL: 20,
   START: 8
 };
+
+
+export const MarkupElement = {
+  MOVIE_CARD: `small-movie-card`,
+};

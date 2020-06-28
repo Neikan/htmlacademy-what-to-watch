@@ -17,8 +17,8 @@ describe(`Test e2e Promo component`, () => {
     const promo = shallow(
         <Promo
           promo = {PromoMovie}
-          onMoviePlay = {handleMoviePlay}
-          onMovieAddToList = {() => {}}
+          onPlay = {handleMoviePlay}
+          onAdd = {() => {}}
         />
     );
 
@@ -34,8 +34,8 @@ describe(`Test e2e Promo component`, () => {
     const promo = shallow(
         <Promo
           promo = {PromoMovie}
-          onMoviePlay = {() => {}}
-          onMovieAddToList = {handleMovieAddToList}
+          onPlay = {() => {}}
+          onAdd = {handleMovieAddToList}
         />
     );
 

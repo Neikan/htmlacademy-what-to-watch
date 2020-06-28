@@ -1,4 +1,4 @@
-import {RATING_MAX, START_DATE_FILMS} from "./movies-consts";
+import {RATING_MAX, StartDate} from "./movies-consts";
 
 
 /**
@@ -6,34 +6,26 @@ import {RATING_MAX, START_DATE_FILMS} from "./movies-consts";
  * @param {Array} array исходный массив данных
  * @return {Array} новый перемешанный массив
  */
-export const getShuffleArray = function (array) {
+export const getShuffleArray = (array) => {
+  const newArray = array.slice();
   let j;
 
-  for (let i = array.length - 1; i > 0; i--) {
+  for (let i = newArray.length - 1; i > 0; i--) {
     j = Math.floor(Math.random() * (i + 1));
-    [array[j], array[i]] = [array[i], array[j]];
+    [newArray[j], newArray[i]] = [newArray[i], newArray[j]];
   }
 
-  return array;
+  return newArray;
 };
 
 
 /**
- * Создание подмассива из массива
+ * Создание случайного подмассива из массива
  * @param {Array} array исходный массив данных
  * @return {Array} подмассив
  */
-export const getRandomSubArray = (array) => {
-  const shuffleArray = getShuffleArray(array);
-  const subArray = [];
-  const lengthSubArray = getRandomInt(shuffleArray.length, 1);
-
-  for (let i = 0; i < lengthSubArray; i++) {
-    subArray.push(shuffleArray[i]);
-  }
-
-  return subArray;
-};
+export const getRandomSubArray = (array) =>
+  getShuffleArray(array).slice(0, getRandomInt(array.length, 1));
 
 
 /**
@@ -68,9 +60,8 @@ export const getRandomElement = (array) => array[getRandomInt(array.length)];
  * @param {Date} minDate
  * @return {Date} полученная дата
  */
-export const getRandomDate = (maxDate, minDate = new Date([...START_DATE_FILMS])) => {
-  return new Date(minDate.getTime() + Math.random() * (maxDate.getTime() - minDate.getTime()));
-};
+export const getRandomDate = (maxDate, minDate = new Date(StartDate.YEAR, StartDate.MONTH, StartDate.DAY)) =>
+  new Date(getRandomInt(maxDate.getTime(), minDate.getTime()));
 
 
 /**

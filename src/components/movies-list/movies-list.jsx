@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import {movieType} from "../../props/prop-types";
-import {CountMovie} from "../../consts/common-data.js";
+import {CountMovie, MarkupElement} from "../../consts/common-data.js";
 
 
 class MoviesList extends PureComponent {
@@ -15,18 +15,23 @@ class MoviesList extends PureComponent {
 
     this._timeout = {
       PLAY_PREVIEW: 10000,
-      NO: null
+      RESET: null
     };
 
     this.handleMovieMouseOver = this.handleMovieMouseOver.bind(this);
     this.handleMovieMouseOut = this.handleMovieMouseOut.bind(this);
   }
 
+
+  /**
+   * Метод, обеспечивающий отрисовку разметки компонента с данными первых восьми фильмов
+   * @return {Object} разметка компонента
+   */
   render() {
     const {movies, onMovieSelect} = this.props;
 
     return (
-      <>
+      <div>
         <div className="catalog__movies-list">
           {movies.slice(0, CountMovie.START).map((movie) => {
             return (
@@ -46,23 +51,20 @@ class MoviesList extends PureComponent {
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
         </div>
-      </>
+      </div>
     );
   }
 
 
   componentWillUnmount() {
-    clearTimeout(this._timeout.NO);
-    this.setState({
-      activeMovieId: null
-    });
+    clearTimeout(this._timeout.RESET);
   }
 
 
   handleMovieMouseOver(evt) {
-    const movieId = evt.target.id;
+    const movieId = evt.target.closest(`.${MarkupElement.MOVIE_CARD}`).id;
 
-    this._timeout = setTimeout(() => {
+    setTimeout(() => {
       this.setState({
         activeMovieId: movieId
       });
@@ -71,7 +73,7 @@ class MoviesList extends PureComponent {
 
 
   handleMovieMouseOut() {
-    clearTimeout(this._timeout.NO);
+    clearTimeout(this._timeout.RESET);
     this.setState({
       activeMovieId: null
     });
