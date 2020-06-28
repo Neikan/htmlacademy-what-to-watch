@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MoviesList component MoviesList component is created and rendered correctly 1`] = `
+<div>
+  <div
+    className="catalog__movies-list"
+  >
+    <article
+      className="small-movie-card catalog__movies-card"
+      id="mock-1"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+        onClick={[Function]}
+      >
+        <img
+          alt="Fantastic Beasts: The Crimes of Grindelwald"
+          height="175"
+          src="/img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+        onClick={[Function]}
+      >
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+        >
+          Fantastic Beasts: The Crimes of Grindelwald
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      id="mock-2"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+        onClick={[Function]}
+      >
+        <img
+          alt="Bohemian Rhapsody"
+          height="175"
+          src="/img/bohemian-rhapsody.jpg"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+        onClick={[Function]}
+      >
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+        >
+          Bohemian Rhapsody
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      id="mock-3"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+        onClick={[Function]}
+      >
+        <img
+          alt="Macbeth"
+          height="175"
+          src="/img/macbeth.jpg"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+        onClick={[Function]}
+      >
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+        >
+          Macbeth
+        </a>
+      </h3>
+    </article>
+  </div>
+  <div
+    className="catalog__more"
+  >
+    <button
+      className="catalog__button"
+      type="button"
+    >
+      Show more
+    </button>
+  </div>
+</div>
+`;

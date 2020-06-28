@@ -1,8 +1,8 @@
 import React from "react";
-import {configure, mount, shallow} from "enzyme";
+import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main.jsx";
-import {MarkupElement, Promo, MOVIES, GENRES} from "./../../consts/test-data";
+import {MarkupElement, PromoMovie, MOVIES, GENRES} from "./../../consts/test-data";
 
 
 configure({
@@ -14,9 +14,9 @@ describe(`Test e2e Main component`, () => {
   test(`Should 'play'-button for promo-movie be pressed`, () => {
     const handleMoviePlay = jest.fn();
 
-    const main = shallow(
+    const main = mount(
         <Main
-          promo = {Promo}
+          promo = {PromoMovie}
           movies = {MOVIES}
           genres = {GENRES}
           onMoviePlay = {handleMoviePlay}
@@ -35,9 +35,9 @@ describe(`Test e2e Main component`, () => {
   test(`Should 'add to list'-button for promo-movie be pressed`, () => {
     const handleMovieAddToList = jest.fn();
 
-    const main = shallow(
+    const main = mount(
         <Main
-          promo = {Promo}
+          promo = {PromoMovie}
           movies = {MOVIES}
           genres = {GENRES}
           onMoviePlay = {() => {}}
@@ -58,7 +58,7 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promo = {Promo}
+          promo = {PromoMovie}
           movies = {MOVIES}
           genres = {GENRES}
           onMoviePlay = {() => {}}
@@ -69,7 +69,7 @@ describe(`Test e2e Main component`, () => {
     );
 
     main.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).map((movie) => movie.props().onClick());
-    main.find(`.${MarkupElement.MOVIE_CARD_POSTER}`).map((movie) => movie.props().onClick());
+    main.find(`.${MarkupElement.MOVIE_CARD_COVER}`).map((movie) => movie.props().onClick());
 
     expect(handleMovieSelect.mock.calls.length).toBe(MOVIES.length * 2);
   });
@@ -80,7 +80,7 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promo = {Promo}
+          promo = {PromoMovie}
           movies = {MOVIES}
           genres = {GENRES}
           onMoviePlay = {() => {}}

@@ -8,7 +8,7 @@ const MarkupClass = {
 };
 
 
-const CatalogGenre = (props) => {
+const GenreItem = (props) => {
   const {title, isActive, onGenreSelect} = props;
 
   const className = isActive ? `${MarkupClass.DEFAULT} ${MarkupClass.ACTIVE}` : MarkupClass.DEFAULT;
@@ -26,11 +26,11 @@ const CatalogGenre = (props) => {
   );
 };
 
-CatalogGenre.propTypes = {
+GenreItem.propTypes = {
   title: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
   onGenreSelect: PropTypes.func.isRequired
 };
 
 
-export default CatalogGenre;
+export default GenreItem;

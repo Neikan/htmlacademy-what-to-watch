@@ -8,9 +8,12 @@ describe(`Test MovieCard component`, () => {
   test(`MovieCard component is created and rendered correctly`, () => {
     const tree = renderer
       .create(<MovieCard
+        id = {MOVIES[0].id}
         title = {MOVIES[0].title}
-        poster = {MOVIES[0].poster}
+        cover = {MOVIES[0].cover}
         onMovieSelect = {() => {}}
+        onMovieMouseOver = {() => {}}
+        onMovieMouseOut = {() => {}}
       />)
       .toJSON();
 
