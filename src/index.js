@@ -6,7 +6,7 @@ import {generateMovies} from "./mocks/movies-data.js";
 
 
 const root = document.querySelector(`#root`);
-
+console.log(generateMovies(CountMovie.ALL));
 const init = () => {
   ReactDOM.render(
       <App

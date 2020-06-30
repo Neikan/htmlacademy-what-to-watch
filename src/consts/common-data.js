@@ -65,3 +65,36 @@ export const CountMovie = {
 export const MarkupElement = {
   MOVIE_CARD: `small-movie-card`,
 };
+
+
+export const Url = {
+  IMG: `img`
+};
+
+export const FileExtension = {
+  JPG: `jpg`
+};
+
+
+export const TextualRating = {
+  BAD: {
+    level: `Bad`,
+    from: 0,
+  },
+  NORMAL: {
+    level: `Normal`,
+    from: 3
+  },
+  GOOD: {
+    level: `Good`,
+    from: 5
+  },
+  VERY_GOOD: {
+    level: `Very good`,
+    from: 8
+  },
+  AWESOME: {
+    level: `Awesome`,
+    from: 10
+  }
+};

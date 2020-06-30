@@ -13,7 +13,11 @@ export const movieType = PropTypes.shape({
   title: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.shape({
+    score: PropTypes.number.isRequired,
+    level: PropTypes.string.isRequired,
+    countVotes: PropTypes.number.isRequired,
+  }).isRequired,
   director: PropTypes.string.isRequired,
   actors: PropTypes.string.isRequired,
   duration: PropTypes.number.isRequired,

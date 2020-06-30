@@ -1,14 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-
-const Url = {
-  IMG: `img`
-};
-
-const FileExtension = {
-  JPG: `jpg`
-};
+import {Url, FileExtension} from "../../consts/common-data";
 
 
 const MovieCard = (props) => {
