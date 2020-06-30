@@ -72,6 +72,11 @@ export const getRandomDate = (maxDate, minDate = new Date(StartDate.YEAR, StartD
 export const generateId = () => `f${(+new Date()).toString(16)}${Math.random() * 1e8}`;
 
 
+/**
+ * Получение текстового описания рейтинга фильма
+ * @param {Number} score оценка фильма (значение рейтинга)
+ * @return {string}
+ */
 export const getTextualRating = (score) => {
   if (score >= TextualRating.AWESOME.from) {
     return TextualRating.AWESOME.level;

@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import {movieType} from "../../props/prop-types";
-import {CountMovie, MarkupElement} from "../../consts/common-data.js";
+import {CountMovies, MarkupElement} from "../../consts/common-data.js";
 
 
 class MoviesList extends PureComponent {
@@ -31,26 +31,18 @@ class MoviesList extends PureComponent {
     const {movies, onMovieSelect} = this.props;
 
     return (
-      <div>
-        <div className="catalog__movies-list">
-          {movies.slice(0, CountMovie.START).map((movie) => {
-            return (
-              <MovieCard
-                key = {movie.id}
-                id = {movie.id}
-                title = {movie.title}
-                cover = {movie.cover}
-                onMovieSelect = {onMovieSelect}
-                onMovieMouseOver = {this.handleMovieMouseOver}
-                onMovieMouseOut = {this.handleMovieMouseOut}
-              />
-            );
-          })}
-        </div>
-
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+      <div className="catalog__movies-list">
+        {movies.slice(0, CountMovies.START).map((movie) => {
+          return (
+            <MovieCard
+              key = {movie.id}
+              movie = {movie}
+              onMovieSelect = {onMovieSelect}
+              onMovieMouseOver = {this.handleMovieMouseOver}
+              onMovieMouseOut = {this.handleMovieMouseOut}
+            />
+          );
+        })}
       </div>
     );
   }

@@ -16,9 +16,7 @@ describe(`Test e2e MovieCard component`, () => {
 
     const movieCard = shallow(
         <MovieCard
-          id = {MOVIES[0].id}
-          title = {MOVIES[0].title}
-          cover = {MOVIES[0].cover}
+          movie = {MOVIES[0]}
           onMovieSelect = {handleMovieSelectTitle}
           onMovieMouseOver = {() => {}}
           onMovieMouseOut = {() => {}}
@@ -36,9 +34,7 @@ describe(`Test e2e MovieCard component`, () => {
 
     const movieCard = shallow(
         <MovieCard
-          id = {MOVIES[0].id}
-          title = {MOVIES[0].title}
-          cover = {MOVIES[0].cover}
+          movie = {MOVIES[0]}
           onMovieSelect = {handleMovieSelectCover}
           onMovieMouseOver={() => {}}
           onMovieMouseOut={() => {}}
@@ -57,9 +53,7 @@ describe(`Test e2e MovieCard component`, () => {
 
     const movieCard = shallow(
         <MovieCard
-          id = {MOVIES[0].id}
-          title = {MOVIES[0].title}
-          cover = {MOVIES[0].cover}
+          movie = {MOVIES[0]}
           onMovieSelect = {() => {}}
           onMovieMouseOver={handleMovieMouseOver}
           onMovieMouseOut={handleMovieMouseOut}

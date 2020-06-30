@@ -1,23 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {promoType} from "../../props/prop-types";
+import {movieType} from "../../props/prop-types";
+import {getImgSrc} from "../../utils/common";
 
 
 const Promo = (props) => {
-  const {promo, onPlay, onAdd} = props;
+  const {movie, onPlay, onAdd} = props;
+  const {title, poster, genre, year} = movie;
 
   return (
     <div className="movie-card__wrap">
       <div className="movie-card__info">
         <div className="movie-card__poster">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promo.TITLE} width="218" height="327" />
+          <img src={getImgSrc(poster)} alt={title} width="218" height="327"/>
         </div>
 
         <div className="movie-card__desc">
-          <h2 className="movie-card__title">{promo.TITLE}</h2>
+          <h2 className="movie-card__title">{title}</h2>
           <p className="movie-card__meta">
-            <span className="movie-card__genre">{promo.GENRE}</span>
-            <span className="movie-card__year">{promo.DATE}</span>
+            <span className="movie-card__genre">{genre}</span>
+            <span className="movie-card__year">{year}</span>
           </p>
 
           <div className="movie-card__buttons">
@@ -48,7 +50,7 @@ const Promo = (props) => {
 
 
 Promo.propTypes = {
-  promo: promoType.isRequired,
+  movie: movieType.isRequired,
   onPlay: PropTypes.func.isRequired,
   onAdd: PropTypes.func.isRequired,
 };
