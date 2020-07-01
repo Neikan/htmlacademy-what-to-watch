@@ -1,20 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-
-const Url = {
-  IMG: `img`
-};
-
-const FileExtension = {
-  JPG: `jpg`
-};
+import {movieType} from "../../props/prop-types";
+import {getImgSrc} from "../../utils/common";
 
 
 const MovieCard = (props) => {
-  const {id, title, cover, onMovieSelect, onMovieMouseOver, onMovieMouseOut} = props;
-
-  const coverUrl = `/${Url.IMG}/${cover}.${FileExtension.JPG}`;
+  const {movie, onMovieSelect, onMovieMouseOver, onMovieMouseOut} = props;
+  const {id, title, cover} = movie;
 
   return (
     <article
@@ -24,13 +16,13 @@ const MovieCard = (props) => {
       className="small-movie-card catalog__movies-card"
     >
       <div
-        onClick={onMovieSelect}
+        onClick={() => onMovieSelect(movie)}
         className="small-movie-card__image"
       >
-        <img src={coverUrl} alt={title} width="280" height="175" />
+        <img src={getImgSrc(cover)} alt={title} width="280" height="175" />
       </div>
       <h3
-        onClick={onMovieSelect}
+        onClick={() => onMovieSelect(movie)}
         className="small-movie-card__title"
       >
         <a className="small-movie-card__link" href="movie-page.html">{title}</a>
@@ -41,9 +33,7 @@ const MovieCard = (props) => {
 
 
 MovieCard.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  cover: PropTypes.string.isRequired,
+  movie: movieType.isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onMovieMouseOver: PropTypes.func.isRequired,
   onMovieMouseOut: PropTypes.func.isRequired

@@ -1,13 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviesList from "./movies-list.jsx";
+import MoviePage from "./movie-page.jsx";
 import {MOVIES} from "../../consts/test-data.js";
 
 
-describe(`Test MoviesList component`, () => {
-  test(`MoviesList component is created and rendered correctly`, () => {
+describe(`Test MoviePage component`, () => {
+  test(`MoviePage component is created and rendered correctly`, () => {
     const tree = renderer.create(
-        <MoviesList
+        <MoviePage
+          movie = {MOVIES[0]}
           movies = {MOVIES}
           onMovieSelect = {() => {}}
         />)

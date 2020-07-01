@@ -6,20 +6,17 @@ export const LogoPosition = {
 };
 
 
-export const PromoMovie = {
-  TITLE: `The Grand Budapest Hotel poster`,
-  GENRE: `Drama`,
-  DATE: 2014
-};
-
-
 export const MOVIES = [
   {
     id: `mock-1`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     poster: MOVIE_POSTER,
     cover: `fantastic-beasts-the-crimes-of-grindelwald`,
-    rating: 4.6,
+    rating: {
+      score: 4.6,
+      level: `Normal`,
+      countVotes: 240,
+    },
     director: `Крис МакКей`,
     actors: `Крис О’Доннелл, Джек Николсон`,
     duration: 120,
@@ -31,7 +28,11 @@ export const MOVIES = [
     title: `Bohemian Rhapsody`,
     poster: MOVIE_POSTER,
     cover: `bohemian-rhapsody`,
-    rating: 9.1,
+    rating: {
+      score: 9.1,
+      level: `Very good`,
+      countVotes: 10,
+    },
     director: `Крис МакКей`,
     actors: `Арнольд Шварценеггер, Кристиан Бэйл`,
     duration: 320,
@@ -44,7 +45,11 @@ export const MOVIES = [
     title: `Macbeth`,
     poster: MOVIE_POSTER,
     cover: `macbeth`,
-    rating: 6.0,
+    rating: {
+      score: 6.0,
+      level: `Good`,
+      countVotes: 1240,
+    },
     director: `Джоэл Шумахер`,
     actors: ` Ким Бейсингер, Том Харди, Кэнта Миякэ, Марион Котийяр`,
     duration: 20,

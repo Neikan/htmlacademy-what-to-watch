@@ -4,13 +4,6 @@ export const LogoPosition = {
 };
 
 
-export const PromoMovie = {
-  TITLE: `The Grand Budapest Hotel poster`,
-  GENRE: `Drama`,
-  DATE: 2014
-};
-
-
 export const GENRES = [
   {
     id: `g1`,
@@ -56,12 +49,52 @@ export const GENRES = [
 ];
 
 
-export const CountMovie = {
+export const CountMovies = {
   ALL: 20,
-  START: 8
+  START: 8,
+  LIKED_BY_GENRE: 4
 };
 
 
 export const MarkupElement = {
   MOVIE_CARD: `small-movie-card`,
+};
+
+
+export const Url = {
+  IMG: `img`
+};
+
+export const FileExtension = {
+  JPG: `jpg`
+};
+
+
+export const TextualRating = {
+  BAD: {
+    level: `Bad`,
+    from: 0,
+  },
+  NORMAL: {
+    level: `Normal`,
+    from: 3
+  },
+  GOOD: {
+    level: `Good`,
+    from: 5
+  },
+  VERY_GOOD: {
+    level: `Very good`,
+    from: 8
+  },
+  AWESOME: {
+    level: `Awesome`,
+    from: 10
+  }
+};
+
+
+export const Page = {
+  MAIN: `/`,
+  MOVIE: `/films/`
 };

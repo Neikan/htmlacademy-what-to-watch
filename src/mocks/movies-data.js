@@ -13,7 +13,8 @@ import {
   getRandomInt,
   getRandomDate,
   generateId,
-  getRandomRating
+  getRandomRating,
+  getTextualRating
 } from './movies-utils';
 
 
@@ -22,12 +23,18 @@ import {
  * @return {Object} созданный фильм
  */
 const generateMovie = () => {
+  const ratingScore = getRandomRating();
+
   return {
     id: generateId(),
     title: getRandomElement(TITLES),
     poster: MOVIE_POSTER,
     cover: getRandomElement(COVERS),
-    rating: getRandomRating(),
+    rating: {
+      score: ratingScore,
+      level: getTextualRating(ratingScore),
+      countVotes: getRandomInt(240),
+    },
     director: getRandomElement(DIRECTORS),
     actors: getRandomSubArray(ACTORS).join(`, `),
     duration: getRandomInt(240),
@@ -44,4 +51,3 @@ const generateMovie = () => {
  * @return {Array} массив сгенерированных фильмов
  */
 export const generateMovies = (count) => new Array(count).fill({}).map(generateMovie);
-

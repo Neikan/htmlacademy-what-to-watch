@@ -1,4 +1,5 @@
 import {RATING_MAX, StartDate} from "./movies-consts";
+import {TextualRating} from "../consts/common-data";
 
 
 /**
@@ -69,3 +70,33 @@ export const getRandomDate = (maxDate, minDate = new Date(StartDate.YEAR, StartD
  * @return {string}
  */
 export const generateId = () => `f${(+new Date()).toString(16)}${Math.random() * 1e8}`;
+
+
+/**
+ * Получение текстового описания рейтинга фильма
+ * @param {Number} score оценка фильма (значение рейтинга)
+ * @return {string}
+ */
+export const getTextualRating = (score) => {
+  if (score >= TextualRating.AWESOME.from) {
+    return TextualRating.AWESOME.level;
+  }
+
+  if (score >= TextualRating.VERY_GOOD.from) {
+    return TextualRating.VERY_GOOD.level;
+  }
+
+  if (score >= TextualRating.GOOD.from) {
+    return TextualRating.GOOD.level;
+  }
+
+  if (score >= TextualRating.NORMAL.from) {
+    return TextualRating.NORMAL.level;
+  }
+
+  if (score >= TextualRating.BAD.from) {
+    return TextualRating.BAD.level;
+  }
+
+  return (``);
+};

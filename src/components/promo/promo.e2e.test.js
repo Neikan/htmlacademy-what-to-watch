@@ -2,7 +2,7 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Promo from "./promo.jsx";
-import {PromoMovie, MarkupElement} from "./../../consts/test-data";
+import {MarkupElement, MOVIES} from "./../../consts/test-data";
 
 
 configure({
@@ -16,7 +16,7 @@ describe(`Test e2e Promo component`, () => {
 
     const promo = shallow(
         <Promo
-          promo = {PromoMovie}
+          movie = {MOVIES[0]}
           onPlay = {handleMoviePlay}
           onAdd = {() => {}}
         />
@@ -33,7 +33,7 @@ describe(`Test e2e Promo component`, () => {
 
     const promo = shallow(
         <Promo
-          promo = {PromoMovie}
+          movie = {MOVIES[0]}
           onPlay = {() => {}}
           onAdd = {handleMovieAddToList}
         />

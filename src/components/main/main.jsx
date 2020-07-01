@@ -4,12 +4,13 @@ import Header from "../header/header.jsx";
 import Promo from "../promo/promo.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
+import BtnShowMore from "../btn-show-more/btn-show-more.jsx";
 import Footer from "../footer/footer.jsx";
-import {promoType, movieType, genreType} from "../../props/prop-types.js";
+import {movieType, genreType} from "../../props/prop-types.js";
 
 
 const Main = (props) => {
-  const {promo, movies, genres, onMoviePlay, onMovieAddToList, onMovieSelect, onGenreSelect} = props;
+  const {promoMovie, movies, genres, onMoviePlay, onMovieAddToList, onMovieSelect, onGenreSelect} = props;
 
   return (
     <>
@@ -21,7 +22,7 @@ const Main = (props) => {
         <h1 className="visually-hidden">WTW</h1>
         <Header />
         <Promo
-          promo = {promo}
+          movie = {promoMovie}
           onPlay = {onMoviePlay}
           onAdd = {onMovieAddToList}
         />
@@ -34,10 +35,14 @@ const Main = (props) => {
             genres = {genres}
             onGenreSelect = {onGenreSelect}
           />
-          <MoviesList
-            movies = {movies}
-            onMovieSelect = {onMovieSelect}
-          />
+          <div>
+            <MoviesList
+              movies = {movies}
+              onMovieSelect = {onMovieSelect}
+            />
+
+            <BtnShowMore />
+          </div>
         </section>
 
         <Footer />
@@ -48,7 +53,7 @@ const Main = (props) => {
 
 
 Main.propTypes = {
-  promo: promoType.isRequired,
+  promoMovie: movieType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
   genres: PropTypes.arrayOf(genreType).isRequired,
   onMoviePlay: PropTypes.func.isRequired,

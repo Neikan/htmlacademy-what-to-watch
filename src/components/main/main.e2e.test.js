@@ -2,7 +2,7 @@ import React from "react";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main.jsx";
-import {MarkupElement, PromoMovie, MOVIES, GENRES} from "./../../consts/test-data";
+import {MarkupElement, MOVIES, GENRES} from "./../../consts/test-data";
 
 
 configure({
@@ -16,7 +16,7 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promo = {PromoMovie}
+          promoMovie = {MOVIES[0]}
           movies = {MOVIES}
           genres = {GENRES}
           onMoviePlay = {handleMoviePlay}
@@ -37,7 +37,7 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promo = {PromoMovie}
+          promoMovie = {MOVIES[0]}
           movies = {MOVIES}
           genres = {GENRES}
           onMoviePlay = {() => {}}
@@ -58,7 +58,7 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promo = {PromoMovie}
+          promoMovie = {MOVIES[0]}
           movies = {MOVIES}
           genres = {GENRES}
           onMoviePlay = {() => {}}
@@ -80,7 +80,7 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promo = {PromoMovie}
+          promoMovie = {MOVIES[0]}
           movies = {MOVIES}
           genres = {GENRES}
           onMoviePlay = {() => {}}
