@@ -16,10 +16,10 @@ describe(`Test e2e MovieCard component`, () => {
 
     const movieCard = shallow(
         <MovieCard
-          movie = {MOVIES[0]}
-          onMovieSelect = {handleMovieSelectTitle}
-          onMovieMouseOver = {() => {}}
-          onMovieMouseOut = {() => {}}
+          movie={MOVIES[0]}
+          onMovieSelect={handleMovieSelectTitle}
+          onMovieMouseEnter={() => {}}
+          onMovieMouseLeave={() => {}}
         />
     );
 
@@ -34,36 +34,36 @@ describe(`Test e2e MovieCard component`, () => {
 
     const movieCard = shallow(
         <MovieCard
-          movie = {MOVIES[0]}
-          onMovieSelect = {handleMovieSelectCover}
-          onMovieMouseOver={() => {}}
-          onMovieMouseOut={() => {}}
+          movie={MOVIES[0]}
+          onMovieSelect={handleMovieSelectCover}
+          onMovieMouseEnter={() => {}}
+          onMovieMouseLeave={() => {}}
         />
     );
 
-    movieCard.find(`.${MarkupElement.MOVIE_CARD_COVER}`).props().onClick();
+    movieCard.find(`.${MarkupElement.MOVIE_CARD}`).props().onClick();
 
     expect(handleMovieSelectCover.mock.calls.length).toBe(1);
   });
 
 
   test(`Should movie hover`, () => {
-    const handleMovieMouseOver = jest.fn();
-    const handleMovieMouseOut = jest.fn();
+    const handleMovieMouseEnter = jest.fn();
+    const handleMovieMouseLeave = jest.fn();
 
     const movieCard = shallow(
         <MovieCard
-          movie = {MOVIES[0]}
-          onMovieSelect = {() => {}}
-          onMovieMouseOver={handleMovieMouseOver}
-          onMovieMouseOut={handleMovieMouseOut}
+          movie={MOVIES[0]}
+          onMovieSelect={() => {}}
+          onMovieMouseEnter={handleMovieMouseEnter}
+          onMovieMouseLeave={handleMovieMouseLeave}
         />
     );
 
-    movieCard.find(`.${MarkupElement.MOVIE_CARD}`).simulate(`mouseOver`);
-    movieCard.find(`.${MarkupElement.MOVIE_CARD}`).simulate(`mouseOut`);
+    movieCard.find(`.${MarkupElement.MOVIE_CARD}`).simulate(`mouseEnter`);
+    movieCard.find(`.${MarkupElement.MOVIE_CARD}`).simulate(`mouseLeave`);
 
-    expect(handleMovieMouseOver.mock.calls.length).toBe(1);
-    expect(handleMovieMouseOut.mock.calls.length).toBe(1);
+    expect(handleMovieMouseEnter.mock.calls.length).toBe(1);
+    expect(handleMovieMouseLeave.mock.calls.length).toBe(1);
   });
 });

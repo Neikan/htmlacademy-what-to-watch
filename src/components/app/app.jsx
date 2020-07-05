@@ -30,10 +30,10 @@ class App extends PureComponent {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path={Page.MAIN}>
+          <Route exact path={`${Page.MAIN}`}>
             {this._renderPage()}
           </Route>
-          <Route exact path={Page.MOVIE + this.state.selectedMovie.id}>
+          <Route exact path={`${Page.MOVIE}:${this.state.selectedMovie.id}`}>
             {this._renderMoviePage()}
           </Route>
         </Switch>
@@ -49,9 +49,10 @@ class App extends PureComponent {
 
       case (Page.MOVIE):
         return this._renderMoviePage();
-    }
 
-    return null;
+      default:
+        return null;
+    }
   }
 
 

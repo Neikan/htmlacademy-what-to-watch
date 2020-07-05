@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import {movieType} from "../../props/prop-types";
-import {CountMovies, MarkupElement} from "../../consts/common-data.js";
+import {CountMovies} from "../../consts/common-data.js";
 
 
 class MoviesList extends PureComponent {
@@ -13,13 +13,10 @@ class MoviesList extends PureComponent {
       activeMovieId: null
     };
 
-    this._timeout = {
-      PLAY_PREVIEW: 10000,
-      RESET: null
-    };
+    this._timeout = null;
 
-    this.handleMovieMouseOver = this.handleMovieMouseOver.bind(this);
-    this.handleMovieMouseOut = this.handleMovieMouseOut.bind(this);
+    this.handleMovieMouseEnter = this.handleMovieMouseEnter.bind(this);
+    this.handleMovieMouseLeave = this.handleMovieMouseLeave.bind(this);
   }
 
 
@@ -38,8 +35,8 @@ class MoviesList extends PureComponent {
               key = {movie.id}
               movie = {movie}
               onMovieSelect = {onMovieSelect}
-              onMovieMouseOver = {this.handleMovieMouseOver}
-              onMovieMouseOut = {this.handleMovieMouseOut}
+              onMovieMouseEnter = {this.handleMovieMouseEnter}
+              onMovieMouseLeave = {this.handleMovieMouseLeave}
             />
           );
         })}
@@ -49,23 +46,21 @@ class MoviesList extends PureComponent {
 
 
   componentWillUnmount() {
-    clearTimeout(this._timeout.RESET);
+    clearTimeout(this._timeout);
   }
 
 
-  handleMovieMouseOver(evt) {
-    const movieId = evt.target.closest(`.${MarkupElement.MOVIE_CARD}`).id;
-
-    setTimeout(() => {
+  handleMovieMouseEnter(movie) {
+    this._timeout = setTimeout(() => {
       this.setState({
-        activeMovieId: movieId
+        activeMovieId: movie.id
       });
-    }, this._timeout.PLAY_PREVIEW);
+    }, 10000);
   }
 
 
-  handleMovieMouseOut() {
-    clearTimeout(this._timeout.RESET);
+  handleMovieMouseLeave() {
+    clearTimeout(this._timeout);
     this.setState({
       activeMovieId: null
     });

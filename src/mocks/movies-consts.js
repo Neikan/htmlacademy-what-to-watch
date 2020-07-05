@@ -125,6 +125,13 @@ export const DESCRIPTION = [
 
 
 export const PREVIEWS = [
-  `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-  `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/f/fd/%22Night_After_Night%22_Trailer_1932.webm/%22Night_After_Night%22_Trailer_1932.webm.480p.vp9.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/cd/12_Angry_Men_%281957%29_-_Trailer.webm/12_Angry_Men_%281957%29_-_Trailer.webm.480p.vp9.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/ca/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm.360p.vp9.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/8/87/A_Clockwork_Orange_%281971%29_-_Trailer.webm/A_Clockwork_Orange_%281971%29_-_Trailer.webm.360p.vp9.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/5/55/A_Day_at_the_Races_trailer_%281937%29.webm/A_Day_at_the_Races_trailer_%281937%29.webm.360p.vp9.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/6/61/A_night_at_the_opera_%281935%29_Tr%C3%A0iler.ogv/A_night_at_the_opera_%281935%29_Tr%C3%A0iler.ogv.360p.vp9.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/f/fd/A_Night_at_the_Opera_trailer_%281935%29.webm/A_Night_at_the_Opera_trailer_%281935%29.webm.360p.vp9.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/1/1b/Adamak_%281971%29%2C_trailer.webm/Adamak_%281971%29%2C_trailer.webm.240p.vp9.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/a/af/The_African_Queen_-_trailer.ogv/The_African_Queen_-_trailer.ogv.240p.vp9.webm`
 ];

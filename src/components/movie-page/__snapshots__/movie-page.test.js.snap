@@ -260,19 +260,21 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           id="mock-1"
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+            <video
               height="175"
-              src="/img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="/img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              type="video/webm"
               width="280"
-            />
+            >
+              Sorry, your browser doesn\`t support embedded videos
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -289,19 +291,21 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           id="mock-2"
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="Bohemian Rhapsody"
+            <video
               height="175"
-              src="/img/bohemian-rhapsody.jpg"
+              poster="/img/bohemian-rhapsody.jpg"
+              type="video/webm"
               width="280"
-            />
+            >
+              Sorry, your browser doesn\`t support embedded videos
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -318,19 +322,21 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           id="mock-3"
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="Macbeth"
+            <video
               height="175"
-              src="/img/macbeth.jpg"
+              poster="/img/macbeth.jpg"
+              type="video/webm"
               width="280"
-            />
+            >
+              Sorry, your browser doesn\`t support embedded videos
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
