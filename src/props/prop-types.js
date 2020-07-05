@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 export const movieType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  cover: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
+  preview: PropTypes.string.isRequired,
   rating: PropTypes.shape({
     score: PropTypes.number.isRequired,
     level: PropTypes.string.isRequired,
