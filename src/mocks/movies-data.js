@@ -5,7 +5,8 @@ import {
   ACTORS,
   GENRES,
   DESCRIPTION,
-  MOVIE_POSTER
+  MOVIE_POSTER,
+  PREVIEWS
 } from './movies-consts';
 import {
   getRandomElement,
@@ -30,6 +31,7 @@ const generateMovie = () => {
     title: getRandomElement(TITLES),
     poster: MOVIE_POSTER,
     cover: getRandomElement(COVERS),
+    preview: getRandomElement(PREVIEWS),
     rating: {
       score: ratingScore,
       level: getTextualRating(ratingScore),

@@ -69,7 +69,7 @@ describe(`Test e2e Main component`, () => {
     );
 
     main.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).map((movie) => movie.props().onClick());
-    main.find(`.${MarkupElement.MOVIE_CARD_COVER}`).map((movie) => movie.props().onClick());
+    main.find(`.${MarkupElement.MOVIE_CARD}`).map((movie) => movie.props().onClick());
 
     expect(handleMovieSelect.mock.calls.length).toBe(MOVIES.length * 2);
   });

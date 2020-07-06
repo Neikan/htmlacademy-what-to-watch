@@ -12,6 +12,7 @@ export const MOVIES = [
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     poster: MOVIE_POSTER,
     cover: `fantastic-beasts-the-crimes-of-grindelwald`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/f/fd/%22Night_After_Night%22_Trailer_1932.webm/%22Night_After_Night%22_Trailer_1932.webm.480p.vp9.webm`,
     rating: {
       score: 4.6,
       level: `Normal`,
@@ -28,6 +29,7 @@ export const MOVIES = [
     title: `Bohemian Rhapsody`,
     poster: MOVIE_POSTER,
     cover: `bohemian-rhapsody`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/cd/12_Angry_Men_%281957%29_-_Trailer.webm/12_Angry_Men_%281957%29_-_Trailer.webm.480p.vp9.webm`,
     rating: {
       score: 9.1,
       level: `Very good`,
@@ -45,6 +47,7 @@ export const MOVIES = [
     title: `Macbeth`,
     poster: MOVIE_POSTER,
     cover: `macbeth`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/ca/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm.360p.vp9.webm`,
     rating: {
       score: 6.0,
       level: `Good`,
