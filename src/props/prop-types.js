@@ -26,3 +26,12 @@ export const genreType = PropTypes.shape({
   title: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired
 });
+
+
+export const reviewType = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired
+});

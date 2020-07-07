@@ -4,12 +4,14 @@ import Header from "../header/header.jsx";
 import MoviesByGenre from "../movies-by-genre/movies-by-genre.jsx";
 import {movieType} from "../../props/prop-types.js";
 import {getImgSrc} from "../../utils/common.js";
+import MovieDetails from "../movie-details/movie-details.jsx";
+import MovieOverView from "../movie-overview/movie-overview.jsx";
+import MovieReviews from "../movie-reviews/movie-reviews.jsx";
 
 
 const MoviePage = (props) => {
   const {movie, movies, onMovieSelect} = props;
-  const {title, genre, year, poster, description, director, actors, rating} = movie;
-  const {score, level, countVotes} = rating;
+  const {title, genre, year, poster} = movie;
 
   return (
     <>
@@ -56,37 +58,10 @@ const MoviePage = (props) => {
               <img src={getImgSrc(poster)} alt={title} width="218" height="327" />
             </div>
 
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
+            <MovieDetails movie={movie} />
+            <MovieOverView movie={movie} />
+            <MovieReviews movie={movie} />
 
-              <div className="movie-rating">
-                <div className="movie-rating__score">{score}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{level}</span>
-                  <span className="movie-rating__count">{countVotes} ratings</span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                <p>{description}</p>
-
-                <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: {actors} and other</strong></p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

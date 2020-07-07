@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {getMarkupClass} from "../../utils/common";
 
 
 const MarkupClass = {
@@ -11,10 +12,8 @@ const MarkupClass = {
 const GenreItem = (props) => {
   const {title, isActive, onGenreSelect} = props;
 
-  const className = isActive ? `${MarkupClass.DEFAULT} ${MarkupClass.ACTIVE}` : MarkupClass.DEFAULT;
-
   return (
-    <li className={className}>
+    <li className={getMarkupClass(MarkupClass, isActive)}>
       <a
         href="#"
         onClick={onGenreSelect}
@@ -28,7 +27,7 @@ const GenreItem = (props) => {
 
 GenreItem.propTypes = {
   title: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
+  isActive: PropTypes.bool.isRequired,
   onGenreSelect: PropTypes.func.isRequired
 };
 
