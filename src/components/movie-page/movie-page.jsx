@@ -23,10 +23,8 @@ class MoviePage extends PureComponent {
   }
 
   render() {
-    const {movie, movies, onMovieSelect} = this.props;
-    const {title, genre, year, poster} = movie;
-
-    console.log(movie.reviews.length);
+    const {movie} = this.props;
+    const {title, genre, year, poster} = this.props.movie;
 
     return (
       <>
@@ -87,10 +85,7 @@ class MoviePage extends PureComponent {
           </div>
         </section>
 
-        <MoviesByGenre
-          movies={movies}
-          onMovieSelect = {onMovieSelect}
-        />
+        {this._renderMoviesByGenre()}
       </>
     );
   }
@@ -112,6 +107,22 @@ class MoviePage extends PureComponent {
       default:
         return ``;
     }
+  }
+
+
+  _renderMoviesByGenre() {
+    const {movies, onMovieSelect} = this.props;
+
+    if (!movies.length || movies.length === 0) {
+      return null;
+    }
+
+    return (
+      <MoviesByGenre
+        movies={movies}
+        onMovieSelect = {onMovieSelect}
+      />
+    );
   }
 
 
