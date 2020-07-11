@@ -22,7 +22,7 @@ const getMarkupLi = (tab, onTabSelect, selectedTab, isReviews) => {
   return (
     <li key={tab}
       className={className}
-      onClick={handleTabClick(tab, onTabSelect)}
+      onClick={handleTabSelect(tab, onTabSelect)}
     >
       <a href="#" className='movie-nav__link'>{tab}</a>
     </li>
@@ -30,7 +30,7 @@ const getMarkupLi = (tab, onTabSelect, selectedTab, isReviews) => {
 };
 
 
-const handleTabClick = (tab, onTabSelect) => {
+const handleTabSelect = (tab, onTabSelect) => {
   return (evt) => {
     evt.preventDefault();
     onTabSelect(tab);
