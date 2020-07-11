@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MovieDetails component MovieDetails component is created and rendered correctly 1`] = `
+Array [
+  <div
+    className="movie-rating"
+  >
+    <div
+      className="movie-rating__score"
+    >
+      4.6
+    </div>
+    <p
+      className="movie-rating__meta"
+    >
+      <span
+        className="movie-rating__level"
+      >
+        Normal
+      </span>
+      <span
+        className="movie-rating__count"
+      >
+        240
+         ratings
+      </span>
+    </p>
+  </div>,
+  <div
+    className="movie-card__text"
+  >
+    <p>
+      Восемь лет назад Бэтмен растворился в ночи, превратившись из героя в беглеца.
+    </p>
+    <p
+      className="movie-card__director"
+    >
+      <strong>
+        Director: 
+        Крис МакКей
+      </strong>
+    </p>
+    <p
+      className="movie-card__starring"
+    >
+      <strong>
+        Starring: 
+        Крис О’Доннелл, Джек Николсон
+         and other
+      </strong>
+    </p>
+  </div>,
+]
+`;
