@@ -1,30 +1,45 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {tabType} from "../../props/prop-types";
 import {getMarkupClass} from "../../utils/common";
 
 
 const MarkupClass = {
-  DEFAULT: `movie-nav__link`,
+  DEFAULT: `movie-nav__item`,
   ACTIVE: `movie-nav__item movie-nav__item--active`
 };
 
-const MovieTabs = (props) => {
-  const {isActive} = props;
 
+const getMarkupLi = (tab, onTabChange, activeTab) => {
+  const isActive = activeTab === tab ? true : false;
   const className = getMarkupClass(MarkupClass, isActive);
+
+  return (
+    <li key={tab}
+      className={className}
+      onClick={handleTabClick(tab, onTabChange)}
+    >
+      <a href="#" className='movie-nav__link'>{tab}</a>
+    </li>
+  );
+};
+
+
+const handleTabClick = (tab, onTabChange) => {
+  return (evt) => {
+    evt.preventDefault();
+    onTabChange(tab);
+  };
+};
+
+
+const MovieTabs = (props) => {
+  const {tabs, onTabSelect, selectedTab} = props;
 
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
-        <li className="movie-nav__item">
-          <a href="#" className={className}>Overview</a>
-        </li>
-        <li className="movie-nav__item">
-          <a href="#" className={className}>Details</a>
-        </li>
-        <li className="movie-nav__item movie-nav__item--active">
-          <a href="#" className={className}>Reviews</a>
-        </li>
+        {Object.values(tabs).map((tab) => getMarkupLi(tab, onTabSelect, selectedTab))}
       </ul>
     </nav>
   );
@@ -32,7 +47,9 @@ const MovieTabs = (props) => {
 
 
 MovieTabs.propTypes = {
-  isActive: PropTypes.bool.isRequired
+  tabs: tabType.isRequired,
+  selectedTab: PropTypes.string.isRequired,
+  onTabSelect: PropTypes.func.isRequired
 };
 
 

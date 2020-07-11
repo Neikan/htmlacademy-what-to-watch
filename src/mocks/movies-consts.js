@@ -135,3 +135,68 @@ export const PREVIEWS = [
   `https://upload.wikimedia.org/wikipedia/commons/transcoded/1/1b/Adamak_%281971%29%2C_trailer.webm/Adamak_%281971%29%2C_trailer.webm.240p.vp9.webm`,
   `https://upload.wikimedia.org/wikipedia/commons/transcoded/a/af/The_African_Queen_-_trailer.ogv/The_African_Queen_-_trailer.ogv.240p.vp9.webm`
 ];
+
+
+export const REVIEWS = [
+  {
+    id: `reviews-1`,
+    text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+    author: `Kate Muir`,
+    date: `December 24, 2016`,
+    rating: 8.9
+  }, {
+    id: `reviews-2`,
+    text: `Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.`,
+    author: `Bill Goodykoontz`,
+    date: `November 18, 2015`,
+    rating: 5.0
+  }, {
+    id: `reviews-3`,
+    text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`,
+    author: `Amanda Greever`,
+    date: `November 18, 2015`,
+    rating: 3.3
+  }, {
+    id: `reviews-4`,
+    text: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`,
+    author: `Matthew Lickona`,
+    date: `December 20, 2016`,
+    rating: 7.2
+  }, {
+    id: `reviews-5`,
+    text: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`,
+    author: `Paula Fleri-Soler`,
+    date: `December 20, 2016`,
+    rating: 10
+  }, {
+    id: `reviews-6`,
+    text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+    author: `Muir Kate`,
+    date: `December 12, 2011`,
+    rating: 8.1
+  }, {
+    id: `reviews-7`,
+    text: `Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.`,
+    author: `Goodykoontz Bill`,
+    date: `November 11, 2005`,
+    rating: 1.0
+  }, {
+    id: `reviews-8`,
+    text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`,
+    author: `Greever Amanda`,
+    date: `November 14, 2012`,
+    rating: 4.3
+  }, {
+    id: `reviews-9`,
+    text: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`,
+    author: `Lickona Matthew`,
+    date: `December 2, 2016`,
+    rating: 1.2
+  }, {
+    id: `reviews-10`,
+    text: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`,
+    author: `Fleri-Soler Paula`,
+    date: `December 20, 1999`,
+    rating: 6.6
+  }
+];

@@ -98,3 +98,10 @@ export const Page = {
   MAIN: `/`,
   MOVIE: `/films/`
 };
+
+
+export const MovieTabList = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
+};

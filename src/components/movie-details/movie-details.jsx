@@ -1,6 +1,5 @@
 import React from "react";
 import {movieType} from "../../props/prop-types.js";
-import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 
 
 const MovieDetails = (props) => {
@@ -9,9 +8,7 @@ const MovieDetails = (props) => {
   const {score, level, countVotes} = rating;
 
   return (
-    <div className="movie-card__desc">
-      <MovieTabs />
-
+    <>
       <div className="movie-rating">
         <div className="movie-rating__score">{score}</div>
         <p className="movie-rating__meta">
@@ -27,7 +24,7 @@ const MovieDetails = (props) => {
 
         <p className="movie-card__starring"><strong>Starring: {actors} and other</strong></p>
       </div>
-    </div>
+    </>
   );
 };
 

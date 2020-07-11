@@ -41,3 +41,36 @@ export const getLikedMoviesByGenre = (movies, genre, id, count = CountMovies.LIK
  */
 export const getMarkupClass = (MarkupClass, isActive) =>
   isActive ? `${MarkupClass.DEFAULT} ${MarkupClass.ACTIVE}` : MarkupClass.DEFAULT;
+
+
+/**
+ * Получение интервалов для отрисовки данных массива в колонках
+ * @param {Array} array массив данных
+ * @return {Object} объект с интервалами
+ */
+export const getIntervalForCols = (array) => {
+  switch (true) {
+    case (array.length === 1):
+      return [{
+        begin: 0,
+        end: 1
+      }];
+
+    case (array.length >= 2):
+      const countHalf = Math.ceil(array.length / 2);
+
+      return [
+        {
+          begin: 0,
+          end: countHalf
+        }, {
+          begin: countHalf,
+          end: array.length
+        }
+      ];
+
+    default:
+      return null;
+  }
+
+};

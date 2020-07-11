@@ -160,7 +160,8 @@ Array [
               className="movie-nav__list"
             >
               <li
-                className="movie-nav__item movie-nav__item--active"
+                className="movie-nav__item movie-nav__item movie-nav__item--active"
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -171,6 +172,7 @@ Array [
               </li>
               <li
                 className="movie-nav__item"
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -181,6 +183,7 @@ Array [
               </li>
               <li
                 className="movie-nav__item"
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -192,52 +195,86 @@ Array [
             </ul>
           </nav>
           <div
-            className="movie-rating"
+            className="movie-card__text movie-card__row"
           >
             <div
-              className="movie-rating__score"
+              className="movie-card__text-col"
             >
-              4.6
+              <p
+                className="movie-card__details-item"
+              >
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Director
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  Крис МакКей
+                </span>
+              </p>
+              <p
+                className="movie-card__details-item"
+              >
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Starring
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  Крис О’Доннелл, Джек Николсон
+                </span>
+              </p>
             </div>
-            <p
-              className="movie-rating__meta"
+            <div
+              className="movie-card__text-col"
             >
-              <span
-                className="movie-rating__level"
+              <p
+                className="movie-card__details-item"
               >
-                Normal
-              </span>
-              <span
-                className="movie-rating__count"
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Run Time
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  120
+                </span>
+              </p>
+              <p
+                className="movie-card__details-item"
               >
-                240
-                 ratings
-              </span>
-            </p>
-          </div>
-          <div
-            className="movie-card__text"
-          >
-            <p>
-              Восемь лет назад Бэтмен растворился в ночи, превратившись из героя в беглеца.
-            </p>
-            <p
-              className="movie-card__director"
-            >
-              <strong>
-                Director: 
-                Крис МакКей
-              </strong>
-            </p>
-            <p
-              className="movie-card__starring"
-            >
-              <strong>
-                Starring: 
-                Крис О’Доннелл, Джек Николсон
-                 and other
-              </strong>
-            </p>
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Genre
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  Documentary
+                </span>
+              </p>
+              <p
+                className="movie-card__details-item"
+              >
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Released
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  2015
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>

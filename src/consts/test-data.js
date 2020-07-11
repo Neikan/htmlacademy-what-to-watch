@@ -23,7 +23,8 @@ export const MOVIES = [
     duration: 120,
     year: 2015,
     genre: `Documentary`,
-    description: `Восемь лет назад Бэтмен растворился в ночи, превратившись из героя в беглеца.`
+    description: `Восемь лет назад Бэтмен растворился в ночи, превратившись из героя в беглеца.`,
+    reviews: []
   }, {
     id: `mock-2`,
     title: `Bohemian Rhapsody`,
@@ -40,8 +41,14 @@ export const MOVIES = [
     duration: 320,
     year: 1999,
     genre: `Crime`,
-    description: `Бэтмен поднимает ставки в войне с криминалом. С помощью лейтенанта Джима Гордона и прокурора Харви Дента он намерен очистить улицы от преступности, отравляющей город. Сотрудничество оказывается эффективным, но скоро они обнаружат себя посреди хаоса, развязанного восходящим криминальным гением, известным испуганным горожанам под именем Джокер.`
-
+    description: `Бэтмен поднимает ставки в войне с криминалом. С помощью лейтенанта Джима Гордона и прокурора Харви Дента он намерен очистить улицы от преступности, отравляющей город. Сотрудничество оказывается эффективным, но скоро они обнаружат себя посреди хаоса, развязанного восходящим криминальным гением, известным испуганным горожанам под именем Джокер.`,
+    reviews: [{
+      id: `reviews-9`,
+      text: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`,
+      author: `Lickona Matthew`,
+      date: `December 2, 2016`,
+      rating: 1.2
+    }]
   }, {
     id: `mock-3`,
     title: `Macbeth`,
@@ -58,7 +65,38 @@ export const MOVIES = [
     duration: 20,
     year: 2020,
     genre: `Horror`,
-    description: `Приняв на себя вину за смерть прокурора Харви Дента, он пожертвовал всем. Вместе с комиссаром Гордоном они решили, что так будет лучше для всех.`
+    description: `Приняв на себя вину за смерть прокурора Харви Дента, он пожертвовал всем. Вместе с комиссаром Гордоном они решили, что так будет лучше для всех.`,
+    reviews: [{
+      id: `reviews-1`,
+      text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+      author: `Kate Muir`,
+      date: `December 24, 2016`,
+      rating: 8.9
+    }, {
+      id: `reviews-2`,
+      text: `Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.`,
+      author: `Bill Goodykoontz`,
+      date: `November 18, 2015`,
+      rating: 5.0
+    }, {
+      id: `reviews-3`,
+      text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`,
+      author: `Amanda Greever`,
+      date: `November 18, 2015`,
+      rating: 3.3
+    }, {
+      id: `reviews-4`,
+      text: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`,
+      author: `Matthew Lickona`,
+      date: `December 20, 2016`,
+      rating: 7.2
+    }, {
+      id: `reviews-5`,
+      text: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`,
+      author: `Paula Fleri-Soler`,
+      date: `December 20, 2016`,
+      rating: 10
+    }]
   }
 ];
 

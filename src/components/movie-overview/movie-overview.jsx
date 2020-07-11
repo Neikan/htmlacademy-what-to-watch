@@ -1,6 +1,5 @@
 import React from "react";
 import {movieType} from "../../props/prop-types.js";
-import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 
 
 const MovieOverView = (props) => {
@@ -8,9 +7,7 @@ const MovieOverView = (props) => {
   const {duration, genre, year, director, actors} = movie;
 
   return (
-    <div className="movie-card__desc">
-      <MovieTabs />
-
+    <>
       <div className="movie-card__text movie-card__row">
         <div className="movie-card__text-col">
           <p className="movie-card__details-item">
@@ -40,7 +37,7 @@ const MovieOverView = (props) => {
           </p>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

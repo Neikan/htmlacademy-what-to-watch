@@ -6,7 +6,8 @@ import {
   GENRES,
   DESCRIPTION,
   MOVIE_POSTER,
-  PREVIEWS
+  PREVIEWS,
+  REVIEWS
 } from './movies-consts';
 import {
   getRandomElement,
@@ -42,7 +43,8 @@ const generateMovie = () => {
     duration: getRandomInt(240),
     year: getRandomDate(new Date()).getFullYear(),
     genre: getRandomElement(GENRES),
-    description: getRandomElement(DESCRIPTION)
+    description: getRandomElement(DESCRIPTION),
+    reviews: getRandomSubArray(REVIEWS)
   };
 };
 

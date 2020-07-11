@@ -1,50 +1,51 @@
 import React from "react";
-import PropTypes from "prop-types";
-import {reviewType} from "../../props/prop-types.js";
-import MovieTabs from "../movie-tabs/movie-tabs.jsx";
+import {movieType} from "../../props/prop-types.js";
 import MovieReview from "../movie-review/movie-review.jsx";
+import {getIntervalForCols} from "../../utils/common.js";
 
 
-const MovieReviews = (props) => {
-  const {reviews} = props;
+const renderReview = (review) => {
+  return (
+    <MovieReview
+      key={review.id}
+      review={review}
+    />
+  );
+};
 
-  const countArray = [
-    {
-      begin: 0,
-      end: reviews.length / 2
-    }, {
-      begin: reviews.length / 2 + 1,
-      end: reviews.length
-    }
-  ];
+
+const renderCol = (interval, reviews) => {
+  const {begin, end} = interval;
 
   return (
-    <div className="movie-card__desc">
-      <MovieTabs />
-
-      <div className="movie-card__reviews movie-card__row">
-        {countArray.map(({begin, end}) => {
-          return (
-            <div className="movie-card__reviews-col" key={begin + end}>
-              {reviews.slice(begin, end).map((review) => {
-                return (
-                  <MovieReview
-                    key = {review.id}
-                    review = {review}
-                  />
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
+    <div className="movie-card__reviews-col" key={begin + end}>
+      {reviews.slice(begin, end).map(renderReview)}
     </div>
   );
 };
 
 
+const renderReviews = (intervals, reviews) => {
+  return (
+    <div className="movie-card__reviews movie-card__row">
+      {intervals.map((interval) => renderCol(interval, reviews))}
+    </div>
+  );
+};
+
+
+const MovieReviews = (props) => {
+  const {movie} = props;
+  const {reviews} = movie;
+
+  const intervals = getIntervalForCols(reviews);
+
+  return <>{intervals ? renderReviews(intervals, reviews) : null}</>;
+};
+
+
 MovieReviews.propTypes = {
-  reviews: PropTypes.arrayOf(reviewType).isRequired
+  movie: movieType.isRequired
 };
 
 
