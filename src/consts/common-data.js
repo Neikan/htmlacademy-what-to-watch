@@ -105,3 +105,6 @@ export const MovieTabList = {
   DETAILS: `Details`,
   REVIEWS: `Reviews`,
 };
+
+
+export const HIDDEN_CLASS = `visually-hidden`;

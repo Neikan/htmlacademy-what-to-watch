@@ -26,6 +26,8 @@ class MoviePage extends PureComponent {
     const {movie, movies, onMovieSelect} = this.props;
     const {title, genre, year, poster} = movie;
 
+    console.log(movie.reviews.length);
+
     return (
       <>
         <section className="movie-card movie-card--full">
@@ -76,6 +78,7 @@ class MoviePage extends PureComponent {
                   tabs={MovieTabList}
                   selectedTab={this.state.selectedTab}
                   onTabSelect={this._handleTabSelect}
+                  isReviews={movie.reviews.length > 0 ? true : false}
                 />
 
                 {this._renderMovieDesc()}
