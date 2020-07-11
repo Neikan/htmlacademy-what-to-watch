@@ -12,58 +12,58 @@ configure({
 
 describe(`Test e2e MovieCard component`, () => {
   test(`Should movie title be pressed`, () => {
-    const handleMovieSelectTitle = jest.fn();
+    const handleTitleSelect = jest.fn();
 
     const movieCard = shallow(
         <MovieCard
           movie={MOVIES[0]}
-          onMovieSelect={handleMovieSelectTitle}
-          onMovieMouseEnter={() => {}}
-          onMovieMouseLeave={() => {}}
+          onSelect={handleTitleSelect}
+          onPlay={() => {}}
+          onPlayingStop={() => {}}
         />
     );
 
     movieCard.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).props().onClick();
 
-    expect(handleMovieSelectTitle.mock.calls.length).toBe(1);
+    expect(handleTitleSelect.mock.calls.length).toBe(1);
   });
 
 
   test(`Should movie cover be pressed`, () => {
-    const handleMovieSelectCover = jest.fn();
+    const handleCoverSelect = jest.fn();
 
     const movieCard = shallow(
         <MovieCard
           movie={MOVIES[0]}
-          onMovieSelect={handleMovieSelectCover}
-          onMovieMouseEnter={() => {}}
-          onMovieMouseLeave={() => {}}
+          onSelect={handleCoverSelect}
+          onPlay={() => {}}
+          onPlayingStop={() => {}}
         />
     );
 
     movieCard.find(`.${MarkupElement.MOVIE_CARD}`).props().onClick();
 
-    expect(handleMovieSelectCover.mock.calls.length).toBe(1);
+    expect(handleCoverSelect.mock.calls.length).toBe(1);
   });
 
 
   test(`Should movie hover`, () => {
-    const handleMovieMouseEnter = jest.fn();
-    const handleMovieMouseLeave = jest.fn();
+    const handlePlay = jest.fn();
+    const handlePlayingStop = jest.fn();
 
     const movieCard = shallow(
         <MovieCard
           movie={MOVIES[0]}
-          onMovieSelect={() => {}}
-          onMovieMouseEnter={handleMovieMouseEnter}
-          onMovieMouseLeave={handleMovieMouseLeave}
+          onSelect={() => {}}
+          onPlay={handlePlay}
+          onPlayingStop={handlePlayingStop}
         />
     );
 
     movieCard.find(`.${MarkupElement.MOVIE_CARD}`).simulate(`mouseEnter`);
     movieCard.find(`.${MarkupElement.MOVIE_CARD}`).simulate(`mouseLeave`);
 
-    expect(handleMovieMouseEnter.mock.calls.length).toBe(1);
-    expect(handleMovieMouseLeave.mock.calls.length).toBe(1);
+    expect(handlePlay.mock.calls.length).toBe(1);
+    expect(handlePlayingStop.mock.calls.length).toBe(1);
   });
 });

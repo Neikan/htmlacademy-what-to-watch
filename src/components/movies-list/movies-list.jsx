@@ -34,9 +34,9 @@ class MoviesList extends PureComponent {
             <MovieCard
               key = {movie.id}
               movie = {movie}
-              onMovieSelect = {onMovieSelect}
-              onMovieMouseEnter = {this.handleMovieMouseEnter}
-              onMovieMouseLeave = {this.handleMovieMouseLeave}
+              onSelect = {onMovieSelect}
+              onPlay = {this.handleMovieMouseEnter}
+              onPlayingStop = {this.handleMovieMouseLeave}
             />
           );
         })}

@@ -48,9 +48,9 @@ class MovieCard extends PureComponent {
 
 
   _handlePlay() {
-    const {movie, onMovieMouseEnter} = this.props;
+    const {movie, onPlay} = this.props;
 
-    onMovieMouseEnter(movie);
+    onPlay(movie);
     this.setState({
       isPlaying: true
     });
@@ -58,25 +58,25 @@ class MovieCard extends PureComponent {
 
 
   _handleStop() {
-    this.props.onMovieMouseLeave();
+    this.props.onPlayingStop();
     this.setState({
       isPlaying: false
     });
   }
 
   _handleSelect() {
-    const {movie, onMovieSelect} = this.props;
+    const {movie, onSelect} = this.props;
 
-    onMovieSelect(movie);
+    onSelect(movie);
   }
 }
 
 
 MovieCard.propTypes = {
   movie: movieType.isRequired,
-  onMovieSelect: PropTypes.func.isRequired,
-  onMovieMouseEnter: PropTypes.func.isRequired,
-  onMovieMouseLeave: PropTypes.func.isRequired
+  onSelect: PropTypes.func.isRequired,
+  onPlay: PropTypes.func.isRequired,
+  onPlayingStop: PropTypes.func.isRequired
 };
 
 
