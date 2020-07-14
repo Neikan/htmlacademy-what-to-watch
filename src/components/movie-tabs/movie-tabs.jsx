@@ -12,7 +12,7 @@ const MarkupClass = {
 
 
 const getMarkupLi = (tab, onTabSelect, selectedTab, isReviews) => {
-  const isActive = selectedTab === tab ? true : false;
+  const isActive = selectedTab === tab;
   let className = getMarkupClass(MarkupClass, isActive);
 
   if (tab === MovieTabList.REVIEWS && isReviews === false) {
@@ -31,8 +31,7 @@ const getMarkupLi = (tab, onTabSelect, selectedTab, isReviews) => {
 
 
 const handleTabSelect = (tab, onTabSelect) => {
-  return (evt) => {
-    evt.preventDefault();
+  return () => {
     onTabSelect(tab);
   };
 };

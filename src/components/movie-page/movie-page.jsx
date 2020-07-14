@@ -105,7 +105,7 @@ class MoviePage extends PureComponent {
         return <MovieReviews movie={movie} />;
 
       default:
-        return ``;
+        return null;
     }
   }
 

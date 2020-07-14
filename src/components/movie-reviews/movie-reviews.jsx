@@ -40,7 +40,7 @@ const MovieReviews = (props) => {
 
   const intervals = getIntervalForCols(reviews);
 
-  return <>{intervals ? renderReviews(intervals, reviews) : null}</>;
+  return intervals ? renderReviews(intervals, reviews) : null;
 };
 
 

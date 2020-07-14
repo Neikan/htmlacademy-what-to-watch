@@ -19,9 +19,9 @@ class App extends PureComponent {
 
     this.state = {
       page: Page.MAIN,
-      selectedMovie: this.props.promoMovie,
+      selectedMovie: props.promoMovie,
       likedMovies: getLikedMoviesByGenre(
-          this.props.movies, this.props.promoMovie.genre, this.props.promoMovie.id
+          props.movies, props.promoMovie.genre, props.promoMovie.id
       )
     };
 
