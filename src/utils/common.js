@@ -34,16 +34,6 @@ export const getLikedMoviesByGenre = (movies, genre, id, count = CountMovies.LIK
 
 
 /**
- * Получение классов разметки для элемента в зависимости от его статуса
- * @param {Object} MarkupClass возможные классы элемента
- * @param {Boolean} isActive признак, определяющий активен элемент или нет
- * @return {string} полученный перечень классов
- */
-export const getMarkupClass = (MarkupClass, isActive) =>
-  isActive ? `${MarkupClass.DEFAULT} ${MarkupClass.ACTIVE}` : MarkupClass.DEFAULT;
-
-
-/**
  * Получение интервалов для отрисовки данных массива в колонках
  * @param {Array} array массив данных
  * @return {Object} объект с интервалами

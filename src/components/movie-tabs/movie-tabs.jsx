@@ -1,23 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
+import cn from 'classnames';
 import {tabType} from "../../props/prop-types";
-import {getMarkupClass} from "../../utils/common";
-import {MovieTabList, HIDDEN_CLASS} from "../../consts/common-data";
-
-
-const MarkupClass = {
-  DEFAULT: `movie-nav__item`,
-  ACTIVE: `movie-nav__item movie-nav__item--active`
-};
+import {MovieTabList} from "../../consts/common-data";
 
 
 const getMarkupLi = (tab, onTabSelect, selectedTab, isReviews) => {
   const isActive = selectedTab === tab;
-  let className = getMarkupClass(MarkupClass, isActive);
 
-  if (tab === MovieTabList.REVIEWS && isReviews === false) {
-    className = className + ` ${HIDDEN_CLASS}`;
-  }
+  const isHidden = tab === MovieTabList.REVIEWS && isReviews === false;
+
+  const className = cn(`movie-nav__item`, {
+    'movie-nav__item--active': isActive,
+    'visually-hidden': isHidden
+  });
 
   return (
     <li key={tab}
