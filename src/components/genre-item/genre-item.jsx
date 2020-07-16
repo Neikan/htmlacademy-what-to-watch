@@ -1,17 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-
-const MarkupClass = {
-  DEFAULT: `catalog__genres-item`,
-  ACTIVE: `catalog__genres-item--active`
-};
+import cn from 'classnames';
 
 
 const GenreItem = (props) => {
   const {title, isActive, onGenreSelect} = props;
 
-  const className = isActive ? `${MarkupClass.DEFAULT} ${MarkupClass.ACTIVE}` : MarkupClass.DEFAULT;
+  const className = cn(`catalog__genres-item`, {
+    'catalog__genres-item--active': isActive
+  });
 
   return (
     <li className={className}>
@@ -26,9 +23,10 @@ const GenreItem = (props) => {
   );
 };
 
+
 GenreItem.propTypes = {
   title: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
+  isActive: PropTypes.bool.isRequired,
   onGenreSelect: PropTypes.func.isRequired
 };
 

@@ -19,7 +19,10 @@ class App extends PureComponent {
 
     this.state = {
       page: Page.MAIN,
-      selectedMovie: this.props.promoMovie
+      selectedMovie: props.promoMovie,
+      likedMovies: getLikedMoviesByGenre(
+          props.movies, props.promoMovie.genre, props.promoMovie.id
+      )
     };
 
     this._handleMovieSelect = this._handleMovieSelect.bind(this);
@@ -72,20 +75,21 @@ class App extends PureComponent {
 
 
   _renderMoviePage() {
-    const {genre, id} = this.state.selectedMovie;
-
     return <MoviePage
       movie={this.state.selectedMovie}
-      movies={getLikedMoviesByGenre(this.props.movies, genre, id)}
+      movies={this.state.likedMovies}
       onMovieSelect = {this._handleMovieSelect}
     />;
   }
 
 
   _handleMovieSelect(movie) {
+    const {genre, id} = movie;
+
     this.setState({
       page: Page.MOVIE,
-      selectedMovie: movie
+      selectedMovie: movie,
+      likedMovies: getLikedMoviesByGenre(this.props.movies, genre, id)
     });
   }
 }

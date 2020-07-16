@@ -25,12 +25,6 @@ class VideoPlayer extends PureComponent {
 
   componentWillUnmount() {
     if (this._videoRef.current) {
-      const video = this._videoRef.current;
-
-      video.src = null;
-      video.muted = null;
-      video.onplay = null;
-
       clearTimeout(this._timeout);
     }
   }

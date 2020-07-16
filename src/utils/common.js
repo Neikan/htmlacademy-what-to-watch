@@ -31,3 +31,34 @@ export const getLikedMoviesByGenre = (movies, genre, id, count = CountMovies.LIK
   getMoviesByGenre(movies, genre)
     .filter((movie) => movie.id !== id)
     .slice(0, count);
+
+
+/**
+ * Получение интервалов для отрисовки данных массива в колонках
+ * @param {Array} array массив данных
+ * @return {Object} объект с интервалами
+ */
+export const getIntervalForCols = (array) => {
+  if (array.length === 1) {
+    return [{
+      begin: 0,
+      end: 1
+    }];
+  }
+
+  if (array.length >= 2) {
+    const countHalf = Math.ceil(array.length / 2);
+
+    return [
+      {
+        begin: 0,
+        end: countHalf
+      }, {
+        begin: countHalf,
+        end: array.length
+      }
+    ];
+  }
+
+  return null;
+};

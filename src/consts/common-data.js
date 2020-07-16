@@ -98,3 +98,13 @@ export const Page = {
   MAIN: `/`,
   MOVIE: `/films/`
 };
+
+
+export const MovieTabList = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
+};
+
+
+export const HIDDEN_CLASS = `visually-hidden`;
