@@ -1,5 +1,5 @@
 import {Page, CountMovies, GENRES} from "../consts/common-data";
-import {getLikedMoviesByGenre} from "../utils/common";
+import {getLikedMoviesByGenre, getMoviesByGenre} from "../utils/common";
 import {generateMovies} from "../mocks/movies-data";
 import {updateState} from "../utils/reducer";
 
@@ -45,15 +45,15 @@ const reducer = (state = initialState, action) => {
     case ActionType.SELECT_GENRE:
       return updateState(state, {
         selectedGenre: action.payload,
+        likedMovies: getMoviesByGenre(state.movies, action.payload)
       });
 
     case ActionType.SELECT_MOVIE:
       return updateState(state, {
         page: Page.MOVIE,
         selectedMovie: action.payload,
-        likedMovies: getLikedMoviesByGenre(movies, action.payload.genre, action.payload.id),
+        likedMovies: getLikedMoviesByGenre(state.movies, action.payload.genre, action.payload.id),
       });
-
 
     default:
       return state;

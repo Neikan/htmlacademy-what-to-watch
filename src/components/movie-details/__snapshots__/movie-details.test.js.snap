@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test MovieDetails component MovieDetails component is created and rendered correctly 1`] = `
+exports[`Test MovieDetails component When Movie is correctly 1`] = `
 Array [
   <div
     className="movie-rating"
@@ -52,3 +52,5 @@ Array [
   </div>,
 ]
 `;
+
+exports[`Test MovieDetails component When Movie is undefined 1`] = `null`;

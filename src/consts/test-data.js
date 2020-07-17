@@ -124,5 +124,6 @@ export const MarkupElement = {
   MOVIE_CARD: `small-movie-card`,
   MOVIE_CARD_TITLE: `small-movie-card__title`,
   MOVIE_CARD_COVER: `small-movie-card__image`,
-  GENRE_LINK: `catalog__genres-link`
+  GENRE_LINK: `catalog__genres-link`,
+  MOVIE_TAB: `movie-nav__item`
 };

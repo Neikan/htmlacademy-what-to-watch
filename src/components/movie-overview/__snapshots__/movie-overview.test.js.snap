@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test MovieOverView component MovieOverView component is created and rendered correctly 1`] = `
+exports[`Test MovieOverView component When Movie is correctly 1`] = `
 <div
   className="movie-card__text movie-card__row"
 >
@@ -84,3 +84,5 @@ exports[`Test MovieOverView component MovieOverView component is created and ren
   </div>
 </div>
 `;
+
+exports[`Test MovieOverView component When Movie is undefined 1`] = `null`;

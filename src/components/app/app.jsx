@@ -14,21 +14,10 @@ const handleMovieAddToList = () => {};
 
 
 class App extends PureComponent {
-  // constructor(props) {
-  //   super(props);
-
-  // this.state = {
-  //   page: Page.MAIN,
-  //   selectedMovie: props.promoMovie,
-  //   likedMovies: getLikedMoviesByGenre(
-  //       props.movies, props.promoMovie.genre, props.promoMovie.id
-  //   )
-  // };
-
-  // this._handleMovieSelect = this._handleMovieSelect.bind(this);
-  // }
-
-
+  /**
+   * Метод, обспечивающий изменение страниц приложения
+   * @return {Object} страница приложения
+   */
   render() {
     return (
       <BrowserRouter>
@@ -45,6 +34,10 @@ class App extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку страницы приложения
+   * @return {Object} страница приложения
+   */
   _renderPage() {
     switch (this.props.page) {
       case (Page.MAIN):
@@ -59,6 +52,10 @@ class App extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку главной страницы
+   * @return {Object} главная страница
+   */
   _renderMainPage() {
     const {promoMovie, movies, genres, handleMovieSelect, handleGenreSelect} = this.props;
 
@@ -74,6 +71,10 @@ class App extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку страницы фильма
+   * @return {Object} страница фильма
+   */
   _renderMoviePage() {
     const {selectedMovie, likedMovies, handleMovieSelect} = this.props;
 
