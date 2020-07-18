@@ -57,18 +57,20 @@ class App extends PureComponent {
    * @return {Object} главная страница
    */
   _renderMainPage() {
-    const {promoMovie, movies, likedMovies, genres, selectedGenre, onMovieSelect, onGenreSelect} = this.props;
+    const {promoMovie, movies, likedMovies, countShowedMovies, genres, selectedGenre, onMovieSelect, onGenreSelect, onBtnMoreSelect} = this.props;
 
     const renderedMovies = selectedGenre === ALL_GENRES ? movies : likedMovies;
 
     return <Main
-      promoMovie = {promoMovie}
-      movies = {renderedMovies}
-      genres = {genres}
-      onMoviePlay = {handleMoviePlay}
-      onMovieAddToList = {handleMovieAddToList}
-      onMovieSelect = {onMovieSelect}
-      onGenreSelect = {onGenreSelect}
+      promoMovie={promoMovie}
+      movies={renderedMovies}
+      genres={genres}
+      countShowedMovies={countShowedMovies}
+      onMoviePlay={handleMoviePlay}
+      onMovieAddToList={handleMovieAddToList}
+      onMovieSelect={onMovieSelect}
+      onGenreSelect={onGenreSelect}
+      onBtnMoreSelect={onBtnMoreSelect}
     />;
   }
 
@@ -96,12 +98,15 @@ App.propTypes = {
   promoMovie: movieType.isRequired,
   selectedMovie: movieType.isRequired,
   likedMovies: PropTypes.arrayOf(movieType).isRequired,
+  countShowedMovies: PropTypes.number.isRequired,
 
   genres: PropTypes.arrayOf(genreType).isRequired,
   selectedGenre: PropTypes.string.isRequired,
 
   onMovieSelect: PropTypes.func.isRequired,
-  onGenreSelect: PropTypes.func.isRequired
+  onGenreSelect: PropTypes.func.isRequired,
+
+  onBtnMoreSelect: PropTypes.func.isRequired
 };
 
 
@@ -112,6 +117,7 @@ const mapStateToProps = (state) => ({
   promoMovie: state.promoMovie,
   selectedMovie: state.selectedMovie,
   likedMovies: state.likedMovies,
+  countShowedMovies: state.countShowedMovies,
 
   genres: state.genres,
   selectedGenre: state.selectedGenre
@@ -125,6 +131,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onMovieSelect(movie) {
     dispatch(ActionCreator.selectMovie(movie));
+  },
+
+  onBtnMoreSelect() {
+    dispatch(ActionCreator.selectBtnMore());
   }
 });
 
