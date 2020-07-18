@@ -77,15 +77,11 @@ export const generateId = () => `f${(+new Date()).toString(16)}${Math.random() *
  * @param {string} selectedGenre выбранный жанр
  * @return {Array} обновленный массив
  */
-export const updateGenres = (genres, selectedGenre) => genres.map((genre) => {
-  return genre.title === selectedGenre
-    ? Object.assign(genre, {
-      isActive: true
-    })
-    : Object.assign(genre, {
-      isActive: false
-    });
-});
+export const updateGenres = (genres, selectedGenre) => genres.map((genre) =>
+  Object.assign(genre, {
+    isActive: genre.title === selectedGenre
+  })
+);
 
 
 /**
