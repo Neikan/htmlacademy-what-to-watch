@@ -14,7 +14,7 @@ const GenreItem = (props) => {
     <li className={className}>
       <a
         href="#"
-        onClick={onGenreSelect}
+        onClick={() => onGenreSelect(title)}
         className="catalog__genres-link"
       >
         {title}

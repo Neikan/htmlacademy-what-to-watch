@@ -1,7 +1,7 @@
 import {ActionType, reducer, ActionCreator} from "./reducer.js";
 import {Page} from "../consts/common-data.js";
 import {GENRES, MOVIES} from "../consts/test-data.js";
-import {getLikedMoviesByGenre, getMoviesByGenre} from "../utils/common.js";
+import {getLikedMoviesByGenre, getMoviesByGenre, updateGenres} from "../utils/common.js";
 
 
 describe(`Get initial state`, () => {
@@ -38,19 +38,21 @@ describe(`Action types work correctly`, () => {
     expect(reducer({
       movies: MOVIES,
       likedMovies: MOVIES,
+      genres: GENRES,
       selectedGenre: GENRES[0]
     }, {
       type: ActionType.SELECT_GENRE,
       payload: GENRES[2]
     })).toEqual({
       movies: MOVIES,
-      selectedGenre: GENRES[2],
-      likedMovies: getMoviesByGenre(MOVIES, GENRES[2])
+      likedMovies: getMoviesByGenre(MOVIES, GENRES[2]),
+      genres: updateGenres(GENRES, GENRES[2]),
+      selectedGenre: GENRES[2]
     });
   });
 
 
-  test(`Return selected movie and liked movies on it by genre without it`, () => {
+  test(`Return selected movie and liked movies by genre this movie, but without this movie`, () => {
     expect(reducer({
       page: Page.MAIN,
       movies: MOVIES,
@@ -70,7 +72,7 @@ describe(`Action types work correctly`, () => {
 
 
 describe(`Action creators work correctly`, () => {
-  test(`Action creator for select genre returns correct action`, () => {
+  test(`Select genre returns correct action`, () => {
     expect(ActionCreator.selectGenre(GENRES[1])).toEqual({
       type: ActionType.SELECT_GENRE,
       payload: GENRES[1]
@@ -78,15 +80,7 @@ describe(`Action creators work correctly`, () => {
   });
 
 
-  test(`Action creator for select movie returns correct action`, () => {
-    expect(ActionCreator.selectMovie(MOVIES[1])).toEqual({
-      type: ActionType.SELECT_MOVIE,
-      payload: MOVIES[1]
-    });
-  });
-
-
-  test(`Action creator for select movie returns correct action`, () => {
+  test(`Select movie returns correct action`, () => {
     expect(ActionCreator.selectMovie(MOVIES[1])).toEqual({
       type: ActionType.SELECT_MOVIE,
       payload: MOVIES[1]

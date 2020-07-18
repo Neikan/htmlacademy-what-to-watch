@@ -114,6 +114,10 @@ export const GENRES = [
   `Romance`,
   `Sci-Fi`,
   `Thrillers`,
+  `Anime`,
+  `Family`,
+  `Sport`,
+  `Fantasy`
 ];
 
 

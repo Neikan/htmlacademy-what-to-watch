@@ -1,4 +1,4 @@
-import {Url, FileExtension, CountMovies} from "../consts/common-data";
+import {Url, FileExtension, CountMovies, ALL_GENRES} from "../consts/common-data";
 
 
 /**
@@ -61,4 +61,54 @@ export const getIntervalForCols = (array) => {
   }
 
   return null;
+};
+
+
+/**
+ * Генерация идентификатора для фильмов и комментариев
+ * @return {string}
+ */
+export const generateId = () => `f${(+new Date()).toString(16)}${Math.random() * 1e8}`;
+
+
+/**
+ * Обновление свойства isActive для жанров
+ * @param {Array} genres массив жанров
+ * @param {string} selectedGenre выбранный жанр
+ * @return {Array} обновленный массив
+ */
+export const updateGenres = (genres, selectedGenre) => genres.map((genre) => {
+  if (genre.title === selectedGenre) {
+    genre.isActive = true;
+  }
+
+  if (genre.title !== selectedGenre) {
+    genre.isActive = false;
+  }
+
+  return genre;
+});
+
+
+/**
+ * Получение массива уникальных жанров с добавлением свойств для рендера
+ * @param {Array} movies массив с данными фильмов
+ * @return {Array} массив уникальных жанров фильмов со свойствами и 'All genres'
+ */
+export const getGenres = (movies) => {
+  const uniqueGenres = [ALL_GENRES];
+
+  movies.map((movie) => {
+    if (!uniqueGenres.includes(movie.genre)) {
+      uniqueGenres.push(movie.genre);
+    }
+  });
+
+  return uniqueGenres.map((genre) => {
+    return {
+      [`id`]: generateId(),
+      [`title`]: genre,
+      [`isActive`]: genre === ALL_GENRES
+    };
+  });
 };

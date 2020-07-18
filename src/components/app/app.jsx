@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from "../main/main.jsx";
 import {movieType, genreType} from "../../props/prop-types.js";
 import MoviePage from '../movie-page/movie-page.jsx';
-import {Page} from "../../consts/common-data.js";
+import {Page, ALL_GENRES} from "../../consts/common-data.js";
 import {ActionCreator} from "../../store/reducer.js";
 import {connect} from "react-redux";
 
@@ -57,16 +57,18 @@ class App extends PureComponent {
    * @return {Object} главная страница
    */
   _renderMainPage() {
-    const {promoMovie, movies, genres, handleMovieSelect, handleGenreSelect} = this.props;
+    const {promoMovie, movies, likedMovies, genres, selectedGenre, onMovieSelect, onGenreSelect} = this.props;
+
+    const renderedMovies = selectedGenre === ALL_GENRES ? movies : likedMovies;
 
     return <Main
       promoMovie = {promoMovie}
-      movies = {movies}
+      movies = {renderedMovies}
       genres = {genres}
       onMoviePlay = {handleMoviePlay}
       onMovieAddToList = {handleMovieAddToList}
-      onMovieSelect = {handleMovieSelect}
-      onGenreSelect = {handleGenreSelect}
+      onMovieSelect = {onMovieSelect}
+      onGenreSelect = {onGenreSelect}
     />;
   }
 
@@ -76,12 +78,12 @@ class App extends PureComponent {
    * @return {Object} страница фильма
    */
   _renderMoviePage() {
-    const {selectedMovie, likedMovies, handleMovieSelect} = this.props;
+    const {selectedMovie, likedMovies, onMovieSelect} = this.props;
 
     return <MoviePage
       movie={selectedMovie}
       movies={likedMovies}
-      onMovieSelect = {handleMovieSelect}
+      onMovieSelect = {onMovieSelect}
     />;
   }
 }
@@ -96,9 +98,10 @@ App.propTypes = {
   likedMovies: PropTypes.arrayOf(movieType).isRequired,
 
   genres: PropTypes.arrayOf(genreType).isRequired,
+  selectedGenre: PropTypes.string.isRequired,
 
-  handleMovieSelect: PropTypes.func.isRequired,
-  handleGenreSelect: PropTypes.func.isRequired
+  onMovieSelect: PropTypes.func.isRequired,
+  onGenreSelect: PropTypes.func.isRequired
 };
 
 
@@ -116,11 +119,11 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = (dispatch) => ({
-  handleGenreSelect(genre) {
+  onGenreSelect(genre) {
     dispatch(ActionCreator.selectGenre(genre));
   },
 
-  handleMovieSelect(movie) {
+  onMovieSelect(movie) {
     dispatch(ActionCreator.selectMovie(movie));
   }
 });

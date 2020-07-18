@@ -14,10 +14,10 @@ import {
   getRandomSubArray,
   getRandomInt,
   getRandomDate,
-  generateId,
   getRandomRating,
   getTextualRating
 } from './movies-utils';
+import {generateId} from '../utils/common';
 
 
 /**
