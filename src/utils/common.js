@@ -78,15 +78,13 @@ export const generateId = () => `f${(+new Date()).toString(16)}${Math.random() *
  * @return {Array} обновленный массив
  */
 export const updateGenres = (genres, selectedGenre) => genres.map((genre) => {
-  if (genre.title === selectedGenre) {
-    genre.isActive = true;
-  }
-
-  if (genre.title !== selectedGenre) {
-    genre.isActive = false;
-  }
-
-  return genre;
+  return genre.title === selectedGenre
+    ? Object.assign(genre, {
+      isActive: true
+    })
+    : Object.assign(genre, {
+      isActive: false
+    });
 });
 
 
