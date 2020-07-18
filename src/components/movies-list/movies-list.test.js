@@ -5,11 +5,12 @@ import {MOVIES} from "../../consts/test-data.js";
 
 
 describe(`Test MoviesList component`, () => {
-  test(`MoviesList component is created and rendered correctly`, () => {
+  test(`When Movies is correctly`, () => {
     const tree = renderer.create(
         <MoviesList
-          movies = {MOVIES}
-          onMovieSelect = {() => {}}
+          movies={MOVIES}
+          countShowedMovies={1}
+          onMovieSelect={() => {}}
         />)
       .toJSON();
 

@@ -10,6 +10,7 @@ describe(`Test MoviePage component`, () => {
         <MoviePage
           movie = {MOVIES[0]}
           movies = {MOVIES}
+          countShowedMovies={4}
           onMovieSelect = {() => {}}
         />)
       .toJSON();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test MoviesList component MoviesList component is created and rendered correctly 1`] = `
+exports[`Test MoviesList component When Movies is correctly 1`] = `
 <div
   className="catalog__movies-list"
 >
@@ -32,68 +32,6 @@ exports[`Test MoviesList component MoviesList component is created and rendered 
         href="movie-page.html"
       >
         Fantastic Beasts: The Crimes of Grindelwald
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    id="mock-2"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <video
-        height="175"
-        poster="/img/bohemian-rhapsody.jpg"
-        type="video/webm"
-        width="280"
-      >
-        Sorry, your browser doesn\`t support embedded videos
-      </video>
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Bohemian Rhapsody
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    id="mock-3"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <video
-        height="175"
-        poster="/img/macbeth.jpg"
-        type="video/webm"
-        width="280"
-      >
-        Sorry, your browser doesn\`t support embedded videos
-      </video>
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Macbeth
       </a>
     </h3>
   </article>

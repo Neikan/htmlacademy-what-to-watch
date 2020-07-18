@@ -6,7 +6,7 @@ import MoviesList from "../movies-list/movies-list.jsx";
 
 
 const MoviesByGenre = (props) => {
-  const {movies, onMovieSelect} = props;
+  const {movies, countShowedMovies, onMovieSelect} = props;
 
   return (
     <div className="page-content">
@@ -15,6 +15,7 @@ const MoviesByGenre = (props) => {
 
         <MoviesList
           movies = {movies}
+          countShowedMovies={countShowedMovies}
           onMovieSelect = {onMovieSelect}
         />
       </section>
@@ -27,6 +28,7 @@ const MoviesByGenre = (props) => {
 
 MoviesByGenre.propTypes = {
   movies: PropTypes.arrayOf(movieType).isRequired,
+  countShowedMovies: PropTypes.number.isRequired,
   onMovieSelect: PropTypes.func.isRequired
 };
 

@@ -34,9 +34,9 @@ const Main = (props) => {
         <h1 className="visually-hidden">WTW</h1>
         <Header />
         <Promo
-          movie = {promoMovie}
-          onPlay = {onMoviePlay}
-          onAdd = {onMovieAddToList}
+          movie={promoMovie}
+          onPlay={onMoviePlay}
+          onAdd={onMovieAddToList}
         />
       </section>
 
@@ -44,14 +44,14 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenresList
-            genres = {genres}
-            onGenreSelect = {onGenreSelect}
+            genres={genres}
+            onGenreSelect={onGenreSelect}
           />
           <div>
             <MoviesList
-              movies = {movies}
+              movies={movies}
               countShowedMovies={countShowedMovies}
-              onMovieSelect = {onMovieSelect}
+              onMovieSelect={onMovieSelect}
             />
 
             {isShowBtnMore ? <BtnShowMore onSelect={onBtnMoreSelect} /> : null}

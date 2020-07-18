@@ -1,7 +1,7 @@
 import {ActionType, reducer, ActionCreator} from "./reducer.js";
-import {Page} from "../consts/common-data.js";
 import {GENRES, MOVIES} from "../consts/test-data.js";
 import {getLikedMoviesByGenre, getMoviesByGenre, updateGenres} from "../utils/common.js";
+import {Page, CountMovies} from "../consts/common-data.js";
 
 
 describe(`Get initial state`, () => {
@@ -13,6 +13,7 @@ describe(`Get initial state`, () => {
       promoMovie: MOVIES[0],
       selectedMovie: MOVIES[0],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[0].genre, MOVIES[0].id),
+      countShowedMovies: CountMovies.START,
 
       genres: GENRES,
       selectedGenre: GENRES[0]
@@ -25,6 +26,7 @@ describe(`Get initial state`, () => {
       promoMovie: MOVIES[0],
       selectedMovie: MOVIES[0],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[0].genre, MOVIES[0].id),
+      countShowedMovies: CountMovies.START,
 
       genres: GENRES,
       selectedGenre: GENRES[0]
@@ -38,6 +40,7 @@ describe(`Action types work correctly`, () => {
     expect(reducer({
       movies: MOVIES,
       likedMovies: MOVIES,
+      countShowedMovies: CountMovies.START,
       genres: GENRES,
       selectedGenre: GENRES[0]
     }, {
@@ -46,6 +49,7 @@ describe(`Action types work correctly`, () => {
     })).toEqual({
       movies: MOVIES,
       likedMovies: getMoviesByGenre(MOVIES, GENRES[2]),
+      countShowedMovies: CountMovies.START,
       genres: updateGenres(GENRES, GENRES[2]),
       selectedGenre: GENRES[2]
     });
@@ -68,6 +72,20 @@ describe(`Action types work correctly`, () => {
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[1].genre, MOVIES[1].id),
     });
   });
+
+
+  test(`Return more showed movies`, () => {
+    expect(reducer({
+      movies: MOVIES,
+      countShowedMovies: 1
+    }, {
+      type: ActionType.SELECT_SHOW_MORE,
+      payload: 1
+    })).toEqual({
+      movies: MOVIES,
+      countShowedMovies: 2
+    });
+  });
 });
 
 
@@ -84,6 +102,14 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.selectMovie(MOVIES[1])).toEqual({
       type: ActionType.SELECT_MOVIE,
       payload: MOVIES[1]
+    });
+  });
+
+
+  test(`Select movie returns correct action`, () => {
+    expect(ActionCreator.selectBtnMore()).toEqual({
+      type: ActionType.SELECT_SHOW_MORE,
+      payload: CountMovies.START
     });
   });
 });
