@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MovieTab component MovieTab component is created and rendered correctly when (reviews.length = 0) 1`] = `
+<li
+  className="movie-nav__item visually-hidden"
+  onClick={[Function]}
+>
+  <a
+    className="movie-nav__link"
+    href="#"
+  >
+    Reviews
+  </a>
+</li>
+`;
+
+exports[`Test MovieTab component MovieTab component is created and rendered correctly when it is not selected) 1`] = `
+<li
+  className="movie-nav__item"
+  onClick={[Function]}
+>
+  <a
+    className="movie-nav__link"
+    href="#"
+  >
+    Overview
+  </a>
+</li>
+`;
+
+exports[`Test MovieTab component MovieTab component is created and rendered correctly when it is selected 1`] = `
+<li
+  className="movie-nav__item movie-nav__item--active"
+  onClick={[Function]}
+>
+  <a
+    className="movie-nav__link"
+    href="#"
+  >
+    Details
+  </a>
+</li>
+`;

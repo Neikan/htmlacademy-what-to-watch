@@ -5,10 +5,21 @@ import {MOVIES} from "../../consts/test-data.js";
 
 
 describe(`Test MovieDetails component`, () => {
-  test(`MovieDetails component is created and rendered correctly`, () => {
+  test(`When Movie is correctly`, () => {
     const tree = renderer.create(
         <MovieDetails
           movie = {MOVIES[0]}
+        />)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+
+  test(`When Movie is undefined`, () => {
+    const tree = renderer.create(
+        <MovieDetails
+          movie = {null}
         />)
       .toJSON();
 

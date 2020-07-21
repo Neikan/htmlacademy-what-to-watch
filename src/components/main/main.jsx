@@ -7,10 +7,13 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import BtnShowMore from "../btn-show-more/btn-show-more.jsx";
 import Footer from "../footer/footer.jsx";
 import {movieType, genreType} from "../../props/prop-types.js";
+import {CountMovies} from "../../consts/common-data.js";
 
 
 const Main = (props) => {
   const {promoMovie, movies, genres, onMoviePlay, onMovieAddToList, onMovieSelect, onGenreSelect} = props;
+
+  const isShowBtnMore = movies.length > CountMovies.START;
 
   return (
     <>
@@ -41,7 +44,7 @@ const Main = (props) => {
               onMovieSelect = {onMovieSelect}
             />
 
-            <BtnShowMore />
+            {isShowBtnMore ? <BtnShowMore /> : null}
           </div>
         </section>
 

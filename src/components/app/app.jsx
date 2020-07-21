@@ -4,31 +4,20 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from "../main/main.jsx";
 import {movieType, genreType} from "../../props/prop-types.js";
 import MoviePage from '../movie-page/movie-page.jsx';
-import {Page} from "../../consts/common-data.js";
-import {getLikedMoviesByGenre} from "../../utils/common.js";
+import {Page, ALL_GENRES} from "../../consts/common-data.js";
+import {ActionCreator} from "../../store/reducer.js";
+import {connect} from "react-redux";
 
 
 const handleMoviePlay = () => {};
 const handleMovieAddToList = () => {};
-const handleGenreSelect = () => {};
 
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      page: Page.MAIN,
-      selectedMovie: props.promoMovie,
-      likedMovies: getLikedMoviesByGenre(
-          props.movies, props.promoMovie.genre, props.promoMovie.id
-      )
-    };
-
-    this._handleMovieSelect = this._handleMovieSelect.bind(this);
-  }
-
-
+  /**
+   * Метод, обспечивающий изменение страниц приложения
+   * @return {Object} страница приложения
+   */
   render() {
     return (
       <BrowserRouter>
@@ -36,7 +25,7 @@ class App extends PureComponent {
           <Route exact path={`${Page.MAIN}`}>
             {this._renderPage()}
           </Route>
-          <Route exact path={`${Page.MOVIE}:${this.state.selectedMovie.id}`}>
+          <Route exact path={`${Page.MOVIE}:${this.props.selectedMovie.id}`}>
             {this._renderMoviePage()}
           </Route>
         </Switch>
@@ -45,8 +34,12 @@ class App extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку страницы приложения
+   * @return {Object} страница приложения
+   */
   _renderPage() {
-    switch (this.state.page) {
+    switch (this.props.page) {
       case (Page.MAIN):
         return this._renderMainPage();
 
@@ -59,47 +52,82 @@ class App extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку главной страницы
+   * @return {Object} главная страница
+   */
   _renderMainPage() {
-    const {promoMovie, movies, genres} = this.props;
+    const {promoMovie, movies, likedMovies, genres, selectedGenre, onMovieSelect, onGenreSelect} = this.props;
+
+    const renderedMovies = selectedGenre === ALL_GENRES ? movies : likedMovies;
 
     return <Main
       promoMovie = {promoMovie}
-      movies = {movies}
+      movies = {renderedMovies}
       genres = {genres}
       onMoviePlay = {handleMoviePlay}
       onMovieAddToList = {handleMovieAddToList}
-      onMovieSelect = {this._handleMovieSelect}
-      onGenreSelect = {handleGenreSelect}
+      onMovieSelect = {onMovieSelect}
+      onGenreSelect = {onGenreSelect}
     />;
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку страницы фильма
+   * @return {Object} страница фильма
+   */
   _renderMoviePage() {
+    const {selectedMovie, likedMovies, onMovieSelect} = this.props;
+
     return <MoviePage
-      movie={this.state.selectedMovie}
-      movies={this.state.likedMovies}
-      onMovieSelect = {this._handleMovieSelect}
+      movie={selectedMovie}
+      movies={likedMovies}
+      onMovieSelect = {onMovieSelect}
     />;
-  }
-
-
-  _handleMovieSelect(movie) {
-    const {genre, id} = movie;
-
-    this.setState({
-      page: Page.MOVIE,
-      selectedMovie: movie,
-      likedMovies: getLikedMoviesByGenre(this.props.movies, genre, id)
-    });
   }
 }
 
 
 App.propTypes = {
-  promoMovie: movieType.isRequired,
+  page: PropTypes.string.isRequired,
+
   movies: PropTypes.arrayOf(movieType).isRequired,
-  genres: PropTypes.arrayOf(genreType).isRequired
+  promoMovie: movieType.isRequired,
+  selectedMovie: movieType.isRequired,
+  likedMovies: PropTypes.arrayOf(movieType).isRequired,
+
+  genres: PropTypes.arrayOf(genreType).isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+
+  onMovieSelect: PropTypes.func.isRequired,
+  onGenreSelect: PropTypes.func.isRequired
 };
 
 
-export default App;
+const mapStateToProps = (state) => ({
+  page: state.page,
+
+  movies: state.movies,
+  promoMovie: state.promoMovie,
+  selectedMovie: state.selectedMovie,
+  likedMovies: state.likedMovies,
+
+  genres: state.genres,
+  selectedGenre: state.selectedGenre
+});
+
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreSelect(genre) {
+    dispatch(ActionCreator.selectGenre(genre));
+  },
+
+  onMovieSelect(movie) {
+    dispatch(ActionCreator.selectMovie(movie));
+  }
+});
+
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

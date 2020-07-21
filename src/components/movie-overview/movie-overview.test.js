@@ -5,10 +5,21 @@ import {MOVIES} from "../../consts/test-data.js";
 
 
 describe(`Test MovieOverView component`, () => {
-  test(`MovieOverView component is created and rendered correctly`, () => {
+  test(`When Movie is correctly`, () => {
     const tree = renderer.create(
         <MovieOverView
           movie = {MOVIES[0]}
+        />)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+
+  test(`When Movie is undefined`, () => {
+    const tree = renderer.create(
+        <MovieOverView
+          movie = {null}
         />)
       .toJSON();
 

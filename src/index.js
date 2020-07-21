@@ -1,21 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
-import {CountMovies, GENRES} from "./consts/common-data";
-import {generateMovies} from "./mocks/movies-data.js";
+import {reducer} from "./store/reducer.js";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
 
 
 const root = document.querySelector(`#root`);
 
-const init = () => {
-  const movies = generateMovies(CountMovies.ALL);
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
 
+const init = () => {
   ReactDOM.render(
-      <App
-        promoMovie = {movies[0]}
-        movies = {movies}
-        genres = {GENRES}
-      />,
+      <Provider store={store}>
+        <App />
+      </Provider>,
       root
   );
 };
