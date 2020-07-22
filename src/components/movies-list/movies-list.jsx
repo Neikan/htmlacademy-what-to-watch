@@ -2,7 +2,6 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import {movieType} from "../../props/prop-types";
-import {CountMovies} from "../../consts/common-data.js";
 
 
 class MoviesList extends PureComponent {
@@ -25,11 +24,11 @@ class MoviesList extends PureComponent {
    * @return {Object} разметка компонента
    */
   render() {
-    const {movies, onMovieSelect} = this.props;
+    const {movies, countShowedMovies, onMovieSelect} = this.props;
 
     return (
       <div className="catalog__movies-list">
-        {movies.slice(0, CountMovies.START).map((movie) => {
+        {movies.slice(0, countShowedMovies).map((movie) => {
           return (
             <MovieCard
               key = {movie.id}
@@ -70,6 +69,7 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(movieType).isRequired,
+  countShowedMovies: PropTypes.number.isRequired,
   onMovieSelect: PropTypes.func.isRequired
 };
 

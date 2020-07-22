@@ -13,10 +13,12 @@ configure({
 describe(`Test e2e MoviesList component`, () => {
   test(`Should all titles of movies be pressed`, () => {
     const handleMovieSelect = jest.fn();
+    const countShowedMovies = 1;
 
     const moviesList = mount(
         <MoviesList
           movies = {MOVIES}
+          countShowedMovies={countShowedMovies}
           onMovieSelect = {handleMovieSelect}
         />
     );
@@ -24,6 +26,6 @@ describe(`Test e2e MoviesList component`, () => {
     moviesList.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).map((movie) => movie.props().onClick());
     moviesList.find(`.${MarkupElement.MOVIE_CARD}`).map((movie) => movie.props().onClick());
 
-    expect(handleMovieSelect.mock.calls.length).toBe(MOVIES.length * 2);
+    expect(handleMovieSelect.mock.calls.length).toBe(countShowedMovies * 2);
   });
 });

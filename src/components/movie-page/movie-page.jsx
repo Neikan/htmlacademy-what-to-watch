@@ -4,7 +4,7 @@ import Header from "../header/header.jsx";
 import MoviesByGenre from "../movies-by-genre/movies-by-genre.jsx";
 import {movieType} from "../../props/prop-types.js";
 import {getImgSrc} from "../../utils/common.js";
-import {MovieTabList} from "../../consts/common-data.js";
+import {MovieTabList, CountMovies} from "../../consts/common-data.js";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MovieOverView from "../movie-overview/movie-overview.jsx";
 import MovieReviews from "../movie-reviews/movie-reviews.jsx";
@@ -120,6 +120,7 @@ class MoviePage extends PureComponent {
     return (
       <MoviesByGenre
         movies={movies}
+        countShowedMovies={CountMovies.LIKED_BY_GENRE}
         onMovieSelect = {onMovieSelect}
       />
     );

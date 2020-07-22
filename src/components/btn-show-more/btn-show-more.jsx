@@ -1,16 +1,29 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 
-const BtnShowMore = () => {
+const handleSelect = (onSelect) => (evt) => {
+  evt.preventDefault();
+  onSelect();
+};
+
+
+const BtnShowMore = (props) => {
   return (
     <div className="catalog__more">
-      <button className="catalog__button" type="button">Show more</button>
+      <button className="catalog__button" type="button"
+        onClick={handleSelect(props.onSelect)}
+      >
+        Show more
+      </button>
     </div>
   );
 };
 
 
-BtnShowMore.propTypes = {};
+BtnShowMore.propTypes = {
+  onSelect: PropTypes.func.isRequired
+};
 
 
 export default BtnShowMore;

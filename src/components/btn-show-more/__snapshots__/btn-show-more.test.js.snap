@@ -6,6 +6,7 @@ exports[`Test BtnShowMore component BtnShowMore component is created and rendere
 >
   <button
     className="catalog__button"
+    onClick={[Function]}
     type="button"
   >
     Show more

@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import App from "./app.jsx";
 import {MOVIES, GENRES} from "./../../consts/test-data";
-import {Page} from "../../consts/common-data.js";
+import {Page, CountMovies} from "../../consts/common-data.js";
 import {getLikedMoviesByGenre, getMoviesByGenre} from "../../utils/common.js";
 
 
@@ -20,9 +20,10 @@ describe(`Test App component`, () => {
       promoMovie: MOVIES[0],
       selectedMovie: MOVIES[0],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[0].genre, MOVIES[0].id),
+      countShowedMovies: CountMovies.START,
 
       genres: GENRES,
-      selectedGenre: GENRES[0]
+      selectedGenre: GENRES[0].title
     });
 
 
@@ -49,9 +50,10 @@ describe(`Test App component`, () => {
       promoMovie: MOVIES[0],
       selectedMovie: MOVIES[1],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[1].genre, MOVIES[1].id),
+      countShowedMovies: CountMovies.START,
 
       genres: GENRES,
-      selectedGenre: GENRES[0]
+      selectedGenre: GENRES[0].title
     });
 
 
@@ -78,9 +80,10 @@ describe(`Test App component`, () => {
       promoMovie: MOVIES[0],
       selectedMovie: MOVIES[0],
       likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
+      countShowedMovies: CountMovies.START,
 
       genres: GENRES,
-      selectedGenre: GENRES[1]
+      selectedGenre: GENRES[1].title
     });
 
 

@@ -7,13 +7,22 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import BtnShowMore from "../btn-show-more/btn-show-more.jsx";
 import Footer from "../footer/footer.jsx";
 import {movieType, genreType} from "../../props/prop-types.js";
-import {CountMovies} from "../../consts/common-data.js";
 
 
 const Main = (props) => {
-  const {promoMovie, movies, genres, onMoviePlay, onMovieAddToList, onMovieSelect, onGenreSelect} = props;
+  const {
+    promoMovie,
+    movies,
+    genres,
+    countShowedMovies,
+    onMoviePlay,
+    onMovieAddToList,
+    onMovieSelect,
+    onGenreSelect,
+    onBtnMoreSelect
+  } = props;
 
-  const isShowBtnMore = movies.length > CountMovies.START;
+  const isShowBtnMore = movies.length > countShowedMovies;
 
   return (
     <>
@@ -25,9 +34,9 @@ const Main = (props) => {
         <h1 className="visually-hidden">WTW</h1>
         <Header />
         <Promo
-          movie = {promoMovie}
-          onPlay = {onMoviePlay}
-          onAdd = {onMovieAddToList}
+          movie={promoMovie}
+          onPlay={onMoviePlay}
+          onAdd={onMovieAddToList}
         />
       </section>
 
@@ -35,16 +44,17 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenresList
-            genres = {genres}
-            onGenreSelect = {onGenreSelect}
+            genres={genres}
+            onGenreSelect={onGenreSelect}
           />
           <div>
             <MoviesList
-              movies = {movies}
-              onMovieSelect = {onMovieSelect}
+              movies={movies}
+              countShowedMovies={countShowedMovies}
+              onMovieSelect={onMovieSelect}
             />
 
-            {isShowBtnMore ? <BtnShowMore /> : null}
+            {isShowBtnMore ? <BtnShowMore onSelect={onBtnMoreSelect} /> : null}
           </div>
         </section>
 
@@ -59,10 +69,12 @@ Main.propTypes = {
   promoMovie: movieType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
   genres: PropTypes.arrayOf(genreType).isRequired,
+  countShowedMovies: PropTypes.number.isRequired,
   onMoviePlay: PropTypes.func.isRequired,
   onMovieAddToList: PropTypes.func.isRequired,
   onMovieSelect: PropTypes.func.isRequired,
-  onGenreSelect: PropTypes.func.isRequired
+  onGenreSelect: PropTypes.func.isRequired,
+  onBtnMoreSelect: PropTypes.func.isRequired
 };
 
 
