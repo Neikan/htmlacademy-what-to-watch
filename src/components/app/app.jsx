@@ -7,10 +7,13 @@ import MoviePage from '../movie-page/movie-page.jsx';
 import {Page, ALL_GENRES} from "../../consts/common-data.js";
 import {ActionCreator} from "../../store/reducer.js";
 import {connect} from "react-redux";
+import withActiveTab from "../../hoc/with-active-tab/with-active-tab.js";
 
 
 const handleMoviePlay = () => {};
 const handleMovieAddToList = () => {};
+
+const MoviePageWrapped = withActiveTab(MoviePage);
 
 
 class App extends PureComponent {
@@ -82,7 +85,7 @@ class App extends PureComponent {
   _renderMoviePage() {
     const {selectedMovie, likedMovies, onMovieSelect} = this.props;
 
-    return <MoviePage
+    return <MoviePageWrapped
       movie={selectedMovie}
       movies={likedMovies}
       onMovieSelect = {onMovieSelect}
