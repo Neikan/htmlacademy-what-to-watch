@@ -60,7 +60,17 @@ class App extends PureComponent {
    * @return {Object} главная страница
    */
   _renderMainPage() {
-    const {promoMovie, movies, likedMovies, countShowedMovies, genres, selectedGenre, onMovieSelect, onGenreSelect, onBtnMoreSelect} = this.props;
+    const {
+      promoMovie,
+      movies,
+      likedMovies,
+      countShowedMovies,
+      genres,
+      selectedGenre,
+      onMovieSelect,
+      onGenreSelect,
+      onBtnMoreSelect
+    } = this.props;
 
     const renderedMovies = selectedGenre === ALL_GENRES ? movies : likedMovies;
 
@@ -88,7 +98,7 @@ class App extends PureComponent {
     return <MoviePageWrapped
       movie={selectedMovie}
       movies={likedMovies}
-      onMovieSelect = {onMovieSelect}
+      onMovieSelect={onMovieSelect}
     />;
   }
 }

@@ -12,10 +12,10 @@ const GenresList = (props) => {
     <ul className="catalog__genres-list">
       {genres.slice(0, COUNT_GENRES).map((genre) =>
         <GenreItem
-          key = {genre.id}
-          title = {genre.title}
-          isActive = {genre.isActive}
-          onGenreSelect = {onGenreSelect}
+          key={genre.id}
+          title={genre.title}
+          isActive={genre.isActive}
+          onGenreSelect={onGenreSelect}
         />
       )}
     </ul>

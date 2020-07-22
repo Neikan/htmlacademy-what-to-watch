@@ -16,9 +16,9 @@ describe(`Test e2e GenreItem component`, () => {
   test(`Should genre title be pressed`, () => {
     const genre = shallow(
         <GenreItem
-          title = {GENRES[0].title}
-          isActive = {GENRES[0].isActive}
-          onGenreSelect = {handleGenreSelect}
+          title={GENRES[0].title}
+          isActive={GENRES[0].isActive}
+          onGenreSelect={handleGenreSelect}
         />
     );
 

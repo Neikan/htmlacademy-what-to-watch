@@ -18,9 +18,9 @@ const MoviesByGenre = (props) => {
         <h2 className="catalog__title">More like this</h2>
 
         <MoviesListWrapped
-          movies = {movies}
+          movies={movies}
           countShowedMovies={countShowedMovies}
-          onMovieSelect = {onMovieSelect}
+          onMovieSelect={onMovieSelect}
         />
       </section>
 

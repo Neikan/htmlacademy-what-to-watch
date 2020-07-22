@@ -8,7 +8,7 @@ describe(`Test MovieReview component`, () => {
   test(`MovieReview component is created and rendered correctly`, () => {
     const tree = renderer.create(
         <MovieReview
-          review = {MOVIES[2].reviews[0]}
+          review={MOVIES[2].reviews[0]}
         />)
       .toJSON();
 

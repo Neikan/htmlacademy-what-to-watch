@@ -111,7 +111,7 @@ class MoviePage extends PureComponent {
       <MoviesByGenre
         movies={movies}
         countShowedMovies={CountMovies.LIKED_BY_GENRE}
-        onMovieSelect = {onMovieSelect}
+        onMovieSelect={onMovieSelect}
       />
     );
   }

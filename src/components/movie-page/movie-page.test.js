@@ -8,10 +8,10 @@ describe(`Test MoviePage component`, () => {
   test(`MoviePage component is created and rendered correctly`, () => {
     const tree = renderer.create(
         <MoviePage
-          movie = {MOVIES[0]}
-          movies = {MOVIES}
+          movie={MOVIES[0]}
+          movies={MOVIES}
           countShowedMovies={4}
-          onMovieSelect = {() => {}}
+          onMovieSelect={() => {}}
         />)
       .toJSON();
 
