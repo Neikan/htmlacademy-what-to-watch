@@ -2,8 +2,8 @@ import React, {PureComponent} from "react";
 import {MovieTabList} from "../../consts/common-data.js";
 
 
-const withActiveTab = (Component) => {
-  class WithActiveTab extends PureComponent {
+const withSelectedTab = (Component) => {
+  class WithSelectedTab extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -42,8 +42,8 @@ const withActiveTab = (Component) => {
   }
 
 
-  return WithActiveTab;
+  return WithSelectedTab;
 };
 
 
-export default withActiveTab;
+export default withSelectedTab;
