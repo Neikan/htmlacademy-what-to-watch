@@ -2,6 +2,10 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import {movieType} from "../../props/prop-types";
+import withActivePlayer from "../../hoc/with-active-player/with-active-player.js";
+
+
+const MovieCardWrapped = withActivePlayer(MovieCard);
 
 
 class MoviesList extends PureComponent {
@@ -10,19 +14,24 @@ class MoviesList extends PureComponent {
    * @return {Object} разметка компонента
    */
   render() {
-    const {movies, countShowedMovies,
-      onMovieSelect, onMovieMouseEnter, onMovieMouseLeave} = this.props;
+    const {
+      movies,
+      countShowedMovies,
+      onMovieSelect,
+      onMovieMouseEnter,
+      onMovieMouseLeave
+    } = this.props;
 
     return (
       <div className="catalog__movies-list">
         {movies.slice(0, countShowedMovies).map((movie) => {
           return (
-            <MovieCard
-              key = {movie.id}
-              movie = {movie}
-              onSelect = {onMovieSelect}
-              onPlay = {onMovieMouseEnter}
-              onPlayingStop = {onMovieMouseLeave}
+            <MovieCardWrapped
+              key={movie.id}
+              movie={movie}
+              onSelect={onMovieSelect}
+              onPlay={onMovieMouseEnter}
+              onPlayingStop={onMovieMouseLeave}
             />
           );
         })}
