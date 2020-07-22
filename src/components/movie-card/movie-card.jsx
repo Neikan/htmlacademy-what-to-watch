@@ -50,7 +50,7 @@ class MovieCard extends PureComponent {
   _handlePlay() {
     const {movie, onPlay} = this.props;
 
-    onPlay(movie);
+    onPlay(movie.id);
     this.setState({
       isPlaying: true
     });

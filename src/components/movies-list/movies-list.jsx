@@ -5,26 +5,13 @@ import {movieType} from "../../props/prop-types";
 
 
 class MoviesList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeMovieId: null
-    };
-
-    this._timeout = null;
-
-    this.handleMovieMouseEnter = this.handleMovieMouseEnter.bind(this);
-    this.handleMovieMouseLeave = this.handleMovieMouseLeave.bind(this);
-  }
-
-
   /**
    * Метод, обеспечивающий отрисовку разметки компонента с данными первых восьми фильмов
    * @return {Object} разметка компонента
    */
   render() {
-    const {movies, countShowedMovies, onMovieSelect} = this.props;
+    const {movies, countShowedMovies,
+      onMovieSelect, onMovieMouseEnter, onMovieMouseLeave} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -34,35 +21,13 @@ class MoviesList extends PureComponent {
               key = {movie.id}
               movie = {movie}
               onSelect = {onMovieSelect}
-              onPlay = {this.handleMovieMouseEnter}
-              onPlayingStop = {this.handleMovieMouseLeave}
+              onPlay = {onMovieMouseEnter}
+              onPlayingStop = {onMovieMouseLeave}
             />
           );
         })}
       </div>
     );
-  }
-
-
-  componentWillUnmount() {
-    clearTimeout(this._timeout);
-  }
-
-
-  handleMovieMouseEnter(movie) {
-    this._timeout = setTimeout(() => {
-      this.setState({
-        activeMovieId: movie.id
-      });
-    }, 10000);
-  }
-
-
-  handleMovieMouseLeave() {
-    clearTimeout(this._timeout);
-    this.setState({
-      activeMovieId: null
-    });
   }
 }
 
@@ -70,7 +35,10 @@ class MoviesList extends PureComponent {
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(movieType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
-  onMovieSelect: PropTypes.func.isRequired
+  onMovieSelect: PropTypes.func.isRequired,
+
+  onMovieMouseEnter: PropTypes.func.isRequired,
+  onMovieMouseLeave: PropTypes.func.isRequired
 };
 
 
