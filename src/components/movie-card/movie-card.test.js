@@ -5,13 +5,29 @@ import {MOVIES} from "./../../consts/test-data";
 
 
 describe(`Test MovieCard component`, () => {
-  test(`MovieCard component is created and rendered correctly`, () => {
+  test(`Render correctly when isPlaying is true`, () => {
     const tree = renderer.create(
         <MovieCard
           movie={MOVIES[0]}
+          isPlaying={true}
           onSelect={() => {}}
           onPlay={() => {}}
-          onPlayingStop={() => {}}
+          onStop={() => {}}
+        />)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+
+  test(`Render correctly when isPlaying is false`, () => {
+    const tree = renderer.create(
+        <MovieCard
+          movie={MOVIES[0]}
+          isPlaying={false}
+          onSelect={() => {}}
+          onPlay={() => {}}
+          onStop={() => {}}
         />)
       .toJSON();
 

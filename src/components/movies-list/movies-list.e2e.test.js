@@ -20,6 +20,8 @@ describe(`Test e2e MoviesList component`, () => {
           movies={MOVIES}
           countShowedMovies={countShowedMovies}
           onMovieSelect={handleMovieSelect}
+          onMovieMouseEnter={() => {}}
+          onMovieMouseLeave={() => {}}
         />
     );
 

@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MoviePage from "./movie-page.jsx";
-import {MOVIES} from "../../consts/test-data.js";
+import {MOVIES, MovieTabList} from "../../consts/test-data.js";
 
 
 describe(`Test MoviePage component`, () => {
@@ -12,6 +12,8 @@ describe(`Test MoviePage component`, () => {
           movies={MOVIES}
           countShowedMovies={4}
           onMovieSelect={() => {}}
+          selectedTab={MovieTabList.OVERVIEW}
+          onTabSelect={() => {}}
         />)
       .toJSON();
 
