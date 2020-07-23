@@ -9,7 +9,6 @@ configure({
   adapter: new Adapter()
 });
 
-
 const MockComponent = () => <div />;
 const MockComponentWrapped = withSelectedTab(MockComponent);
 
