@@ -8,9 +8,9 @@ describe(`Test VideoPlayer component`, () => {
   test(`VideoPlayer component is created and rendered correctly`, () => {
     const tree = renderer.create(
         <VideoPlayer muted
-          isPlaying = {false}
-          src = {MOVIES[0].preview}
-          cover = {MOVIES[0].cover}
+          isPlaying={false}
+          src={MOVIES[0].preview}
+          cover={MOVIES[0].cover}
         />, {
           createNodeMock: () => {
             return {};

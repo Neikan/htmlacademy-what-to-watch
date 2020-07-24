@@ -8,7 +8,7 @@ describe(`Test MovieDetails component`, () => {
   test(`When Movie is correctly`, () => {
     const tree = renderer.create(
         <MovieDetails
-          movie = {MOVIES[0]}
+          movie={MOVIES[0]}
         />)
       .toJSON();
 
@@ -19,7 +19,7 @@ describe(`Test MovieDetails component`, () => {
   test(`When Movie is undefined`, () => {
     const tree = renderer.create(
         <MovieDetails
-          movie = {null}
+          movie={null}
         />)
       .toJSON();
 

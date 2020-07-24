@@ -8,9 +8,9 @@ describe(`Test MoviesByGenre component`, () => {
   test(`MoviesByGenre component is created and rendered correctly`, () => {
     const tree = renderer.create(
         <MoviesByGenre
-          movies = {MOVIES}
-          countShowedMovies = {1}
-          onMovieSelect = {() => {}}
+          movies={MOVIES}
+          countShowedMovies={1}
+          onMovieSelect={() => {}}
         />)
       .toJSON();
 

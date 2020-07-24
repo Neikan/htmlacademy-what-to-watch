@@ -7,6 +7,10 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import BtnShowMore from "../btn-show-more/btn-show-more.jsx";
 import Footer from "../footer/footer.jsx";
 import {movieType, genreType} from "../../props/prop-types.js";
+import withSelectedMovie from "../../hoc/with-selected-movie/with-selected-movie.js";
+
+
+const MoviesListWrapped = withSelectedMovie(MoviesList);
 
 
 const Main = (props) => {
@@ -48,7 +52,7 @@ const Main = (props) => {
             onGenreSelect={onGenreSelect}
           />
           <div>
-            <MoviesList
+            <MoviesListWrapped
               movies={movies}
               countShowedMovies={countShowedMovies}
               onMovieSelect={onMovieSelect}

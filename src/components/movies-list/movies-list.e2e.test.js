@@ -17,9 +17,11 @@ describe(`Test e2e MoviesList component`, () => {
 
     const moviesList = mount(
         <MoviesList
-          movies = {MOVIES}
+          movies={MOVIES}
           countShowedMovies={countShowedMovies}
-          onMovieSelect = {handleMovieSelect}
+          onMovieSelect={handleMovieSelect}
+          onMovieMouseEnter={() => {}}
+          onMovieMouseLeave={() => {}}
         />
     );
 

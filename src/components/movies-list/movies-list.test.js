@@ -11,6 +11,8 @@ describe(`Test MoviesList component`, () => {
           movies={MOVIES}
           countShowedMovies={1}
           onMovieSelect={() => {}}
+          onMovieMouseEnter={() => {}}
+          onMovieMouseLeave={() => {}}
         />)
       .toJSON();
 

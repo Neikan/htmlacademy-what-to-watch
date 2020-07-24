@@ -12,18 +12,8 @@ import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 
 
 class MoviePage extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedTab: MovieTabList.OVERVIEW,
-    };
-
-    this._handleTabSelect = this._handleTabSelect.bind(this);
-  }
-
   render() {
-    const {movie} = this.props;
+    const {movie, selectedTab, onTabSelect} = this.props;
     const {title, genre, year, poster} = this.props.movie;
 
     return (
@@ -74,8 +64,8 @@ class MoviePage extends PureComponent {
               <div className="movie-card__desc">
                 <MovieTabs
                   tabs={MovieTabList}
-                  selectedTab={this.state.selectedTab}
-                  onTabSelect={this._handleTabSelect}
+                  selectedTab={selectedTab}
+                  onTabSelect={onTabSelect}
                   isReviews={movie.reviews.length > 0 ? true : false}
                 />
 
@@ -92,9 +82,9 @@ class MoviePage extends PureComponent {
 
 
   _renderMovieDesc() {
-    const {movie} = this.props;
+    const {movie, selectedTab} = this.props;
 
-    switch (this.state.selectedTab) {
+    switch (selectedTab) {
       case MovieTabList.OVERVIEW:
         return <MovieOverView movie={movie} />;
 
@@ -121,16 +111,9 @@ class MoviePage extends PureComponent {
       <MoviesByGenre
         movies={movies}
         countShowedMovies={CountMovies.LIKED_BY_GENRE}
-        onMovieSelect = {onMovieSelect}
+        onMovieSelect={onMovieSelect}
       />
     );
-  }
-
-
-  _handleTabSelect(tab) {
-    this.setState({
-      selectedTab: tab
-    });
   }
 }
 
@@ -138,7 +121,10 @@ class MoviePage extends PureComponent {
 MoviePage.propTypes = {
   movie: movieType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
-  onMovieSelect: PropTypes.func.isRequired
+  onMovieSelect: PropTypes.func.isRequired,
+
+  selectedTab: PropTypes.string.isRequired,
+  onTabSelect: PropTypes.func.isRequired
 };
 
 

@@ -16,8 +16,8 @@ describe(`Test e2e GenresList component`, () => {
 
     const genresList = mount(
         <GenresList
-          genres = {GENRES}
-          onGenreSelect = {handleGenreSelect}
+          genres={GENRES}
+          onGenreSelect={handleGenreSelect}
         />
     );
 

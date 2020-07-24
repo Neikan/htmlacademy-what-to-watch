@@ -16,15 +16,15 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promoMovie = {MOVIES[0]}
-          movies = {MOVIES}
-          genres = {GENRES}
-          countShowedMovies = {1}
-          onMoviePlay = {handleMoviePlay}
-          onMovieAddToList = {() => {}}
-          onMovieSelect = {() => {}}
-          onGenreSelect = {() => {}}
-          onBtnMoreSelect = {() => {}}
+          promoMovie={MOVIES[0]}
+          movies={MOVIES}
+          genres={GENRES}
+          countShowedMovies={1}
+          onMoviePlay={handleMoviePlay}
+          onMovieAddToList={() => {}}
+          onMovieSelect={() => {}}
+          onGenreSelect={() => {}}
+          onBtnMoreSelect={() => {}}
         />
     );
 
@@ -39,15 +39,15 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promoMovie = {MOVIES[0]}
-          movies = {MOVIES}
-          genres = {GENRES}
-          countShowedMovies = {1}
-          onMoviePlay = {() => {}}
-          onMovieAddToList = {handleMovieAddToList}
-          onMovieSelect = {() => {}}
-          onGenreSelect = {() => {}}
-          onBtnMoreSelect = {() => {}}
+          promoMovie={MOVIES[0]}
+          movies={MOVIES}
+          genres={GENRES}
+          countShowedMovies={1}
+          onMoviePlay={() => {}}
+          onMovieAddToList={handleMovieAddToList}
+          onMovieSelect={() => {}}
+          onGenreSelect={() => {}}
+          onBtnMoreSelect={() => {}}
         />
     );
 
@@ -63,15 +63,15 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promoMovie = {MOVIES[0]}
-          movies = {MOVIES}
-          genres = {GENRES}
-          countShowedMovies = {countShowedMovies}
-          onMoviePlay = {() => {}}
-          onMovieAddToList = {() => {}}
-          onMovieSelect = {handleMovieSelect}
-          onGenreSelect = {() => {}}
-          onBtnMoreSelect = {() => {}}
+          promoMovie={MOVIES[0]}
+          movies={MOVIES}
+          genres={GENRES}
+          countShowedMovies={countShowedMovies}
+          onMoviePlay={() => {}}
+          onMovieAddToList={() => {}}
+          onMovieSelect={handleMovieSelect}
+          onGenreSelect={() => {}}
+          onBtnMoreSelect={() => {}}
         />
     );
 
@@ -87,15 +87,15 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promoMovie = {MOVIES[0]}
-          movies = {MOVIES}
-          genres = {GENRES}
-          countShowedMovies = {1}
-          onMoviePlay = {() => {}}
-          onMovieAddToList = {() => {}}
-          onMovieSelect = {() => {}}
-          onGenreSelect = {handleGenreSelect}
-          onBtnMoreSelect = {() => {}}
+          promoMovie={MOVIES[0]}
+          movies={MOVIES}
+          genres={GENRES}
+          countShowedMovies={1}
+          onMoviePlay={() => {}}
+          onMovieAddToList={() => {}}
+          onMovieSelect={() => {}}
+          onGenreSelect={handleGenreSelect}
+          onBtnMoreSelect={() => {}}
         />
     );
 
@@ -110,15 +110,15 @@ describe(`Test e2e Main component`, () => {
 
     const main = mount(
         <Main
-          promoMovie = {MOVIES[0]}
-          movies = {MOVIES}
-          genres = {GENRES}
-          countShowedMovies = {1}
-          onMoviePlay = {() => {}}
-          onMovieAddToList = {() => {}}
-          onMovieSelect = {() => {}}
-          onGenreSelect = {() => {}}
-          onBtnMoreSelect = {handleBtnMoreSelect}
+          promoMovie={MOVIES[0]}
+          movies={MOVIES}
+          genres={GENRES}
+          countShowedMovies={1}
+          onMoviePlay={() => {}}
+          onMovieAddToList={() => {}}
+          onMovieSelect={() => {}}
+          onGenreSelect={() => {}}
+          onBtnMoreSelect={handleBtnMoreSelect}
         />
     );
 

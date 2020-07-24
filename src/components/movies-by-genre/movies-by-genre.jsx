@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import {movieType} from "../../props/prop-types.js";
 import Footer from "../footer/footer.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
+import withSelectedMovie from "../../hoc/with-selected-movie/with-selected-movie.js";
+
+
+const MoviesListWrapped = withSelectedMovie(MoviesList);
 
 
 const MoviesByGenre = (props) => {
@@ -13,10 +17,10 @@ const MoviesByGenre = (props) => {
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MoviesList
-          movies = {movies}
+        <MoviesListWrapped
+          movies={movies}
           countShowedMovies={countShowedMovies}
-          onMovieSelect = {onMovieSelect}
+          onMovieSelect={onMovieSelect}
         />
       </section>
 

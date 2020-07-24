@@ -5,39 +5,31 @@ import VideoPlayer from "../video-player/video-player.jsx";
 
 
 class MovieCard extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isPlaying: false
-    };
-
-    this._handlePlay = this._handlePlay.bind(this);
-    this._handleStop = this._handleStop.bind(this);
-    this._handleSelect = this._handleSelect.bind(this);
-  }
-
-
+  /**
+   * Метод, обеспечивающий отрисовку компонента
+   * @return {Object} созданный компонент
+   */
   render() {
-    const {id, title, cover, preview} = this.props.movie;
+    const {movie, isPlaying, onPlay, onStop, onSelect} = this.props;
+    const {id, title, cover, preview} = movie;
 
     return (
       <article
-        onMouseEnter={this._handlePlay}
-        onMouseLeave={this._handleStop}
-        onClick={this._handleSelect}
+        onMouseEnter={onPlay}
+        onMouseLeave={onStop}
+        onClick={onSelect}
         id={id}
         className="small-movie-card catalog__movies-card"
       >
         <div className="small-movie-card__image">
           <VideoPlayer muted
-            isPlaying = {this.state.isPlaying}
-            src = {preview}
-            cover = {cover}
+            isPlaying={isPlaying}
+            src={preview}
+            cover={cover}
           />
         </div>
         <h3
-          onClick={this._handleSelect}
+          onClick={onSelect}
           className="small-movie-card__title"
         >
           <a className="small-movie-card__link" href="movie-page.html">{title}</a>
@@ -45,38 +37,15 @@ class MovieCard extends PureComponent {
       </article>
     );
   }
-
-
-  _handlePlay() {
-    const {movie, onPlay} = this.props;
-
-    onPlay(movie);
-    this.setState({
-      isPlaying: true
-    });
-  }
-
-
-  _handleStop() {
-    this.props.onPlayingStop();
-    this.setState({
-      isPlaying: false
-    });
-  }
-
-  _handleSelect() {
-    const {movie, onSelect} = this.props;
-
-    onSelect(movie);
-  }
 }
 
 
 MovieCard.propTypes = {
   movie: movieType.isRequired,
-  onSelect: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
   onPlay: PropTypes.func.isRequired,
-  onPlayingStop: PropTypes.func.isRequired
+  onStop: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired
 };
 
 

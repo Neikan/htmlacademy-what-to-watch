@@ -6,7 +6,7 @@ import {LogoPosition} from "../../consts/common-data.js";
 const Header = () => {
   return (
     <header className="page-header movie-card__head">
-      <Logo logoPosition = {LogoPosition.HEADER}/>
+      <Logo logoPosition={LogoPosition.HEADER} />
 
       <div className="user-block">
         <div className="user-block__avatar">

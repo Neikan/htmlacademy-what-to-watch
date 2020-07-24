@@ -24,7 +24,7 @@ const Promo = (props) => {
 
           <div className="movie-card__buttons">
             <button
-              onClick = {onPlay}
+              onClick={onPlay}
               className="btn btn--play movie-card__button" type="button"
             >
               <svg viewBox="0 0 19 19" width="19" height="19">
@@ -33,7 +33,7 @@ const Promo = (props) => {
               <span>Play</span>
             </button>
             <button
-              onClick = {onAdd}
+              onClick={onAdd}
               className="btn btn--list movie-card__button" type="button"
             >
               <svg viewBox="0 0 19 20" width="19" height="20">

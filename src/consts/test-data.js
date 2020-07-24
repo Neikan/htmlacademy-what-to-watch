@@ -128,3 +128,10 @@ export const MarkupElement = {
   MOVIE_TAB: `movie-nav__item`,
   BTN_SHOW_MORE: `catalog__button`
 };
+
+
+export const MovieTabList = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
+};

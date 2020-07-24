@@ -27,16 +27,15 @@ describe(`Test App component`, () => {
     });
 
 
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <App />
-          </Provider>, {
-            createNodeMock: () => {
-              return {};
-            }
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App />
+        </Provider>, {
+          createNodeMock: () => {
+            return {};
           }
-      ).toJSON();
+        }
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -57,16 +56,15 @@ describe(`Test App component`, () => {
     });
 
 
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <App />
-          </Provider>, {
-            createNodeMock: () => {
-              return {};
-            }
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App />
+        </Provider>, {
+          createNodeMock: () => {
+            return {};
           }
-      ).toJSON();
+        }
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -87,16 +85,15 @@ describe(`Test App component`, () => {
     });
 
 
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <App />
-          </Provider>, {
-            createNodeMock: () => {
-              return {};
-            }
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App />
+        </Provider>, {
+          createNodeMock: () => {
+            return {};
           }
-      ).toJSON();
+        }
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

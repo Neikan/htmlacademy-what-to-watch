@@ -8,7 +8,7 @@ describe(`Test MovieOverView component`, () => {
   test(`When Movie is correctly`, () => {
     const tree = renderer.create(
         <MovieOverView
-          movie = {MOVIES[0]}
+          movie={MOVIES[0]}
         />)
       .toJSON();
 
@@ -19,7 +19,7 @@ describe(`Test MovieOverView component`, () => {
   test(`When Movie is undefined`, () => {
     const tree = renderer.create(
         <MovieOverView
-          movie = {null}
+          movie={null}
         />)
       .toJSON();
 
