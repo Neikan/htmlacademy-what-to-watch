@@ -149,6 +149,9 @@ class MoviePage extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий управление проигрывателем фильма
+   */
   _handleChangePlaying() {
     this.props.onMovieChangePlaying();
   }

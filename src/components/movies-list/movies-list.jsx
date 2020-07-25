@@ -1,5 +1,5 @@
 // Импорт библиотек
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 // Импорт компонентов
@@ -17,40 +17,35 @@ const MovieCardWrapped = withActivePlayer(MovieCard);
 
 /**
  * Создание компонента, обеспечивающего отображение списков фильмов
+ * на главной странице и на странице фильма в списке похожих
  * @param {Object} props параметры
  * @return {Object} созданный компонент
  */
-class MoviesList extends PureComponent {
-  /**
-   * Метод, обеспечивающий отрисовку компонента (по умолчанию - с данными первых восьми фильмов)
-   * @return {Object} созданный компонент
-   */
-  render() {
-    const {
-      movies,
-      countShowedMovies,
-      onMovieSelect,
-      onMovieMouseEnter,
-      onMovieMouseLeave
-    } = this.props;
+const MoviesList = (props) => {
+  const {
+    movies,
+    countShowedMovies,
+    onMovieSelect,
+    onMovieMouseEnter,
+    onMovieMouseLeave
+  } = props;
 
-    return (
-      <div className="catalog__movies-list">
-        {movies.slice(0, countShowedMovies).map((movie) => {
-          return (
-            <MovieCardWrapped
-              key={movie.id}
-              movie={movie}
-              onSelect={onMovieSelect}
-              onPlay={onMovieMouseEnter}
-              onPlayingStop={onMovieMouseLeave}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {movies.slice(0, countShowedMovies).map((movie) => {
+        return (
+          <MovieCardWrapped
+            key={movie.id}
+            movie={movie}
+            onSelect={onMovieSelect}
+            onPlay={onMovieMouseEnter}
+            onPlayingStop={onMovieMouseLeave}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 
 MoviesList.propTypes = {
