@@ -16,9 +16,9 @@ class Promo extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handleSelect = this._handleSelect.bind(this);
-    this._handlePlayingChange = this._handlePlayingChange.bind(this);
     this._handleAdd = this._handleAdd.bind(this);
+    this._handleChangePlaying = this._handleChangePlaying.bind(this);
+    this._handleSelect = this._handleSelect.bind(this);
   }
 
 
@@ -28,7 +28,7 @@ class Promo extends PureComponent {
    */
   render() {
     const {movie} = this.props;
-    const {title, poster, genre, year} = movie;
+    const {genre, poster, title, year} = movie;
 
     return (
       <div className="movie-card__wrap">
@@ -54,7 +54,7 @@ class Promo extends PureComponent {
 
             <div className="movie-card__buttons">
               <button
-                onClick={this._handlePlayingChange}
+                onClick={this._handleChangePlaying}
                 className="btn btn--play movie-card__button" type="button"
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
@@ -92,8 +92,8 @@ class Promo extends PureComponent {
   /**
    * Метод, обеспечивающий управление проигрывателем фильма
    */
-  _handlePlayingChange() {
-    this.props.onPlayingChange();
+  _handleChangePlaying() {
+    this.props.onChangePlaying();
   }
 
 
@@ -110,8 +110,8 @@ class Promo extends PureComponent {
 
 Promo.propTypes = {
   movie: movieType.isRequired,
-  onPlayingChange: PropTypes.func.isRequired,
   onAdd: PropTypes.func.isRequired,
+  onChangePlaying: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired
 };
 

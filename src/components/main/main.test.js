@@ -17,11 +17,11 @@ describe(`Test Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlayingChange={() => {}}
+          onMovieChangePlaying={() => {}}
           onMovieAddToList={() => {}}
           onMovieSelect={() => {}}
           onGenreSelect={() => {}}
-          onBtnMoreSelect={() => {}}
+          onShowMore={() => {}}
         />
     ).toJSON();
 

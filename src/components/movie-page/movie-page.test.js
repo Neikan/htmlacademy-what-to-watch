@@ -17,7 +17,7 @@ describe(`Test MoviePage component`, () => {
           movies={MOVIES}
           countShowedMovies={4}
           onMovieSelect={() => {}}
-          onMoviePlayingChange={() => {}}
+          onMovieChangePlaying={() => {}}
           selectedTab={MovieTabList.OVERVIEW}
           onTabSelect={() => {}}
         />

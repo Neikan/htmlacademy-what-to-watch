@@ -24,7 +24,7 @@ class MoviePage extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handlePlayingChange = this._handlePlayingChange.bind(this);
+    this._handleChangePlaying = this._handleChangePlaying.bind(this);
   }
 
 
@@ -59,7 +59,7 @@ class MoviePage extends PureComponent {
 
                 <div className="movie-card__buttons">
                   <button
-                    onClick={this._handlePlayingChange}
+                    onClick={this._handleChangePlaying}
                     className="btn btn--play movie-card__button" type="button"
                   >
                     <svg viewBox="0 0 19 19" width="19" height="19">
@@ -149,8 +149,8 @@ class MoviePage extends PureComponent {
   }
 
 
-  _handlePlayingChange() {
-    this.props.onMoviePlayingChange();
+  _handleChangePlaying() {
+    this.props.onMovieChangePlaying();
   }
 }
 
@@ -159,7 +159,7 @@ MoviePage.propTypes = {
   movie: movieType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieSelect: PropTypes.func.isRequired,
-  onMoviePlayingChange: PropTypes.func.isRequired,
+  onMovieChangePlaying: PropTypes.func.isRequired,
 
   selectedTab: PropTypes.string.isRequired,
   onTabSelect: PropTypes.func.isRequired

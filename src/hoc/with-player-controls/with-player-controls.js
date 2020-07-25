@@ -19,7 +19,7 @@ const withPlayerControls = (Component) => {
 
       this._videoRef = createRef();
 
-      this._handlePlayingChange = this._handlePlayingChange.bind(this);
+      this._handleChangePlaying = this._handleChangePlaying.bind(this);
       this._handleSetFullScreen = this._handleSetFullScreen.bind(this);
     }
 
@@ -74,7 +74,7 @@ const withPlayerControls = (Component) => {
         {...this.props}
         time={time}
         isPlaying={isPlaying}
-        onPlayingChange={this._handlePlayingChange}
+        onChangePlaying={this._handleChangePlaying}
         onSetFullScreen={this._handleSetFullScreen}
       >
         <video
@@ -103,7 +103,7 @@ const withPlayerControls = (Component) => {
     }
 
 
-    _handlePlayingChange() {
+    _handleChangePlaying() {
       const {isPlaying} = this.state;
 
       this.setState({

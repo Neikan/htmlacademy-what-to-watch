@@ -11,7 +11,7 @@ describe(`Test BtnsPlaying component`, () => {
     const tree = renderer.create(
         <BtnsPlaying
           isPlaying={true}
-          onPlayingChange={() => {}}
+          onChangePlaying={() => {}}
         />
     ).toJSON();
 
@@ -23,7 +23,7 @@ describe(`Test BtnsPlaying component`, () => {
     const tree = renderer.create(
         <BtnsPlaying
           isPlaying={false}
-          onPlayingChange={() => {}}
+          onChangePlaying={() => {}}
         />
     ).toJSON();
 

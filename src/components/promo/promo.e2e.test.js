@@ -17,12 +17,12 @@ configure({
 
 describe(`Test e2e Promo component`, () => {
   test(`Should 'play'-button for promo-movie be pressed`, () => {
-    const handlePlayingChange = jest.fn();
+    const handleChangePlaying = jest.fn();
 
     const promo = shallow(
         <Promo
           movie={MOVIES[0]}
-          onPlayingChange={handlePlayingChange}
+          onChangePlaying={handleChangePlaying}
           onAdd={() => {}}
           onSelect={() => {}}
         />
@@ -30,7 +30,7 @@ describe(`Test e2e Promo component`, () => {
 
     promo.find(`.${MarkupElement.PROMO_BTN_PLAY}`).props().onClick();
 
-    expect(handlePlayingChange.mock.calls.length).toBe(1);
+    expect(handleChangePlaying.mock.calls.length).toBe(1);
   });
 
 
@@ -40,7 +40,7 @@ describe(`Test e2e Promo component`, () => {
     const promo = shallow(
         <Promo
           movie={MOVIES[0]}
-          onPlayingChange={() => {}}
+          onChangePlaying={() => {}}
           onAdd={handleMovieAddToList}
           onSelect={() => {}}
         />
@@ -58,8 +58,8 @@ describe(`Test e2e Promo component`, () => {
     const promo = shallow(
         <Promo
           movie={MOVIES[0]}
-          onPlayingChange={() => {}}
           onAdd={() => {}}
+          onChangePlaying={() => {}}
           onSelect={handleMovieSelect}
         />
     );
@@ -76,8 +76,8 @@ describe(`Test e2e Promo component`, () => {
     const promo = shallow(
         <Promo
           movie={MOVIES[0]}
-          onPlayingChange={() => {}}
           onAdd={() => {}}
+          onChangePlaying={() => {}}
           onSelect={handleMovieSelect}
         />
     );

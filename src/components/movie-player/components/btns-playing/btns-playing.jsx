@@ -14,11 +14,11 @@ import BtnPlay from "../btn-play/btn-play.jsx";
  * @return {Object} созданный компонент
  */
 const BtnsPlaying = (props) => {
-  const {isPlaying, onPlayingChange} = props;
+  const {isPlaying, onChangePlaying} = props;
 
   return (
     <button type="button" className="player__play"
-      onClick={() => onPlayingChange()}
+      onClick={() => onChangePlaying()}
     >
       {isPlaying ? <BtnPause /> : <BtnPlay />}
     </button>
@@ -28,7 +28,7 @@ const BtnsPlaying = (props) => {
 
 BtnsPlaying.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
-  onPlayingChange: PropTypes.func.isRequired
+  onChangePlaying: PropTypes.func.isRequired
 };
 
 

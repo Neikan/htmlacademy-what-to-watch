@@ -93,9 +93,9 @@ class App extends PureComponent {
       genres,
       selectedGenre,
       onMovieSelect,
-      onMoviePlayingChange,
+      onMovieChangePlaying,
       onGenreSelect,
-      onBtnMoreSelect
+      onShowMore
     } = this.props;
 
     const renderedMovies = selectedGenre === ALL_GENRES ? movies : likedMovies;
@@ -105,11 +105,11 @@ class App extends PureComponent {
       movies={renderedMovies}
       genres={genres}
       countShowedMovies={countShowedMovies}
-      onMoviePlayingChange={onMoviePlayingChange}
+      onMovieChangePlaying={onMovieChangePlaying}
       onMovieAddToList={handleMovieAddToList}
       onMovieSelect={onMovieSelect}
       onGenreSelect={onGenreSelect}
-      onBtnMoreSelect={onBtnMoreSelect}
+      onShowMore={onShowMore}
     />;
   }
 
@@ -119,13 +119,13 @@ class App extends PureComponent {
    * @return {Object} страница фильма
    */
   _renderMoviePage() {
-    const {selectedMovie, likedMovies, onMovieSelect, onMoviePlayingChange} = this.props;
+    const {selectedMovie, likedMovies, onMovieSelect, onMovieChangePlaying} = this.props;
 
     return <MoviePageWrapped
       movie={selectedMovie}
       movies={likedMovies}
       onMovieSelect={onMovieSelect}
-      onMoviePlayingChange={onMoviePlayingChange}
+      onMovieChangePlaying={onMovieChangePlaying}
     />;
   }
 
@@ -135,12 +135,12 @@ class App extends PureComponent {
    * @return {Object} проигрыватель
    */
   _renderMoviePlayer() {
-    const {selectedMovie, onMoviePlayingChange} = this.props;
+    const {selectedMovie, onMovieChangePlaying} = this.props;
 
     return (
       <MoviePlayerWrapped
         movie={selectedMovie}
-        onClose={onMoviePlayingChange}
+        onClose={onMovieChangePlaying}
       />
     );
   }
@@ -161,10 +161,10 @@ App.propTypes = {
   selectedGenre: PropTypes.string.isRequired,
 
   onMovieSelect: PropTypes.func.isRequired,
-  onMoviePlayingChange: PropTypes.func.isRequired,
+  onMovieChangePlaying: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
 
-  onBtnMoreSelect: PropTypes.func.isRequired
+  onShowMore: PropTypes.func.isRequired
 };
 
 
@@ -192,12 +192,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.selectMovie(movie));
   },
 
-  onMoviePlayingChange() {
-    dispatch(ActionCreator.playingChangeMovie());
+  onMovieChangePlaying() {
+    dispatch(ActionCreator.changePlayingMovie());
   },
 
-  onBtnMoreSelect() {
-    dispatch(ActionCreator.selectBtnMore());
+  onShowMore() {
+    dispatch(ActionCreator.showMore());
   }
 });
 

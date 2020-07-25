@@ -20,7 +20,7 @@ describe(`Test MoviePlayer component`, () => {
           time={Time}
           isPlaying={true}
           onClose={() => {}}
-          onPlayingChange={() => {}}
+          onChangePlaying={() => {}}
           onSetFullScreen={() => {}}
         >
           {children}

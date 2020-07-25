@@ -81,7 +81,7 @@ describe(`Action types work correctly`, () => {
       movies: MOVIES,
       countShowedMovies: 1
     }, {
-      type: ActionType.SELECT_SHOW_MORE,
+      type: ActionType.SHOW_MORE,
       payload: 1
     })).toEqual({
       movies: MOVIES,
@@ -95,7 +95,7 @@ describe(`Action types work correctly`, () => {
       movies: MOVIES,
       isPlayingMovie: false,
     }, {
-      type: ActionType.PLAYING_CHANGE_MOVIE,
+      type: ActionType.CHANGE_PLAYING_MOVIE,
       payload: null
     })).toEqual({
       movies: MOVIES,
@@ -123,16 +123,16 @@ describe(`Action creators work correctly`, () => {
 
 
   test(`Select movie returns correct action`, () => {
-    expect(ActionCreator.selectBtnMore()).toEqual({
-      type: ActionType.SELECT_SHOW_MORE,
+    expect(ActionCreator.showMore()).toEqual({
+      type: ActionType.SHOW_MORE,
       payload: CountMovies.START
     });
   });
 
 
-  test(`PlayingChange returns correct action`, () => {
-    expect(ActionCreator.playingChangeMovie()).toEqual({
-      type: ActionType.PLAYING_CHANGE_MOVIE,
+  test(`ChangePlaying returns correct action`, () => {
+    expect(ActionCreator.changePlayingMovie()).toEqual({
+      type: ActionType.CHANGE_PLAYING_MOVIE,
       payload: null
     });
   });

@@ -10,7 +10,7 @@ describe(`Test BtnFullScreen component`, () => {
   test(`BtnFullScreen component is created and rendered correctly`, () => {
     const tree = renderer.create(
         <BtnFullScreen
-          onSelect={() => {}}
+          onSet={() => {}}
         />
     ).toJSON();
 

@@ -1,5 +1,5 @@
 // Импорт библиотек
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 // Импорт компонентов
@@ -14,69 +14,51 @@ import {movieType, timeType} from "../../props/prop-types.js";
 
 /**
  * Создание компонента, обеспечивающего отображение проигрывателя фильма
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
  */
-class MoviePlayer extends PureComponent {
-  constructor(props) {
-    super(props);
+const MoviePlayer = (props) => {
+  const {
+    children,
+    movie,
+    time,
+    isPlaying,
+    onClose,
+    onChangePlaying,
+    onSetFullScreen
+  } = props;
 
-    this._handleSetFullScreen = this._handleSetFullScreen.bind(this);
-  }
+  const {title} = movie;
 
+  return (
+    <div className="player">
+      {children}
 
-  /**
-   * Метод, обеспечивающий отрисовку компонента
-   * @return {Object} созданный компонент
-   */
-  render() {
-    const {
-      children,
-      movie,
-      time,
-      isPlaying,
-      onClose,
-      onPlayingChange
-    } = this.props;
+      <BtnExit
+        onClose={onClose}
+      />
 
-    const {title} = movie;
+      <div className="player__controls">
+        <div className="player__controls-row">
+          <ScaleTime
+            time={time}
+          />
+        </div>
 
-    return (
-      <div className="player">
-        {children}
-
-        <BtnExit
-          onClose={onClose}
-        />
-
-        <div className="player__controls">
-          <div className="player__controls-row">
-            <ScaleTime
-              time={time}
-            />
-          </div>
-
-          <div className="player__controls-row">
-            <BtnsPlaying
-              isPlaying={isPlaying}
-              onPlayingChange={onPlayingChange}
-            />
-            <div className="player__name">{title}</div>
-            <BtnFullScreen
-              onSelect={this._handleSetFullScreen}
-            />
-          </div>
+        <div className="player__controls-row">
+          <BtnsPlaying
+            isPlaying={isPlaying}
+            onChangePlaying={onChangePlaying}
+          />
+          <div className="player__name">{title}</div>
+          <BtnFullScreen
+            onSet={onSetFullScreen}
+          />
         </div>
       </div>
-    );
-  }
-
-
-  /**
-   * Метод, обеспечивабщий перевод проигрывателя в полноэкранный режим
-   */
-  _handleSetFullScreen() {
-    this.props.onSetFullScreen();
-  }
-}
+    </div>
+  );
+};
 
 
 MoviePlayer.propTypes = {
@@ -85,7 +67,7 @@ MoviePlayer.propTypes = {
   time: timeType.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  onPlayingChange: PropTypes.func.isRequired,
+  onChangePlaying: PropTypes.func.isRequired,
   onSetFullScreen: PropTypes.func.isRequired
 };
 

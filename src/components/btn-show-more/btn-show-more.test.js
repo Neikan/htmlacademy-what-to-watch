@@ -10,7 +10,7 @@ describe(`Test BtnShowMore component`, () => {
   test(`BtnShowMore component is created and rendered correctly`, () => {
     const tree = renderer.create(
         <BtnShowMore
-          onSelect={() => {}}
+          onShowMore={() => {}}
         />
     ).toJSON();
 

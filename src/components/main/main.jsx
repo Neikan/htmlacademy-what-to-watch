@@ -32,16 +32,16 @@ const Main = (props) => {
     movies,
     genres,
     countShowedMovies,
-    onMoviePlayingChange,
+    onMovieChangePlaying,
     onMovieAddToList,
     onMovieSelect,
     onGenreSelect,
-    onBtnMoreSelect
+    onShowMore
   } = props;
 
   const {poster, title} = promoMovie;
 
-  const isShowBtnMore = movies.length > countShowedMovies;
+  const isShowMore = movies.length > countShowedMovies;
 
   return (
     <>
@@ -54,7 +54,7 @@ const Main = (props) => {
         <Header />
         <Promo
           movie={promoMovie}
-          onPlayingChange={onMoviePlayingChange}
+          onChangePlaying={onMovieChangePlaying}
           onAdd={onMovieAddToList}
           onSelect={onMovieSelect}
         />
@@ -74,7 +74,7 @@ const Main = (props) => {
               onMovieSelect={onMovieSelect}
             />
 
-            {isShowBtnMore ? <BtnShowMore onSelect={onBtnMoreSelect} /> : null}
+            {isShowMore ? <BtnShowMore onShowMore={onShowMore} /> : null}
           </div>
         </section>
 
@@ -90,11 +90,11 @@ Main.propTypes = {
   movies: PropTypes.arrayOf(movieType).isRequired,
   genres: PropTypes.arrayOf(genreType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
-  onMoviePlayingChange: PropTypes.func.isRequired,
+  onMovieChangePlaying: PropTypes.func.isRequired,
   onMovieAddToList: PropTypes.func.isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
-  onBtnMoreSelect: PropTypes.func.isRequired
+  onShowMore: PropTypes.func.isRequired
 };
 
 

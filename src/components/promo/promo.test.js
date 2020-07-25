@@ -14,8 +14,8 @@ describe(`Test Promo component`, () => {
     const tree = renderer.create(
         <Promo
           movie={MOVIES[0]}
-          onPlayingChange={() => {}}
           onAdd={() => {}}
+          onChangePlaying={() => {}}
           onSelect={() => {}}
         />
     ).toJSON();
