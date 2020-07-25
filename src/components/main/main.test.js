@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import Main from "./main.jsx";
+
+// Импорт типов, констант, утилит
 import {MOVIES, GENRES} from "./../../consts/test-data";
 
 
@@ -12,7 +17,7 @@ describe(`Test Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlay={() => {}}
+          onMoviePlayingChange={() => {}}
           onMovieAddToList={() => {}}
           onMovieSelect={() => {}}
           onGenreSelect={() => {}}

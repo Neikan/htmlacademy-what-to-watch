@@ -93,7 +93,7 @@ class App extends PureComponent {
       genres,
       selectedGenre,
       onMovieSelect,
-      onMoviePlay,
+      onMoviePlayingChange,
       onGenreSelect,
       onBtnMoreSelect
     } = this.props;
@@ -105,7 +105,7 @@ class App extends PureComponent {
       movies={renderedMovies}
       genres={genres}
       countShowedMovies={countShowedMovies}
-      onMoviePlay={onMoviePlay}
+      onMoviePlayingChange={onMoviePlayingChange}
       onMovieAddToList={handleMovieAddToList}
       onMovieSelect={onMovieSelect}
       onGenreSelect={onGenreSelect}
@@ -119,13 +119,13 @@ class App extends PureComponent {
    * @return {Object} страница фильма
    */
   _renderMoviePage() {
-    const {selectedMovie, likedMovies, onMovieSelect, onMoviePlay} = this.props;
+    const {selectedMovie, likedMovies, onMovieSelect, onMoviePlayingChange} = this.props;
 
     return <MoviePageWrapped
       movie={selectedMovie}
       movies={likedMovies}
       onMovieSelect={onMovieSelect}
-      onMoviePlay={onMoviePlay}
+      onMoviePlayingChange={onMoviePlayingChange}
     />;
   }
 
@@ -135,12 +135,12 @@ class App extends PureComponent {
    * @return {Object} проигрыватель
    */
   _renderMoviePlayer() {
-    const {selectedMovie, onMoviePlayingStop} = this.props;
+    const {selectedMovie, onMoviePlayingChange} = this.props;
 
     return (
       <MoviePlayerWrapped
         movie={selectedMovie}
-        onClose={onMoviePlayingStop}
+        onClose={onMoviePlayingChange}
       />
     );
   }
@@ -161,8 +161,7 @@ App.propTypes = {
   selectedGenre: PropTypes.string.isRequired,
 
   onMovieSelect: PropTypes.func.isRequired,
-  onMoviePlay: PropTypes.func.isRequired,
-  onMoviePlayingStop: PropTypes.func.isRequired,
+  onMoviePlayingChange: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
 
   onBtnMoreSelect: PropTypes.func.isRequired
@@ -193,12 +192,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.selectMovie(movie));
   },
 
-  onMoviePlay(movie) {
-    dispatch(ActionCreator.playMovie(movie));
-  },
-
-  onMoviePlayingStop(movie) {
-    dispatch(ActionCreator.playingStopMovie(movie));
+  onMoviePlayingChange() {
+    dispatch(ActionCreator.playingChangeMovie());
   },
 
   onBtnMoreSelect() {

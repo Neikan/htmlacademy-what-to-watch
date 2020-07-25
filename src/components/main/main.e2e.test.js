@@ -1,7 +1,12 @@
+// Импорт библиотек
 import React from "react";
-import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import {configure, mount} from "enzyme";
+
+// Импорт компонентов
 import Main from "./main.jsx";
+
+// Импорт типов, констант, утилит
 import {MarkupElement, MOVIES, GENRES} from "./../../consts/test-data";
 
 
@@ -12,7 +17,7 @@ configure({
 
 describe(`Test e2e Main component`, () => {
   test(`Should 'play'-button for promo-movie be pressed`, () => {
-    const handleMoviePlay = jest.fn();
+    const handleMoviePlayingChange = jest.fn();
 
     const main = mount(
         <Main
@@ -20,7 +25,7 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlay={handleMoviePlay}
+          onMoviePlayingChange={handleMoviePlayingChange}
           onMovieAddToList={() => {}}
           onMovieSelect={() => {}}
           onGenreSelect={() => {}}
@@ -30,7 +35,7 @@ describe(`Test e2e Main component`, () => {
 
     main.find(`.${MarkupElement.PROMO_BTN_PLAY}`).props().onClick();
 
-    expect(handleMoviePlay.mock.calls.length).toBe(1);
+    expect(handleMoviePlayingChange.mock.calls.length).toBe(1);
   });
 
 
@@ -43,7 +48,7 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlay={() => {}}
+          onMoviePlayingChange={() => {}}
           onMovieAddToList={handleMovieAddToList}
           onMovieSelect={() => {}}
           onGenreSelect={() => {}}
@@ -67,7 +72,7 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={countShowedMovies}
-          onMoviePlay={() => {}}
+          onMoviePlayingChange={() => {}}
           onMovieAddToList={() => {}}
           onMovieSelect={handleMovieSelect}
           onGenreSelect={() => {}}
@@ -91,7 +96,7 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlay={() => {}}
+          onMoviePlayingChange={() => {}}
           onMovieAddToList={() => {}}
           onMovieSelect={() => {}}
           onGenreSelect={handleGenreSelect}
@@ -114,7 +119,7 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlay={() => {}}
+          onMoviePlayingChange={() => {}}
           onMovieAddToList={() => {}}
           onMovieSelect={() => {}}
           onGenreSelect={() => {}}

@@ -14,6 +14,7 @@ describe(`Get initial state`, () => {
       selectedMovie: MOVIES[0],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[0].genre, MOVIES[0].id),
       countShowedMovies: CountMovies.START,
+      isPlayingMovie: false,
 
       genres: GENRES,
       selectedGenre: GENRES[0]
@@ -27,6 +28,7 @@ describe(`Get initial state`, () => {
       selectedMovie: MOVIES[0],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[0].genre, MOVIES[0].id),
       countShowedMovies: CountMovies.START,
+      isPlayingMovie: false,
 
       genres: GENRES,
       selectedGenre: GENRES[0]
@@ -86,6 +88,20 @@ describe(`Action types work correctly`, () => {
       countShowedMovies: 2
     });
   });
+
+
+  test(`Return more showed movies`, () => {
+    expect(reducer({
+      movies: MOVIES,
+      isPlayingMovie: false,
+    }, {
+      type: ActionType.PLAYING_CHANGE_MOVIE,
+      payload: null
+    })).toEqual({
+      movies: MOVIES,
+      isPlayingMovie: true
+    });
+  });
 });
 
 
@@ -110,6 +126,14 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.selectBtnMore()).toEqual({
       type: ActionType.SELECT_SHOW_MORE,
       payload: CountMovies.START
+    });
+  });
+
+
+  test(`PlayingChange returns correct action`, () => {
+    expect(ActionCreator.playingChangeMovie()).toEqual({
+      type: ActionType.PLAYING_CHANGE_MOVIE,
+      payload: null
     });
   });
 });

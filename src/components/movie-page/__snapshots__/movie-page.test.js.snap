@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="The Grand Budapest Hotel"
-          src="img/bg-the-grand-budapest-hotel.jpg"
+          alt="Fantastic Beasts: The Crimes of Grindelwald"
+          src="/img/the-grand-budapest-hotel-poster.jpg"
         />
       </div>
       <h1
@@ -29,6 +29,7 @@ Array [
         >
           <a
             className="logo__link"
+            href="/"
           >
             <span
               className="logo__letter logo__letter--1"
@@ -92,6 +93,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -397,6 +399,7 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="/"
         >
           <span
             className="logo__letter logo__letter--1"

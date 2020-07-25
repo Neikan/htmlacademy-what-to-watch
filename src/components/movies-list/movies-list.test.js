@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import MoviesList from "./movies-list.jsx";
+
+// Импорт типов, констант, утилит
 import {MOVIES} from "../../consts/test-data.js";
 
 
@@ -13,8 +18,8 @@ describe(`Test MoviesList component`, () => {
           onMovieSelect={() => {}}
           onMovieMouseEnter={() => {}}
           onMovieMouseLeave={() => {}}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

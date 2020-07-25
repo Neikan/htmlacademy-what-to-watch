@@ -1,6 +1,9 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
-import BtnPause from "./btn-pause";
+
+// Импорт компонентов
+import BtnPause from "./btn-pause.jsx";
 
 
 describe(`Test BtnPause component`, () => {

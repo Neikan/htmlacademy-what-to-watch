@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import MovieCard from "./movie-card.jsx";
+
+// Импорт типов, констант, утилит
 import {MOVIES} from "./../../consts/test-data";
 
 
@@ -13,8 +18,8 @@ describe(`Test MovieCard component`, () => {
           onSelect={() => {}}
           onPlay={() => {}}
           onStop={() => {}}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -28,8 +33,8 @@ describe(`Test MovieCard component`, () => {
           onSelect={() => {}}
           onPlay={() => {}}
           onStop={() => {}}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

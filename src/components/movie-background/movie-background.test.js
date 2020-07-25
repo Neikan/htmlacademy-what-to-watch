@@ -3,19 +3,18 @@ import React from "react";
 import renderer from "react-test-renderer";
 
 // Импорт компонентов
-import MoviesByGenre from "./movies-by-genre.jsx";
+import MovieBackground from "./movie-background.jsx";
 
 // Импорт типов, констант, утилит
 import {MOVIES} from "../../consts/test-data.js";
 
 
-describe(`Test MoviesByGenre component`, () => {
-  test(`MoviesByGenre component is created and rendered correctly`, () => {
+describe(`Test MovieBackground component`, () => {
+  test(`MovieBackground component is created and rendered correctly`, () => {
     const tree = renderer.create(
-        <MoviesByGenre
-          movies={MOVIES}
-          countShowedMovies={1}
-          onMovieSelect={() => {}}
+        <MovieBackground
+          poster={MOVIES[0].poster}
+          title={MOVIES[0].title}
         />
     ).toJSON();
 

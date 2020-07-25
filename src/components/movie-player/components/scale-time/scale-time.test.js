@@ -3,17 +3,17 @@ import React from "react";
 import renderer from "react-test-renderer";
 
 // Импорт компонентов
-import Header from "./header.jsx";
+import ScaleTime from "./scale-time.jsx";
 
 // Импорт типов, констант, утилит
-import {LogoPosition} from "./../../consts/test-data";
+import {Time} from "../../../../consts/test-data.js";
 
 
-describe(`Test Header component`, () => {
-  test(`Header component is created and rendered correctly`, () => {
+describe(`Test ScaleTime component`, () => {
+  test(`ScaleTime component is created and rendered correctly`, () => {
     const tree = renderer.create(
-        <Header
-          logoPosition={LogoPosition.HEADER}
+        <ScaleTime
+          time={Time}
         />
     ).toJSON();
 

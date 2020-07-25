@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from 'react';
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import MoviePlayerPreview from './movie-player-preview.jsx';
+
+// Импорт типов, констант, утилит
 import {MOVIES} from "../../consts/test-data.js";
 
 
@@ -14,8 +19,8 @@ describe(`Test MoviePlayerPreview component`, () => {
         />, {
           createNodeMock: () => {
             return {};
-          }
-        }).toJSON();
+          }}
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

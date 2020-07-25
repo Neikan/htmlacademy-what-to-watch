@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import Footer from "./footer.jsx";
+
+// Импорт типов, констант, утилит
 import {LogoPosition} from "./../../consts/test-data";
 
 

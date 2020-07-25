@@ -1,9 +1,13 @@
+// Импорт библиотек
 import React from "react";
-import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import {configure, shallow} from "enzyme";
+
+// Импорт компонентов
 import MovieTab from "./movie-tab.jsx";
-import {MarkupElement, MOVIES} from "./../../consts/test-data";
-import {MovieTabList} from "../../consts/common-data.js";
+
+// Импорт типов, констант, утилит
+import {MarkupElement, MovieTabList, MOVIES} from "./../../consts/test-data";
 
 
 configure({

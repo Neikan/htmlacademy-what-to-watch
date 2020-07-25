@@ -6,6 +6,7 @@ exports[`Test Logo component Logo component is created and rendered correctly 1`
 >
   <a
     className="logo__link"
+    href="/"
   >
     <span
       className="logo__letter logo__letter--1"

@@ -32,7 +32,7 @@ const Main = (props) => {
     movies,
     genres,
     countShowedMovies,
-    onMoviePlay,
+    onMoviePlayingChange,
     onMovieAddToList,
     onMovieSelect,
     onGenreSelect,
@@ -54,7 +54,7 @@ const Main = (props) => {
         <Header />
         <Promo
           movie={promoMovie}
-          onPlay={onMoviePlay}
+          onPlayingChange={onMoviePlayingChange}
           onAdd={onMovieAddToList}
           onSelect={onMovieSelect}
         />
@@ -90,7 +90,7 @@ Main.propTypes = {
   movies: PropTypes.arrayOf(movieType).isRequired,
   genres: PropTypes.arrayOf(genreType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
-  onMoviePlay: PropTypes.func.isRequired,
+  onMoviePlayingChange: PropTypes.func.isRequired,
   onMovieAddToList: PropTypes.func.isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,

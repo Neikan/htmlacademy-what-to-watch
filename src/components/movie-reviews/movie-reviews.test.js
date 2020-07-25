@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import MovieReviews from "./movie-reviews.jsx";
+
+// Импорт типов, констант, утилит
 import {MOVIES} from "../../consts/test-data.js";
 
 
@@ -9,8 +14,8 @@ describe(`Test MovieReviews component`, () => {
     const tree = renderer.create(
         <MovieReviews
           movie={MOVIES[0]}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -20,8 +25,8 @@ describe(`Test MovieReviews component`, () => {
     const tree = renderer.create(
         <MovieReviews
           movie={MOVIES[1]}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -31,8 +36,8 @@ describe(`Test MovieReviews component`, () => {
     const tree = renderer.create(
         <MovieReviews
           movie={MOVIES[2]}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

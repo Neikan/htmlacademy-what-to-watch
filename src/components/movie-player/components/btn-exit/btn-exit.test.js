@@ -3,13 +3,15 @@ import React from "react";
 import renderer from "react-test-renderer";
 
 // Импорт компонентов
-import BtnPlay from "./btn-play.jsx";
+import BtnExit from "./btn-exit.jsx";
 
 
-describe(`Test BtnPlay component`, () => {
-  test(`BtnPlay component is created and rendered correctly`, () => {
+describe(`Test BtnExit component`, () => {
+  test(`BtnExit component is created and rendered correctly`, () => {
     const tree = renderer.create(
-        <BtnPlay />
+        <BtnExit
+          onClose={() => {}}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

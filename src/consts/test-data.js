@@ -121,6 +121,8 @@ export const GENRES = [
 export const MarkupElement = {
   PROMO_BTN_PLAY: `btn--play`,
   PROMO_BTN_ADD_TO_LIST: `btn--list`,
+  PROMO_POSTER: `movie-card__poster`,
+  PROMO_TITLE: `movie-card__title`,
   MOVIE_CARD: `small-movie-card`,
   MOVIE_CARD_TITLE: `small-movie-card__title`,
   MOVIE_CARD_COVER: `small-movie-card__image`,
@@ -134,4 +136,24 @@ export const MovieTabList = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
   REVIEWS: `Reviews`,
+};
+
+
+export const Time = {
+  duration: 200,
+  current: 100,
+  left: `01:02:03`
+};
+
+
+export const Page = {
+  MAIN: `/`,
+  MOVIE: `/films/`
+};
+
+
+export const CountMovies = {
+  ALL: 20,
+  START: 8,
+  LIKED_BY_GENRE: 4
 };

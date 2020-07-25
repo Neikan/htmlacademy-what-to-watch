@@ -21,12 +21,19 @@ import {getImgSrc} from "../../utils/common.js";
  * Создание компонента, обеспечивающего отображение страницы с вкладками информации о фильме
  */
 class MoviePage extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this._handlePlayingChange = this._handlePlayingChange.bind(this);
+  }
+
+
   /**
    * Метод, обеспечивающий отрисовку компонента
    * @return {Object} созданный компонент
    */
   render() {
-    const {movie, selectedTab, onTabSelect, onMoviePlay} = this.props;
+    const {movie, selectedTab, onTabSelect} = this.props;
     const {title, genre, year, poster} = this.props.movie;
 
     return (
@@ -52,7 +59,7 @@ class MoviePage extends PureComponent {
 
                 <div className="movie-card__buttons">
                   <button
-                    onClick={() => onMoviePlay(movie)}
+                    onClick={this._handlePlayingChange}
                     className="btn btn--play movie-card__button" type="button"
                   >
                     <svg viewBox="0 0 19 19" width="19" height="19">
@@ -140,6 +147,11 @@ class MoviePage extends PureComponent {
       />
     );
   }
+
+
+  _handlePlayingChange() {
+    this.props.onMoviePlayingChange();
+  }
 }
 
 
@@ -147,7 +159,7 @@ MoviePage.propTypes = {
   movie: movieType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieSelect: PropTypes.func.isRequired,
-  onMoviePlay: PropTypes.func.isRequired,
+  onMoviePlayingChange: PropTypes.func.isRequired,
 
   selectedTab: PropTypes.string.isRequired,
   onTabSelect: PropTypes.func.isRequired

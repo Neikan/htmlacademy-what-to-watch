@@ -3,13 +3,15 @@ import React from "react";
 import renderer from "react-test-renderer";
 
 // Импорт компонентов
-import BtnPlay from "./btn-play.jsx";
+import BtnFullScreen from "./btn-full-screen.jsx";
 
 
-describe(`Test BtnPlay component`, () => {
-  test(`BtnPlay component is created and rendered correctly`, () => {
+describe(`Test BtnFullScreen component`, () => {
+  test(`BtnFullScreen component is created and rendered correctly`, () => {
     const tree = renderer.create(
-        <BtnPlay />
+        <BtnFullScreen
+          onSelect={() => {}}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

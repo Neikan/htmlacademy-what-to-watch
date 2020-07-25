@@ -1,5 +1,8 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import BtnShowMore from "./btn-show-more";
 
 

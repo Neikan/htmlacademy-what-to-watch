@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test BtnPause component BtnPause component is created and rendered correctly 1`] = `
+Array [
+  <svg
+    height="21"
+    viewBox="0 0 14 21"
+    width="14"
+  >
+    <use
+      xlinkHref="#pause"
+    />
+  </svg>,
+  <span>
+    Pause
+  </span>,
+]
+`;
