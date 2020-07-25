@@ -128,7 +128,10 @@ export const MarkupElement = {
   MOVIE_CARD_COVER: `small-movie-card__image`,
   GENRE_LINK: `catalog__genres-link`,
   MOVIE_TAB: `movie-nav__item`,
-  BTN_SHOW_MORE: `catalog__button`
+  BTN_SHOW_MORE: `catalog__button`,
+  BTN_PLAYER_EXIT: `player__exit`,
+  BTN_PLAYER_FULL_SCREEN: `player__full-screen`,
+  BTN_PLAYER_PLAY: `player__play`
 };
 
 

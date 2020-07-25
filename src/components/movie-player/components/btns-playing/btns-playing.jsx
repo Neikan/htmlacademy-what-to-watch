@@ -1,5 +1,5 @@
 // Импорт библиотек
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 // Импорт компонентов
@@ -10,20 +10,39 @@ import BtnPlay from "../btn-play/btn-play.jsx";
 /**
  * Создание компонента, обеспечивающего переход проигрывателя
  * между режимами удержания и воспроизведения
- * @param {Object} props параметры
- * @return {Object} созданный компонент
  */
-const BtnsPlaying = (props) => {
-  const {isPlaying, onChangePlaying} = props;
+class BtnsPlaying extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <button type="button" className="player__play"
-      onClick={() => onChangePlaying()}
-    >
-      {isPlaying ? <BtnPause /> : <BtnPlay />}
-    </button>
-  );
-};
+    this._handleChangePlaying = this._handleChangePlaying.bind(this);
+  }
+
+
+  /**
+   * Метод, обеспечивающий отрисовку компонента
+   * @return {Object} созданный компонент
+   */
+  render() {
+    const {isPlaying} = this.props;
+
+    return (
+      <button type="button" className="player__play"
+        onClick={this._handleChangePlaying}
+      >
+        {isPlaying ? <BtnPause /> : <BtnPlay />}
+      </button>
+    );
+  }
+
+
+  /**
+   * Метод, обеспечивающий управление кнопками Play и Pause проигрывателя фильма
+   */
+  _handleChangePlaying() {
+    this.props.onChangePlaying();
+  }
+}
 
 
 BtnsPlaying.propTypes = {
