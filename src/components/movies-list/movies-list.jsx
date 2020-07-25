@@ -1,17 +1,29 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+
+// Импорт компонентов
 import MovieCard from "../movie-card/movie-card.jsx";
+
+// Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
+
+// Импорт хоков
 import withActivePlayer from "../../hoc/with-active-player/with-active-player.js";
 
 
 const MovieCardWrapped = withActivePlayer(MovieCard);
 
 
+/**
+ * Создание компонента, обеспечивающего отображение списков фильмов
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 class MoviesList extends PureComponent {
   /**
-   * Метод, обеспечивающий отрисовку разметки компонента с данными первых восьми фильмов
-   * @return {Object} разметка компонента
+   * Метод, обеспечивающий отрисовку компонента (по умолчанию - с данными первых восьми фильмов)
+   * @return {Object} созданный компонент
    */
   render() {
     const {

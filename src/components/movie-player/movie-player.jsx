@@ -1,12 +1,20 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+
+// Импорт компонентов
+import BtnExit from "./components/btn-exit/btn-exit.jsx";
 import BtnFullScreen from "./components/btn-full-screen/btn-full-screen.jsx";
 import BtnsPlaying from "./components/btns-playing/btns-playing.jsx";
-import BtnExit from "./components/btn-exit/btn-exit.jsx";
 import ScaleTime from "./components/scale-time/scale-time.jsx";
+
+// Импорт типов, констант, утилит
 import {movieType, timeType} from "../../props/prop-types.js";
 
 
+/**
+ * Создание компонента, обеспечивающего отображение проигрывателя фильма
+ */
 class MoviePlayer extends PureComponent {
   constructor(props) {
     super(props);
@@ -15,6 +23,10 @@ class MoviePlayer extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку компонента
+   * @return {Object} созданный компонент
+   */
   render() {
     const {
       children,
@@ -58,6 +70,9 @@ class MoviePlayer extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивабщий перевод проигрывателя в полноэкранный режим
+   */
   _handleSetFullScreen() {
     this.props.onSetFullScreen();
   }

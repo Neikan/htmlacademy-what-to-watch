@@ -1,8 +1,17 @@
+// Импорт библиотек
 import React from "react";
+
+// Импорт компонентов
 import Logo from "./../logo/logo.jsx";
+
+// Импорт типов, констант, утилит
 import {LogoPosition} from "../../consts/common-data.js";
 
 
+/**
+ * Создание компонента, обеспечивающего отображение "шапки" приложения
+ * @return {Object} созданный компонент
+ */
 const Header = () => {
   return (
     <header className="page-header movie-card__head">

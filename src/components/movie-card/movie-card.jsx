@@ -1,9 +1,17 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {movieType} from "../../props/prop-types";
+
+// Импорт компонентов
 import MoviePlayerPreview from "../movie-player-preview/movie-player-preview.jsx";
 
+// Импорт типов, констант, утилит
+import {movieType} from "../../props/prop-types";
 
+
+/**
+ * Создание компонента, обеспечивающего отображение карточки-превью фильма
+ */
 class MovieCard extends PureComponent {
   /**
    * Метод, обеспечивающий отрисовку компонента

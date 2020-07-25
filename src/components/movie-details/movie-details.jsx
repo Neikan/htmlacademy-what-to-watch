@@ -1,7 +1,15 @@
+// Импорт библиотек
 import React from "react";
+
+// Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types.js";
 
 
+/**
+ * Создание компонента, обеспечивающего отображение вкладки дополнительной информации о фильме
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const MovieDetails = (props) => {
   const {movie} = props;
   if (movie) {

@@ -1,14 +1,26 @@
+// Импорт библиотек
 import React from "react";
 import PropTypes from "prop-types";
-import {movieType} from "../../props/prop-types.js";
+
+// Импорт компонентов
 import Footer from "../footer/footer.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
+
+// Импорт типов, констант, утилит
+import {movieType} from "../../props/prop-types.js";
+
+// Импорт хоков
 import withSelectedMovie from "../../hoc/with-selected-movie/with-selected-movie.js";
 
 
 const MoviesListWrapped = withSelectedMovie(MoviesList);
 
 
+/**
+ * Создание компонента, обеспечивающего отображение списка похожих фильмов на странице фильма
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const MoviesByGenre = (props) => {
   const {movies, countShowedMovies, onMovieSelect} = props;
 

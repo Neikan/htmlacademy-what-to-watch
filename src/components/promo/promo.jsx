@@ -1,9 +1,17 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+
+// Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
 import {getImgSrc} from "../../utils/common";
 
 
+/**
+ * Создание компонента, обеспечивающего отображение промо-фильма
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 class Promo extends PureComponent {
   constructor(props) {
     super(props);
@@ -13,6 +21,11 @@ class Promo extends PureComponent {
     this._handleAdd = this._handleAdd.bind(this);
   }
 
+
+  /**
+   * Метод, обеспечивающий отрисовку компонента
+   * @return {Object} созданный компонент
+   */
   render() {
     const {movie} = this.props;
     const {title, poster, genre, year} = movie;
@@ -66,6 +79,9 @@ class Promo extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий переход на страницу фильма
+   */
   _handleSelect() {
     const {movie, onSelect} = this.props;
 
@@ -73,12 +89,19 @@ class Promo extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий открытие проигрывателя фильма
+   */
   _handlePlay() {
     const {movie, onPlay} = this.props;
 
     onPlay(movie);
   }
 
+
+  /**
+   * Метод, обеспечивающий добавление фильма в избранное
+   */
   _handleAdd() {
     const {movie, onAdd} = this.props;
 

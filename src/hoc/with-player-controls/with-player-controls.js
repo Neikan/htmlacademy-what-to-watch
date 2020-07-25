@@ -1,7 +1,7 @@
-// Импорты библиотек
+// Импорт библиотек
 import React, {PureComponent, createRef} from "react";
 
-// Импорты типов, констант, утилит
+// Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types.js";
 import {getTime, getImgSrc} from "../../utils/common.js";
 
@@ -56,6 +56,10 @@ const withPlayerControls = (Component) => {
     }
 
 
+    /**
+     * Метод, обеспечивающий отрисовку компонента
+     * @return {Object} созданный компонент
+     */
     render() {
       const {isPlaying, duration, currentTime} = this.state;
       const {movie} = this.props;

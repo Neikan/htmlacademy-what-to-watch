@@ -135,3 +135,12 @@ export const getTime = (time) => {
 
   return `${hours}:${minutes}:${seconds}`;
 };
+
+
+/**
+ * Получение текущей позиции в % для тоггла шкалы времени воспроизведения
+ * @param {Number} current текущее время
+ * @param {Number} duration общая длительность
+ * @return {string} значение позиции
+ */
+export const getTimeProgress = (current, duration) => `${((current * 100) / duration)}%`;

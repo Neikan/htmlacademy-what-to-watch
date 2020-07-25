@@ -1,18 +1,30 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+
+// Импорт компонентов
 import Header from "../header/header.jsx";
-import MoviesByGenre from "../movies-by-genre/movies-by-genre.jsx";
-import {movieType} from "../../props/prop-types.js";
-import {getImgSrc} from "../../utils/common.js";
-import {MovieTabList, CountMovies} from "../../consts/common-data.js";
+import MovieBackground from "../movie-background/movie-background.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MovieOverView from "../movie-overview/movie-overview.jsx";
 import MovieReviews from "../movie-reviews/movie-reviews.jsx";
+import MoviesByGenre from "../movies-by-genre/movies-by-genre.jsx";
 import MovieTabs from "../movie-tabs/movie-tabs.jsx";
-import MovieBackground from "../movie-background/movie-background.jsx";
+
+// Импорт типов, констант, утилит
+import {movieType} from "../../props/prop-types.js";
+import {MovieTabList, CountMovies} from "../../consts/common-data.js";
+import {getImgSrc} from "../../utils/common.js";
 
 
+/**
+ * Создание компонента, обеспечивающего отображение страницы с вкладками информации о фильме
+ */
 class MoviePage extends PureComponent {
+  /**
+   * Метод, обеспечивающий отрисовку компонента
+   * @return {Object} созданный компонент
+   */
   render() {
     const {movie, selectedTab, onTabSelect, onMoviePlay} = this.props;
     const {title, genre, year, poster} = this.props.movie;
@@ -86,6 +98,10 @@ class MoviePage extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку содержимого выбранной вкладки
+   * @return {Object} созданный компонент
+   */
   _renderMovieDesc() {
     const {movie, selectedTab} = this.props;
 
@@ -105,6 +121,10 @@ class MoviePage extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку списка похожих фильмов
+   * @return {Object} созданный компонент
+   */
   _renderMoviesByGenre() {
     const {movies, onMovieSelect} = this.props;
 

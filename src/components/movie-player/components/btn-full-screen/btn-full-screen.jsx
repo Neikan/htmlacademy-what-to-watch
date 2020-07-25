@@ -1,7 +1,13 @@
+// Импорт библиотек
 import React from "react";
 import PropTypes from "prop-types";
 
 
+/**
+ * Создание компонента, обеспечивающего перевод проигрывателя в полноэкранный режим
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const BtnFullScreen = (props) => {
   return (
     <button type="button" className="player__full-screen"

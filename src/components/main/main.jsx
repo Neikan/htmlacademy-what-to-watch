@@ -1,19 +1,31 @@
+// Импорт библиотек
 import React from "react";
 import PropTypes from "prop-types";
-import Header from "../header/header.jsx";
-import Promo from "../promo/promo.jsx";
-import GenresList from "../genres-list/genres-list.jsx";
-import MoviesList from "../movies-list/movies-list.jsx";
+
+// Импорт компонентов
 import BtnShowMore from "../btn-show-more/btn-show-more.jsx";
 import Footer from "../footer/footer.jsx";
-import {movieType, genreType} from "../../props/prop-types.js";
-import withSelectedMovie from "../../hoc/with-selected-movie/with-selected-movie.js";
+import GenresList from "../genres-list/genres-list.jsx";
+import Header from "../header/header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
+import MoviesList from "../movies-list/movies-list.jsx";
+import Promo from "../promo/promo.jsx";
+
+// Импорт типов, констант, утилит
+import {movieType, genreType} from "../../props/prop-types.js";
+
+// Импорт хоков
+import withSelectedMovie from "../../hoc/with-selected-movie/with-selected-movie.js";
 
 
 const MoviesListWrapped = withSelectedMovie(MoviesList);
 
 
+/**
+ * Создание компонента, обеспечивающего отображение главной страницы приложения
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const Main = (props) => {
   const {
     promoMovie,

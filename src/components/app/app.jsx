@@ -1,22 +1,22 @@
-// Импорты библиотек
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
-// Импорты компонентов
+// Импорт компонентов
 import Main from "../main/main.jsx";
 import MoviePage from '../movie-page/movie-page.jsx';
 import MoviePlayer from "../movie-player/movie-player.jsx";
 
-// Импорты типов, констант, утилит
+// Импорт типов, констант, утилит
 import {movieType, genreType} from "../../props/prop-types.js";
 import {Page, ALL_GENRES} from "../../consts/common-data.js";
 
-// Импорты редьюсеров
+// Импорт редьюсеров
 import {ActionCreator} from "../../store/reducer.js";
 
-// Импорты хоков
+// Импорт хоков
 import withSelectedTab from "../../hoc/with-selected-tab/with-selected-tab.js";
 import withPlayerControls from "../../hoc/with-player-controls/with-player-controls.js";
 
@@ -27,6 +27,9 @@ const MoviePageWrapped = withSelectedTab(MoviePage);
 const MoviePlayerWrapped = withPlayerControls(MoviePlayer);
 
 
+/**
+ * Создание главного компонента приложения
+ */
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -127,6 +130,10 @@ class App extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку проигрывателя фильма
+   * @return {Object} проигрыватель
+   */
   _renderMoviePlayer() {
     const {selectedMovie, onMoviePlayingStop} = this.props;
 

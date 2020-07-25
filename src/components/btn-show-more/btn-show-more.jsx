@@ -1,7 +1,11 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 
+/**
+ * Создание компонента, обеспечивающего отрисовку дополнительны фильмов списка по требованию
+ */
 class BtnShowMore extends PureComponent {
   constructor(props) {
     super(props);

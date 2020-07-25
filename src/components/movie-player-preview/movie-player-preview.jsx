@@ -1,11 +1,14 @@
-// Импорты библиотек
+// Импорт библиотек
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 
-// Импорты типов, констант, утилит
+// Импорт типов, констант, утилит
 import {getImgSrc} from "../../utils/common";
 
 
+/**
+ * Создание компонента, обеспечивающего отображение проигрывателя для трейлера фильма
+ */
 class MoviePlayerPreview extends PureComponent {
   constructor(props) {
     super(props);
@@ -15,29 +18,10 @@ class MoviePlayerPreview extends PureComponent {
   }
 
 
-  componentDidMount() {
-    if (this._videoRef.current) {
-      const {src, muted} = this.props;
-      const video = this._videoRef.current;
-
-      video.src = src;
-      video.muted = muted;
-    }
-  }
-
-
-  componentWillUnmount() {
-    if (this._videoRef.current) {
-      clearTimeout(this._timeout);
-    }
-  }
-
-
-  componentDidUpdate() {
-    return this.props.isPlaying ? this._handlePlay() : this._handleStop();
-  }
-
-
+  /**
+   * Метод, обеспечивающий отрисовку компонента
+   * @return {Object} созданный компонент
+   */
   render() {
     return (
       <video width="280" height="175"
@@ -51,6 +35,42 @@ class MoviePlayerPreview extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий установку для компонента источника видео
+   */
+  componentDidMount() {
+    if (this._videoRef.current) {
+      const {src, muted} = this.props;
+      const video = this._videoRef.current;
+
+      video.src = src;
+      video.muted = muted;
+    }
+  }
+
+
+  /**
+   * Метод, выполняющий очистку таймаута
+   */
+  componentWillUnmount() {
+    if (this._videoRef.current) {
+      clearTimeout(this._timeout);
+    }
+  }
+
+
+  /**
+   * Метод, обеспечивающий вызов методов начала и остановки воспроизведения
+   * @return {Function}
+   */
+  componentDidUpdate() {
+    return this.props.isPlaying ? this._handlePlay() : this._handleStop();
+  }
+
+
+  /**
+   * Метод, обеспечивающий начало воспроизведения трейлера фильма
+   */
   _handlePlay() {
     this._timeout = setTimeout(() => {
       this._videoRef.current.play();
@@ -58,6 +78,9 @@ class MoviePlayerPreview extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий завершение воспроизведения трейлера фильма
+   */
   _handleStop() {
     clearTimeout(this._timeout);
     this._videoRef.current.load();

@@ -1,8 +1,15 @@
+// Импорт библиотек
 import React from "react";
 import PropTypes from "prop-types";
 import cn from 'classnames';
 
 
+/**
+ * Создание компонента, обеспечивающего возможность отображения списка
+ * фильмов, соответствующих выбранному жанру
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const GenreItem = (props) => {
   const {title, isActive, onGenreSelect} = props;
 
