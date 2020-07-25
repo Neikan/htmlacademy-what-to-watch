@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer from "react-test-renderer";
-import VideoPlayer from "./video-player.jsx";
+import MoviePlayerPreview from './movie-player-preview.jsx';
 import {MOVIES} from "../../consts/test-data.js";
 
 
-describe(`Test VideoPlayer component`, () => {
-  test(`VideoPlayer component is created and rendered correctly`, () => {
+describe(`Test MoviePlayerPreview component`, () => {
+  test(`MoviePlayerPreview component is created and rendered correctly`, () => {
     const tree = renderer.create(
-        <VideoPlayer muted
+        <MoviePlayerPreview muted
           isPlaying={false}
           src={MOVIES[0].preview}
           cover={MOVIES[0].cover}

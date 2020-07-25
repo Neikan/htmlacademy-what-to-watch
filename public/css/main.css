@@ -699,6 +699,9 @@ main {
   margin-right: 40px;
   -ms-flex-negative: 0;
       flex-shrink: 0; }
+.movie-card__poster:hover {
+  cursor: pointer;
+}
   .movie-card__poster--big {
     width: 273px;
     height: 410px; }
@@ -727,6 +730,10 @@ main {
   font-size: 32px;
   line-height: 45px;
   margin: 0 0 7px; }
+
+.movie-card__title:hover {
+  cursor: pointer;
+}
 
 .movie-card__meta {
   margin: 0;

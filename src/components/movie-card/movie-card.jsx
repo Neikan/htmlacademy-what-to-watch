@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {movieType} from "../../props/prop-types";
-import VideoPlayer from "../video-player/video-player.jsx";
+import MoviePlayerPreview from "../movie-player-preview/movie-player-preview.jsx";
 
 
 class MovieCard extends PureComponent {
@@ -22,7 +22,7 @@ class MovieCard extends PureComponent {
         className="small-movie-card catalog__movies-card"
       >
         <div className="small-movie-card__image">
-          <VideoPlayer muted
+          <MoviePlayerPreview muted
             isPlaying={isPlaying}
             src={preview}
             cover={cover}

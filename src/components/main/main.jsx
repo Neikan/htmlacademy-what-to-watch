@@ -8,6 +8,7 @@ import BtnShowMore from "../btn-show-more/btn-show-more.jsx";
 import Footer from "../footer/footer.jsx";
 import {movieType, genreType} from "../../props/prop-types.js";
 import withSelectedMovie from "../../hoc/with-selected-movie/with-selected-movie.js";
+import MovieBackground from "../movie-background/movie-background.jsx";
 
 
 const MoviesListWrapped = withSelectedMovie(MoviesList);
@@ -26,21 +27,24 @@ const Main = (props) => {
     onBtnMoreSelect
   } = props;
 
+  const {poster, title} = promoMovie;
+
   const isShowBtnMore = movies.length > countShowedMovies;
 
   return (
     <>
       <section className="movie-card">
-        <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
-        </div>
-
+        <MovieBackground
+          title={title}
+          poster={poster}
+        />
         <h1 className="visually-hidden">WTW</h1>
         <Header />
         <Promo
           movie={promoMovie}
           onPlay={onMoviePlay}
           onAdd={onMovieAddToList}
+          onSelect={onMovieSelect}
         />
       </section>
 

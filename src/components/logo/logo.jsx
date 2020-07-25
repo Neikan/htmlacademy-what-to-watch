@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {LogoPosition} from "../../consts/common-data";
+import {LogoPosition, Page} from "../../consts/common-data";
 
 
 const MarkupClass = {
@@ -16,7 +16,7 @@ const Logo = (props) => {
 
   return (
     <div className="logo">
-      <a className={className}>
+      <a className={className} href={Page.MAIN}>
         <span className="logo__letter logo__letter--1">W</span>
         <span className="logo__letter logo__letter--2">T</span>
         <span className="logo__letter logo__letter--3">W</span>

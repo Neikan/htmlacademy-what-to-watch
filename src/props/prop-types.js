@@ -39,3 +39,10 @@ export const genreType = PropTypes.shape({
 
 
 export const tabType = PropTypes.objectOf(PropTypes.string);
+
+
+export const timeType = PropTypes.shape({
+  duration: PropTypes.number.isRequired,
+  current: PropTypes.number.isRequired,
+  left: PropTypes.string.isRequired
+});

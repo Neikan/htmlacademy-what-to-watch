@@ -69,3 +69,11 @@ export const MovieTabList = {
 
 
 export const HIDDEN_CLASS = `visually-hidden`;
+
+
+export const Time = {
+  MINUTES: 60,
+  SECONDS: 60
+};
+
+export const PAD_STRING_ZERO = `0`;
