@@ -14,7 +14,6 @@ const withActivePlayer = (Component) => {
 
       this._handlePlay = this._handlePlay.bind(this);
       this._handlePlayingStop = this._handlePlayingStop.bind(this);
-      this._handleSelect = this._handleSelect.bind(this);
     }
 
 
@@ -29,7 +28,6 @@ const withActivePlayer = (Component) => {
           isPlaying={this.state.isPlaying}
           onPlay={this._handlePlay}
           onStop={this._handlePlayingStop}
-          onSelect={this._handleSelect}
         />
       );
     }
@@ -59,23 +57,11 @@ const withActivePlayer = (Component) => {
         isPlaying: false
       });
     }
-
-
-    /**
-     * Метод, обспечивающий передачу данных выбранного фильма для открытия его страницы
-     * @param {Object} movieId идентификатор фильма
-     */
-    _handleSelect() {
-      const {movie, onSelect} = this.props;
-
-      onSelect(movie);
-    }
   }
 
 
   WithActivePlayer.propTypes = {
     movie: movieType.isRequired,
-    onSelect: PropTypes.func.isRequired,
     onPlay: PropTypes.func.isRequired,
     onPlayingStop: PropTypes.func.isRequired
   };

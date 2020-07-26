@@ -13,6 +13,13 @@ import {movieType} from "../../props/prop-types";
  * Создание компонента, обеспечивающего отображение карточки-превью фильма
  */
 class MovieCard extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this._handleSelect = this._handleSelect.bind(this);
+  }
+
+
   /**
    * Метод, обеспечивающий отрисовку компонента
    * @return {Object} созданный компонент
@@ -25,7 +32,7 @@ class MovieCard extends PureComponent {
       <article
         onMouseEnter={onPlay}
         onMouseLeave={onStop}
-        onClick={onSelect}
+        onClick={this._handleSelect}
         id={id}
         className="small-movie-card catalog__movies-card"
       >
@@ -44,6 +51,17 @@ class MovieCard extends PureComponent {
         </h3>
       </article>
     );
+  }
+
+
+  /**
+   * Метод, обспечивающий передачу данных выбранного фильма для открытия его страницы
+   * @param {Object} movieId идентификатор фильма
+   */
+  _handleSelect() {
+    const {movie, onSelect} = this.props;
+
+    onSelect(movie);
   }
 }
 
