@@ -2,7 +2,8 @@ import {
   CountMovies,
   ALL_GENRES,
   Time,
-  PAD_STRING_ZERO
+  PAD_STRING_ZERO,
+  TextualRating
 } from "../consts/common-data";
 
 
@@ -134,3 +135,33 @@ export const getTime = (time) => {
  * @return {string} значение позиции
  */
 export const getTimeProgress = (current, duration) => `${((current * 100) / duration)}%`;
+
+
+/**
+ * Получение текстового описания рейтинга фильма
+ * @param {Number} score оценка фильма (значение рейтинга)
+ * @return {string}
+ */
+export const getTextualRating = (score) => {
+  if (score >= TextualRating.AWESOME.from) {
+    return TextualRating.AWESOME.level;
+  }
+
+  if (score >= TextualRating.VERY_GOOD.from) {
+    return TextualRating.VERY_GOOD.level;
+  }
+
+  if (score >= TextualRating.GOOD.from) {
+    return TextualRating.GOOD.level;
+  }
+
+  if (score >= TextualRating.NORMAL.from) {
+    return TextualRating.NORMAL.level;
+  }
+
+  if (score >= TextualRating.BAD.from) {
+    return TextualRating.BAD.level;
+  }
+
+  return (``);
+};

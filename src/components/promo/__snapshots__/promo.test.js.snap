@@ -14,7 +14,7 @@ exports[`Test Promo component Promo component is created and rendered correctly 
       <img
         alt="Fantastic Beasts: The Crimes of Grindelwald"
         height="327"
-        src="/img/the-grand-budapest-hotel-poster.jpg"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/moonrise-kingdom1.jpg"
         width="218"
       />
     </div>

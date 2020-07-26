@@ -1,13 +1,19 @@
+// Импорт библиотек
 import React from "react";
-import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import withSelectedTab from "./with-selected-tab.js";
+import {configure, shallow} from "enzyme";
+
+// Импорт типов, констант, утилит
 import {MovieTabList} from "../../consts/test-data.js";
+
+// Импорт хоков
+import withSelectedTab from "./with-selected-tab.js";
 
 
 configure({
   adapter: new Adapter()
 });
+
 
 const MockComponent = () => <div />;
 const MockComponentWrapped = withSelectedTab(MockComponent);

@@ -1,5 +1,5 @@
 // Импорт типов, констант, утилит
-import {getTextualRating} from "../../mocks/movies-utils";
+import {getTextualRating} from "../../utils/common";
 
 
 const moviesAdapter = (movie) => {
@@ -41,7 +41,7 @@ const commentsAdapter = (comment) => {
     text: comment.comment,
 
     author: {
-      id: comment.user.id,
+      id: `${comment.user.id}`,
       name: comment.user.name,
     },
 
