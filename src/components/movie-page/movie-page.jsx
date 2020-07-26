@@ -14,7 +14,6 @@ import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types.js";
 import {MovieTabList, CountMovies} from "../../consts/common-data.js";
-import {getImgSrc} from "../../utils/common.js";
 
 
 /**
@@ -34,15 +33,15 @@ class MoviePage extends PureComponent {
    */
   render() {
     const {movie, selectedTab, onTabSelect} = this.props;
-    const {title, genre, year, poster} = this.props.movie;
+    const {backgroundImage, genre, poster, title, year} = this.props.movie;
 
     return (
       <>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <MovieBackground
+              backgroundImage={backgroundImage}
               title={title}
-              poster={poster}
             />
 
             <h1 className="visually-hidden">WTW</h1>
@@ -82,7 +81,7 @@ class MoviePage extends PureComponent {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src={getImgSrc(poster)} alt={title} width="218" height="327" />
+                <img src={poster} alt={title} width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">

@@ -13,8 +13,19 @@ import MoviePlayer from "../movie-player/movie-player.jsx";
 import {movieType, genreType} from "../../props/prop-types.js";
 import {Page, ALL_GENRES} from "../../consts/common-data.js";
 
-// Импорт редьюсеров
-import {ActionCreator} from "../../store/reducer.js";
+// Импорт редьюсеров, селекторов
+import {ActionCreator} from "../../store/datum/datum.js";
+import {
+  getPage,
+  getMovies,
+  getPromoMovie,
+  getIsPlayingMovie,
+  getCountShowedMovies,
+  getSelectedGenre,
+  getSelectedMovie,
+  getLikedMovies,
+  getGenres
+} from "../../store/datum/selectors.js";
 
 // Импорт хоков
 import withSelectedTab from "../../hoc/with-selected-tab/with-selected-tab.js";
@@ -31,29 +42,28 @@ const MoviePlayerWrapped = withPlayerControls(MoviePlayer);
  * Создание главного компонента приложения
  */
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
-
   /**
    * Метод, обспечивающий изменение страниц приложения
    * @return {Object} страница приложения
    */
   render() {
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path={`${Page.MAIN}`}>
-            {this._renderPage()}
-          </Route>
+    if (this.props.promoMovie) {
+      return (
+        <BrowserRouter>
+          <Switch>
+            <Route exact path={`${Page.MAIN}`}>
+              {this._renderPage()}
+            </Route>
 
-          <Route exact path={`${Page.MOVIE}:${this.props.selectedMovie.id}`}>
-            {this._renderMoviePage()}
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    );
+            <Route exact path={`${Page.MOVIE}`}>
+              {this._renderMoviePage()}
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      );
+    }
+
+    return null;
   }
 
 
@@ -65,7 +75,6 @@ class App extends PureComponent {
     if (this.props.isPlayingMovie) {
       return this._renderMoviePlayer();
     }
-
 
     switch (this.props.page) {
       case (Page.MAIN):
@@ -151,8 +160,8 @@ App.propTypes = {
   page: PropTypes.string.isRequired,
 
   movies: PropTypes.arrayOf(movieType).isRequired,
-  promoMovie: movieType.isRequired,
-  selectedMovie: movieType.isRequired,
+  promoMovie: movieType,
+  selectedMovie: movieType,
   likedMovies: PropTypes.arrayOf(movieType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
   isPlayingMovie: PropTypes.bool.isRequired,
@@ -169,19 +178,18 @@ App.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  page: state.page,
+  page: getPage(state),
 
-  movies: state.movies,
-  promoMovie: state.promoMovie,
-  selectedMovie: state.selectedMovie,
-  likedMovies: state.likedMovies,
-  countShowedMovies: state.countShowedMovies,
-  isPlayingMovie: state.isPlayingMovie,
+  movies: getMovies(state),
+  promoMovie: getPromoMovie(state),
+  selectedMovie: getSelectedMovie(state),
+  likedMovies: getLikedMovies(state),
+  countShowedMovies: getCountShowedMovies(state),
+  isPlayingMovie: getIsPlayingMovie(state),
 
-  genres: state.genres,
-  selectedGenre: state.selectedGenre
+  genres: getGenres(state),
+  selectedGenre: getSelectedGenre(state)
 });
-
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreSelect(genre) {

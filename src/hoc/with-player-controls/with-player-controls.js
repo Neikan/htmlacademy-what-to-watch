@@ -3,7 +3,7 @@ import React, {PureComponent, createRef} from "react";
 
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types.js";
-import {getTime, getImgSrc} from "../../utils/common.js";
+import {getTime} from "../../utils/common.js";
 
 
 const withPlayerControls = (Component) => {
@@ -28,7 +28,7 @@ const withPlayerControls = (Component) => {
       if (this._videoRef.current) {
         const video = this._videoRef.current;
 
-        video.src = this.props.movie.preview;
+        video.src = this.props.movie.video;
 
         video.play();
         this._handleGetDuration(video);
@@ -79,7 +79,7 @@ const withPlayerControls = (Component) => {
       >
         <video
           className="player__video"
-          poster={getImgSrc(movie.cover)}
+          poster={movie.cover}
           ref={this._videoRef}
           type="video/webm"
         >

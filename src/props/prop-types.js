@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 export const reviewType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+  author: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired,
   date: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired
 });
@@ -15,7 +18,11 @@ export const movieType = PropTypes.shape({
   title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
+  video: PropTypes.string.isRequired,
   preview: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   rating: PropTypes.shape({
     score: PropTypes.number.isRequired,
     level: PropTypes.string.isRequired,
@@ -24,10 +31,10 @@ export const movieType = PropTypes.shape({
   director: PropTypes.string.isRequired,
   actors: PropTypes.string.isRequired,
   duration: PropTypes.number.isRequired,
-  year: PropTypes.number.isRequired,
   genre: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  reviews: PropTypes.arrayOf(reviewType).isRequired
+  year: PropTypes.number.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  reviews: PropTypes.arrayOf(reviewType)
 });
 
 

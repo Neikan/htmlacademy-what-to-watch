@@ -1,19 +1,9 @@
 import {
-  Url,
-  FileExtension,
   CountMovies,
   ALL_GENRES,
   Time,
   PAD_STRING_ZERO
 } from "../consts/common-data";
-
-
-/**
- * Получение файла постера фильма
- * @param {string} poster название постера
- * @return {string}
- */
-export const getImgSrc = (poster) => `/${Url.IMG}/${poster}.${FileExtension.JPG}`;
 
 
 /**
@@ -96,7 +86,7 @@ export const updateGenres = (genres, selectedGenre) => genres.map((genre) =>
  * @param {Array} movies массив с данными фильмов
  * @return {Array} массив уникальных жанров фильмов со свойствами и 'All genres'
  */
-export const getGenres = (movies) => {
+export const getUniqueGenres = (movies) => {
   const uniqueGenres = [ALL_GENRES];
 
   movies.map((movie) => {

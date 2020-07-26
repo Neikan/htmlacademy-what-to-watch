@@ -1,5 +1,3 @@
-const MOVIE_POSTER = `the-grand-budapest-hotel-poster`;
-
 export const LogoPosition = {
   HEADER: `header`,
   FOOTER: `footer`
@@ -10,9 +8,12 @@ export const MOVIES = [
   {
     id: `mock-1`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    poster: MOVIE_POSTER,
-    cover: `fantastic-beasts-the-crimes-of-grindelwald`,
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/f/fd/%22Night_After_Night%22_Trailer_1932.webm/%22Night_After_Night%22_Trailer_1932.webm.480p.vp9.webm`,
+    poster: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/moonrise-kingdom1.jpg`,
+    cover: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/moonrise-kingdom2.jpg`,
+    backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/moonrise-kingdom3.jpg`,
+    backgroundColor: `#fff`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/f/fd/%22Night_After_Night%22_Trailer_1932.webm/%22Night_After_Night%22_Trailer_1932.webm.480p.vp933.webm`,
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/f/fd/%22Night_After_Night%22_Trailer_1932.webm/%22Night_After_Night%22_Trailer_1932.webm.480p.vp944.webm`,
     rating: {
       score: 4.6,
       level: `Normal`,
@@ -24,13 +25,17 @@ export const MOVIES = [
     year: 2015,
     genre: `Documentary`,
     description: `Восемь лет назад Бэтмен растворился в ночи, превратившись из героя в беглеца.`,
+    isFavorite: false,
     reviews: []
   }, {
     id: `mock-2`,
     title: `Bohemian Rhapsody`,
-    poster: MOVIE_POSTER,
-    cover: `bohemian-rhapsody`,
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/cd/12_Angry_Men_%281957%29_-_Trailer.webm/12_Angry_Men_%281957%29_-_Trailer.webm.480p.vp9.webm`,
+    poster: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york1.jpg`,
+    cover: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york2.jpg`,
+    backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york3.jpg`,
+    backgroundColor: `#333`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/cd/12_Angry_Men_%281957%29_-_Trailer.webm/12_Angry_Men_%281957%29_-_Trailer.webm.480p.vp911.webm`,
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/cd/12_Angry_Men_%281957%29_-_Trailer.webm/12_Angry_Men_%281957%29_-_Trailer.webm.480p.vp912.webm`,
     rating: {
       score: 9.1,
       level: `Very good`,
@@ -42,6 +47,7 @@ export const MOVIES = [
     year: 1999,
     genre: `Crime`,
     description: `Бэтмен поднимает ставки в войне с криминалом. С помощью лейтенанта Джима Гордона и прокурора Харви Дента он намерен очистить улицы от преступности, отравляющей город. Сотрудничество оказывается эффективным, но скоро они обнаружат себя посреди хаоса, развязанного восходящим криминальным гением, известным испуганным горожанам под именем Джокер.`,
+    isFavorite: true,
     reviews: [{
       id: `reviews-9`,
       text: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`,
@@ -52,9 +58,12 @@ export const MOVIES = [
   }, {
     id: `mock-3`,
     title: `Macbeth`,
-    poster: MOVIE_POSTER,
-    cover: `macbeth`,
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/ca/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm.360p.vp9.webm`,
+    poster: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/pulp-fiction1.jpg`,
+    cover: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/pulp-fiction2.jpg`,
+    backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/pulp-fiction3.jpg`,
+    backgroundColor: `#000`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/ca/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm.360p.vp91.webm`,
+    video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/c/ca/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm/2001_A_Space_Odyssey_%281968%29_-_Trailer.webm.360p.vp92.webm`,
     rating: {
       score: 6.0,
       level: `Good`,
@@ -66,6 +75,7 @@ export const MOVIES = [
     year: 2020,
     genre: `Horror`,
     description: `Приняв на себя вину за смерть прокурора Харви Дента, он пожертвовал всем. Вместе с комиссаром Гордоном они решили, что так будет лучше для всех.`,
+    isFavorite: false,
     reviews: [{
       id: `reviews-1`,
       text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,

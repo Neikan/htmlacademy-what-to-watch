@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
-import {getImgSrc} from "../../utils/common";
 
 
 /**
@@ -37,7 +36,7 @@ class Promo extends PureComponent {
             onClick={this._handleSelect}
             className="movie-card__poster"
           >
-            <img src={getImgSrc(poster)} alt={title} width="218" height="327"/>
+            <img src={poster} alt={title} width="218" height="327"/>
           </div>
 
           <div className="movie-card__desc">
