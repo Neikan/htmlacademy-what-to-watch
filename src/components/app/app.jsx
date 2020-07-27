@@ -30,6 +30,7 @@ import {
 // Импорт хоков
 import withSelectedTab from "../../hoc/with-selected-tab/with-selected-tab.js";
 import withPlayerControls from "../../hoc/with-player-controls/with-player-controls.js";
+import Loader from "../loader/loader.jsx";
 
 
 const handleMovieAddToList = () => {};
@@ -47,23 +48,25 @@ class App extends PureComponent {
    * @return {Object} страница приложения
    */
   render() {
-    if (this.props.promoMovie) {
-      return (
-        <BrowserRouter>
-          <Switch>
-            <Route exact path={`${Page.MAIN}`}>
-              {this._renderPage()}
-            </Route>
+    const {promoMovie, selectedMovie} = this.props;
 
-            <Route exact path={`${Page.MOVIE}`}>
-              {this._renderMoviePage()}
-            </Route>
-          </Switch>
-        </BrowserRouter>
-      );
+    if (!promoMovie || !selectedMovie) {
+      return <Loader />;
     }
 
-    return null;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={`${Page.MAIN}`}>
+            {this._renderPage()}
+          </Route>
+
+          <Route exact path={`${Page.MOVIE}`}>
+            {this._renderMoviePage()}
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
   }
 
 
