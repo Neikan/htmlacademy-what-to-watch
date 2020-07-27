@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import MoviesByGenre from "./movies-by-genre.jsx";
+
+// Импорт типов, констант, утилит
 import {MOVIES} from "../../consts/test-data.js";
 
 
@@ -11,8 +16,8 @@ describe(`Test MoviesByGenre component`, () => {
           movies={MOVIES}
           countShowedMovies={1}
           onMovieSelect={() => {}}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

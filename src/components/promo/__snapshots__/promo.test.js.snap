@@ -9,6 +9,7 @@ exports[`Test Promo component Promo component is created and rendered correctly 
   >
     <div
       className="movie-card__poster"
+      onClick={[Function]}
     >
       <img
         alt="Fantastic Beasts: The Crimes of Grindelwald"
@@ -22,6 +23,7 @@ exports[`Test Promo component Promo component is created and rendered correctly 
     >
       <h2
         className="movie-card__title"
+        onClick={[Function]}
       >
         Fantastic Beasts: The Crimes of Grindelwald
       </h2>

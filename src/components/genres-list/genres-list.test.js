@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import GenresList from "./genres-list.jsx";
+
+// Импорт типов, констант, утилит
 import {GENRES} from "../../consts/test-data.js";
 
 

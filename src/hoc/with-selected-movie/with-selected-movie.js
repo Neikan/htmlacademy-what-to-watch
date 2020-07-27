@@ -55,7 +55,7 @@ const withSelectedMovie = (Component) => {
 
 
     /**
-     * Метод, обспечивающий обновление состояния при убирании курсора с фильма
+     * Метод, обспечивающий обновление состояния при отводе курсора с фильма
      */
     _handleMovieMouseLeave() {
       clearTimeout(this._timeout);

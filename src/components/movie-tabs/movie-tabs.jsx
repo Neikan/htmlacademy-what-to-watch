@@ -1,9 +1,19 @@
+// Импорт библиотек
 import React from "react";
 import PropTypes from "prop-types";
-import {tabType} from "../../props/prop-types";
+
+// Импорт компонентов
 import MovieTab from "../movie-tab/movie-tab.jsx";
 
+// Импорт типов, констант, утилит
+import {tabType} from "../../props/prop-types";
 
+
+/**
+ * Создание компонента, обеспечивающего отображение списка вкладок на странице фильма
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const MovieTabs = (props) => {
   const {tabs, onTabSelect, selectedTab, isReviews} = props;
 

@@ -1,4 +1,11 @@
-import {Url, FileExtension, CountMovies, ALL_GENRES} from "../consts/common-data";
+import {
+  Url,
+  FileExtension,
+  CountMovies,
+  ALL_GENRES,
+  Time,
+  PAD_STRING_ZERO
+} from "../consts/common-data";
 
 
 /**
@@ -106,3 +113,34 @@ export const getGenres = (movies) => {
     };
   });
 };
+
+
+/**
+ * Проверка и добавление ведущего нуля к часам/минутам/секундам
+ * @param {Number} timePart значение времени
+ * @return {string} отформатированное значение
+ */
+const checkTimeFormat = (timePart) => timePart.toString().padStart(2, PAD_STRING_ZERO);
+
+
+/**
+ * Получение времени в формате 'HH:MM:SS'
+ * @param {Number} time значение времени
+ * @return {string} время в приведенном формате
+ */
+export const getTime = (time) => {
+  const seconds = checkTimeFormat(Math.trunc(time % Time.SECONDS));
+  const minutes = checkTimeFormat(Math.trunc(time / Time.SECONDS));
+  const hours = checkTimeFormat(Math.trunc(minutes / Time.MINUTES));
+
+  return `${hours}:${minutes}:${seconds}`;
+};
+
+
+/**
+ * Получение текущей позиции в % для тоггла шкалы времени воспроизведения
+ * @param {Number} current текущее время
+ * @param {Number} duration общая длительность
+ * @return {string} значение позиции
+ */
+export const getTimeProgress = (current, duration) => `${((current * 100) / duration)}%`;

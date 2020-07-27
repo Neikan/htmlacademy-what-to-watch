@@ -5,7 +5,6 @@ import {
   ACTORS,
   GENRES,
   DESCRIPTION,
-  MOVIE_POSTER,
   PREVIEWS,
   REVIEWS
 } from './movies-consts';
@@ -26,12 +25,13 @@ import {generateId} from '../utils/common';
  */
 const generateMovie = () => {
   const ratingScore = getRandomRating();
+  const image = getRandomElement(COVERS);
 
   return {
     id: generateId(),
     title: getRandomElement(TITLES),
-    poster: MOVIE_POSTER,
-    cover: getRandomElement(COVERS),
+    poster: image,
+    cover: image,
     preview: getRandomElement(PREVIEWS),
     rating: {
       score: ratingScore,

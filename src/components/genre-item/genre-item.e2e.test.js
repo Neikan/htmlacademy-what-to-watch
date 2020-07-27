@@ -1,7 +1,12 @@
+// Импорт библиотек
 import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+
+// Импорт компонентов
 import GenreItem from "./genre-item.jsx";
+
+// Импорт типов, констант, утилит
 import {MarkupElement, GENRES} from "../../consts/test-data";
 
 

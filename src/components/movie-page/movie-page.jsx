@@ -1,17 +1,37 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+
+// Импорт компонентов
 import Header from "../header/header.jsx";
-import MoviesByGenre from "../movies-by-genre/movies-by-genre.jsx";
-import {movieType} from "../../props/prop-types.js";
-import {getImgSrc} from "../../utils/common.js";
-import {MovieTabList, CountMovies} from "../../consts/common-data.js";
+import MovieBackground from "../movie-background/movie-background.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MovieOverView from "../movie-overview/movie-overview.jsx";
 import MovieReviews from "../movie-reviews/movie-reviews.jsx";
+import MoviesByGenre from "../movies-by-genre/movies-by-genre.jsx";
 import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 
+// Импорт типов, констант, утилит
+import {movieType} from "../../props/prop-types.js";
+import {MovieTabList, CountMovies} from "../../consts/common-data.js";
+import {getImgSrc} from "../../utils/common.js";
 
+
+/**
+ * Создание компонента, обеспечивающего отображение страницы с вкладками информации о фильме
+ */
 class MoviePage extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this._handleChangePlaying = this._handleChangePlaying.bind(this);
+  }
+
+
+  /**
+   * Метод, обеспечивающий отрисовку компонента
+   * @return {Object} созданный компонент
+   */
   render() {
     const {movie, selectedTab, onTabSelect} = this.props;
     const {title, genre, year, poster} = this.props.movie;
@@ -20,9 +40,10 @@ class MoviePage extends PureComponent {
       <>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
-            <div className="movie-card__bg">
-              <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
-            </div>
+            <MovieBackground
+              title={title}
+              poster={poster}
+            />
 
             <h1 className="visually-hidden">WTW</h1>
 
@@ -37,7 +58,10 @@ class MoviePage extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button
+                    onClick={this._handleChangePlaying}
+                    className="btn btn--play movie-card__button" type="button"
+                  >
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
@@ -81,6 +105,10 @@ class MoviePage extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку содержимого выбранной вкладки
+   * @return {Object} созданный компонент
+   */
   _renderMovieDesc() {
     const {movie, selectedTab} = this.props;
 
@@ -100,6 +128,10 @@ class MoviePage extends PureComponent {
   }
 
 
+  /**
+   * Метод, обеспечивающий отрисовку списка похожих фильмов
+   * @return {Object} созданный компонент
+   */
   _renderMoviesByGenre() {
     const {movies, onMovieSelect} = this.props;
 
@@ -115,6 +147,14 @@ class MoviePage extends PureComponent {
       />
     );
   }
+
+
+  /**
+   * Метод, обеспечивающий управление проигрывателем фильма
+   */
+  _handleChangePlaying() {
+    this.props.onMovieChangePlaying();
+  }
 }
 
 
@@ -122,6 +162,7 @@ MoviePage.propTypes = {
   movie: movieType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieSelect: PropTypes.func.isRequired,
+  onMovieChangePlaying: PropTypes.func.isRequired,
 
   selectedTab: PropTypes.string.isRequired,
   onTabSelect: PropTypes.func.isRequired

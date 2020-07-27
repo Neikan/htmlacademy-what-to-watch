@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
-import {movieType} from "../../props/prop-types.js";
+
+// Импорт компонентов
 import MovieReview from "../movie-review/movie-review.jsx";
+
+// Импорт типов, констант, утилит
+import {movieType} from "../../props/prop-types.js";
 import {getIntervalForCols} from "../../utils/common.js";
 
 
@@ -34,6 +39,11 @@ const renderReviews = (intervals, reviews) => {
 };
 
 
+/**
+ * Создание компонента, обеспечивающего отображение вкладки с комментариями о фильме
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const MovieReviews = (props) => {
   const {movie} = props;
   const {reviews} = movie;

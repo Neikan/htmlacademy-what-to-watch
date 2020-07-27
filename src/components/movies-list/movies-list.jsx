@@ -1,44 +1,51 @@
-import React, {PureComponent} from "react";
+// Импорт библиотек
+import React from "react";
 import PropTypes from "prop-types";
+
+// Импорт компонентов
 import MovieCard from "../movie-card/movie-card.jsx";
+
+// Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
+
+// Импорт хоков
 import withActivePlayer from "../../hoc/with-active-player/with-active-player.js";
 
 
 const MovieCardWrapped = withActivePlayer(MovieCard);
 
 
-class MoviesList extends PureComponent {
-  /**
-   * Метод, обеспечивающий отрисовку разметки компонента с данными первых восьми фильмов
-   * @return {Object} разметка компонента
-   */
-  render() {
-    const {
-      movies,
-      countShowedMovies,
-      onMovieSelect,
-      onMovieMouseEnter,
-      onMovieMouseLeave
-    } = this.props;
+/**
+ * Создание компонента, обеспечивающего отображение списков фильмов
+ * на главной странице и на странице фильма в списке похожих
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
+const MoviesList = (props) => {
+  const {
+    movies,
+    countShowedMovies,
+    onMovieSelect,
+    onMovieMouseEnter,
+    onMovieMouseLeave
+  } = props;
 
-    return (
-      <div className="catalog__movies-list">
-        {movies.slice(0, countShowedMovies).map((movie) => {
-          return (
-            <MovieCardWrapped
-              key={movie.id}
-              movie={movie}
-              onSelect={onMovieSelect}
-              onPlay={onMovieMouseEnter}
-              onPlayingStop={onMovieMouseLeave}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {movies.slice(0, countShowedMovies).map((movie) => {
+        return (
+          <MovieCardWrapped
+            key={movie.id}
+            movie={movie}
+            onSelect={onMovieSelect}
+            onPlay={onMovieMouseEnter}
+            onPlayingStop={onMovieMouseLeave}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 
 MoviesList.propTypes = {

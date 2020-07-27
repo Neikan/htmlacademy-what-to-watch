@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test ScaleTime component ScaleTime component is created and rendered correctly 1`] = `
+Array [
+  <div
+    className="player__time"
+  >
+    <progress
+      className="player__progress"
+      max={200}
+      value={100}
+    />
+    <div
+      className="player__toggler"
+      style={
+        Object {
+          "left": "50%",
+        }
+      }
+    >
+      Toggler
+    </div>
+  </div>,
+  <div
+    className="player__time-value"
+  >
+    01:02:03
+  </div>,
+]
+`;

@@ -1,22 +1,41 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-import Main from "../main/main.jsx";
-import {movieType, genreType} from "../../props/prop-types.js";
-import MoviePage from '../movie-page/movie-page.jsx';
-import {Page, ALL_GENRES} from "../../consts/common-data.js";
-import {ActionCreator} from "../../store/reducer.js";
 import {connect} from "react-redux";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+
+// Импорт компонентов
+import Main from "../main/main.jsx";
+import MoviePage from '../movie-page/movie-page.jsx';
+import MoviePlayer from "../movie-player/movie-player.jsx";
+
+// Импорт типов, констант, утилит
+import {movieType, genreType} from "../../props/prop-types.js";
+import {Page, ALL_GENRES} from "../../consts/common-data.js";
+
+// Импорт редьюсеров
+import {ActionCreator} from "../../store/reducer.js";
+
+// Импорт хоков
 import withSelectedTab from "../../hoc/with-selected-tab/with-selected-tab.js";
+import withPlayerControls from "../../hoc/with-player-controls/with-player-controls.js";
 
 
-const handleMoviePlay = () => {};
 const handleMovieAddToList = () => {};
 
 const MoviePageWrapped = withSelectedTab(MoviePage);
+const MoviePlayerWrapped = withPlayerControls(MoviePlayer);
 
 
+/**
+ * Создание главного компонента приложения
+ */
 class App extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+
   /**
    * Метод, обспечивающий изменение страниц приложения
    * @return {Object} страница приложения
@@ -28,6 +47,7 @@ class App extends PureComponent {
           <Route exact path={`${Page.MAIN}`}>
             {this._renderPage()}
           </Route>
+
           <Route exact path={`${Page.MOVIE}:${this.props.selectedMovie.id}`}>
             {this._renderMoviePage()}
           </Route>
@@ -42,6 +62,11 @@ class App extends PureComponent {
    * @return {Object} страница приложения
    */
   _renderPage() {
+    if (this.props.isPlayingMovie) {
+      return this._renderMoviePlayer();
+    }
+
+
     switch (this.props.page) {
       case (Page.MAIN):
         return this._renderMainPage();
@@ -68,8 +93,9 @@ class App extends PureComponent {
       genres,
       selectedGenre,
       onMovieSelect,
+      onMovieChangePlaying,
       onGenreSelect,
-      onBtnMoreSelect
+      onShowMore
     } = this.props;
 
     const renderedMovies = selectedGenre === ALL_GENRES ? movies : likedMovies;
@@ -79,11 +105,11 @@ class App extends PureComponent {
       movies={renderedMovies}
       genres={genres}
       countShowedMovies={countShowedMovies}
-      onMoviePlay={handleMoviePlay}
+      onMovieChangePlaying={onMovieChangePlaying}
       onMovieAddToList={handleMovieAddToList}
       onMovieSelect={onMovieSelect}
       onGenreSelect={onGenreSelect}
-      onBtnMoreSelect={onBtnMoreSelect}
+      onShowMore={onShowMore}
     />;
   }
 
@@ -93,13 +119,30 @@ class App extends PureComponent {
    * @return {Object} страница фильма
    */
   _renderMoviePage() {
-    const {selectedMovie, likedMovies, onMovieSelect} = this.props;
+    const {selectedMovie, likedMovies, onMovieSelect, onMovieChangePlaying} = this.props;
 
     return <MoviePageWrapped
       movie={selectedMovie}
       movies={likedMovies}
       onMovieSelect={onMovieSelect}
+      onMovieChangePlaying={onMovieChangePlaying}
     />;
+  }
+
+
+  /**
+   * Метод, обеспечивающий отрисовку проигрывателя фильма
+   * @return {Object} проигрыватель
+   */
+  _renderMoviePlayer() {
+    const {selectedMovie, onMovieChangePlaying} = this.props;
+
+    return (
+      <MoviePlayerWrapped
+        movie={selectedMovie}
+        onClose={onMovieChangePlaying}
+      />
+    );
   }
 }
 
@@ -112,14 +155,16 @@ App.propTypes = {
   selectedMovie: movieType.isRequired,
   likedMovies: PropTypes.arrayOf(movieType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
+  isPlayingMovie: PropTypes.bool.isRequired,
 
   genres: PropTypes.arrayOf(genreType).isRequired,
   selectedGenre: PropTypes.string.isRequired,
 
   onMovieSelect: PropTypes.func.isRequired,
+  onMovieChangePlaying: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
 
-  onBtnMoreSelect: PropTypes.func.isRequired
+  onShowMore: PropTypes.func.isRequired
 };
 
 
@@ -131,6 +176,7 @@ const mapStateToProps = (state) => ({
   selectedMovie: state.selectedMovie,
   likedMovies: state.likedMovies,
   countShowedMovies: state.countShowedMovies,
+  isPlayingMovie: state.isPlayingMovie,
 
   genres: state.genres,
   selectedGenre: state.selectedGenre
@@ -146,8 +192,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.selectMovie(movie));
   },
 
-  onBtnMoreSelect() {
-    dispatch(ActionCreator.selectBtnMore());
+  onMovieChangePlaying() {
+    dispatch(ActionCreator.changePlayingMovie());
+  },
+
+  onShowMore() {
+    dispatch(ActionCreator.showMore());
   }
 });
 

@@ -1,8 +1,12 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import MovieTabs from "./movie-tabs.jsx";
-import {MovieTabList} from "../../consts/common-data.js";
-import {MOVIES} from "../../consts/test-data.js";
+
+// Импорт типов, констант, утилит
+import {MovieTabList, MOVIES} from "../../consts/test-data.js";
 
 
 describe(`Test MovieTabs component`, () => {
@@ -13,8 +17,8 @@ describe(`Test MovieTabs component`, () => {
           selectedTab={``}
           onTabSelect={() => {}}
           isReviews={MOVIES[0].reviews.length > 0 ? true : false}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -27,8 +31,8 @@ describe(`Test MovieTabs component`, () => {
           selectedTab={``}
           onTabSelect={() => {}}
           isReviews={MOVIES[1].reviews.length > 0 ? true : false}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -41,8 +45,8 @@ describe(`Test MovieTabs component`, () => {
           selectedTab={``}
           onTabSelect={() => {}}
           isReviews={MOVIES[2].reviews.length > 0 ? true : false}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import MoviePage from "./movie-page.jsx";
+
+// Импорт типов, констант, утилит
 import {MOVIES, MovieTabList} from "../../consts/test-data.js";
 
 
@@ -12,10 +17,11 @@ describe(`Test MoviePage component`, () => {
           movies={MOVIES}
           countShowedMovies={4}
           onMovieSelect={() => {}}
+          onMovieChangePlaying={() => {}}
           selectedTab={MovieTabList.OVERVIEW}
           onTabSelect={() => {}}
-        />)
-      .toJSON();
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

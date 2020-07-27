@@ -1,22 +1,27 @@
+// Импорт библиотек
 import React from "react";
 import PropTypes from "prop-types";
-import {LogoPosition} from "../../consts/common-data";
+import cn from 'classnames';
+
+// Импорт типов, констант, утилит
+import {LogoPosition, Page} from "../../consts/common-data";
 
 
-const MarkupClass = {
-  HEADER: `logo__link`,
-  FOOTER: `logo__link logo__link--light`
-};
-
-
+/**
+ * Создание компонента, обеспечивающего отображение логотипа приложения
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const Logo = (props) => {
   const {logoPosition} = props;
 
-  const className = logoPosition === LogoPosition.HEADER ? MarkupClass.HEADER : MarkupClass.FOOTER;
+  const className = cn(`logo__link`, {
+    'logo__link--light': logoPosition === LogoPosition.FOOTER
+  });
 
   return (
     <div className="logo">
-      <a className={className}>
+      <a className={className} href={Page.MAIN}>
         <span className="logo__letter logo__letter--1">W</span>
         <span className="logo__letter logo__letter--2">T</span>
         <span className="logo__letter logo__letter--3">W</span>

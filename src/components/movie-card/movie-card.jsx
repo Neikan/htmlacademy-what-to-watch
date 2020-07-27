@@ -1,10 +1,25 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+
+// Импорт компонентов
+import MoviePlayerPreview from "../movie-player-preview/movie-player-preview.jsx";
+
+// Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
-import VideoPlayer from "../video-player/video-player.jsx";
 
 
+/**
+ * Создание компонента, обеспечивающего отображение карточки-превью фильма
+ */
 class MovieCard extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this._handleSelect = this._handleSelect.bind(this);
+  }
+
+
   /**
    * Метод, обеспечивающий отрисовку компонента
    * @return {Object} созданный компонент
@@ -17,12 +32,12 @@ class MovieCard extends PureComponent {
       <article
         onMouseEnter={onPlay}
         onMouseLeave={onStop}
-        onClick={onSelect}
+        onClick={this._handleSelect}
         id={id}
         className="small-movie-card catalog__movies-card"
       >
         <div className="small-movie-card__image">
-          <VideoPlayer muted
+          <MoviePlayerPreview muted
             isPlaying={isPlaying}
             src={preview}
             cover={cover}
@@ -36,6 +51,17 @@ class MovieCard extends PureComponent {
         </h3>
       </article>
     );
+  }
+
+
+  /**
+   * Метод, обспечивающий передачу данных выбранного фильма для открытия его страницы
+   * @param {Object} movieId идентификатор фильма
+   */
+  _handleSelect() {
+    const {movie, onSelect} = this.props;
+
+    onSelect(movie);
   }
 }
 

@@ -1,9 +1,17 @@
+// Импорт библиотек
 import React from "react";
 import PropTypes from "prop-types";
 import cn from 'classnames';
+
+// Импорт типов, констант, утилит
 import {MovieTabList} from "../../consts/common-data";
 
 
+/**
+ * Создание компонента, обеспечивающего отображение вкладки на странице фильма
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const MovieTab = (props) => {
   const {tab, onTabSelect, selectedTab, isReviews} = props;
 
@@ -26,6 +34,12 @@ const MovieTab = (props) => {
 };
 
 
+/**
+ * Помощник, обеспечивающий выбор вкладки
+ * @param {Object} tab вкладка
+ * @param {Object} onTabSelect помощник, обеспечивабщий передачу выбранной вкладки в хранилище
+ * @return {Function}
+ */
 const handleTabSelect = (tab, onTabSelect) => {
   return () => {
     onTabSelect(tab);

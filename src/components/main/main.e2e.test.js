@@ -1,7 +1,12 @@
+// Импорт библиотек
 import React from "react";
-import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import {configure, mount} from "enzyme";
+
+// Импорт компонентов
 import Main from "./main.jsx";
+
+// Импорт типов, констант, утилит
 import {MarkupElement, MOVIES, GENRES} from "./../../consts/test-data";
 
 
@@ -12,7 +17,7 @@ configure({
 
 describe(`Test e2e Main component`, () => {
   test(`Should 'play'-button for promo-movie be pressed`, () => {
-    const handleMoviePlay = jest.fn();
+    const handleMovieChangePlaying = jest.fn();
 
     const main = mount(
         <Main
@@ -20,17 +25,17 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlay={handleMoviePlay}
+          onMovieChangePlaying={handleMovieChangePlaying}
           onMovieAddToList={() => {}}
           onMovieSelect={() => {}}
           onGenreSelect={() => {}}
-          onBtnMoreSelect={() => {}}
+          onShowMore={() => {}}
         />
     );
 
     main.find(`.${MarkupElement.PROMO_BTN_PLAY}`).props().onClick();
 
-    expect(handleMoviePlay.mock.calls.length).toBe(1);
+    expect(handleMovieChangePlaying.mock.calls.length).toBe(1);
   });
 
 
@@ -43,11 +48,11 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlay={() => {}}
+          onMovieChangePlaying={() => {}}
           onMovieAddToList={handleMovieAddToList}
           onMovieSelect={() => {}}
           onGenreSelect={() => {}}
-          onBtnMoreSelect={() => {}}
+          onShowMore={() => {}}
         />
     );
 
@@ -67,11 +72,11 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={countShowedMovies}
-          onMoviePlay={() => {}}
+          onMovieChangePlaying={() => {}}
           onMovieAddToList={() => {}}
           onMovieSelect={handleMovieSelect}
           onGenreSelect={() => {}}
-          onBtnMoreSelect={() => {}}
+          onShowMore={() => {}}
         />
     );
 
@@ -91,11 +96,11 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlay={() => {}}
+          onMovieChangePlaying={() => {}}
           onMovieAddToList={() => {}}
           onMovieSelect={() => {}}
           onGenreSelect={handleGenreSelect}
-          onBtnMoreSelect={() => {}}
+          onShowMore={() => {}}
         />
     );
 
@@ -106,7 +111,7 @@ describe(`Test e2e Main component`, () => {
 
 
   test(`Should BtnShowMore be pressed`, () => {
-    const handleBtnMoreSelect = jest.fn();
+    const handleShowMore = jest.fn();
 
     const main = mount(
         <Main
@@ -114,16 +119,16 @@ describe(`Test e2e Main component`, () => {
           movies={MOVIES}
           genres={GENRES}
           countShowedMovies={1}
-          onMoviePlay={() => {}}
+          onMovieChangePlaying={() => {}}
           onMovieAddToList={() => {}}
           onMovieSelect={() => {}}
           onGenreSelect={() => {}}
-          onBtnMoreSelect={handleBtnMoreSelect}
+          onShowMore={handleShowMore}
         />
     );
 
     main.find(`.${MarkupElement.BTN_SHOW_MORE}`).simulate(`click`);
 
-    expect(handleBtnMoreSelect.mock.calls.length).toBe(1);
+    expect(handleShowMore.mock.calls.length).toBe(1);
   });
 });

@@ -1,12 +1,16 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 
+/**
+ * Создание компонента, обеспечивающего отрисовку дополнительны фильмов списка по требованию
+ */
 class BtnShowMore extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handleSelect = this._handleSelect.bind(this);
+    this._handleShowMore = this._handleShowMore.bind(this);
   }
 
 
@@ -18,7 +22,7 @@ class BtnShowMore extends PureComponent {
     return (
       <div className="catalog__more">
         <button className="catalog__button" type="button"
-          onClick={this._handleSelect}
+          onClick={this._handleShowMore}
         >
           Show more
         </button>
@@ -30,14 +34,14 @@ class BtnShowMore extends PureComponent {
   /**
      * Метод, обспечивающий выполнение помощника для отрисовки дополнительных фильмов
      */
-  _handleSelect() {
-    this.props.onSelect();
+  _handleShowMore() {
+    this.props.onShowMore();
   }
 }
 
 
 BtnShowMore.propTypes = {
-  onSelect: PropTypes.func.isRequired
+  onShowMore: PropTypes.func.isRequired
 };
 
 

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MovieBackground component MovieBackground component is created and rendered correctly 1`] = `
+<div
+  className="movie-card__bg"
+>
+  <img
+    alt="Fantastic Beasts: The Crimes of Grindelwald"
+    src="/img/the-grand-budapest-hotel-poster.jpg"
+  />
+</div>
+`;

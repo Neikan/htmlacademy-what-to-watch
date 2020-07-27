@@ -1,46 +1,62 @@
+// Импорт библиотек
 import React from "react";
 import PropTypes from "prop-types";
-import Header from "../header/header.jsx";
-import Promo from "../promo/promo.jsx";
-import GenresList from "../genres-list/genres-list.jsx";
-import MoviesList from "../movies-list/movies-list.jsx";
+
+// Импорт компонентов
 import BtnShowMore from "../btn-show-more/btn-show-more.jsx";
 import Footer from "../footer/footer.jsx";
+import GenresList from "../genres-list/genres-list.jsx";
+import Header from "../header/header.jsx";
+import MovieBackground from "../movie-background/movie-background.jsx";
+import MoviesList from "../movies-list/movies-list.jsx";
+import Promo from "../promo/promo.jsx";
+
+// Импорт типов, констант, утилит
 import {movieType, genreType} from "../../props/prop-types.js";
+
+// Импорт хоков
 import withSelectedMovie from "../../hoc/with-selected-movie/with-selected-movie.js";
 
 
 const MoviesListWrapped = withSelectedMovie(MoviesList);
 
 
+/**
+ * Создание компонента, обеспечивающего отображение главной страницы приложения
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const Main = (props) => {
   const {
     promoMovie,
     movies,
     genres,
     countShowedMovies,
-    onMoviePlay,
+    onMovieChangePlaying,
     onMovieAddToList,
     onMovieSelect,
     onGenreSelect,
-    onBtnMoreSelect
+    onShowMore
   } = props;
 
-  const isShowBtnMore = movies.length > countShowedMovies;
+  const {poster, title} = promoMovie;
+
+  const isShowMore = movies.length > countShowedMovies;
 
   return (
     <>
       <section className="movie-card">
-        <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
-        </div>
-
+        <MovieBackground
+          title={title}
+          poster={poster}
+        />
         <h1 className="visually-hidden">WTW</h1>
         <Header />
         <Promo
           movie={promoMovie}
-          onPlay={onMoviePlay}
+          onChangePlaying={onMovieChangePlaying}
           onAdd={onMovieAddToList}
+          onSelect={onMovieSelect}
         />
       </section>
 
@@ -58,7 +74,7 @@ const Main = (props) => {
               onMovieSelect={onMovieSelect}
             />
 
-            {isShowBtnMore ? <BtnShowMore onSelect={onBtnMoreSelect} /> : null}
+            {isShowMore ? <BtnShowMore onShowMore={onShowMore} /> : null}
           </div>
         </section>
 
@@ -74,11 +90,11 @@ Main.propTypes = {
   movies: PropTypes.arrayOf(movieType).isRequired,
   genres: PropTypes.arrayOf(genreType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
-  onMoviePlay: PropTypes.func.isRequired,
+  onMovieChangePlaying: PropTypes.func.isRequired,
   onMovieAddToList: PropTypes.func.isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
-  onBtnMoreSelect: PropTypes.func.isRequired
+  onShowMore: PropTypes.func.isRequired
 };
 
 

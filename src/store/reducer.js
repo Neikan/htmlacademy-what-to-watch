@@ -17,6 +17,7 @@ const initialState = {
   selectedMovie: promoMovie,
   likedMovies: movies,
   countShowedMovies: CountMovies.START,
+  isPlayingMovie: false,
 
   genres,
   selectedGenre: genres[0].title
@@ -24,13 +25,19 @@ const initialState = {
 
 
 const ActionType = {
+  CHANGE_PLAYING_MOVIE: `change playing movie`,
   SELECT_GENRE: `select genre`,
   SELECT_MOVIE: `select movie`,
-  SELECT_SHOW_MORE: `select show more`
+  SHOW_MORE: `show more`
 };
 
 
 const ActionCreator = {
+  changePlayingMovie: () => ({
+    type: ActionType.CHANGE_PLAYING_MOVIE,
+    payload: null,
+  }),
+
   selectGenre: (genre) => ({
     type: ActionType.SELECT_GENRE,
     payload: genre,
@@ -41,8 +48,8 @@ const ActionCreator = {
     payload: movie,
   }),
 
-  selectBtnMore: () => ({
-    type: ActionType.SELECT_SHOW_MORE,
+  showMore: () => ({
+    type: ActionType.SHOW_MORE,
     payload: CountMovies.START
   })
 };
@@ -50,6 +57,11 @@ const ActionCreator = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.CHANGE_PLAYING_MOVIE:
+      return updateState(state, {
+        isPlayingMovie: !state.isPlayingMovie
+      });
+
     case ActionType.SELECT_GENRE:
       return updateState(state, {
         likedMovies: getMoviesByGenre(state.movies, action.payload),
@@ -65,7 +77,7 @@ const reducer = (state = initialState, action) => {
         likedMovies: getLikedMoviesByGenre(state.movies, action.payload.genre, action.payload.id),
       });
 
-    case ActionType.SELECT_SHOW_MORE:
+    case ActionType.SHOW_MORE:
       return updateState(state, {
         countShowedMovies: state.countShowedMovies + action.payload
       });

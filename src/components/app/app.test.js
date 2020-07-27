@@ -1,10 +1,14 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
-import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
+
+// Импорт компонентов
 import App from "./app.jsx";
-import {MOVIES, GENRES} from "./../../consts/test-data";
-import {Page, CountMovies} from "../../consts/common-data.js";
+
+// Импорт типов, констант, утилит
+import {Page, CountMovies, MOVIES, GENRES} from "./../../consts/test-data";
 import {getLikedMoviesByGenre, getMoviesByGenre} from "../../utils/common.js";
 
 
@@ -21,6 +25,7 @@ describe(`Test App component`, () => {
       selectedMovie: MOVIES[0],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[0].genre, MOVIES[0].id),
       countShowedMovies: CountMovies.START,
+      isPlayingMovie: false,
 
       genres: GENRES,
       selectedGenre: GENRES[0].title
@@ -50,6 +55,7 @@ describe(`Test App component`, () => {
       selectedMovie: MOVIES[1],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[1].genre, MOVIES[1].id),
       countShowedMovies: CountMovies.START,
+      isPlayingMovie: false,
 
       genres: GENRES,
       selectedGenre: GENRES[0].title
@@ -79,6 +85,7 @@ describe(`Test App component`, () => {
       selectedMovie: MOVIES[0],
       likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
       countShowedMovies: CountMovies.START,
+      isPlayingMovie: false,
 
       genres: GENRES,
       selectedGenre: GENRES[1].title

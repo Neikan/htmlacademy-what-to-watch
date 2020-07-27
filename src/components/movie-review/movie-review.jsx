@@ -1,6 +1,15 @@
+// Импорт библиотек
 import React from "react";
+
+// Импорт типов, констант, утилит
 import {reviewType} from "../../props/prop-types.js";
 
+
+/**
+ * Создание компонента, обеспечивающего отображение комментария о фильме
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
 const MovieReview = (props) => {
   const {review} = props;
   const {text, author, date, rating} = review;

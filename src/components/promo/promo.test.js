@@ -1,6 +1,11 @@
+// Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
+
+// Импорт компонентов
 import Promo from "./promo.jsx";
+
+// Импорт типов, констант, утилит
 import {MOVIES} from "../../consts/test-data.js";
 
 
@@ -9,10 +14,11 @@ describe(`Test Promo component`, () => {
     const tree = renderer.create(
         <Promo
           movie={MOVIES[0]}
-          onPlay={() => {}}
           onAdd={() => {}}
-        />)
-      .toJSON();
+          onChangePlaying={() => {}}
+          onSelect={() => {}}
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
