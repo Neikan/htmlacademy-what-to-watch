@@ -44,18 +44,6 @@ const withPlayerControls = (Component) => {
     }
 
 
-    componentWillUnmount() {
-      if (this._videoRef.current) {
-        const video = this._videoRef.current;
-
-        video.src = ``;
-        video.onplay = null;
-        video.onloadedmetadata = null;
-        video.ontimeupdate = null;
-      }
-    }
-
-
     /**
      * Метод, обеспечивающий отрисовку компонента
      * @return {Object} созданный компонент
@@ -89,6 +77,10 @@ const withPlayerControls = (Component) => {
     }
 
 
+    /**
+     * Метод, обеспечивающий получение длительности видео
+     * @param {Object} video видео
+     */
     _handleGetDuration(video) {
       video.onloadedmetadata = () => this.setState({
         duration: video.duration
@@ -96,6 +88,10 @@ const withPlayerControls = (Component) => {
     }
 
 
+    /**
+     * Метод, обеспечивающий получение текущего времени воспроизведения видео
+     * @param {Object} video видео
+     */
     _handleGetCurrentTime(video) {
       video.ontimeupdate = () => this.setState({
         currentTime: Math.trunc(video.currentTime)
@@ -103,6 +99,9 @@ const withPlayerControls = (Component) => {
     }
 
 
+    /**
+     * Метод, обеспечивающий переход проигрывателя между режимами удержания и воспроизведения
+     */
     _handleChangePlaying() {
       const {isPlaying} = this.state;
 
@@ -112,6 +111,9 @@ const withPlayerControls = (Component) => {
     }
 
 
+    /**
+     * Метод, обеспечивающий перевод проигрывателя в полноэкранный режим
+     */
     _handleSetFullScreen() {
       const video = this._videoRef.current;
 
