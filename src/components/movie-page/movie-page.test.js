@@ -30,7 +30,7 @@ describe(`Test MoviePage component`, () => {
 
   test(`MoviePage component is created and rendered correctly`, () => {
     const tree = renderer.create(
-      <Provider store={store}>
+        <Provider store={store}>
           <MoviePage
             movie={MOVIES[0]}
             movies={MOVIES}
