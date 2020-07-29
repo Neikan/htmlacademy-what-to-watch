@@ -147,20 +147,21 @@ export const GENRES = [
 
 
 export const MarkupElement = {
-  PROMO_BTN_PLAY: `btn--play`,
-  PROMO_BTN_ADD_TO_LIST: `btn--list`,
-  PROMO_POSTER: `movie-card__poster`,
-  PROMO_TITLE: `movie-card__title`,
-  MOVIE_CARD: `small-movie-card`,
-  MOVIE_CARD_TITLE: `small-movie-card__title`,
-  MOVIE_CARD_COVER: `small-movie-card__image`,
-  GENRE_LINK: `catalog__genres-link`,
-  MOVIE_TAB: `movie-nav__item`,
   BTN_SHOW_MORE: `catalog__button`,
   BTN_PLAYER_EXIT: `player__exit`,
   BTN_PLAYER_FULL_SCREEN: `player__full-screen`,
   BTN_PLAYER_PLAY: `player__play`,
-  BTN_SIGN_IN: `sign-in__btn`
+  BTN_SIGN_IN: `sign-in__btn`,
+  GENRE_LINK: `catalog__genres-link`,
+  MOVIE_CARD: `small-movie-card`,
+  MOVIE_CARD_TITLE: `small-movie-card__title`,
+  MOVIE_CARD_COVER: `small-movie-card__image`,
+  MOVIE_PLAYER: `player__video`,
+  MOVIE_TAB: `movie-nav__item`,
+  PROMO_BTN_PLAY: `btn--play`,
+  PROMO_BTN_ADD_TO_LIST: `btn--list`,
+  PROMO_POSTER: `movie-card__poster`,
+  PROMO_TITLE: `movie-card__title`
 };
 
 
@@ -199,6 +200,17 @@ export const AuthStatus = {
 
 export const UserDatumState = {
   authStatus: AuthStatus.AUTH,
+  user: {
+    id: `user-1`,
+    email: `sladkov.e.m@outlook.com`,
+    name: `Batman`,
+    avatarUrl: `https://4.react.pages.academy/wtw/static/avatar/5.jpg`
+  }
+};
+
+
+export const UserDatumStateNoAuth = {
+  authStatus: AuthStatus.NO_AUTH,
   user: {
     id: `user-1`,
     email: `sladkov.e.m@outlook.com`,

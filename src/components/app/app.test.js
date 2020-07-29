@@ -8,7 +8,7 @@ import {Provider} from "react-redux";
 import App from "./app.jsx";
 
 // Импорт типов, констант, утилит
-import {Page, CountMovies, MOVIES, GENRES, AuthStatus} from "./../../consts/test-data";
+import {Page, CountMovies, MOVIES, GENRES, UserDatumState, UserDatumStateNoAuth} from "./../../consts/test-data";
 import {getLikedMoviesByGenre, getMoviesByGenre} from "../../utils/common.js";
 import NameSpace from "../../store/name-space.js";
 
@@ -32,9 +32,7 @@ describe(`Test App component`, () => {
         genres: GENRES,
         selectedGenre: GENRES[0].title
       },
-      [NameSpace.DATUM_USER]: {
-        authStatus: AuthStatus.NO_AUTH
-      }
+      [NameSpace.DATUM_USER]: UserDatumState
     });
 
 
@@ -67,9 +65,7 @@ describe(`Test App component`, () => {
         genres: GENRES,
         selectedGenre: GENRES[0].title
       },
-      [NameSpace.DATUM_USER]: {
-        authStatus: AuthStatus.NO_AUTH
-      }
+      [NameSpace.DATUM_USER]: UserDatumState
     });
 
 
@@ -102,9 +98,73 @@ describe(`Test App component`, () => {
         genres: GENRES,
         selectedGenre: GENRES[1].title
       },
-      [NameSpace.DATUM_USER]: {
-        authStatus: AuthStatus.NO_AUTH
-      }
+      [NameSpace.DATUM_USER]: UserDatumState
+    });
+
+
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App />
+        </Provider>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+
+  test(`App component is created and rendered correctly when promoMovie === null`, () => {
+    const store = mockStore({
+      [NameSpace.DATUM]: {
+        page: Page.MAIN,
+
+        movies: MOVIES,
+        promoMovie: null,
+        selectedMovie: MOVIES[0],
+        likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
+        countShowedMovies: CountMovies.START,
+        isPlayingMovie: false,
+
+        genres: GENRES,
+        selectedGenre: GENRES[1].title
+      },
+      [NameSpace.DATUM_USER]: UserDatumState
+    });
+
+
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App />
+        </Provider>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+
+  test(`App component is created and rendered correctly when authStatus === NO_AUTH`, () => {
+    const store = mockStore({
+      [NameSpace.DATUM]: {
+        page: Page.MAIN,
+
+        movies: MOVIES,
+        promoMovie: MOVIES[0],
+        selectedMovie: MOVIES[0],
+        likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
+        countShowedMovies: CountMovies.START,
+        isPlayingMovie: false,
+
+        genres: GENRES,
+        selectedGenre: GENRES[1].title
+      },
+      [NameSpace.DATUM_USER]: UserDatumStateNoAuth
     });
 
 
