@@ -13,6 +13,7 @@ import {reviewType} from "../../props/prop-types.js";
 const MovieReview = (props) => {
   const {review} = props;
   const {text, author, date, rating} = review;
+  const {name} = author;
 
   return (
     <div className="review">
@@ -20,7 +21,7 @@ const MovieReview = (props) => {
         <p className="review__text">{text}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{author}</cite>
+          <cite className="review__author">{name}</cite>
           <time className="review__date" dateTime={date}>{date}</time>
         </footer>
       </blockquote>

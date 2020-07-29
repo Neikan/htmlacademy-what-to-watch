@@ -13,7 +13,7 @@ describe(`Test MovieBackground component`, () => {
   test(`MovieBackground component is created and rendered correctly`, () => {
     const tree = renderer.create(
         <MovieBackground
-          poster={MOVIES[0].poster}
+          backgroundImage={MOVIES[0].backgroundImage}
           title={MOVIES[0].title}
         />
     ).toJSON();

@@ -2,9 +2,6 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 
-// Импорт типов, констант, утилит
-import {getImgSrc} from "../../utils/common";
-
 
 /**
  * Создание компонента, обеспечивающего отображение проигрывателя для трейлера фильма
@@ -25,7 +22,7 @@ class MoviePlayerPreview extends PureComponent {
   render() {
     return (
       <video width="280" height="175"
-        poster={getImgSrc(this.props.cover)}
+        poster={this.props.cover}
         ref={this._videoRef}
         type="video/webm"
       >

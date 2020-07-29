@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Loader component Loader component is created and rendered correctly 1`] = `
+<section>
+  <h2
+    className="loader"
+  >
+    Loading... Please wait
+  </h2>
+</section>
+`;

@@ -1,7 +1,7 @@
-import {ActionType, reducer, ActionCreator} from "./reducer.js";
-import {GENRES, MOVIES} from "../consts/test-data.js";
-import {getLikedMoviesByGenre, getMoviesByGenre, updateGenres} from "../utils/common.js";
-import {Page, CountMovies} from "../consts/common-data.js";
+import {ActionType, reducer, ActionCreator} from "./datum.js";
+import {GENRES, MOVIES} from "../../consts/test-data.js";
+import {getLikedMoviesByGenre, getMoviesByGenre, updateGenres} from "../../utils/common.js";
+import {Page, CountMovies} from "../../consts/common-data.js";
 
 
 describe(`Get initial state`, () => {
@@ -134,6 +134,22 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.changePlayingMovie()).toEqual({
       type: ActionType.CHANGE_PLAYING_MOVIE,
       payload: null
+    });
+  });
+
+
+  test(`LoadMovies returns correct action`, () => {
+    expect(ActionCreator.loadMovies(MOVIES)).toEqual({
+      type: ActionType.LOAD_MOVIES,
+      payload: MOVIES
+    });
+  });
+
+
+  test(`LoadPromoMovie returns correct action`, () => {
+    expect(ActionCreator.loadPromoMovie(MOVIES[1])).toEqual({
+      type: ActionType.LOAD_PROMO_MOVIE,
+      payload: MOVIES[1]
     });
   });
 });

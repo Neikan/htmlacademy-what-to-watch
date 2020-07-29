@@ -2,9 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// Импорт типов, констант, утилит
-import {getImgSrc} from "../../utils/common.js";
-
 
 /**
  * Создание компонента, обеспечивающего отображение фона страниц
@@ -12,18 +9,18 @@ import {getImgSrc} from "../../utils/common.js";
  * @return {Object} созданный компонент
  */
 const MovieBackground = (props) => {
-  const {poster, title} = props;
+  const {backgroundImage, title} = props;
 
   return (
     <div className="movie-card__bg">
-      <img src={getImgSrc(poster)} alt={title} />
+      <img src={backgroundImage} alt={title} />
     </div>
   );
 };
 
 
 MovieBackground.propTypes = {
-  poster: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 };
 

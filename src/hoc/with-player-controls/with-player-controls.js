@@ -3,7 +3,7 @@ import React, {PureComponent, createRef} from "react";
 
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types.js";
-import {getTime, getImgSrc} from "../../utils/common.js";
+import {getTime} from "../../utils/common.js";
 
 
 const withPlayerControls = (Component) => {
@@ -28,7 +28,7 @@ const withPlayerControls = (Component) => {
       if (this._videoRef.current) {
         const video = this._videoRef.current;
 
-        video.src = this.props.movie.preview;
+        video.src = this.props.movie.video;
 
         video.play();
         this._handleGetDuration(video);
@@ -41,18 +41,6 @@ const withPlayerControls = (Component) => {
       const video = this._videoRef.current;
 
       return this.state.isPlaying ? video.play() : video.pause();
-    }
-
-
-    componentWillUnmount() {
-      if (this._videoRef.current) {
-        const video = this._videoRef.current;
-
-        video.src = ``;
-        video.onplay = null;
-        video.onloadedmetadata = null;
-        video.ontimeupdate = null;
-      }
     }
 
 
@@ -79,7 +67,7 @@ const withPlayerControls = (Component) => {
       >
         <video
           className="player__video"
-          poster={getImgSrc(movie.cover)}
+          poster={movie.cover}
           ref={this._videoRef}
           type="video/webm"
         >
@@ -89,6 +77,10 @@ const withPlayerControls = (Component) => {
     }
 
 
+    /**
+     * Метод, обеспечивающий получение длительности видео
+     * @param {Object} video видео
+     */
     _handleGetDuration(video) {
       video.onloadedmetadata = () => this.setState({
         duration: video.duration
@@ -96,6 +88,10 @@ const withPlayerControls = (Component) => {
     }
 
 
+    /**
+     * Метод, обеспечивающий получение текущего времени воспроизведения видео
+     * @param {Object} video видео
+     */
     _handleGetCurrentTime(video) {
       video.ontimeupdate = () => this.setState({
         currentTime: Math.trunc(video.currentTime)
@@ -103,6 +99,9 @@ const withPlayerControls = (Component) => {
     }
 
 
+    /**
+     * Метод, обеспечивающий переход проигрывателя между режимами удержания и воспроизведения
+     */
     _handleChangePlaying() {
       const {isPlaying} = this.state;
 
@@ -112,6 +111,9 @@ const withPlayerControls = (Component) => {
     }
 
 
+    /**
+     * Метод, обеспечивающий перевод проигрывателя в полноэкранный режим
+     */
     _handleSetFullScreen() {
       const video = this._videoRef.current;
 

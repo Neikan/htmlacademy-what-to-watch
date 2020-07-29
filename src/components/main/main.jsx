@@ -39,7 +39,7 @@ const Main = (props) => {
     onShowMore
   } = props;
 
-  const {poster, title} = promoMovie;
+  const {backgroundImage, title} = promoMovie;
 
   const isShowMore = movies.length > countShowedMovies;
 
@@ -47,11 +47,12 @@ const Main = (props) => {
     <>
       <section className="movie-card">
         <MovieBackground
+          backgroundImage={backgroundImage}
           title={title}
-          poster={poster}
         />
         <h1 className="visually-hidden">WTW</h1>
         <Header />
+
         <Promo
           movie={promoMovie}
           onChangePlaying={onMovieChangePlaying}

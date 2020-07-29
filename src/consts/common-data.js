@@ -22,15 +22,6 @@ export const MarkupElement = {
 };
 
 
-export const Url = {
-  IMG: `img`
-};
-
-export const FileExtension = {
-  JPG: `jpg`
-};
-
-
 export const TextualRating = {
   BAD: {
     level: `Bad`,
@@ -61,6 +52,13 @@ export const Page = {
 };
 
 
+export const Url = {
+  FILMS: `films`,
+  COMMENTS: `comments`,
+  PROMO: `promo`
+};
+
+
 export const MovieTabList = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
@@ -77,3 +75,28 @@ export const Time = {
 };
 
 export const PAD_STRING_ZERO = `0`;
+
+
+export const defaultMovie = {
+  id: ``,
+  title: ``,
+  poster: ``,
+  cover: ``,
+  backgroundImage: ``,
+  backgroundColor: ``,
+  preview: ``,
+  video: ``,
+  rating: {
+    score: 0,
+    level: ``,
+    countVotes: 0,
+  },
+  director: ``,
+  actors: ``,
+  duration: 0,
+  year: 0,
+  genre: ``,
+  description: ``,
+  isFavorite: false,
+  reviews: []
+};

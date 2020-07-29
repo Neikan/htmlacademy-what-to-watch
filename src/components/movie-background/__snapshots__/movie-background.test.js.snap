@@ -6,7 +6,7 @@ exports[`Test MovieBackground component MovieBackground component is created and
 >
   <img
     alt="Fantastic Beasts: The Crimes of Grindelwald"
-    src="/img/the-grand-budapest-hotel-poster.jpg"
+    src="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/moonrise-kingdom3.jpg"
   />
 </div>
 `;

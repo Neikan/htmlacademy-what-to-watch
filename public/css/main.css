@@ -1400,3 +1400,10 @@ main {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
+
+.loader {
+  font-family: "Arial Black", sans-serif;
+  font-size: 32px;
+  line-height: 45px;
+  margin: 0 0 7px;
+  color: #dfcf77; }

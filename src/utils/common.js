@@ -1,19 +1,10 @@
 import {
-  Url,
-  FileExtension,
   CountMovies,
   ALL_GENRES,
   Time,
-  PAD_STRING_ZERO
+  PAD_STRING_ZERO,
+  TextualRating
 } from "../consts/common-data";
-
-
-/**
- * Получение файла постера фильма
- * @param {string} poster название постера
- * @return {string}
- */
-export const getImgSrc = (poster) => `/${Url.IMG}/${poster}.${FileExtension.JPG}`;
 
 
 /**
@@ -96,7 +87,7 @@ export const updateGenres = (genres, selectedGenre) => genres.map((genre) =>
  * @param {Array} movies массив с данными фильмов
  * @return {Array} массив уникальных жанров фильмов со свойствами и 'All genres'
  */
-export const getGenres = (movies) => {
+export const getUniqueGenres = (movies) => {
   const uniqueGenres = [ALL_GENRES];
 
   movies.map((movie) => {
@@ -144,3 +135,33 @@ export const getTime = (time) => {
  * @return {string} значение позиции
  */
 export const getTimeProgress = (current, duration) => `${((current * 100) / duration)}%`;
+
+
+/**
+ * Получение текстового описания рейтинга фильма
+ * @param {Number} score оценка фильма (значение рейтинга)
+ * @return {string}
+ */
+export const getTextualRating = (score) => {
+  if (score >= TextualRating.AWESOME.from) {
+    return TextualRating.AWESOME.level;
+  }
+
+  if (score >= TextualRating.VERY_GOOD.from) {
+    return TextualRating.VERY_GOOD.level;
+  }
+
+  if (score >= TextualRating.GOOD.from) {
+    return TextualRating.GOOD.level;
+  }
+
+  if (score >= TextualRating.NORMAL.from) {
+    return TextualRating.NORMAL.level;
+  }
+
+  if (score >= TextualRating.BAD.from) {
+    return TextualRating.BAD.level;
+  }
+
+  return (``);
+};
