@@ -1,3 +1,7 @@
+// Импорт библиотек
+import moment from "moment";
+
+// Импорт типов, констант, утилит
 import {
   CountMovies,
   ALL_GENRES,
@@ -165,3 +169,12 @@ export const getTextualRating = (score) => {
 
   return (``);
 };
+
+
+/**
+ * Приведение даты к необходмому формату
+ * @param {Date} date форматируемая дата
+ * @param {string} formatRule правило форматирования
+ * @return {string} отформатированная дата
+ */
+export const formatDate = (date, formatRule) => moment(date).format(formatRule);

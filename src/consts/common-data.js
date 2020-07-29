@@ -87,3 +87,9 @@ export const AuthStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
+
+
+export const FormatRule = {
+  REVIEW_DATE: `MMMM DD, YYYY`,
+  REVIEW_DATE_HIDE: `YYYY-MM-DD`
+};
