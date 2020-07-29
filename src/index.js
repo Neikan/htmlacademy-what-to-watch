@@ -9,16 +9,26 @@ import {Provider} from "react-redux";
 import App from "./components/app/app.jsx";
 
 // Импорт типов, констант, утилит
+import {AuthStatus} from "./consts/common-data.js";
 import createAPI from "./api/index.js";
 
 // Импорт редьюсеров, селекторов
 import reducer from './store/reducer.js';
-import {Operation as DatumOperation} from './store/datum/operations.js';
+import {Operation as OperationDatum} from './store/datum/operations.js';
+import {Operation as OperationDatumUser} from "./store/datum-user/operations.js";
+import {ActionCreator} from "./store/datum-user/datum-user.js";
 
-
-const api = createAPI();
 
 const root = document.querySelector(`#root`);
+
+
+const onUnauthorized = () => {
+  store.dispatch(ActionCreator.requireAuth(AuthStatus.NO_AUTH));
+};
+
+
+const api = createAPI(onUnauthorized);
+
 
 const store = createStore(
     reducer,
@@ -29,8 +39,9 @@ const store = createStore(
 );
 
 
-store.dispatch(DatumOperation.loadPromoMovie());
-store.dispatch(DatumOperation.loadMovies());
+store.dispatch(OperationDatum.loadPromoMovie());
+store.dispatch(OperationDatum.loadMovies());
+store.dispatch(OperationDatumUser.checkAuth());
 
 
 /**

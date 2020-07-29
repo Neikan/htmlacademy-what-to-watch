@@ -33,11 +33,11 @@ class MoviePage extends PureComponent {
    */
   render() {
     const {movie, selectedTab, onTabSelect} = this.props;
-    const {backgroundImage, genre, poster, title, year} = this.props.movie;
+    const {backgroundColor, backgroundImage, genre, poster, title, year} = this.props.movie;
 
     return (
       <>
-        <section className="movie-card movie-card--full">
+        <section className="movie-card movie-card--full" style={{backgroundColor: `${backgroundColor}`}}>
           <div className="movie-card__hero">
             <MovieBackground
               backgroundImage={backgroundImage}

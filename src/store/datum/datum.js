@@ -25,6 +25,7 @@ const ActionType = {
   LOAD_PROMO_MOVIE: `load promo movie`,
   SELECT_GENRE: `select genre`,
   SELECT_MOVIE: `select movie`,
+  SET_MAIN_PAGE: `set main page`,
   SHOW_MORE: `show more`
 };
 
@@ -53,6 +54,11 @@ const ActionCreator = {
   selectMovie: (movie) => ({
     type: ActionType.SELECT_MOVIE,
     payload: movie
+  }),
+
+  setMainPage: () => ({
+    type: ActionType.SET_MAIN_PAGE,
+    payload: Page.MAIN
   }),
 
   showMore: () => ({
@@ -95,6 +101,11 @@ const reducer = (state = initialState, action) => {
         page: Page.MOVIE,
         selectedMovie: action.payload,
         likedMovies: getLikedMoviesByGenre(state.movies, action.payload.genre, action.payload.id),
+      });
+
+    case ActionType.SET_MAIN_PAGE:
+      return updateState(state, {
+        page: action.payload
       });
 
     case ActionType.SHOW_MORE:

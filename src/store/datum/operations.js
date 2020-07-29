@@ -20,6 +20,9 @@ const loadComments = (movie) => (dispatch, getState, api) => (
     .then((response) => {
       movie.reviews = response.data.map((review) => commentsAdapter(review));
     })
+    .catch((err) => {
+      throw err;
+    })
 );
 
 
@@ -29,6 +32,9 @@ const Operation = {
       .then((response) => dispatch(ActionCreator.loadMovies(
           response.data.map(getAdaptedMovies(dispatch))
       )))
+      .catch((err) => {
+        throw err;
+      })
   ),
 
   loadPromoMovie: () => (dispatch, getState, api) => (
@@ -40,6 +46,9 @@ const Operation = {
         return movie;
       })
       .then((movie) => dispatch(ActionCreator.loadPromoMovie(movie)))
+      .catch((err) => {
+        throw err;
+      })
   ),
 };
 
