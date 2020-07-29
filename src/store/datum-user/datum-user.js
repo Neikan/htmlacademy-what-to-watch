@@ -9,8 +9,8 @@ const initialState = {
     id: ``,
     email: ``,
     name: ``,
-    avatarUrl: ``,
-  },
+    avatarUrl: ``
+  }
 };
 
 

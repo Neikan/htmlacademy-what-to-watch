@@ -22,9 +22,9 @@ exports[`Test MovieReview component MovieReview component is created and rendere
       </cite>
       <time
         className="review__date"
-        dateTime="December 24, 2016"
+        dateTime="2020-07-28"
       >
-        December 24, 2016
+        July 28, 2020
       </time>
     </footer>
   </blockquote>

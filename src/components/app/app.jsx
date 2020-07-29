@@ -32,7 +32,7 @@ import {
 } from "../../store/datum/selectors.js";
 
 // Импорт хоков
-import withErrors from "../../hoc/with-errors.js";
+import withErrors from "../../hoc/with-errors/with-errors.js";
 import withPlayerControls from "../../hoc/with-player-controls/with-player-controls.js";
 import withSelectedTab from "../../hoc/with-selected-tab/with-selected-tab.js";
 

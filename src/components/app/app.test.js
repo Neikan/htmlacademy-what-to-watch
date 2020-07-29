@@ -8,7 +8,7 @@ import {Provider} from "react-redux";
 import App from "./app.jsx";
 
 // Импорт типов, констант, утилит
-import {Page, CountMovies, MOVIES, GENRES} from "./../../consts/test-data";
+import {Page, CountMovies, MOVIES, GENRES, AuthStatus} from "./../../consts/test-data";
 import {getLikedMoviesByGenre, getMoviesByGenre} from "../../utils/common.js";
 import NameSpace from "../../store/name-space.js";
 
@@ -31,6 +31,9 @@ describe(`Test App component`, () => {
 
         genres: GENRES,
         selectedGenre: GENRES[0].title
+      },
+      [NameSpace.DATUM_USER]: {
+        authStatus: AuthStatus.NO_AUTH
       }
     });
 
@@ -63,6 +66,9 @@ describe(`Test App component`, () => {
 
         genres: GENRES,
         selectedGenre: GENRES[0].title
+      },
+      [NameSpace.DATUM_USER]: {
+        authStatus: AuthStatus.NO_AUTH
       }
     });
 
@@ -95,6 +101,9 @@ describe(`Test App component`, () => {
 
         genres: GENRES,
         selectedGenre: GENRES[1].title
+      },
+      [NameSpace.DATUM_USER]: {
+        authStatus: AuthStatus.NO_AUTH
       }
     });
 
