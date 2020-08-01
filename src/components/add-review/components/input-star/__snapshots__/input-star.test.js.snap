@@ -3,19 +3,19 @@
 exports[`Test InputStar component InputStar component is created and rendered correctly when checked 1`] = `
 Array [
   <input
-    checked={false}
+    checked={true}
     className="rating__input"
-    id="star-1"
+    id="star-3"
     name="rating"
     onChange={[Function]}
     type="radio"
-    value={1}
+    value={3}
   />,
   <label
     className="rating__label"
-    htmlFor="star-1"
+    htmlFor="star-3"
   >
-    Rating 1
+    Rating 3
   </label>,
 ]
 `;
@@ -23,7 +23,7 @@ Array [
 exports[`Test InputStar component InputStar component is created and rendered correctly when non-cheked 1`] = `
 Array [
   <input
-    checked={true}
+    checked={false}
     className="rating__input"
     id="star-1"
     name="rating"

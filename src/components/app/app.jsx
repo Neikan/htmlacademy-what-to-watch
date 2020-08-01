@@ -179,12 +179,12 @@ class App extends PureComponent {
    * @return {Object} страница авторизации
    */
   _renderSignInPage() {
-    const {authStatus, login} = this.props;
+    const {authStatus, onUserDatumSubmit} = this.props;
 
     if (authStatus === AuthStatus.NO_AUTH) {
       return (
         <SignInWrapped
-          onSubmit={login}
+          onSubmit={onUserDatumSubmit}
         />
       );
     }
@@ -229,7 +229,7 @@ App.propTypes = {
   onShowMore: PropTypes.func.isRequired,
 
   authStatus: PropTypes.string.isRequired,
-  login: PropTypes.func.isRequired
+  onUserDatumSubmit: PropTypes.func.isRequired
 };
 
 
@@ -267,8 +267,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreatorDatum.showMore());
   },
 
-  login(authData) {
-    dispatch(OperationDatumUser.login(authData));
+  onUserDatumSubmit(userDatum) {
+    dispatch(OperationDatumUser.login(userDatum));
     dispatch(ActionCreatorDatum.setMainPage());
   }
 });

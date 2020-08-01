@@ -39,12 +39,11 @@ class InputStar extends PureComponent {
 
   /**
    * Метод, выполняющий обновление рейтинга на основе выбранных "звезд"
-   * @param {Object} evt событие
    */
-  _handleRatingChange(evt) {
-    const {onChange} = this.props;
+  _handleRatingChange() {
+    const {countStar, onChange} = this.props;
 
-    onChange(evt.target.value);
+    onChange(countStar);
   }
 }
 

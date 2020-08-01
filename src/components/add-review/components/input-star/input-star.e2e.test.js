@@ -7,7 +7,7 @@ import {configure, mount} from "enzyme";
 import InputStar from "./input-star.jsx";
 
 // Импорт типов, констант, утилит
-import {MarkupElement} from "../../../../consts/test-data.js";
+import {MarkupElement, Rating} from "../../../../consts/test-data.js";
 
 
 configure({
@@ -18,18 +18,23 @@ configure({
 describe(`Test e2e InputStar component`, () => {
   test(`Should InputStar be changed`, () => {
     const handleChange = jest.fn();
-    const star = 1;
+    const countStar = 1;
 
     const inputStar = mount(
         <InputStar
-          checked={false}
-          countStar={star}
+          checked={true}
+          countStar={Rating.DEFAULT}
           onChange={handleChange}
         />
     );
 
-    const input = inputStar.find(`.${MarkupElement.REVIEW_RATING_INPUT}`);
+    expect(inputStar.props().countStar).toEqual(Rating.DEFAULT);
 
-    expect(input.props().value).toEqual(star);
+    inputStar.props().countStar = countStar;
+    inputStar.props().onChange();
+
+    expect(handleChange.mock.calls.length).toBe(1);
+    expect(inputStar.props().countStar).toEqual(countStar);
+    expect(inputStar.find(`.${MarkupElement.REVIEW_RATING_INPUT}`).props().value).toEqual(Rating.DEFAULT);
   });
 });

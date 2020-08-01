@@ -18,10 +18,10 @@ const Operation = {
       })
   ),
 
-  login: (authData) => (dispatch, getState, api) => (
+  login: (userDatum) => (dispatch, getState, api) => (
     api.post(`/${Url.LOGIN}`, {
-      email: authData.login,
-      password: authData.password
+      email: userDatum.login,
+      password: userDatum.password
     })
     .then((response) => {
       dispatch(ActionCreator.requireAuth(AuthStatus.AUTH));

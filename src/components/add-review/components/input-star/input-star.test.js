@@ -4,14 +4,17 @@ import renderer from "react-test-renderer";
 
 // Импорт компонентов
 import InputStar from "./input-star.jsx";
+import { Rating } from "../../../../consts/common-data.js";
 
 
 describe(`Test InputStar component`, () => {
   test(`InputStar component is created and rendered correctly when checked`, () => {
+    const countStar = Rating.DEFAULT;
+
     const tree = renderer.create(
         <InputStar
-          checked={false}
-          countStar={1}
+          checked={Rating.DEFAULT === countStar}
+          countStar={countStar}
           onChange={() => {}}
         />
     ).toJSON();
@@ -21,10 +24,12 @@ describe(`Test InputStar component`, () => {
 
 
   test(`InputStar component is created and rendered correctly when non-cheked`, () => {
+    const countStar = 1;
+
     const tree = renderer.create(
         <InputStar
-          checked={true}
-          countStar={1}
+          checked={Rating.DEFAULT === countStar}
+          countStar={countStar}
           onChange={() => {}}
         />
     ).toJSON();
