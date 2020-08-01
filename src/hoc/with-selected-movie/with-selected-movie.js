@@ -25,7 +25,6 @@ const withSelectedMovie = (Component) => {
       return (
         <Component
           {...this.props}
-          selectedMovie={this.state.selectedMovie}
           onMovieMouseEnter={this._handleMovieMouseEnter}
           onMovieMouseLeave={this._handleMovieMouseLeave}
         />
@@ -60,7 +59,7 @@ const withSelectedMovie = (Component) => {
     _handleMovieMouseLeave() {
       clearTimeout(this._timeout);
       this.setState({
-        activeMovieId: null
+        selectedMovie: null
       });
     }
   }

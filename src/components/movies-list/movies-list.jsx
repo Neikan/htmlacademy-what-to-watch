@@ -52,7 +52,6 @@ MoviesList.propTypes = {
   movies: PropTypes.arrayOf(movieType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
   onMovieSelect: PropTypes.func.isRequired,
-
   onMovieMouseEnter: PropTypes.func.isRequired,
   onMovieMouseLeave: PropTypes.func.isRequired
 };

@@ -17,11 +17,6 @@ export const CountMovies = {
 };
 
 
-export const MarkupElement = {
-  MOVIE_CARD: `small-movie-card`,
-};
-
-
 export const TextualRating = {
   BAD: {
     level: `Bad`,
@@ -48,8 +43,9 @@ export const TextualRating = {
 
 export const Page = {
   MAIN: `/`,
-  MOVIE: `/films/`,
-  LOGIN: `/login`
+  MOVIE: `/films`,
+  LOGIN: `/login`,
+  ADD_REVIEW: `/review`
 };
 
 
@@ -92,4 +88,38 @@ export const AuthStatus = {
 export const FormatRule = {
   REVIEW_DATE: `MMMM DD, YYYY`,
   REVIEW_DATE_HIDE: `YYYY-MM-DD`
+};
+
+
+export const ReviewMessage = {
+  DEFAULT: ``,
+  LENGTH_MIN: 50,
+  LENGTH_MAX: 400
+};
+
+
+export const ReviewMessageStatus = {
+  DEFAULT: ``,
+  SUCCESS: `Ваш комментарий добавлен!`,
+  ERROR_SENDING: `Извините, при добавлении Вашего комментария возникла ошибка. Попробуйте позднее.`,
+  ERROR_LENGTH_MIN: `Ваше сообщение менее ${ReviewMessage.LENGTH_MIN} символов`,
+  ERROR_LENGTH_MAX: `Ваше сообщение более ${ReviewMessage.LENGTH_MAX} символов`
+};
+
+
+export const RequestStatusCode = {
+  OK: 200,
+  UNAUTHORIZED: 401
+};
+
+
+export const DECIMAL_BASE = 10;
+
+
+export const RATING_STARS = [1, 2, 3, 4, 5];
+
+
+export const Rating = {
+  DEFAULT: 3,
+  WEIGHT: 2
 };

@@ -1,8 +1,8 @@
 // Импорт типов, констант, утилит
+import {AuthStatus, Url} from "../../consts/common-data";
 import userAdapter from "./adapter";
 
 // Импорт редьюсеров, селекторов
-import {AuthStatus, Url} from "../../consts/common-data";
 import {ActionCreator} from "./datum-user.js";
 
 

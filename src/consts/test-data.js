@@ -161,7 +161,9 @@ export const MarkupElement = {
   PROMO_BTN_PLAY: `btn--play`,
   PROMO_BTN_ADD_TO_LIST: `btn--list`,
   PROMO_POSTER: `movie-card__poster`,
-  PROMO_TITLE: `movie-card__title`
+  PROMO_TITLE: `movie-card__title`,
+  REVIEW_RATING_INPUT: `rating__input`,
+  REVIEW_TEXTAREA: `add-review__textarea`
 };
 
 
@@ -181,7 +183,9 @@ export const Time = {
 
 export const Page = {
   MAIN: `/`,
-  MOVIE: `/films/`
+  MOVIE: `/films`,
+  LOGIN: `/login`,
+  ADD_REVIEW: `/review`
 };
 
 
@@ -217,4 +221,36 @@ export const UserDatumStateNoAuth = {
     name: `Batman`,
     avatarUrl: `https://4.react.pages.academy/wtw/static/avatar/5.jpg`
   }
+};
+
+
+export const ReviewMessage = {
+  DEFAULT: ``,
+  LESS_LENGTH_MIN: `less length min`,
+  MORE_LENGTH_MAX: `more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max`,
+  LENGTH_MIN: 50,
+  LENGTH_MAX: 400
+};
+
+
+export const ReviewMessageStatus = {
+  DEFAULT: ``,
+  SUCCESS: `Ваш комментарий добавлен!`,
+  ERROR_SENDING: `Извините, при добавлении Вашего комментария возникла ошибка. Попробуйте позднее.`,
+  ERROR_LENGTH_MIN: `Ваше сообщение менее ${ReviewMessage.LENGTH_MIN} символов`,
+  ERROR_LENGTH_MAX: `Ваше сообщение более ${ReviewMessage.LENGTH_MAX} символов`
+};
+
+
+export const Rating = {
+  DEFAULT: 3,
+  WEIGHT: 2
+};
+
+
+export const ReviewDatumState = {
+  isFormBlocked: false,
+  messageText: ReviewMessage.DEFAULT,
+  messageStatus: ReviewMessageStatus.DEFAULT,
+  rating: Rating.DEFAULT
 };

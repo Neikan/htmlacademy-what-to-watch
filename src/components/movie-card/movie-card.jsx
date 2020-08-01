@@ -25,7 +25,7 @@ class MovieCard extends PureComponent {
    * @return {Object} созданный компонент
    */
   render() {
-    const {movie, isPlaying, onPlay, onStop, onSelect} = this.props;
+    const {movie, isPlaying, onPlay, onStop} = this.props;
     const {id, title, cover, preview} = movie;
 
     return (
@@ -44,7 +44,7 @@ class MovieCard extends PureComponent {
           />
         </div>
         <h3
-          onClick={onSelect}
+          onClick={this._handleSelect}
           className="small-movie-card__title"
         >
           <a className="small-movie-card__link" href="movie-page.html">{title}</a>

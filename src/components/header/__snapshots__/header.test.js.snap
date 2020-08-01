@@ -35,7 +35,7 @@ exports[`Test Header component Header component is created and rendered correctl
       className="user-block__avatar"
     >
       <img
-        alt="User avatar"
+        alt="Batman"
         height="63"
         src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
         width="63"

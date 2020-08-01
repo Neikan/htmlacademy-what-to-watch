@@ -285,7 +285,7 @@ Array [
           className="user-block__avatar"
         >
           <img
-            alt="User avatar"
+            alt="Batman"
             height="63"
             src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
             width="63"
@@ -623,7 +623,7 @@ exports[`Test App component App component is created and rendered correctly when
           className="user-block__avatar"
         >
           <img
-            alt="User avatar"
+            alt="Batman"
             height="63"
             src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
             width="63"
@@ -696,7 +696,7 @@ exports[`Test App component App component is created and rendered correctly when
           </button>
           <a
             className="btn movie-card__button"
-            href="add-review.html"
+            href="/review"
           >
             Add review
           </a>
@@ -914,7 +914,7 @@ Array [
           className="user-block__avatar"
         >
           <img
-            alt="User avatar"
+            alt="Batman"
             height="63"
             src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
             width="63"

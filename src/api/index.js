@@ -2,17 +2,10 @@
 import axios from "axios";
 
 // Импорт типов, констант, утилит
-import {BASE_URL, Url} from "../consts/common-data";
+import {BASE_URL, Url, RequestStatusCode} from "../consts/common-data";
 
 
 const REQUEST_TIMEOUT = 5000;
-
-const RequestStatusCode = {
-  OK: 200,
-  MULTIPLE: 300,
-  UNAUTHORIZED: 401,
-  NOT_FOUND: 404,
-};
 
 
 /**
