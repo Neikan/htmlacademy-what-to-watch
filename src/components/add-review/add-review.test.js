@@ -28,11 +28,7 @@ describe(`Test AddReview component`, () => {
 
     const tree = renderer.create(
         <Provider store={store}>
-          <AddReview
-            checked={false}
-            countStar={1}
-            onChange={() => {}}
-          />
+          <AddReview />
         </Provider>, {
           createNodeMock: () => {
             return {};

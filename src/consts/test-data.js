@@ -162,6 +162,7 @@ export const MarkupElement = {
   PROMO_BTN_ADD_TO_LIST: `btn--list`,
   PROMO_POSTER: `movie-card__poster`,
   PROMO_TITLE: `movie-card__title`,
+  REVIEW_BTN_SUBMIT: `add-review__btn`,
   REVIEW_RATING_INPUT: `rating__input`,
   REVIEW_TEXTAREA: `add-review__textarea`
 };
