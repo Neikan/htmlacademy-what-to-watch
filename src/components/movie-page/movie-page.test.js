@@ -32,6 +32,7 @@ describe(`Test MoviePage component`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <MoviePage
+            authStatus={AuthStatus.NO_AUTH}
             movie={MOVIES[0]}
             movies={MOVIES}
             countShowedMovies={4}
