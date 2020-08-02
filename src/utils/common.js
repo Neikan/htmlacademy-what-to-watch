@@ -24,15 +24,12 @@ export const getMoviesByGenre = (movies, genre) =>
 /**
  * Получение поможих фильмов по жанру
  * @param {Array} movies данные фильмов
- * @param {string} genre жанр
  * @param {string} id идентификатор фильма
  * @param {Number} count количество похожих фильмов
  * @return {Array} массив фильмов того же жанра, что и выбранный
  */
-export const getLikedMoviesByGenre = (movies, genre, id, count = CountMovies.LIKED_BY_GENRE) =>
-  getMoviesByGenre(movies, genre)
-    .filter((movie) => movie.id !== id)
-    .slice(0, count);
+export const getLikedMoviesByGenre = (movies, id, count = CountMovies.LIKED_BY_GENRE) =>
+  movies.filter((movie) => movie.id !== id).slice(0, count);
 
 
 /**

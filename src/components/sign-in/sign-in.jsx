@@ -26,7 +26,7 @@ class SignIn extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
@@ -50,12 +50,26 @@ class SignIn extends PureComponent {
             </div>
             <div className="sign-in__fields">
               <div className="sign-in__field">
-                <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" ref={this._loginRef}/>
-                <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
+                <input className="sign-in__input" type="email"
+                  placeholder="Email address" name="user-email"
+                  id="user-email" ref={this._loginRef} required
+                />
+                <label className="sign-in__label visually-hidden"
+                  htmlFor="user-email"
+                >
+                  Email address
+                </label>
               </div>
               <div className="sign-in__field">
-                <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" ref={this._passwordRef}/>
-                <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
+                <input className="sign-in__input" type="password"
+                  placeholder="Password" name="user-password"
+                  id="user-password" ref={this._passwordRef} required
+                />
+                <label className="sign-in__label visually-hidden"
+                  htmlFor="user-password"
+                >
+                  Password
+                </label>
               </div>
             </div>
             <div className="sign-in__submit">
@@ -78,12 +92,14 @@ class SignIn extends PureComponent {
     const {onSubmit} = this.props;
 
     evt.preventDefault();
+
     onSubmit(this._loginRef, this._passwordRef);
   }
 }
 
 
 SignIn.propTypes = {
+  errors: PropTypes.arrayOf(PropTypes.string).isRequired,
   errorLogin: PropTypes.bool.isRequired,
   errorPassword: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired

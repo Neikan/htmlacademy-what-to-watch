@@ -7,7 +7,7 @@ import React, {PureComponent} from "react";
  */
 class BtnAddToFavorite extends PureComponent {
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {

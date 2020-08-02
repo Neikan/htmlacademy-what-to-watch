@@ -77,9 +77,11 @@ export const ReviewMessageStatus = {
   DEFAULT: ``,
   SUCCESS: `Ваш комментарий добавлен!`,
   ERROR_SENDING: `Извините, при добавлении Вашего комментария возникла ошибка. Попробуйте позднее.`,
-  ERROR_LENGTH_MIN: `Ваше сообщение менее ${ReviewMessage.LENGTH_MIN} символов`,
-  ERROR_LENGTH_MAX: `Ваше сообщение более ${ReviewMessage.LENGTH_MAX} символов`
+  MESSAGE_LENGTH: `Текущая длина сообщения:`
 };
+
+
+export const REVIEW_PLACEHOLDER = `Введите сообщение не менее ${ReviewMessage.LENGTH_MIN} и не более ${ReviewMessage.LENGTH_MAX} символов`;
 
 
 export const RequestStatusCode = {

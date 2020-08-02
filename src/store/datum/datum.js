@@ -1,6 +1,6 @@
 // Импорт типов, констант, утилит
 import {CountMovies, ALL_GENRES} from "../../consts/common-data";
-import {getMoviesByGenre, updateGenres, getUniqueGenres, getLikedMoviesByGenre} from "../../utils/common";
+import {getMoviesByGenre, updateGenres, getUniqueGenres} from "../../utils/common";
 import {updateState} from "../../utils/reducer";
 
 
@@ -88,7 +88,7 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.SET_LIKED_MOVIES:
       return updateState(state, {
-        likedMovies: getLikedMoviesByGenre(state.movies, action.payload.genre, action.payload.id),
+        likedMovies: getMoviesByGenre(state.movies, action.payload.genre),
       });
 
     case ActionType.SHOW_MORE:

@@ -17,7 +17,7 @@ import {AuthStatus} from "../../consts/common-data.js";
  */
 class UserBlock extends PureComponent {
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {

@@ -17,6 +17,7 @@ import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types.js";
 import {MovieTabList, CountMovies} from "../../consts/common-data.js";
+import {getLikedMoviesByGenre} from "../../utils/common.js";
 
 
 /**
@@ -31,7 +32,7 @@ class MoviePage extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
@@ -102,7 +103,7 @@ class MoviePage extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку содержимого выбранной вкладки
+   * Метод, обеспечивающий отображение содержимого выбранной вкладки
    * @return {Object} созданный компонент
    */
   _renderMovieDesc() {
@@ -125,11 +126,11 @@ class MoviePage extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку списка похожих фильмов
+   * Метод, обеспечивающий отображение списка похожих фильмов
    * @return {Object} созданный компонент
    */
   _renderMoviesByGenre() {
-    const {movies, onMovieSelect} = this.props;
+    const {movie, movies, onMovieSelect} = this.props;
 
     if (!movies.length || movies.length === 0) {
       return null;
@@ -138,7 +139,7 @@ class MoviePage extends PureComponent {
     return (
       <MoviesByGenre
         countShowedMovies={CountMovies.LIKED_BY_GENRE}
-        movies={movies}
+        movies={getLikedMoviesByGenre(movies, movie.id)}
         onMovieSelect={onMovieSelect}
       />
     );

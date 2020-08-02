@@ -19,7 +19,7 @@ class MoviePlayerPreview extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
@@ -38,7 +38,7 @@ class MoviePlayerPreview extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий установку для компонента источника видео
+   * Метод, обеспечивающий установку для компонента параметров видео
    */
   componentDidMount() {
     if (this._videoRef.current) {

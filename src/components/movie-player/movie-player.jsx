@@ -34,15 +34,11 @@ const MoviePlayer = (props) => {
     <div className="player">
       {children}
 
-      <BtnExit
-        onClose={onClose}
-      />
+      <BtnExit onClose={onClose} />
 
       <div className="player__controls">
         <div className="player__controls-row">
-          <ScaleTime
-            time={time}
-          />
+          <ScaleTime time={time} />
         </div>
 
         <div className="player__controls-row">
@@ -50,10 +46,10 @@ const MoviePlayer = (props) => {
             isPlaying={isPlaying}
             onChangePlaying={onChangePlaying}
           />
+
           <div className="player__name">{title}</div>
-          <BtnFullScreen
-            onSet={onSetFullScreen}
-          />
+
+          <BtnFullScreen onSet={onSetFullScreen} />
         </div>
       </div>
     </div>

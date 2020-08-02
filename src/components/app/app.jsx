@@ -2,7 +2,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {Route, Router, Switch} from "react-router-dom";
+import {Route, Router, Switch, Redirect} from "react-router-dom";
 import history from '../../history.js';
 
 // Импорт компонентов
@@ -107,7 +107,7 @@ class App extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку главной страницы
+   * Метод, обеспечивающий отображение главной страницы
    * @return {Object} главная страница
    */
   _renderMainPage() {
@@ -140,7 +140,7 @@ class App extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку страницы фильма
+   * Метод, обеспечивающий отображение страницы фильма
    * @param {Object} routeProps параметры
    * @return {Object} страница фильма
    */
@@ -158,7 +158,7 @@ class App extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку проигрывателя фильма
+   * Метод, обеспечивающий отображение проигрывателя фильма
    * @param {Object} routeProps параметры
    * @return {Object} страница проигрывателя фильма
    */
@@ -175,38 +175,30 @@ class App extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку страницы авторизации
-   * @param {Object} routeProps параметры
+   * Метод, обеспечивающий отображение страницы авторизации
    * @return {Object} страница авторизации
    */
-  _renderSignInPage(routeProps) {
+  _renderSignInPage() {
     const {authStatus, onUserDatumSubmit} = this.props;
 
     return authStatus === AuthStatus.AUTH
-      ? routeProps.history.goBack()
-      : (
-        <SignInWrapped
-          onSubmit={onUserDatumSubmit}
-        />);
+      ? <Redirect to={`${Page.MAIN}`} />
+      : <SignInWrapped onSubmit={onUserDatumSubmit}/>;
   }
 
 
   /**
-   * Метод, обеспечивающий отрисовку страницы отправки отзыва
+   * Метод, обеспечивающий отображение страницы отправки отзыва
    * @param {Object} routeProps параметры
    * @return {Object} страница отправки отзыва
    */
   _renderAddReviewPage(routeProps) {
-    return (
-      <AddReview
-        movie={this._handleGetSelectedMovie(routeProps)}
-      />
-    );
+    return <AddReview movie={this._handleGetSelectedMovie(routeProps)} />;
   }
 
 
   /**
-   * Метод, обеспечивающий получение маршрута для выбранного фильма
+   * Метод, обеспечивающий получение маршрута и похожих фильмов для выбранного фильма
    * @param {Object} movie данные фильма
    */
   _handleMovieSelect(movie) {
@@ -219,50 +211,44 @@ class App extends PureComponent {
 
 
   /**
-   * Метод, обеспечивабщий получение данных выбранного фильма
+   * Метод, обеспечивающий получение данных выбранного фильма
    * @param {Object} routeProps параметры
    * @return {Object} данные выбранного фильма
    */
   _handleGetSelectedMovie(routeProps) {
-    return this.props.movies.find((movie) => movie.id === routeProps.match.params.id);
+    const {movies} = this.props;
+
+    return movies.find((movie) => movie.id === routeProps.match.params.id);
   }
 }
 
 
 App.propTypes = {
-  movies: PropTypes.arrayOf(movieType).isRequired,
-  promoMovie: movieType,
-
-  likedMovies: PropTypes.arrayOf(movieType).isRequired,
+  authStatus: PropTypes.string.isRequired,
   countShowedMovies: PropTypes.number.isRequired,
-  isPlayingMovie: PropTypes.bool.isRequired,
-
   genres: PropTypes.arrayOf(genreType).isRequired,
-  selectedGenre: PropTypes.string.isRequired,
-
+  isPlayingMovie: PropTypes.bool.isRequired,
+  likedMovies: PropTypes.arrayOf(movieType).isRequired,
+  movies: PropTypes.arrayOf(movieType).isRequired,
+  onGenreSelect: PropTypes.func.isRequired,
   onLikedMoviesSet: PropTypes.func.isRequired,
   onMovieChangePlaying: PropTypes.func.isRequired,
-  onGenreSelect: PropTypes.func.isRequired,
-
   onShowMore: PropTypes.func.isRequired,
-
-  authStatus: PropTypes.string.isRequired,
-  onUserDatumSubmit: PropTypes.func.isRequired
+  onUserDatumSubmit: PropTypes.func.isRequired,
+  promoMovie: movieType,
+  selectedGenre: PropTypes.string.isRequired
 };
 
 
 const mapStateToProps = (state) => ({
+  authStatus: getAuthStatus(state),
+  countShowedMovies: getCountShowedMovies(state),
+  genres: getGenres(state),
+  isPlayingMovie: getIsPlayingMovie(state),
+  likedMovies: getLikedMovies(state),
   movies: getMovies(state),
   promoMovie: getPromoMovie(state),
-
-  likedMovies: getLikedMovies(state),
-  countShowedMovies: getCountShowedMovies(state),
-  isPlayingMovie: getIsPlayingMovie(state),
-
-  genres: getGenres(state),
-  selectedGenre: getSelectedGenre(state),
-
-  authStatus: getAuthStatus(state)
+  selectedGenre: getSelectedGenre(state)
 });
 
 

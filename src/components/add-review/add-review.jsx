@@ -45,7 +45,7 @@ class AddReview extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
@@ -135,15 +135,11 @@ class AddReview extends PureComponent {
    */
   _handleMessageStatusUpdate(messageText) {
     const {onMessageTextUpdate, onMessageStatusUpdate} = this.props;
+    const length = messageText.length;
 
-    if (messageText.length < ReviewMessage.LENGTH_MIN) {
+    if (length < ReviewMessage.LENGTH_MIN || length > ReviewMessage.LENGTH_MAX) {
       onMessageTextUpdate(messageText);
-      return onMessageStatusUpdate(ReviewMessageStatus.ERROR_LENGTH_MIN);
-    }
-
-    if (messageText.length > ReviewMessage.LENGTH_MAX) {
-      onMessageTextUpdate(messageText);
-      return onMessageStatusUpdate(ReviewMessageStatus.ERROR_LENGTH_MAX);
+      return onMessageStatusUpdate(`${ReviewMessageStatus.MESSAGE_LENGTH} ${length}`);
     }
 
     onMessageTextUpdate(messageText);
