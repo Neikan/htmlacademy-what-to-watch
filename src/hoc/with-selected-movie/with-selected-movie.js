@@ -7,7 +7,7 @@ const withSelectedMovie = (Component) => {
       super(props);
 
       this.state = {
-        selectedMovieId: null
+        selectedMovie: null
       };
 
       this._timeout = null;
@@ -25,7 +25,7 @@ const withSelectedMovie = (Component) => {
       return (
         <Component
           {...this.props}
-          selectedMovieId={this.state.selectedMovieId}
+          selectedMovie={this.state.selectedMovie}
           onMovieMouseEnter={this._handleMovieMouseEnter}
           onMovieMouseLeave={this._handleMovieMouseLeave}
         />
@@ -43,12 +43,12 @@ const withSelectedMovie = (Component) => {
 
     /**
      * Метод, обспечивающий обновление состояния в соответствии с фильмом, на который выполнено наведение курсора
-     * @param {Object} movieId идентификатор фильма
+     * @param {Object} movie выбранный фильм
      */
-    _handleMovieMouseEnter(movieId) {
+    _handleMovieMouseEnter(movie) {
       this._timeout = setTimeout(() => {
         this.setState({
-          selectedMovieId: movieId
+          selectedMovie: movie
         });
       }, 10000);
     }

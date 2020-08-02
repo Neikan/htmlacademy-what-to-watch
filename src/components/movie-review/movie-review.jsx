@@ -3,6 +3,8 @@ import React from "react";
 
 // Импорт типов, констант, утилит
 import {reviewType} from "../../props/prop-types.js";
+import {FormatRule} from "../../consts/common-data.js";
+import {formatDate} from "../../utils/common.js";
 
 
 /**
@@ -22,7 +24,9 @@ const MovieReview = (props) => {
 
         <footer className="review__details">
           <cite className="review__author">{name}</cite>
-          <time className="review__date" dateTime={date}>{date}</time>
+          <time className="review__date" dateTime={formatDate(date, FormatRule.REVIEW_DATE_HIDE)}>
+            {formatDate(date, FormatRule.REVIEW_DATE)}
+          </time>
         </footer>
       </blockquote>
 

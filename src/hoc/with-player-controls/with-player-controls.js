@@ -44,6 +44,18 @@ const withPlayerControls = (Component) => {
     }
 
 
+    componentWillUnmount() {
+      if (this._videoRef.current) {
+        const video = this._videoRef.current;
+
+        video.src = ``;
+        video.onplay = null;
+        video.onloadedmetadata = null;
+        video.ontimeupdate = null;
+      }
+    }
+
+
     /**
      * Метод, обеспечивающий отрисовку компонента
      * @return {Object} созданный компонент

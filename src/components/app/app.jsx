@@ -5,16 +5,20 @@ import {connect} from "react-redux";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 // Импорт компонентов
+import Loader from "../loader/loader.jsx";
 import Main from "../main/main.jsx";
 import MoviePage from '../movie-page/movie-page.jsx';
 import MoviePlayer from "../movie-player/movie-player.jsx";
+import SignIn from "../sign-in/sign-in.jsx";
 
 // Импорт типов, констант, утилит
 import {movieType, genreType} from "../../props/prop-types.js";
-import {Page, ALL_GENRES} from "../../consts/common-data.js";
+import {Page, ALL_GENRES, AuthStatus} from "../../consts/common-data.js";
 
 // Импорт редьюсеров, селекторов
-import {ActionCreator} from "../../store/datum/datum.js";
+import {ActionCreator as ActionCreatorDatum} from "../../store/datum/datum.js";
+import {Operation as OperationDatumUser} from "../../store/datum-user/operations.js";
+import {getAuthStatus} from "../../store/datum-user/selectors.js";
 import {
   getPage,
   getMovies,
@@ -28,15 +32,16 @@ import {
 } from "../../store/datum/selectors.js";
 
 // Импорт хоков
-import withSelectedTab from "../../hoc/with-selected-tab/with-selected-tab.js";
+import withErrors from "../../hoc/with-errors/with-errors.js";
 import withPlayerControls from "../../hoc/with-player-controls/with-player-controls.js";
-import Loader from "../loader/loader.jsx";
+import withSelectedTab from "../../hoc/with-selected-tab/with-selected-tab.js";
 
 
 const handleMovieAddToList = () => {};
 
 const MoviePageWrapped = withSelectedTab(MoviePage);
 const MoviePlayerWrapped = withPlayerControls(MoviePlayer);
+const SignInWrapped = withErrors(SignIn);
 
 
 /**
@@ -48,9 +53,7 @@ class App extends PureComponent {
    * @return {Object} страница приложения
    */
   render() {
-    const {promoMovie, selectedMovie} = this.props;
-
-    if (!promoMovie || !selectedMovie) {
+    if (!this.props.promoMovie) {
       return <Loader />;
     }
 
@@ -63,6 +66,10 @@ class App extends PureComponent {
 
           <Route exact path={`${Page.MOVIE}`}>
             {this._renderMoviePage()}
+          </Route>
+
+          <Route exact path={`${Page.LOGIN}`}>
+            {this._renderSignIn()}
           </Route>
         </Switch>
       </BrowserRouter>
@@ -156,6 +163,29 @@ class App extends PureComponent {
       />
     );
   }
+
+
+  /**
+   * Метод, обеспечивающий отрисовку страницы авторизации
+   * @return {Object} страница авторизации
+   */
+  _renderSignIn() {
+    const {authStatus, login} = this.props;
+
+    if (authStatus === AuthStatus.NO_AUTH) {
+      return (
+        <SignInWrapped
+          onSubmit={login}
+        />
+      );
+    }
+
+    if (authStatus === AuthStatus.AUTH) {
+      return this._renderPage();
+    }
+
+    return null;
+  }
 }
 
 
@@ -176,7 +206,10 @@ App.propTypes = {
   onMovieChangePlaying: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
 
-  onShowMore: PropTypes.func.isRequired
+  onShowMore: PropTypes.func.isRequired,
+
+  authStatus: PropTypes.string.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 
@@ -191,24 +224,31 @@ const mapStateToProps = (state) => ({
   isPlayingMovie: getIsPlayingMovie(state),
 
   genres: getGenres(state),
-  selectedGenre: getSelectedGenre(state)
+  selectedGenre: getSelectedGenre(state),
+
+  authStatus: getAuthStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreSelect(genre) {
-    dispatch(ActionCreator.selectGenre(genre));
+    dispatch(ActionCreatorDatum.selectGenre(genre));
   },
 
   onMovieSelect(movie) {
-    dispatch(ActionCreator.selectMovie(movie));
+    dispatch(ActionCreatorDatum.selectMovie(movie));
   },
 
   onMovieChangePlaying() {
-    dispatch(ActionCreator.changePlayingMovie());
+    dispatch(ActionCreatorDatum.changePlayingMovie());
   },
 
   onShowMore() {
-    dispatch(ActionCreator.showMore());
+    dispatch(ActionCreatorDatum.showMore());
+  },
+
+  login(authData) {
+    dispatch(OperationDatumUser.login(authData));
+    dispatch(ActionCreatorDatum.setMainPage);
   }
 });
 

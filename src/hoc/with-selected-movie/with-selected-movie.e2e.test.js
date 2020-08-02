@@ -26,20 +26,20 @@ describe(`Test e2e withSelectedMovie component`, () => {
   test(`Should change selected movie`, () => {
     const tree = shallow(
         <MockComponentWrapped
-          selectedMovieId={null}
+          selectedMovie={null}
           onMovieMouseEnter={() => {}}
           onMovieMouseLeave={() => {}}
         />
     );
 
-    expect(tree.props().selectedMovieId).toEqual(null);
+    expect(tree.props().selectedMovie).toEqual(null);
 
     tree.props().onMovieMouseEnter(MOVIES[1]);
     expect(setTimeout).toHaveBeenCalledTimes(1);
     expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 10000);
 
     tree.props().onMovieMouseLeave();
-    expect(tree.props().selectedMovieId).toEqual(null);
+    expect(tree.props().selectedMovie).toEqual(null);
 
   });
 });

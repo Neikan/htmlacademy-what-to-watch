@@ -53,3 +53,11 @@ export const timeType = PropTypes.shape({
   current: PropTypes.number.isRequired,
   left: PropTypes.string.isRequired
 });
+
+
+export const userType = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired
+});

@@ -55,7 +55,7 @@ export const MOVIES = [
         id: `author-1`,
         name: `Lickona Matthew`
       },
-      date: `December 2, 2016`,
+      date: `2020-06-28T16:06:01.831Z`,
       rating: 1.2
     }]
   }, {
@@ -86,7 +86,7 @@ export const MOVIES = [
         id: `author-2`,
         name: `Kate Muir`
       },
-      date: `December 24, 2016`,
+      date: `2020-07-28T16:06:01.831Z`,
       rating: 8.9
     }, {
       id: `reviews-2`,
@@ -95,7 +95,7 @@ export const MOVIES = [
         id: `author-3`,
         name: `Bill Goodykoontz`
       },
-      date: `November 18, 2015`,
+      date: `2019-05-28T16:06:01.831Z`,
       rating: 5.0
     }, {
       id: `reviews-3`,
@@ -104,7 +104,7 @@ export const MOVIES = [
         id: `author-4`,
         name: `Amanda Greever`
       },
-      date: `November 18, 2015`,
+      date: `2010-06-28T16:06:01.831Z`,
       rating: 3.3
     }, {
       id: `reviews-4`,
@@ -113,7 +113,7 @@ export const MOVIES = [
         id: `author-5`,
         name: `Matthew Lickona`
       },
-      date: `December 20, 2016`,
+      date: `2020-01-01T13:06:01.831Z`,
       rating: 7.2
     }, {
       id: `reviews-5`,
@@ -122,7 +122,7 @@ export const MOVIES = [
         id: `author-6`,
         name: `Paula Fleri-Soler`
       },
-      date: `December 20, 2016`,
+      date: `2020-02-14T16:06:01.831Z`,
       rating: 10
     }]
   }
@@ -147,19 +147,21 @@ export const GENRES = [
 
 
 export const MarkupElement = {
-  PROMO_BTN_PLAY: `btn--play`,
-  PROMO_BTN_ADD_TO_LIST: `btn--list`,
-  PROMO_POSTER: `movie-card__poster`,
-  PROMO_TITLE: `movie-card__title`,
-  MOVIE_CARD: `small-movie-card`,
-  MOVIE_CARD_TITLE: `small-movie-card__title`,
-  MOVIE_CARD_COVER: `small-movie-card__image`,
-  GENRE_LINK: `catalog__genres-link`,
-  MOVIE_TAB: `movie-nav__item`,
   BTN_SHOW_MORE: `catalog__button`,
   BTN_PLAYER_EXIT: `player__exit`,
   BTN_PLAYER_FULL_SCREEN: `player__full-screen`,
-  BTN_PLAYER_PLAY: `player__play`
+  BTN_PLAYER_PLAY: `player__play`,
+  BTN_SIGN_IN: `sign-in__btn`,
+  GENRE_LINK: `catalog__genres-link`,
+  MOVIE_CARD: `small-movie-card`,
+  MOVIE_CARD_TITLE: `small-movie-card__title`,
+  MOVIE_CARD_COVER: `small-movie-card__image`,
+  MOVIE_PLAYER: `player__video`,
+  MOVIE_TAB: `movie-nav__item`,
+  PROMO_BTN_PLAY: `btn--play`,
+  PROMO_BTN_ADD_TO_LIST: `btn--list`,
+  PROMO_POSTER: `movie-card__poster`,
+  PROMO_TITLE: `movie-card__title`
 };
 
 
@@ -187,4 +189,32 @@ export const CountMovies = {
   ALL: 20,
   START: 8,
   LIKED_BY_GENRE: 4
+};
+
+
+export const AuthStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+
+export const UserDatumState = {
+  authStatus: AuthStatus.AUTH,
+  user: {
+    id: `user-1`,
+    email: `sladkov.e.m@outlook.com`,
+    name: `Batman`,
+    avatarUrl: `https://4.react.pages.academy/wtw/static/avatar/5.jpg`
+  }
+};
+
+
+export const UserDatumStateNoAuth = {
+  authStatus: AuthStatus.NO_AUTH,
+  user: {
+    id: `user-1`,
+    email: `sladkov.e.m@outlook.com`,
+    name: `Batman`,
+    avatarUrl: `https://4.react.pages.academy/wtw/static/avatar/5.jpg`
+  }
 };

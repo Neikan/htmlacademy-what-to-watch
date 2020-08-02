@@ -30,9 +30,9 @@ exports[`Test MovieReviews component MovieReviews component is created and rende
           </cite>
           <time
             className="review__date"
-            dateTime="December 2, 2016"
+            dateTime="2020-06-28"
           >
-            December 2, 2016
+            June 28, 2020
           </time>
         </footer>
       </blockquote>
@@ -74,9 +74,9 @@ exports[`Test MovieReviews component MovieReviews component is created and rende
           </cite>
           <time
             className="review__date"
-            dateTime="December 24, 2016"
+            dateTime="2020-07-28"
           >
-            December 24, 2016
+            July 28, 2020
           </time>
         </footer>
       </blockquote>
@@ -107,9 +107,9 @@ exports[`Test MovieReviews component MovieReviews component is created and rende
           </cite>
           <time
             className="review__date"
-            dateTime="November 18, 2015"
+            dateTime="2019-05-28"
           >
-            November 18, 2015
+            May 28, 2019
           </time>
         </footer>
       </blockquote>
@@ -140,9 +140,9 @@ exports[`Test MovieReviews component MovieReviews component is created and rende
           </cite>
           <time
             className="review__date"
-            dateTime="November 18, 2015"
+            dateTime="2010-06-28"
           >
-            November 18, 2015
+            June 28, 2010
           </time>
         </footer>
       </blockquote>
@@ -177,9 +177,9 @@ exports[`Test MovieReviews component MovieReviews component is created and rende
           </cite>
           <time
             className="review__date"
-            dateTime="December 20, 2016"
+            dateTime="2020-01-01"
           >
-            December 20, 2016
+            January 01, 2020
           </time>
         </footer>
       </blockquote>
@@ -210,9 +210,9 @@ exports[`Test MovieReviews component MovieReviews component is created and rende
           </cite>
           <time
             className="review__date"
-            dateTime="December 20, 2016"
+            dateTime="2020-02-14"
           >
-            December 20, 2016
+            February 14, 2020
           </time>
         </footer>
       </blockquote>

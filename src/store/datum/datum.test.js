@@ -1,7 +1,9 @@
-import {ActionType, reducer, ActionCreator} from "./datum.js";
-import {GENRES, MOVIES} from "../../consts/test-data.js";
+// Импорт типов, констант, утилит
+import {GENRES, MOVIES, Page, CountMovies} from "../../consts/test-data.js";
 import {getLikedMoviesByGenre, getMoviesByGenre, updateGenres} from "../../utils/common.js";
-import {Page, CountMovies} from "../../consts/common-data.js";
+
+// Импорт редьюсеров, селекторов
+import {ActionType, reducer, ActionCreator} from "./datum.js";
 
 
 describe(`Get initial state`, () => {

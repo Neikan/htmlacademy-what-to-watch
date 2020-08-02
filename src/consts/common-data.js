@@ -48,14 +48,20 @@ export const TextualRating = {
 
 export const Page = {
   MAIN: `/`,
-  MOVIE: `/films/`
+  MOVIE: `/films/`,
+  LOGIN: `/login`
 };
 
 
+export const BASE_URL = `https://4.react.pages.academy`;
+
+
 export const Url = {
+  WTW: `wtw`,
   FILMS: `films`,
   COMMENTS: `comments`,
-  PROMO: `promo`
+  PROMO: `promo`,
+  LOGIN: `login`
 };
 
 
@@ -77,26 +83,13 @@ export const Time = {
 export const PAD_STRING_ZERO = `0`;
 
 
-export const defaultMovie = {
-  id: ``,
-  title: ``,
-  poster: ``,
-  cover: ``,
-  backgroundImage: ``,
-  backgroundColor: ``,
-  preview: ``,
-  video: ``,
-  rating: {
-    score: 0,
-    level: ``,
-    countVotes: 0,
-  },
-  director: ``,
-  actors: ``,
-  duration: 0,
-  year: 0,
-  genre: ``,
-  description: ``,
-  isFavorite: false,
-  reviews: []
+export const AuthStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+
+export const FormatRule = {
+  REVIEW_DATE: `MMMM DD, YYYY`,
+  REVIEW_DATE_HIDE: `YYYY-MM-DD`
 };

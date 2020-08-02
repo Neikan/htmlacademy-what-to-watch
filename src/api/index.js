@@ -1,8 +1,9 @@
 // Импорт библиотек
 import axios from "axios";
 
+// Импорт типов, констант, утилит
+import {BASE_URL, Url} from "../consts/common-data";
 
-const BASE_URL = `https://4.react.pages.academy/wtw`;
 
 const REQUEST_TIMEOUT = 5000;
 
@@ -19,9 +20,9 @@ const RequestStatusCode = {
  * @param {Function} onUnauthorized
  * @return {Object} ответ сервера
  */
-const createAPI = () => {
+const createAPI = (onUnauthorized) => {
   const api = axios.create({
-    baseURL: BASE_URL,
+    baseURL: `${BASE_URL}/${Url.WTW}`,
     timeout: REQUEST_TIMEOUT,
     withCredentials: true,
   });
@@ -32,6 +33,8 @@ const createAPI = () => {
     const {response} = err;
 
     if (response.status === RequestStatusCode.UNAUTHORIZED) {
+      onUnauthorized();
+
       throw err;
     }
 
