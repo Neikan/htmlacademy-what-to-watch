@@ -2,6 +2,9 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 
+// Импорт типов, констант, утилит
+import {Timeout} from "../../consts/common-data";
+
 
 /**
  * Создание компонента, обеспечивающего отображение проигрывателя для трейлера фильма
@@ -71,7 +74,7 @@ class MoviePlayerPreview extends PureComponent {
   _handlePlay() {
     this._timeout = setTimeout(() => {
       this._videoRef.current.play();
-    }, 500);
+    }, Timeout.WAIT);
   }
 
 

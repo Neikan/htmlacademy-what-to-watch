@@ -1,4 +1,8 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
+
+// Импорт типов, констант, утилит
+import {Timeout} from "../../consts/common-data";
 
 
 const withSelectedMovie = (Component) => {
@@ -49,7 +53,7 @@ const withSelectedMovie = (Component) => {
         this.setState({
           selectedMovie: movie
         });
-      }, 10000);
+      }, Timeout.WAIT);
     }
 
 

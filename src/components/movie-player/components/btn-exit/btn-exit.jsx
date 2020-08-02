@@ -1,6 +1,7 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import history from '../../../../history.js';
 
 
 /**
@@ -30,10 +31,14 @@ class BtnExit extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий закрытие проигрывателя
+   * Метод, обеспечивающий закрытие проигрывателя и возврат на предыдщую с
    */
   _handleClose() {
-    this.props.onClose();
+    const {onClose} = this.props;
+
+    history.goBack();
+
+    onClose();
   }
 }
 

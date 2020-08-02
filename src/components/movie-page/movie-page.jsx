@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 // Импорт компонентов
+import BtnAddReview from "../btn-add-review/btn-add-review.jsx";
+import BtnAddToFavorite from "../btn-add-to-favorite/btn-add-to-favorite.jsx";
+import BtnPlay from "../btn-play/btn-play.jsx";
 import Header from "../header/header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
@@ -33,8 +36,8 @@ class MoviePage extends PureComponent {
    * @return {Object} созданный компонент
    */
   render() {
-    const {movie, selectedTab, onTabSelect} = this.props;
-    const {backgroundColor, backgroundImage, genre, poster, title, year} = movie;
+    const {authStatus, movie, selectedTab, onTabSelect} = this.props;
+    const {backgroundColor, backgroundImage, genre, id, poster, title, year} = movie;
 
     return (
       <>
@@ -58,22 +61,16 @@ class MoviePage extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button
-                    onClick={this._handleChangePlaying}
-                    className="btn btn--play movie-card__button" type="button"
-                  >
-                    <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use xlinkHref="#play-s"></use>
-                    </svg>
-                    <span>Play</span>
-                  </button>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
-                    </svg>
-                    <span>My list</span>
-                  </button>
-                  {this._renderAddReviewLink()}
+                  <BtnPlay
+                    id={id}
+                    onChangePlaying={this._handleChangePlaying}
+                  />
+
+                  <BtnAddToFavorite />
+                  <BtnAddReview
+                    authStatus={authStatus}
+                    id={id}
+                  />
                 </div>
               </div>
             </div>
@@ -150,8 +147,10 @@ class MoviePage extends PureComponent {
 
 
   _renderAddReviewLink() {
+    const {id} = this.props.movie;
+
     return this.props.authStatus === AuthStatus.AUTH
-      ? <Link to={Page.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
+      ? <Link to={`/${Page.MOVIE}/${id}/${Page.ADD_REVIEW}`} className="btn movie-card__button">Add review</Link>
       : null;
   }
 
@@ -160,7 +159,9 @@ class MoviePage extends PureComponent {
    * Метод, обеспечивающий управление проигрывателем фильма
    */
   _handleChangePlaying() {
-    this.props.onMovieChangePlaying();
+    const {onMovieChangePlaying} = this.props;
+
+    onMovieChangePlaying();
   }
 }
 

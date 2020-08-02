@@ -20,7 +20,6 @@ import {
 
 // Импорт редьюсеров, селекторов
 import {ActionCreator} from "../../store/datum-review/datum-review.js";
-import {getSelectedMovie} from "../../store/datum/selectors.js";
 import {getAuthStatus, getUserDatum} from "../../store/datum-user/selectors.js";
 import {
   getIsFormBlocked,
@@ -53,14 +52,14 @@ class AddReview extends PureComponent {
     const {
       authStatus,
       user,
-      selectedMovie,
+      movie,
       isFormBlocked,
       messageStatus,
       messageText,
       rating
     } = this.props;
 
-    const {backgroundColor, backgroundImage, poster, title} = selectedMovie;
+    const {backgroundColor, backgroundImage, poster, title} = movie;
 
     return (
       <section className="movie-card movie-card--full" style={{backgroundColor: `${backgroundColor}`}}>
@@ -74,7 +73,7 @@ class AddReview extends PureComponent {
 
           <Header
             authStatus={authStatus}
-            selectedMovie={selectedMovie}
+            movie={movie}
             user={user}
           />
 
@@ -155,7 +154,7 @@ class AddReview extends PureComponent {
    * @param {Object} evt событие
    */
   _handleSubmit(evt) {
-    const {messageText, onReviewSend, selectedMovie} = this.props;
+    const {messageText, onReviewSend, movie} = this.props;
 
     evt.preventDefault();
 
@@ -163,7 +162,7 @@ class AddReview extends PureComponent {
       messageText,
       rating: this.props.rating * Rating.WEIGHT,
     },
-    selectedMovie);
+    movie);
   }
 }
 
@@ -172,7 +171,7 @@ AddReview.propTypes = {
   authStatus: PropTypes.string.isRequired,
   user: userType.isRequired,
 
-  selectedMovie: movieType.isRequired,
+  movie: movieType.isRequired,
 
   isFormBlocked: PropTypes.bool.isRequired,
   messageStatus: PropTypes.string.isRequired,
@@ -189,8 +188,6 @@ AddReview.propTypes = {
 const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),
   user: getUserDatum(state),
-
-  selectedMovie: getSelectedMovie(state),
 
   isFormBlocked: getIsFormBlocked(state),
   messageStatus: getMessageStatus(state),

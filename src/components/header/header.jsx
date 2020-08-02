@@ -29,7 +29,7 @@ class Header extends PureComponent {
       <header className="page-header movie-card__head">
         <Logo logoPosition={LogoPosition.HEADER} />
 
-        {this.props.selectedMovie ? this._renderNavLink() : null}
+        {this.props.movie ? this._renderNavLink() : null}
         {this._renderUserBlock()}
       </header>
     );
@@ -82,13 +82,13 @@ class Header extends PureComponent {
    * @return {Object} блок с ссылкой на страницу фильма
    */
   _renderNavLink() {
-    const {id, title} = this.props.selectedMovie;
+    const {id, title} = this.props.movie;
 
     return (
       <nav className="breadcrumbs">
         <ul className="breadcrumbs__list">
           <li className="breadcrumbs__item">
-            <Link to={`${Page.MOVIE}/${id}`} className="breadcrumbs__link">{title}</Link>
+            <Link to={`/${Page.MOVIE}/${id}`} className="breadcrumbs__link">{title}</Link>
           </li>
           <li className="breadcrumbs__item">
             <a className="breadcrumbs__link">Add review</a>
@@ -103,7 +103,7 @@ class Header extends PureComponent {
 Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
   isNoSignIn: PropTypes.bool,
-  selectedMovie: movieType,
+  movie: movieType,
   user: userType.isRequired
 };
 

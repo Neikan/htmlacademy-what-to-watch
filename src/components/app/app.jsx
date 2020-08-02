@@ -2,7 +2,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Route, Router, Switch} from "react-router-dom";
+import history from '../../history.js';
 
 // Импорт компонентов
 import AddReview from "../add-review/add-review.jsx";
@@ -10,6 +11,7 @@ import Loader from "../loader/loader.jsx";
 import Main from "../main/main.jsx";
 import MoviePage from '../movie-page/movie-page.jsx';
 import MoviePlayer from "../movie-player/movie-player.jsx";
+import PrivateRoute from "../private-route/private-route.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 
 // Импорт типов, констант, утилит
@@ -21,13 +23,11 @@ import {ActionCreator as ActionCreatorDatum} from "../../store/datum/datum.js";
 import {Operation as OperationDatumUser} from "../../store/datum-user/operations.js";
 import {getAuthStatus} from "../../store/datum-user/selectors.js";
 import {
-  getPage,
   getMovies,
   getPromoMovie,
   getIsPlayingMovie,
   getCountShowedMovies,
   getSelectedGenre,
-  getSelectedMovie,
   getLikedMovies,
   getGenres
 } from "../../store/datum/selectors.js";
@@ -49,66 +49,57 @@ const SignInWrapped = withErrors(SignIn);
  * Создание главного компонента приложения
  */
 class App extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this._handleMovieSelect = this._handleMovieSelect.bind(this);
+    this._renderMoviePage = this._renderMoviePage.bind(this);
+    this._renderMoviePlayer = this._renderMoviePlayer.bind(this);
+    this._renderSignInPage = this._renderSignInPage.bind(this);
+    this._renderAddReviewPage = this._renderAddReviewPage.bind(this);
+  }
+
+
   /**
    * Метод, обспечивающий изменение страниц приложения
    * @return {Object} страница приложения
    */
   render() {
-    const {promoMovie, selectedMovie} = this.props;
+    const {promoMovie} = this.props;
 
     if (!promoMovie) {
       return <Loader />;
     }
 
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route exact path={`${Page.MAIN}`}>
-            {this._renderPage()}
+          <Route exact path={`/${Page.MAIN}`}>
+            {this._renderMainPage()}
           </Route>
 
-          <Route exact path={`${Page.MOVIE}/${selectedMovie.id}`}>
-            {this._renderMoviePage()}
-          </Route>
+          <Route exact
+            path={`/${Page.LOGIN}`}
+            render={this._renderSignInPage}
+          />
 
-          <Route exact path={`${Page.LOGIN}`}>
-            {this._renderSignInPage()}
-          </Route>
+          <Route exact
+            path={`/${Page.PLAYER}/:id`}
+            render={this._renderMoviePlayer}
+          />
 
-          <Route exact path={`${Page.ADD_REVIEW}`}>
-            {this._renderAddReviewPage()}
-          </Route>
+          <Route exact
+            path={`/${Page.MOVIE}/:id`}
+            render={this._renderMoviePage}
+          />
+
+          <PrivateRoute exact
+            path={`/${Page.MOVIE}/:id/${Page.ADD_REVIEW}`}
+            render={this._renderAddReviewPage}
+          />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
-  }
-
-
-  /**
-   * Метод, обеспечивающий отрисовку страницы приложения
-   * @return {Object} страница приложения
-   */
-  _renderPage() {
-    const {isPlayingMovie, page} = this.props;
-
-
-    if (isPlayingMovie) {
-      return this._renderMoviePlayer();
-    }
-
-    switch (page) {
-      case (Page.MAIN):
-        return this._renderMainPage();
-
-      case (Page.MOVIE):
-        return this._renderMoviePage();
-
-      case (Page.ADD_REVIEW):
-        return this._renderAddReviewPage();
-
-      default:
-        return null;
-    }
   }
 
 
@@ -124,7 +115,6 @@ class App extends PureComponent {
       countShowedMovies,
       genres,
       selectedGenre,
-      onMovieSelect,
       onMovieChangePlaying,
       onGenreSelect,
       onShowMore
@@ -139,7 +129,7 @@ class App extends PureComponent {
       countShowedMovies={countShowedMovies}
       onMovieChangePlaying={onMovieChangePlaying}
       onMovieAddToList={handleMovieAddToList}
-      onMovieSelect={onMovieSelect}
+      onMovieSelect={this._handleMovieSelect}
       onGenreSelect={onGenreSelect}
       onShowMore={onShowMore}
     />;
@@ -148,16 +138,17 @@ class App extends PureComponent {
 
   /**
    * Метод, обеспечивающий отрисовку страницы фильма
+   * @param {Object} routeProps параметры
    * @return {Object} страница фильма
    */
-  _renderMoviePage() {
-    const {authStatus, selectedMovie, likedMovies, onMovieSelect, onMovieChangePlaying} = this.props;
+  _renderMoviePage(routeProps) {
+    const {authStatus, likedMovies, onMovieChangePlaying} = this.props;
 
     return <MoviePageWrapped
       authStatus={authStatus}
-      movie={selectedMovie}
+      movie={this._handleGetSelectedMovie(routeProps)}
       movies={likedMovies}
-      onMovieSelect={onMovieSelect}
+      onMovieSelect={this._handleMovieSelect}
       onMovieChangePlaying={onMovieChangePlaying}
     />;
   }
@@ -165,14 +156,15 @@ class App extends PureComponent {
 
   /**
    * Метод, обеспечивающий отрисовку проигрывателя фильма
-   * @return {Object} проигрыватель
+   * @param {Object} routeProps параметры
+   * @return {Object} страница проигрывателя фильма
    */
-  _renderMoviePlayer() {
-    const {selectedMovie, onMovieChangePlaying} = this.props;
+  _renderMoviePlayer(routeProps) {
+    const {onMovieChangePlaying} = this.props;
 
     return (
       <MoviePlayerWrapped
-        movie={selectedMovie}
+        movie={this._handleGetSelectedMovie(routeProps)}
         onClose={onMovieChangePlaying}
       />
     );
@@ -181,45 +173,63 @@ class App extends PureComponent {
 
   /**
    * Метод, обеспечивающий отрисовку страницы авторизации
+   * @param {Object} routeProps параметры
    * @return {Object} страница авторизации
    */
-  _renderSignInPage() {
+  _renderSignInPage(routeProps) {
     const {authStatus, onUserDatumSubmit} = this.props;
 
-    if (authStatus === AuthStatus.NO_AUTH) {
-      return (
+    return authStatus === AuthStatus.AUTH
+      ? routeProps.history.goBack()
+      : (
         <SignInWrapped
           onSubmit={onUserDatumSubmit}
-        />
-      );
-    }
-
-    if (authStatus === AuthStatus.AUTH) {
-      return this._renderPage();
-    }
-
-    return null;
+        />);
   }
 
 
   /**
    * Метод, обеспечивающий отрисовку страницы отправки отзыва
+   * @param {Object} routeProps параметры
    * @return {Object} страница отправки отзыва
    */
-  _renderAddReviewPage() {
+  _renderAddReviewPage(routeProps) {
     return (
-      <AddReview />
+      <AddReview
+        movie={this._handleGetSelectedMovie(routeProps)}
+      />
     );
+  }
+
+
+  /**
+   * Метод, обеспечивающий получение маршрута для выбранного фильма
+   * @param {Object} movie данные фильма
+   */
+  _handleMovieSelect(movie) {
+    const {onLikedMoviesSet} = this.props;
+
+    history.push(`/${Page.MOVIE}/${movie.id}`);
+
+    onLikedMoviesSet(movie);
+  }
+
+
+  /**
+   * Метод, обеспечивабщий получение данных выбранного фильма
+   * @param {Object} routeProps параметры
+   * @return {Object} данные выбранного фильма
+   */
+  _handleGetSelectedMovie(routeProps) {
+    return this.props.movies.find((movie) => movie.id === routeProps.match.params.id);
   }
 }
 
 
 App.propTypes = {
-  page: PropTypes.string.isRequired,
-
   movies: PropTypes.arrayOf(movieType).isRequired,
   promoMovie: movieType,
-  selectedMovie: movieType,
+
   likedMovies: PropTypes.arrayOf(movieType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
   isPlayingMovie: PropTypes.bool.isRequired,
@@ -227,7 +237,7 @@ App.propTypes = {
   genres: PropTypes.arrayOf(genreType).isRequired,
   selectedGenre: PropTypes.string.isRequired,
 
-  onMovieSelect: PropTypes.func.isRequired,
+  onLikedMoviesSet: PropTypes.func.isRequired,
   onMovieChangePlaying: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
 
@@ -239,11 +249,9 @@ App.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  page: getPage(state),
-
   movies: getMovies(state),
   promoMovie: getPromoMovie(state),
-  selectedMovie: getSelectedMovie(state),
+
   likedMovies: getLikedMovies(state),
   countShowedMovies: getCountShowedMovies(state),
   isPlayingMovie: getIsPlayingMovie(state),
@@ -260,8 +268,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreatorDatum.selectGenre(genre));
   },
 
-  onMovieSelect(movie) {
-    dispatch(ActionCreatorDatum.selectMovie(movie));
+  onLikedMoviesSet(movie) {
+    dispatch(ActionCreatorDatum.setLikedMovies(movie));
   },
 
   onMovieChangePlaying() {
@@ -274,7 +282,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   onUserDatumSubmit(userDatum) {
     dispatch(OperationDatumUser.login(userDatum));
-    dispatch(ActionCreatorDatum.setMainPage());
   }
 });
 

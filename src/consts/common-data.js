@@ -43,9 +43,10 @@ export const TextualRating = {
 
 export const Page = {
   MAIN: `/`,
-  MOVIE: `/films`,
-  LOGIN: `/login`,
-  ADD_REVIEW: `/review`
+  MOVIE: `films`,
+  LOGIN: `login`,
+  PLAYER: `player`,
+  ADD_REVIEW: `review`
 };
 
 
@@ -122,4 +123,10 @@ export const RATING_STARS = [1, 2, 3, 4, 5];
 export const Rating = {
   DEFAULT: 3,
   WEIGHT: 2
+};
+
+
+export const Timeout = {
+  WAIT: 2000,
+  REQUEST: 5000
 };

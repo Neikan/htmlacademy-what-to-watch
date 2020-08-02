@@ -18,7 +18,7 @@ const Footer = () => {
       <Logo logoPosition={LogoPosition.FOOTER} />
 
       <div className="copyright">
-        <p>© 2019 What to watch Ltd.</p>
+        <p>© 2020 What to watch Ltd.</p>
       </div>
     </footer>
   );

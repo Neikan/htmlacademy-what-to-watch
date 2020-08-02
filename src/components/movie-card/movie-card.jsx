@@ -35,7 +35,6 @@ class MovieCard extends PureComponent {
         onMouseEnter={onPlay}
         onMouseLeave={onStop}
         onClick={this._handleSelect}
-        id={id}
         className="small-movie-card catalog__movies-card"
       >
         <div className="small-movie-card__image">
@@ -49,7 +48,7 @@ class MovieCard extends PureComponent {
           onClick={this._handleSelect}
           className="small-movie-card__title"
         >
-          <Link className="small-movie-card__link" to={`${Page.MOVIE}/${id}`}>{title}</Link>
+          <Link className="small-movie-card__link" to={`/${Page.MOVIE}/${id}`}>{title}</Link>
         </h3>
       </article>
     );
