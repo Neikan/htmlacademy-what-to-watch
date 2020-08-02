@@ -14,7 +14,7 @@ import {MovieTabList} from "../../consts/common-data";
  * @return {Object} созданный компонент
  */
 const MovieTab = (props) => {
-  const {tab, onTabSelect, selectedTab, isReviews} = props;
+  const {isReviews, onTabSelect, selectedTab, tab} = props;
 
   const isActive = selectedTab === tab;
   const isHidden = tab === MovieTabList.REVIEWS && isReviews === false;
@@ -49,10 +49,10 @@ const handleTabSelect = (tab, onTabSelect) => {
 
 
 MovieTab.propTypes = {
-  tab: PropTypes.string.isRequired,
-  selectedTab: PropTypes.string.isRequired,
+  isReviews: PropTypes.bool.isRequired,
   onTabSelect: PropTypes.func.isRequired,
-  isReviews: PropTypes.bool.isRequired
+  selectedTab: PropTypes.string.isRequired,
+  tab: PropTypes.string.isRequired
 };
 
 

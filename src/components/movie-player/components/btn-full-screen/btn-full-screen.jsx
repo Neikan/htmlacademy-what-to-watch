@@ -36,7 +36,9 @@ class BtnFullScreen extends PureComponent {
    * Метод, обеспечивабщий перевод проигрывателя в полноэкранный режим
    */
   _handleSetFullScreen() {
-    this.props.onSet();
+    const {onSet} = this.props;
+
+    onSet();
   }
 }
 

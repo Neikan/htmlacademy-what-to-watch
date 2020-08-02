@@ -22,7 +22,7 @@ const MoviesListWrapped = withSelectedMovie(MoviesList);
  * @return {Object} созданный компонент
  */
 const MoviesByGenre = (props) => {
-  const {movies, countShowedMovies, onMovieSelect} = props;
+  const {countShowedMovies, movies, onMovieSelect} = props;
 
   return (
     <div className="page-content">
@@ -30,8 +30,8 @@ const MoviesByGenre = (props) => {
         <h2 className="catalog__title">More like this</h2>
 
         <MoviesListWrapped
-          movies={movies}
           countShowedMovies={countShowedMovies}
+          movies={movies}
           onMovieSelect={onMovieSelect}
         />
       </section>
@@ -43,8 +43,8 @@ const MoviesByGenre = (props) => {
 
 
 MoviesByGenre.propTypes = {
-  movies: PropTypes.arrayOf(movieType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieSelect: PropTypes.func.isRequired
 };
 

@@ -28,15 +28,15 @@ const MoviesListWrapped = withSelectedMovie(MoviesList);
  */
 const Main = (props) => {
   const {
-    promoMovie,
-    movies,
-    genres,
     countShowedMovies,
+    genres,
+    movies,
     onMovieChangePlaying,
     onMovieAddToList,
     onMovieSelect,
     onGenreSelect,
-    onShowMore
+    onShowMore,
+    promoMovie
   } = props;
 
   const {backgroundImage, title} = promoMovie;
@@ -87,15 +87,15 @@ const Main = (props) => {
 
 
 Main.propTypes = {
-  promoMovie: movieType.isRequired,
-  movies: PropTypes.arrayOf(movieType).isRequired,
-  genres: PropTypes.arrayOf(genreType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
+  genres: PropTypes.arrayOf(genreType).isRequired,
+  movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieChangePlaying: PropTypes.func.isRequired,
   onMovieAddToList: PropTypes.func.isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
-  onShowMore: PropTypes.func.isRequired
+  onShowMore: PropTypes.func.isRequired,
+  promoMovie: movieType.isRequired
 };
 
 

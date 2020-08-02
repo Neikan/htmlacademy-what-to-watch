@@ -20,12 +20,12 @@ import {movieType, timeType} from "../../props/prop-types.js";
 const MoviePlayer = (props) => {
   const {
     children,
-    movie,
-    time,
     isPlaying,
-    onClose,
+    movie,
     onChangePlaying,
-    onSetFullScreen
+    onClose,
+    onSetFullScreen,
+    time
   } = props;
 
   const {title} = movie;
@@ -63,12 +63,12 @@ const MoviePlayer = (props) => {
 
 MoviePlayer.propTypes = {
   children: PropTypes.element.isRequired,
-  movie: movieType.isRequired,
-  time: timeType.isRequired,
   isPlaying: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
+  movie: movieType.isRequired,
   onChangePlaying: PropTypes.func.isRequired,
-  onSetFullScreen: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  onSetFullScreen: PropTypes.func.isRequired,
+  time: timeType.isRequired
 };
 
 

@@ -13,9 +13,7 @@ import {formatDate} from "../../utils/common.js";
  * @return {Object} созданный компонент
  */
 const MovieReview = (props) => {
-  const {review} = props;
-  const {text, author, date, rating} = review;
-  const {name} = author;
+  const {author, date, rating, text} = props.review;
 
   return (
     <div className="review">
@@ -23,8 +21,10 @@ const MovieReview = (props) => {
         <p className="review__text">{text}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{name}</cite>
-          <time className="review__date" dateTime={formatDate(date, FormatRule.REVIEW_DATE_HIDE)}>
+          <cite className="review__author">{author.name}</cite>
+          <time className="review__date"
+            dateTime={formatDate(date, FormatRule.REVIEW_DATE_HIDE)}
+          >
             {formatDate(date, FormatRule.REVIEW_DATE)}
           </time>
         </footer>

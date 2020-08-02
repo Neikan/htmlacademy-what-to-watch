@@ -84,7 +84,9 @@ class Promo extends PureComponent {
    * Метод, обеспечивающий управление проигрывателем фильма
    */
   _handleChangePlaying() {
-    this.props.onChangePlaying();
+    const {onChangePlaying} = this.props;
+
+    onChangePlaying();
   }
 
 

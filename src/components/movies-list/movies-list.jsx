@@ -23,8 +23,8 @@ const MovieCardWrapped = withActivePlayer(MovieCard);
  */
 const MoviesList = (props) => {
   const {
-    movies,
     countShowedMovies,
+    movies,
     onMovieSelect,
     onMovieMouseEnter,
     onMovieMouseLeave
@@ -49,8 +49,8 @@ const MoviesList = (props) => {
 
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(movieType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onMovieMouseEnter: PropTypes.func.isRequired,
   onMovieMouseLeave: PropTypes.func.isRequired

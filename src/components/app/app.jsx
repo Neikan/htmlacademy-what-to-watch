@@ -52,11 +52,13 @@ class App extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handleMovieSelect = this._handleMovieSelect.bind(this);
+    this._renderAddReviewPage = this._renderAddReviewPage.bind(this);
+    this._renderMainPage = this._renderMainPage.bind(this);
     this._renderMoviePage = this._renderMoviePage.bind(this);
     this._renderMoviePlayer = this._renderMoviePlayer.bind(this);
     this._renderSignInPage = this._renderSignInPage.bind(this);
-    this._renderAddReviewPage = this._renderAddReviewPage.bind(this);
+
+    this._handleMovieSelect = this._handleMovieSelect.bind(this);
   }
 
 
@@ -74,9 +76,10 @@ class App extends PureComponent {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path={`/${Page.MAIN}`}>
-            {this._renderMainPage()}
-          </Route>
+          <Route exact
+            path={`/${Page.MAIN}`}
+            render={this._renderMainPage}
+          />
 
           <Route exact
             path={`/${Page.LOGIN}`}

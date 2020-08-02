@@ -27,8 +27,8 @@ class MovieCard extends PureComponent {
    * @return {Object} созданный компонент
    */
   render() {
-    const {movie, isPlaying, onPlay, onStop} = this.props;
-    const {id, title, cover, preview} = movie;
+    const {isPlaying, movie, onPlay, onStop} = this.props;
+    const {cover, id, preview, title} = movie;
 
     return (
       <article
@@ -68,11 +68,11 @@ class MovieCard extends PureComponent {
 
 
 MovieCard.propTypes = {
-  movie: movieType.isRequired,
   isPlaying: PropTypes.bool.isRequired,
+  movie: movieType.isRequired,
   onPlay: PropTypes.func.isRequired,
-  onStop: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired
+  onSelect: PropTypes.func.isRequired,
+  onStop: PropTypes.func.isRequired
 };
 
 

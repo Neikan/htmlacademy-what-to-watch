@@ -35,7 +35,9 @@ class BtnShowMore extends PureComponent {
      * Метод, обспечивающий выполнение помощника для отрисовки дополнительных фильмов
      */
   _handleShowMore() {
-    this.props.onShowMore();
+    const {onShowMore} = this.props;
+
+    onShowMore();
   }
 }
 

@@ -2,14 +2,15 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 
 // Импорт компонентов
+import LinKMoviePage from "../link-movie-page/link-movie-page.jsx";
 import Logo from "./../logo/logo.jsx";
+import UserBlock from "../user-block/user-block.jsx";
 
 // Импорт типов, констант, утилит
 import {userType, movieType} from "../../props/prop-types.js";
-import {AuthStatus, LogoPosition, Page} from "../../consts/common-data.js";
+import {LogoPosition} from "../../consts/common-data.js";
 
 // Импорт редьюсеров, селекторов
 import {getAuthStatus, getUserDatum} from "../../store/datum-user/selectors.js";
@@ -25,76 +26,19 @@ class Header extends PureComponent {
    * @return {Object} созданный компонент
    */
   render() {
+    const {authStatus, movie, user} = this.props;
+
     return (
       <header className="page-header movie-card__head">
         <Logo logoPosition={LogoPosition.HEADER} />
 
-        {this.props.movie ? this._renderNavLink() : null}
-        {this._renderUserBlock()}
+        {movie ? <LinKMoviePage movie={movie}/> : null}
+
+        <UserBlock
+          authStatus={authStatus}
+          user={user}
+        />
       </header>
-    );
-  }
-
-
-  /**
-   * Метод, обеспечивабщий отрисовку блока информации о пользователе
-   * @return {Object} блок информации
-   */
-  _renderUserBlock() {
-    const {authStatus, user} = this.props;
-
-    return (
-      <div className="user-block">
-        {authStatus === AuthStatus.AUTH
-          ? this._renderAvatar(user.avatarUrl)
-          : this._renderNoAvatar()}
-      </div>
-    );
-  }
-
-
-  /**
-   * Метод, обеспечивабщий отрисовку аватара авторизованного пользователя
-   * @return {Object} блок с аватаром бользователя
-   */
-  _renderAvatar() {
-    const {avatarUrl, name} = this.props.user;
-
-    return (
-      <div className="user-block__avatar">
-        <img src={avatarUrl} alt={name} width="63" height="63"/>
-      </div>
-    );
-  }
-
-
-  /**
-   * Метод, обеспечивабщий отрисовку блока при отсутствии авторизации
-   * @return {Object} блок с ссылкой на страницу авторизации
-   */
-  _renderNoAvatar() {
-    return <Link to={Page.LOGIN} className="user-block__link">Sign in</Link>;
-  }
-
-
-  /**
-   * Метод, обеспечивабщий отрисовку навигации для страницы отправки отзыва
-   * @return {Object} блок с ссылкой на страницу фильма
-   */
-  _renderNavLink() {
-    const {id, title} = this.props.movie;
-
-    return (
-      <nav className="breadcrumbs">
-        <ul className="breadcrumbs__list">
-          <li className="breadcrumbs__item">
-            <Link to={`/${Page.MOVIE}/${id}`} className="breadcrumbs__link">{title}</Link>
-          </li>
-          <li className="breadcrumbs__item">
-            <a className="breadcrumbs__link">Add review</a>
-          </li>
-        </ul>
-      </nav>
     );
   }
 }
@@ -102,7 +46,6 @@ class Header extends PureComponent {
 
 Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
-  isNoSignIn: PropTypes.bool,
   movie: movieType,
   user: userType.isRequired
 };

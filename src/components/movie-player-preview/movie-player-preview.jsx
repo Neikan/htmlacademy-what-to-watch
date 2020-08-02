@@ -23,9 +23,11 @@ class MoviePlayerPreview extends PureComponent {
    * @return {Object} созданный компонент
    */
   render() {
+    const {cover} = this.props;
+
     return (
       <video width="280" height="175"
-        poster={this.props.cover}
+        poster={cover}
         ref={this._videoRef}
         type="video/webm"
       >
@@ -40,11 +42,11 @@ class MoviePlayerPreview extends PureComponent {
    */
   componentDidMount() {
     if (this._videoRef.current) {
-      const {src, muted} = this.props;
+      const {muted, src} = this.props;
       const video = this._videoRef.current;
 
-      video.src = src;
       video.muted = muted;
+      video.src = src;
     }
   }
 
@@ -64,7 +66,9 @@ class MoviePlayerPreview extends PureComponent {
    * @return {Function}
    */
   componentDidUpdate() {
-    return this.props.isPlaying ? this._handlePlay() : this._handleStop();
+    const {isPlaying} = this.props;
+
+    return isPlaying ? this._handlePlay() : this._handleStop();
   }
 
 
@@ -89,10 +93,10 @@ class MoviePlayerPreview extends PureComponent {
 
 
 MoviePlayerPreview.propTypes = {
-  muted: PropTypes.bool.isRequired,
+  cover: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
-  src: PropTypes.string.isRequired,
-  cover: PropTypes.string.isRequired
+  muted: PropTypes.bool.isRequired,
+  src: PropTypes.string.isRequired
 };
 
 

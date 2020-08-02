@@ -12,7 +12,7 @@ import {Link} from "react-router-dom";
  * @return {Object} созданный компонент
  */
 const GenreItem = (props) => {
-  const {title, isActive, onGenreSelect} = props;
+  const {isActive, onGenreSelect, title} = props;
 
   const className = cn(`catalog__genres-item`, {
     'catalog__genres-item--active': isActive
@@ -33,9 +33,9 @@ const GenreItem = (props) => {
 
 
 GenreItem.propTypes = {
-  title: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
-  onGenreSelect: PropTypes.func.isRequired
+  onGenreSelect: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 

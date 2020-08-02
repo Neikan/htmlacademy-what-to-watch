@@ -72,10 +72,10 @@ const withPlayerControls = (Component) => {
 
       return <Component
         {...this.props}
-        time={time}
         isPlaying={isPlaying}
         onChangePlaying={this._handleChangePlaying}
         onSetFullScreen={this._handleSetFullScreen}
+        time={time}
       >
         <video
           className="player__video"

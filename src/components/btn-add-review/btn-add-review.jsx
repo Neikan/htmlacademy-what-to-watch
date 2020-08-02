@@ -1,5 +1,5 @@
 // Импорт библиотек
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
@@ -9,26 +9,22 @@ import {AuthStatus, Page} from "../../consts/common-data.js";
 
 /**
  * Создание компонента, обеспечивающего отрисовку ссылки на страницу добавления отзыва
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
  */
-class BtnAddReview extends PureComponent {
-  /**
-   * Метод, обеспечивающий отрисовку компонента
-   * @return {Object} созданный компонент
-   */
-  render() {
-    const {authStatus, id} = this.props;
+const BtnAddReview = (props) => {
+  const {authStatus, id} = props;
 
-    return authStatus === AuthStatus.AUTH
-      ? (
-        <Link
-          to={`/${Page.MOVIE}/${id}/${Page.ADD_REVIEW}`}
-          className="btn movie-card__button"
-        >
-          Add review
-        </Link>)
-      : null;
-  }
-}
+  return authStatus === AuthStatus.AUTH
+    ? (
+      <Link
+        to={`/${Page.MOVIE}/${id}/${Page.ADD_REVIEW}`}
+        className="btn movie-card__button"
+      >
+        Add review
+      </Link>)
+    : null;
+};
 
 
 BtnAddReview.propTypes = {

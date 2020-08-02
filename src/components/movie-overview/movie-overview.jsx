@@ -14,7 +14,7 @@ const MovieOverView = (props) => {
   const {movie} = props;
 
   if (movie) {
-    const {duration, genre, year, director, actors} = movie;
+    const {actors, director, duration, genre, year} = movie;
 
     return (
       <>

@@ -1,7 +1,6 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
 
 // Импорт компонентов
 import BtnAddReview from "../btn-add-review/btn-add-review.jsx";
@@ -17,7 +16,7 @@ import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types.js";
-import {MovieTabList, CountMovies, Page, AuthStatus} from "../../consts/common-data.js";
+import {MovieTabList, CountMovies} from "../../consts/common-data.js";
 
 
 /**
@@ -36,7 +35,7 @@ class MoviePage extends PureComponent {
    * @return {Object} созданный компонент
    */
   render() {
-    const {authStatus, movie, selectedTab, onTabSelect} = this.props;
+    const {authStatus, movie, onTabSelect, selectedTab} = this.props;
     const {backgroundColor, backgroundImage, genre, id, poster, title, year} = movie;
 
     return (
@@ -84,10 +83,10 @@ class MoviePage extends PureComponent {
 
               <div className="movie-card__desc">
                 <MovieTabs
-                  tabs={MovieTabList}
-                  selectedTab={selectedTab}
-                  onTabSelect={onTabSelect}
                   isReviews={movie.reviews.length > 0 ? true : false}
+                  onTabSelect={onTabSelect}
+                  selectedTab={selectedTab}
+                  tabs={MovieTabList}
                 />
 
                 {this._renderMovieDesc()}
@@ -138,20 +137,11 @@ class MoviePage extends PureComponent {
 
     return (
       <MoviesByGenre
-        movies={movies}
         countShowedMovies={CountMovies.LIKED_BY_GENRE}
+        movies={movies}
         onMovieSelect={onMovieSelect}
       />
     );
-  }
-
-
-  _renderAddReviewLink() {
-    const {id} = this.props.movie;
-
-    return this.props.authStatus === AuthStatus.AUTH
-      ? <Link to={`/${Page.MOVIE}/${id}/${Page.ADD_REVIEW}`} className="btn movie-card__button">Add review</Link>
-      : null;
   }
 
 
@@ -172,9 +162,8 @@ MoviePage.propTypes = {
   movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onMovieChangePlaying: PropTypes.func.isRequired,
-
-  selectedTab: PropTypes.string.isRequired,
-  onTabSelect: PropTypes.func.isRequired
+  onTabSelect: PropTypes.func.isRequired,
+  selectedTab: PropTypes.string.isRequired
 };
 
 

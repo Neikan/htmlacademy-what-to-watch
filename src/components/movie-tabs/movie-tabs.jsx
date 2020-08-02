@@ -15,7 +15,7 @@ import {tabType} from "../../props/prop-types";
  * @return {Object} созданный компонент
  */
 const MovieTabs = (props) => {
-  const {tabs, onTabSelect, selectedTab, isReviews} = props;
+  const {isReviews, onTabSelect, selectedTab, tabs} = props;
 
   return (
     <nav className="movie-nav movie-card__nav">
@@ -24,10 +24,10 @@ const MovieTabs = (props) => {
           return (
             <MovieTab
               key={tab}
-              tab={tab}
+              isReviews={isReviews}
               onTabSelect={onTabSelect}
               selectedTab={selectedTab}
-              isReviews={isReviews}
+              tab={tab}
             />
           );
         })}
@@ -38,10 +38,10 @@ const MovieTabs = (props) => {
 
 
 MovieTabs.propTypes = {
-  tabs: tabType.isRequired,
-  selectedTab: PropTypes.string.isRequired,
+  isReviews: PropTypes.bool.isRequired,
   onTabSelect: PropTypes.func.isRequired,
-  isReviews: PropTypes.bool.isRequired
+  selectedTab: PropTypes.string.isRequired,
+  tabs: tabType.isRequired
 };
 
 

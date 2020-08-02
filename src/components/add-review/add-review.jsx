@@ -51,18 +51,21 @@ class AddReview extends PureComponent {
   render() {
     const {
       authStatus,
-      user,
-      movie,
       isFormBlocked,
       messageStatus,
       messageText,
-      rating
+      movie,
+      rating,
+      user
     } = this.props;
 
     const {backgroundColor, backgroundImage, poster, title} = movie;
 
     return (
-      <section className="movie-card movie-card--full" style={{backgroundColor: `${backgroundColor}`}}>
+      <section
+        className="movie-card movie-card--full"
+        style={{backgroundColor: `${backgroundColor}`}}
+      >
         <div className="movie-card__header">
           <MovieBackground
             backgroundImage={backgroundImage}
@@ -154,13 +157,13 @@ class AddReview extends PureComponent {
    * @param {Object} evt событие
    */
   _handleSubmit(evt) {
-    const {messageText, onReviewSend, movie} = this.props;
+    const {messageText, movie, onReviewSend, rating} = this.props;
 
     evt.preventDefault();
 
     onReviewSend({
       messageText,
-      rating: this.props.rating * Rating.WEIGHT,
+      rating: rating * Rating.WEIGHT,
     },
     movie);
   }
@@ -168,20 +171,19 @@ class AddReview extends PureComponent {
 
 
 AddReview.propTypes = {
+  movie: movieType.isRequired,
+  onMessageStatusUpdate: PropTypes.func.isRequired,
+  onMessageTextUpdate: PropTypes.func.isRequired,
+  onRatingChange: PropTypes.func.isRequired,
+  onReviewSend: PropTypes.func.isRequired,
+
   authStatus: PropTypes.string.isRequired,
   user: userType.isRequired,
-
-  movie: movieType.isRequired,
 
   isFormBlocked: PropTypes.bool.isRequired,
   messageStatus: PropTypes.string.isRequired,
   messageText: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-
-  onMessageStatusUpdate: PropTypes.func.isRequired,
-  onMessageTextUpdate: PropTypes.func.isRequired,
-  onRatingChange: PropTypes.func.isRequired,
-  onReviewSend: PropTypes.func.isRequired
+  rating: PropTypes.number.isRequired
 };
 
 
