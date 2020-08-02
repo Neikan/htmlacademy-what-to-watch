@@ -9,7 +9,7 @@ exports[`Test GenresList component GenresList component is created and rendered 
   >
     <a
       className="catalog__genres-link"
-      href="#"
+      href="/"
       onClick={[Function]}
     >
       All genres
@@ -20,7 +20,7 @@ exports[`Test GenresList component GenresList component is created and rendered 
   >
     <a
       className="catalog__genres-link"
-      href="#"
+      href="/"
       onClick={[Function]}
     >
       Comedies
@@ -31,7 +31,7 @@ exports[`Test GenresList component GenresList component is created and rendered 
   >
     <a
       className="catalog__genres-link"
-      href="#"
+      href="/"
       onClick={[Function]}
     >
       Crime

@@ -34,6 +34,7 @@ exports[`Test AddReview component AddReview component is created and rendered co
         <a
           className="logo__link"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -64,6 +65,7 @@ exports[`Test AddReview component AddReview component is created and rendered co
             <a
               className="breadcrumbs__link"
               href="/films/mock-1"
+              onClick={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>

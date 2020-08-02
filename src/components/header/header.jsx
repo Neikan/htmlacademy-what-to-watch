@@ -2,6 +2,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 // Импорт компонентов
 import Logo from "./../logo/logo.jsx";
@@ -72,7 +73,7 @@ class Header extends PureComponent {
    * @return {Object} блок с ссылкой на страницу авторизации
    */
   _renderNoAvatar() {
-    return <a href={Page.LOGIN} className="user-block__link">Sign in</a>;
+    return <Link to={Page.LOGIN} className="user-block__link">Sign in</Link>;
   }
 
 
@@ -87,7 +88,7 @@ class Header extends PureComponent {
       <nav className="breadcrumbs">
         <ul className="breadcrumbs__list">
           <li className="breadcrumbs__item">
-            <a href={`${Page.MOVIE}/${id}`} className="breadcrumbs__link">{title}</a>
+            <Link to={`${Page.MOVIE}/${id}`} className="breadcrumbs__link">{title}</Link>
           </li>
           <li className="breadcrumbs__item">
             <a className="breadcrumbs__link">Add review</a>

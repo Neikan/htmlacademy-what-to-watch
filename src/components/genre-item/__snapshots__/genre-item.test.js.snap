@@ -6,7 +6,7 @@ exports[`Test GenreItem component Active GenreItem component is created and rend
 >
   <a
     className="catalog__genres-link"
-    href="#"
+    href="/"
     onClick={[Function]}
   >
     All genres
@@ -20,7 +20,7 @@ exports[`Test GenreItem component Default GenreItem component is created and ren
 >
   <a
     className="catalog__genres-link"
-    href="#"
+    href="/"
     onClick={[Function]}
   >
     Comedies

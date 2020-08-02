@@ -3,6 +3,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
 
 // Импорт компонентов
 import AddReview from "./add-review.jsx";
@@ -27,9 +28,11 @@ describe(`Test AddReview component`, () => {
     });
 
     const tree = renderer.create(
-        <Provider store={store}>
-          <AddReview />
-        </Provider>, {
+        <BrowserRouter>
+          <Provider store={store}>
+            <AddReview />
+          </Provider>
+        </BrowserRouter>, {
           createNodeMock: () => {
             return {};
           }

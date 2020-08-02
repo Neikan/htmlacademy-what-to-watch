@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from 'classnames';
+import {Link} from "react-router-dom";
 
 
 /**
@@ -19,13 +20,13 @@ const GenreItem = (props) => {
 
   return (
     <li className={className}>
-      <a
-        href="#"
+      <Link
+        to="#"
         onClick={() => onGenreSelect(title)}
         className="catalog__genres-link"
       >
         {title}
-      </a>
+      </Link>
     </li>
   );
 };

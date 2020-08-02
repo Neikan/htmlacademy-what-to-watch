@@ -54,7 +54,9 @@ class App extends PureComponent {
    * @return {Object} страница приложения
    */
   render() {
-    if (!this.props.promoMovie) {
+    const {promoMovie, selectedMovie} = this.props;
+
+    if (!promoMovie) {
       return <Loader />;
     }
 
@@ -65,7 +67,7 @@ class App extends PureComponent {
             {this._renderPage()}
           </Route>
 
-          <Route exact path={`${Page.MOVIE}/${this.props.selectedMovie.id}`}>
+          <Route exact path={`${Page.MOVIE}/${selectedMovie.id}`}>
             {this._renderMoviePage()}
           </Route>
 
@@ -87,11 +89,14 @@ class App extends PureComponent {
    * @return {Object} страница приложения
    */
   _renderPage() {
-    if (this.props.isPlayingMovie) {
+    const {isPlayingMovie, page} = this.props;
+
+
+    if (isPlayingMovie) {
       return this._renderMoviePlayer();
     }
 
-    switch (this.props.page) {
+    switch (page) {
       case (Page.MAIN):
         return this._renderMainPage();
 

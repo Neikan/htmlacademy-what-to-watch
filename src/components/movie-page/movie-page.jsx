@@ -1,6 +1,7 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 // Импорт компонентов
 import Header from "../header/header.jsx";
@@ -150,7 +151,7 @@ class MoviePage extends PureComponent {
 
   _renderAddReviewLink() {
     return this.props.authStatus === AuthStatus.AUTH
-      ? <a href={Page.ADD_REVIEW} className="btn movie-card__button">Add review</a>
+      ? <Link to={Page.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
       : null;
   }
 

@@ -1,12 +1,14 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 // Импорт компонентов
 import MoviePlayerPreview from "../movie-player-preview/movie-player-preview.jsx";
 
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
+import {Page} from "../../consts/common-data.js";
 
 
 /**
@@ -47,7 +49,7 @@ class MovieCard extends PureComponent {
           onClick={this._handleSelect}
           className="small-movie-card__title"
         >
-          <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+          <Link className="small-movie-card__link" to={`${Page.MOVIE}/${id}`}>{title}</Link>
         </h3>
       </article>
     );

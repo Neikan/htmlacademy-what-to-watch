@@ -7,7 +7,8 @@ exports[`Test MovieTab component MovieTab component is created and rendered corr
 >
   <a
     className="movie-nav__link"
-    href="#"
+    href="/"
+    onClick={[Function]}
   >
     Reviews
   </a>
@@ -21,7 +22,8 @@ exports[`Test MovieTab component MovieTab component is created and rendered corr
 >
   <a
     className="movie-nav__link"
-    href="#"
+    href="/"
+    onClick={[Function]}
   >
     Overview
   </a>
@@ -35,7 +37,8 @@ exports[`Test MovieTab component MovieTab component is created and rendered corr
 >
   <a
     className="movie-nav__link"
-    href="#"
+    href="/"
+    onClick={[Function]}
   >
     Details
   </a>

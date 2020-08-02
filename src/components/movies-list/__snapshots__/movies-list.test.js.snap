@@ -29,7 +29,8 @@ exports[`Test MoviesList component When Movies is correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films/mock-1"
+        onClick={[Function]}
       >
         Fantastic Beasts: The Crimes of Grindelwald
       </a>

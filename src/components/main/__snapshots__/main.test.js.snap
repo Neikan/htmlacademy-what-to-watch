@@ -27,6 +27,7 @@ Array [
         <a
           className="logo__link"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -163,7 +164,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             All genres
@@ -174,7 +175,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Comedies
@@ -185,7 +186,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Crime
@@ -221,7 +222,8 @@ Array [
             >
               <a
                 className="small-movie-card__link"
-                href="movie-page.html"
+                href="/films/mock-1"
+                onClick={[Function]}
               >
                 Fantastic Beasts: The Crimes of Grindelwald
               </a>
@@ -250,6 +252,7 @@ Array [
         <a
           className="logo__link logo__link--light"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
