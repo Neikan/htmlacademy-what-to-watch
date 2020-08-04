@@ -28,13 +28,16 @@ const MoviePlayer = (props) => {
     time
   } = props;
 
-  const {title} = movie;
+  const {id, title} = movie;
 
   return (
     <div className="player">
       {children}
 
-      <BtnExit onClose={onClose} />
+      <BtnExit
+        id={id}
+        onClose={onClose}
+      />
 
       <div className="player__controls">
         <div className="player__controls-row">

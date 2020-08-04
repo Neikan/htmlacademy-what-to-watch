@@ -236,8 +236,8 @@ export const ReviewMessage = {
 
 export const ReviewMessageStatus = {
   DEFAULT: ``,
-  SUCCESS: `Ваш комментарий добавлен!`,
-  ERROR_SENDING: `Извините, при добавлении Вашего комментария возникла ошибка. Попробуйте позднее.`,
+  SUCCESS: `Ваш отзыв добавлен!`,
+  ERROR_SENDING: `Извините, при добавлении Вашего отзыва возникла ошибка. Попробуйте позднее.`,
   ERROR_LENGTH_MIN: `Ваше сообщение менее ${ReviewMessage.LENGTH_MIN} символов`,
   ERROR_LENGTH_MAX: `Ваше сообщение более ${ReviewMessage.LENGTH_MAX} символов`
 };

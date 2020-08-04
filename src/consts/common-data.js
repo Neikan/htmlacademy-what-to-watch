@@ -75,8 +75,8 @@ export const ReviewMessage = {
 
 export const ReviewMessageStatus = {
   DEFAULT: ``,
-  SUCCESS: `Ваш комментарий добавлен!`,
-  ERROR_SENDING: `Извините, при добавлении Вашего комментария возникла ошибка. Попробуйте позднее.`,
+  SUCCESS: `Ваш отзыв добавлен!`,
+  ERROR_SENDING: `Извините, при добавлении Вашего отзыва возникла ошибка. Попробуйте позднее.`,
   MESSAGE_LENGTH: `Текущая длина сообщения:`
 };
 
@@ -129,7 +129,7 @@ export const Timeout = {
 export const Url = {
   WTW: `wtw`,
   FILMS: `films`,
-  COMMENTS: `comments`,
+  REVIEWS: `comments`,
   PROMO: `promo`,
   LOGIN: `login`
 };

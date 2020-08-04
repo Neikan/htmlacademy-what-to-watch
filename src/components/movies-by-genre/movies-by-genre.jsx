@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // Импорт компонентов
-import Footer from "../footer/footer.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 
 // Импорт типов, констант, утилит
@@ -25,19 +24,15 @@ const MoviesByGenre = (props) => {
   const {countShowedMovies, movies, onMovieSelect} = props;
 
   return (
-    <div className="page-content">
-      <section className="catalog catalog--like-this">
-        <h2 className="catalog__title">More like this</h2>
+    <section className="catalog catalog--like-this">
+      <h2 className="catalog__title">More like this</h2>
 
-        <MoviesListWrapped
-          countShowedMovies={countShowedMovies}
-          movies={movies}
-          onMovieSelect={onMovieSelect}
-        />
-      </section>
-
-      <Footer />
-    </div>
+      <MoviesListWrapped
+        countShowedMovies={countShowedMovies}
+        movies={movies}
+        onMovieSelect={onMovieSelect}
+      />
+    </section>
   );
 };
 

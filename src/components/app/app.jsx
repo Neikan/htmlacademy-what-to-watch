@@ -2,7 +2,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {Route, Router, Switch, Redirect} from "react-router-dom";
+import {Route, Router, Redirect, Switch} from "react-router-dom";
 import history from '../../history.js';
 
 // Импорт компонентов
@@ -15,21 +15,23 @@ import PrivateRoute from "../private-route/private-route.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 
 // Импорт типов, констант, утилит
-import {movieType, genreType} from "../../props/prop-types.js";
-import {Page, ALL_GENRES, AuthStatus} from "../../consts/common-data.js";
+import {genreType, movieType} from "../../props/prop-types.js";
+import {ALL_GENRES, AuthStatus, Page} from "../../consts/common-data.js";
 
 // Импорт редьюсеров, селекторов
 import {ActionCreator as ActionCreatorDatum} from "../../store/datum/datum.js";
 import {Operation as OperationDatumUser} from "../../store/datum-user/operations.js";
 import {getAuthStatus} from "../../store/datum-user/selectors.js";
 import {
+  getCountShowedMovies,
+  getGenres,
+  getIsLoadingMovies,
+  getIsLoadingPromo,
+  getIsPlayingMovie,
+  getLikedMovies,
   getMovies,
   getPromoMovie,
-  getIsPlayingMovie,
-  getCountShowedMovies,
   getSelectedGenre,
-  getLikedMovies,
-  getGenres
 } from "../../store/datum/selectors.js";
 
 // Импорт хоков
@@ -67,9 +69,9 @@ class App extends PureComponent {
    * @return {Object} страница приложения
    */
   render() {
-    const {promoMovie} = this.props;
+    const {isLoadingMovies, isLoadingPromo} = this.props;
 
-    if (!promoMovie) {
+    if (isLoadingPromo || isLoadingMovies) {
       return <Loader />;
     }
 
@@ -112,30 +114,34 @@ class App extends PureComponent {
    */
   _renderMainPage() {
     const {
-      promoMovie,
-      movies,
-      likedMovies,
       countShowedMovies,
       genres,
-      selectedGenre,
-      onMovieChangePlaying,
+      isLoadingMovies,
+      likedMovies,
+      movies,
       onGenreSelect,
-      onShowMore
+      onMovieChangePlaying,
+      onShowMore,
+      promoMovie,
+      selectedGenre
     } = this.props;
 
     const renderedMovies = selectedGenre === ALL_GENRES ? movies : likedMovies;
 
-    return <Main
-      promoMovie={promoMovie}
-      movies={renderedMovies}
-      genres={genres}
-      countShowedMovies={countShowedMovies}
-      onMovieChangePlaying={onMovieChangePlaying}
-      onMovieAddToList={handleMovieAddToList}
-      onMovieSelect={this._handleMovieSelect}
-      onGenreSelect={onGenreSelect}
-      onShowMore={onShowMore}
-    />;
+    return isLoadingMovies
+      ? <Loader />
+      : (
+        <Main
+          promoMovie={promoMovie}
+          movies={renderedMovies}
+          genres={genres}
+          countShowedMovies={countShowedMovies}
+          onMovieChangePlaying={onMovieChangePlaying}
+          onMovieAddToList={handleMovieAddToList}
+          onMovieSelect={this._handleMovieSelect}
+          onGenreSelect={onGenreSelect}
+          onShowMore={onShowMore}
+        />);
   }
 
 
@@ -145,15 +151,18 @@ class App extends PureComponent {
    * @return {Object} страница фильма
    */
   _renderMoviePage(routeProps) {
-    const {authStatus, likedMovies, onMovieChangePlaying} = this.props;
+    const {authStatus, isLoadingMovies, likedMovies, onMovieChangePlaying} = this.props;
 
-    return <MoviePageWrapped
-      authStatus={authStatus}
-      movie={this._handleGetSelectedMovie(routeProps)}
-      movies={likedMovies}
-      onMovieSelect={this._handleMovieSelect}
-      onMovieChangePlaying={onMovieChangePlaying}
-    />;
+    return isLoadingMovies
+      ? <Loader />
+      : (
+        <MoviePageWrapped
+          authStatus={authStatus}
+          movie={this._handleGetSelectedMovie(routeProps)}
+          movies={likedMovies}
+          onMovieSelect={this._handleMovieSelect}
+          onMovieChangePlaying={onMovieChangePlaying}
+        />);
   }
 
 
@@ -163,14 +172,15 @@ class App extends PureComponent {
    * @return {Object} страница проигрывателя фильма
    */
   _renderMoviePlayer(routeProps) {
-    const {onMovieChangePlaying} = this.props;
+    const {isLoadingMovies, onMovieChangePlaying} = this.props;
 
-    return (
-      <MoviePlayerWrapped
-        movie={this._handleGetSelectedMovie(routeProps)}
-        onClose={onMovieChangePlaying}
-      />
-    );
+    return isLoadingMovies
+      ? <Loader />
+      : (
+        <MoviePlayerWrapped
+          movie={this._handleGetSelectedMovie(routeProps)}
+          onClose={onMovieChangePlaying}
+        />);
   }
 
 
@@ -193,7 +203,14 @@ class App extends PureComponent {
    * @return {Object} страница отправки отзыва
    */
   _renderAddReviewPage(routeProps) {
-    return <AddReview movie={this._handleGetSelectedMovie(routeProps)} />;
+    const {isLoadingMovies} = this.props;
+
+    return isLoadingMovies
+      ? <Loader />
+      : (
+        <AddReview
+          movie={this._handleGetSelectedMovie(routeProps)}
+        />);
   }
 
 
@@ -227,6 +244,8 @@ App.propTypes = {
   authStatus: PropTypes.string.isRequired,
   countShowedMovies: PropTypes.number.isRequired,
   genres: PropTypes.arrayOf(genreType).isRequired,
+  isLoadingMovies: PropTypes.bool.isRequired,
+  isLoadingPromo: PropTypes.bool.isRequired,
   isPlayingMovie: PropTypes.bool.isRequired,
   likedMovies: PropTypes.arrayOf(movieType).isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
@@ -236,7 +255,7 @@ App.propTypes = {
   onShowMore: PropTypes.func.isRequired,
   onUserDatumSubmit: PropTypes.func.isRequired,
   promoMovie: movieType,
-  selectedGenre: PropTypes.string.isRequired
+  selectedGenre: PropTypes.string.isRequired,
 };
 
 
@@ -244,6 +263,8 @@ const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),
   countShowedMovies: getCountShowedMovies(state),
   genres: getGenres(state),
+  isLoadingMovies: getIsLoadingMovies(state),
+  isLoadingPromo: getIsLoadingPromo(state),
   isPlayingMovie: getIsPlayingMovie(state),
   likedMovies: getLikedMovies(state),
   movies: getMovies(state),

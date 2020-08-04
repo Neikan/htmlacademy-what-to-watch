@@ -2,6 +2,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import history from '../../history.js';
 
 // Импорт компонентов
 import Header from "../header/header.jsx";
@@ -108,6 +109,8 @@ class AddReview extends PureComponent {
               messageText={messageText}
               onChange={this._handleMessageStatusUpdate}
             />
+
+            {this._handleGoToMoviePage()}
           </form>
         </div>
       </section>
@@ -163,6 +166,18 @@ class AddReview extends PureComponent {
     },
     movie);
   }
+
+
+  /**
+   * Метод, обеспечивающий возврат на страницу фильма после отправки отзыва
+   */
+  _handleGoToMoviePage() {
+    const {messageStatus} = this.props;
+
+    if (messageStatus === ReviewMessageStatus.SUCCESS) {
+      history.goBack();
+    }
+  }
 }
 
 
@@ -176,6 +191,7 @@ AddReview.propTypes = {
   authStatus: PropTypes.string.isRequired,
   user: userType.isRequired,
 
+  isSendingReview: PropTypes.bool.isRequired,
   isFormBlocked: PropTypes.bool.isRequired,
   messageStatus: PropTypes.string.isRequired,
   messageText: PropTypes.string.isRequired,

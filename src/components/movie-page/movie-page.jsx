@@ -1,11 +1,13 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 // Импорт компонентов
 import BtnAddReview from "../btn-add-review/btn-add-review.jsx";
 import BtnAddToFavorite from "../btn-add-to-favorite/btn-add-to-favorite.jsx";
 import BtnPlay from "../btn-play/btn-play.jsx";
+import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
@@ -15,9 +17,13 @@ import MoviesByGenre from "../movies-by-genre/movies-by-genre.jsx";
 import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 
 // Импорт типов, констант, утилит
-import {movieType} from "../../props/prop-types.js";
+import {movieType, reviewType} from "../../props/prop-types.js";
 import {MovieTabList, CountMovies} from "../../consts/common-data.js";
 import {getLikedMoviesByGenre} from "../../utils/common.js";
+
+// Импорт редьюсеров, селекторов
+import {Operation as OperationDatum} from '../../store/datum/operations.js';
+import {getReviews} from "../../store/datum/selectors.js";
 
 
 /**
@@ -36,7 +42,7 @@ class MoviePage extends PureComponent {
    * @return {Object} созданный компонент
    */
   render() {
-    const {authStatus, movie, onTabSelect, selectedTab} = this.props;
+    const {authStatus, movie, onTabSelect, reviews, selectedTab} = this.props;
     const {backgroundColor, backgroundImage, genre, id, poster, title, year} = movie;
 
     return (
@@ -84,7 +90,7 @@ class MoviePage extends PureComponent {
 
               <div className="movie-card__desc">
                 <MovieTabs
-                  isReviews={movie.reviews.length > 0 ? true : false}
+                  isReviews={reviews.length > 0 ? true : false}
                   onTabSelect={onTabSelect}
                   selectedTab={selectedTab}
                   tabs={MovieTabList}
@@ -96,9 +102,36 @@ class MoviePage extends PureComponent {
           </div>
         </section>
 
-        {this._renderMoviesByGenre()}
+        <div className="page-content">
+          {this._renderMoviesByGenre()}
+
+          <Footer />
+        </div>
       </>
     );
+  }
+
+
+  /**
+   * Метод, обеспечивабщий загрузку отзывов
+   */
+  componentDidMount() {
+    const {movie, onReviewsLoad} = this.props;
+
+    onReviewsLoad(movie);
+  }
+
+
+  /**
+   * Метод, обеспечивающий обновление загруженных отзывов
+   * @param {Object} nextProps
+   */
+  componentDidUpdate(nextProps) {
+    const {movie, onReviewsLoad} = this.props;
+
+    if (nextProps.movie !== movie) {
+      onReviewsLoad(movie);
+    }
   }
 
 
@@ -107,7 +140,7 @@ class MoviePage extends PureComponent {
    * @return {Object} созданный компонент
    */
   _renderMovieDesc() {
-    const {movie, selectedTab} = this.props;
+    const {movie, reviews, selectedTab} = this.props;
 
     switch (selectedTab) {
       case MovieTabList.OVERVIEW:
@@ -117,7 +150,7 @@ class MoviePage extends PureComponent {
         return <MovieDetails movie={movie} />;
 
       case MovieTabList.REVIEWS:
-        return <MovieReviews movie={movie} />;
+        return <MovieReviews reviews={reviews} />;
 
       default:
         return null;
@@ -132,7 +165,9 @@ class MoviePage extends PureComponent {
   _renderMoviesByGenre() {
     const {movie, movies, onMovieSelect} = this.props;
 
-    if (!movies.length || movies.length === 0) {
+    const likedMovies = getLikedMoviesByGenre(movies, movie.id);
+
+    if (!likedMovies.length || likedMovies.length === 0) {
       return null;
     }
 
@@ -163,9 +198,24 @@ MoviePage.propTypes = {
   movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onMovieChangePlaying: PropTypes.func.isRequired,
+  onReviewsLoad: PropTypes.func.isRequired,
   onTabSelect: PropTypes.func.isRequired,
+  reviews: PropTypes.arrayOf(reviewType).isRequired,
   selectedTab: PropTypes.string.isRequired
 };
 
 
-export default MoviePage;
+const mapStateToProps = (state) => ({
+  reviews: getReviews(state)
+});
+
+
+const mapDispatchToProps = (dispatch) => ({
+  onReviewsLoad(movie) {
+    dispatch(OperationDatum.loadReviews(movie));
+  },
+});
+
+
+export {MoviePage};
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

@@ -35,20 +35,20 @@ const moviesAdapter = (movie) => {
 };
 
 
-const commentsAdapter = (comment) => {
+const reviewsAdapter = (review) => {
   return {
-    id: `${comment.id}`,
-    text: comment.comment,
+    id: `${review.id}`,
+    text: review.comment,
 
     author: {
-      id: `${comment.user.id}`,
-      name: comment.user.name,
+      id: `${review.user.id}`,
+      name: review.user.name,
     },
 
-    rating: comment.rating,
-    date: comment.date
+    rating: review.rating,
+    date: review.date
   };
 };
 
 
-export {moviesAdapter, commentsAdapter};
+export {moviesAdapter, reviewsAdapter};

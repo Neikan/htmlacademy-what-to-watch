@@ -3,6 +3,9 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import history from '../../../../history.js';
 
+// Импорт типов, констант, утилит
+import {Page} from "../../../../consts/common-data.js";
+
 
 /**
  * Создание компонента, обеспечивающего закрытие проигрывателя
@@ -34,9 +37,9 @@ class BtnExit extends PureComponent {
    * Метод, обеспечивающий закрытие проигрывателя и возврат на предыдщую с
    */
   _handleClose() {
-    const {onClose} = this.props;
+    const {id, onClose} = this.props;
 
-    history.goBack();
+    history.push(`/${Page.MOVIE}/${id}`);
 
     onClose();
   }
@@ -44,6 +47,7 @@ class BtnExit extends PureComponent {
 
 
 BtnExit.propTypes = {
+  id: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired
 };
 
