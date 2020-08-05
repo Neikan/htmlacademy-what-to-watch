@@ -2,7 +2,8 @@
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import {configure, mount} from "enzyme";
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 // Импорт компонентов
 import GenresList from "./genres-list.jsx";
@@ -21,12 +22,12 @@ describe(`Test e2e GenresList component`, () => {
     const handleGenreSelect = jest.fn();
 
     const genresList = mount(
-        <BrowserRouter>
+        <Router history={history}>
           <GenresList
             genres={GENRES}
             onGenreSelect={handleGenreSelect}
           />
-        </BrowserRouter>
+        </Router>
     );
 
     genresList.find(`.${MarkupElement.GENRE_LINK}`).map(

@@ -52,5 +52,3 @@ Array [
   </div>,
 ]
 `;
-
-exports[`Test MovieDetails component When Movie is undefined 1`] = `null`;

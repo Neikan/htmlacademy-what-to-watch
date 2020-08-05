@@ -3,7 +3,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 // Импорт компонентов
 import AddReview from "./add-review.jsx";
@@ -28,11 +29,13 @@ describe(`Test AddReview component`, () => {
     });
 
     const tree = renderer.create(
-        <BrowserRouter>
+        <Router history={history}>
           <Provider store={store}>
-            <AddReview />
+            <AddReview
+              movie={MOVIES[0]}
+            />
           </Provider>
-        </BrowserRouter>, {
+        </Router>, {
           createNodeMock: () => {
             return {};
           }

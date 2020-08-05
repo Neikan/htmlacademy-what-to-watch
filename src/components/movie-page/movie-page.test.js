@@ -3,13 +3,14 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 // Импорт компонентов
 import MoviePage from "./movie-page.jsx";
 
 // Импорт типов, констант, утилит
-import {MOVIES, MovieTabList, AuthStatus} from "../../consts/test-data.js";
+import {MOVIES, MovieTabList, AuthStatus, UserDatumStateNoAuth, DatumStateAfterStart} from "../../consts/test-data.js";
 import NameSpace from "../../store/name-space.js";
 
 
@@ -18,33 +19,27 @@ const mockStore = configureStore([]);
 
 describe(`Test MoviePage component`, () => {
   const store = mockStore({
-    [NameSpace.DATUM_USER]: {
-      authStatus: AuthStatus.NO_AUTH,
-      user: {
-        id: ``,
-        email: ``,
-        name: ``,
-        avatarUrl: ``
-      },
-    }
+    [NameSpace.DATUM]: DatumStateAfterStart,
+    [NameSpace.DATUM_USER]: UserDatumStateNoAuth
   });
 
   test(`MoviePage component is created and rendered correctly`, () => {
     const tree = renderer.create(
-        <BrowserRouter>
+        <Router history={history}>
           <Provider store={store}>
             <MoviePage
               authStatus={AuthStatus.NO_AUTH}
+              countShowedMovies={4}
               movie={MOVIES[0]}
               movies={MOVIES}
-              countShowedMovies={4}
               onMovieSelect={() => {}}
               onMovieChangePlaying={() => {}}
-              selectedTab={MovieTabList.OVERVIEW}
               onTabSelect={() => {}}
+              reviews={MOVIES[0].reviews}
+              selectedTab={MovieTabList.OVERVIEW}
             />
           </Provider>
-        </BrowserRouter>, {
+        </Router>, {
           createNodeMock: () => {
             return {};
           }

@@ -36,7 +36,7 @@ describe(`Test e2e withSelectedMovie component`, () => {
 
     tree.props().onMovieMouseEnter(MOVIES[1]);
     expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 10000);
+    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 2000);
 
     tree.props().onMovieMouseLeave();
     expect(tree.props().selectedMovie).toEqual(null);

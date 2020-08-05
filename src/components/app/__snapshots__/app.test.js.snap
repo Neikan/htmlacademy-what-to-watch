@@ -865,16 +865,6 @@ exports[`Test App component App component is created and rendered correctly when
 </section>
 `;
 
-exports[`Test App component App component is created and rendered correctly when promoMovie === null 1`] = `
-<section>
-  <h2
-    className="loader"
-  >
-    Loading... Please wait
-  </h2>
-</section>
-`;
-
 exports[`Test App component App component is created and rendered correctly when select Genre 1`] = `
 Array [
   <section

@@ -1,3 +1,10 @@
+// Импорт типов, констант, утилит
+import {getMoviesByGenre} from "../utils/common";
+
+
+export const ALL_GENRES = `All genres`;
+
+
 export const LogoPosition = {
   HEADER: `header`,
   FOOTER: `footer`
@@ -129,6 +136,9 @@ export const MOVIES = [
 ];
 
 
+export const FAVORITE_MOVIES = [MOVIES[0], MOVIES[1]];
+
+
 export const GENRES = [
   {
     id: `g1`,
@@ -217,11 +227,49 @@ export const UserDatumState = {
 export const UserDatumStateNoAuth = {
   authStatus: AuthStatus.NO_AUTH,
   user: {
-    id: `user-1`,
-    email: `sladkov.e.m@outlook.com`,
-    name: `Batman`,
-    avatarUrl: `https://4.react.pages.academy/wtw/static/avatar/5.jpg`
+    id: ``,
+    email: ``,
+    name: ``,
+    avatarUrl: ``
   }
+};
+
+
+export const DatumStateInitial = {
+  countShowedMovies: CountMovies.START,
+  favoriteMovies: [],
+  genres: [],
+
+  isLoadingFavoriteMovies: true,
+  isLoadingMovies: true,
+  isLoadingPromo: true,
+  isLoadingReviews: true,
+  isPlayingMovie: false,
+
+  likedMovies: [],
+  movies: [],
+  promoMovie: null,
+  reviews: [],
+  selectedGenre: ALL_GENRES
+};
+
+
+export const DatumStateAfterStart = {
+  countShowedMovies: CountMovies.START,
+  favoriteMovies: FAVORITE_MOVIES,
+  genres: GENRES,
+
+  isLoadingFavoriteMovies: false,
+  isLoadingMovies: false,
+  isLoadingPromo: false,
+  isLoadingReviews: false,
+  isPlayingMovie: false,
+
+  likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
+  movies: MOVIES,
+  promoMovie: MOVIES[0],
+  reviews: MOVIES[1].reviews,
+  selectedGenre: ALL_GENRES
 };
 
 

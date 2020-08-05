@@ -3,7 +3,6 @@
 exports[`Test MovieCard component Render correctly when isPlaying is false 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  id="mock-1"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -38,7 +37,6 @@ exports[`Test MovieCard component Render correctly when isPlaying is false 1`] =
 exports[`Test MovieCard component Render correctly when isPlaying is true 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  id="mock-1"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

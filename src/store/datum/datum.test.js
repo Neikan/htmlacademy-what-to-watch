@@ -1,5 +1,5 @@
 // Импорт типов, констант, утилит
-import {GENRES, MOVIES, Page, CountMovies} from "../../consts/test-data.js";
+import {GENRES, MOVIES, CountMovies} from "../../consts/test-data.js";
 import {getLikedMoviesByGenre, getMoviesByGenre, updateGenres} from "../../utils/common.js";
 
 // Импорт редьюсеров, селекторов
@@ -9,12 +9,9 @@ import {ActionType, reducer, ActionCreator} from "./datum.js";
 describe(`Get initial state`, () => {
   test(`Return initial state`, () => {
     const initialState = {
-      page: Page.MAIN,
-
       movies: MOVIES,
       promoMovie: MOVIES[0],
-      selectedMovie: MOVIES[0],
-      likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[0].genre, MOVIES[0].id),
+      likedMovies: getMoviesByGenre(MOVIES, MOVIES[0].genre),
       countShowedMovies: CountMovies.START,
       isPlayingMovie: false,
 
@@ -23,12 +20,9 @@ describe(`Get initial state`, () => {
     };
 
     expect(reducer(initialState, {})).toEqual({
-      page: Page.MAIN,
-
       movies: MOVIES,
       promoMovie: MOVIES[0],
-      selectedMovie: MOVIES[0],
-      likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[0].genre, MOVIES[0].id),
+      likedMovies: getMoviesByGenre(MOVIES, MOVIES[0].genre),
       countShowedMovies: CountMovies.START,
       isPlayingMovie: false,
 
@@ -62,17 +56,13 @@ describe(`Action types work correctly`, () => {
 
   test(`Return selected movie and liked movies by genre this movie, but without this movie`, () => {
     expect(reducer({
-      page: Page.MAIN,
       movies: MOVIES,
-      selectedMovie: MOVIES[0],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[0].genre, MOVIES[0].id),
     }, {
       type: ActionType.SELECT_MOVIE,
       payload: MOVIES[1]
     })).toEqual({
-      page: Page.MOVIE,
       movies: MOVIES,
-      selectedMovie: MOVIES[1],
       likedMovies: getLikedMoviesByGenre(MOVIES, MOVIES[1].genre, MOVIES[1].id),
     });
   });
@@ -112,14 +102,6 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.selectGenre(GENRES[1])).toEqual({
       type: ActionType.SELECT_GENRE,
       payload: GENRES[1]
-    });
-  });
-
-
-  test(`Select movie returns correct action`, () => {
-    expect(ActionCreator.selectMovie(MOVIES[1])).toEqual({
-      type: ActionType.SELECT_MOVIE,
-      payload: MOVIES[1]
     });
   });
 

@@ -99,7 +99,6 @@ class SignIn extends PureComponent {
 
 
 SignIn.propTypes = {
-  errors: PropTypes.arrayOf(PropTypes.string).isRequired,
   errorLogin: PropTypes.bool.isRequired,
   errorPassword: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired

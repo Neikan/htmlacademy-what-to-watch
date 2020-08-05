@@ -52,12 +52,17 @@ Array [
         <div
           className="user-block__avatar"
         >
-          <img
-            alt="Batman"
-            height="63"
-            src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
-            width="63"
-          />
+          <a
+            href="/mylist"
+            onClick={[Function]}
+          >
+            <img
+              alt="Batman"
+              height="63"
+              src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
+              width="63"
+            />
+          </a>
         </div>
       </div>
     </header>
@@ -104,8 +109,9 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/mock-1"
               onClick={[Function]}
               type="button"
             >
@@ -121,7 +127,7 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
               onClick={[Function]}
@@ -199,7 +205,6 @@ Array [
         >
           <article
             className="small-movie-card catalog__movies-card"
-            id="mock-1"
             onClick={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -275,7 +280,7 @@ Array [
         className="copyright"
       >
         <p>
-          © 2019 What to watch Ltd.
+          © 2020 What to watch Ltd.
         </p>
       </div>
     </footer>

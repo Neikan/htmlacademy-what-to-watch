@@ -3,7 +3,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Route, Router, Redirect, Switch} from "react-router-dom";
-import history from '../../history.js';
+import history from "../../history.js";
 
 // Импорт компонентов
 import AddReview from "../add-review/add-review.jsx";
@@ -21,7 +21,7 @@ import {ALL_GENRES, AuthStatus, Page} from "../../consts/common-data.js";
 
 // Импорт редьюсеров, селекторов
 import {ActionCreator as ActionCreatorDatum} from "../../store/datum/datum.js";
-import {Operation as OperationDatum} from '../../store/datum/operations.js';
+import {Operation as OperationDatum} from "../../store/datum/operations.js";
 import {Operation as OperationDatumUser} from "../../store/datum-user/operations.js";
 import {getAuthStatus} from "../../store/datum-user/selectors.js";
 import {

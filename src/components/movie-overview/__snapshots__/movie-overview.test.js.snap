@@ -84,5 +84,3 @@ exports[`Test MovieOverView component When Movie is correctly 1`] = `
   </div>
 </div>
 `;
-
-exports[`Test MovieOverView component When Movie is undefined 1`] = `null`;

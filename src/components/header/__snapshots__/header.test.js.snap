@@ -35,12 +35,17 @@ exports[`Test Header component Header component is created and rendered correctl
     <div
       className="user-block__avatar"
     >
-      <img
-        alt="Batman"
-        height="63"
-        src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
-        width="63"
-      />
+      <a
+        href="/mylist"
+        onClick={[Function]}
+      >
+        <img
+          alt="Batman"
+          height="63"
+          src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
+          width="63"
+        />
+      </a>
     </div>
   </div>
 </header>
