@@ -64,13 +64,6 @@ export const getIntervalForCols = (array) => {
 
 
 /**
- * Генерация идентификатора для фильмов и комментариев
- * @return {string}
- */
-export const generateId = () => `f${(+new Date()).toString(16)}${Math.random() * 1e8}`;
-
-
-/**
  * Обновление свойства isActive для жанров
  * @param {Array} genres массив жанров
  * @param {string} selectedGenre выбранный жанр
@@ -97,9 +90,9 @@ export const getUniqueGenres = (movies) => {
     }
   });
 
-  return uniqueGenres.map((genre) => {
+  return uniqueGenres.map((genre, index) => {
     return {
-      [`id`]: generateId(),
+      [`id`]: `${genre}-${index}`,
       [`title`]: genre,
       [`isActive`]: genre === ALL_GENRES
     };

@@ -15,7 +15,7 @@ configure({
 
 
 describe(`Test e2e SignIn component`, () => {
-  test(`Should 'sign-in'-button for form be pressed`, () => {
+  test(`Should "sign-in"-button for form be pressed`, () => {
     const handleSubmit = jest.fn();
 
     const signIn = mount(

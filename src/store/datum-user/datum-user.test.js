@@ -1,5 +1,5 @@
 // Импорт типов, констант, утилит
-import {AuthStatus, UserDatumState} from '../../consts/test-data.js';
+import {AuthStatus, DatumUserState} from "../../consts/test-data.js";
 
 // Импорт редьюсеров, селекторов
 import {ActionType, reducer, ActionCreator} from "./datum-user.js";
@@ -79,7 +79,7 @@ describe(`Action types work correctly`, () => {
       }
     }, {
       type: ActionType.SET_USER_DATUM,
-      payload: UserDatumState.user
+      payload: DatumUserState.user
     })).toEqual({
       user: {
         id: `user-1`,
@@ -109,18 +109,10 @@ describe(`Action creators work correctly`, () => {
   });
 
 
-  test(`Require auth returns correct action when AuthStatus === AUTH`, () => {
-    expect(ActionCreator.setUserDatum(UserDatumState.user)).toEqual({
+  test(`SetUserDatum returns correct action`, () => {
+    expect(ActionCreator.setUserDatum(DatumUserState.user)).toEqual({
       type: ActionType.SET_USER_DATUM,
-      payload: UserDatumState.user
-    });
-  });
-
-
-  test(`Require auth returns correct action when AuthStatus === AUTH`, () => {
-    expect(ActionCreator.setUserDatum(UserDatumState.user)).toEqual({
-      type: ActionType.SET_USER_DATUM,
-      payload: UserDatumState.user
+      payload: DatumUserState.user
     });
   });
 });

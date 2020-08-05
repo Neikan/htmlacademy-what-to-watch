@@ -14,8 +14,8 @@ describe(`Test TextArea component`, () => {
     const tree = renderer.create(
         <TextArea
           isFormBlocked={false}
-          messageStatus={ReviewMessage.DEFAULT}
-          messageText={ReviewMessageStatus.DEFAULT}
+          messageStatus={ReviewMessageStatus.DEFAULT}
+          messageText={ReviewMessage.DEFAULT}
           onChange={() => {}}
         />
     ).toJSON();
@@ -28,8 +28,8 @@ describe(`Test TextArea component`, () => {
     const tree = renderer.create(
         <TextArea
           isFormBlocked={false}
-          messageStatus={ReviewMessage.LESS_LENGTH_MIN}
-          messageText={ReviewMessageStatus.ERROR_LENGTH_MIN}
+          messageStatus={ReviewMessageStatus.ERROR_LENGTH_MIN}
+          messageText={ReviewMessage.LESS_LENGTH_MIN}
           onChange={() => {}}
         />
     ).toJSON();
@@ -42,8 +42,8 @@ describe(`Test TextArea component`, () => {
     const tree = renderer.create(
         <TextArea
           isFormBlocked={false}
-          messageStatus={ReviewMessage.MORE_LENGTH_MAX}
-          messageText={ReviewMessageStatus.ERROR_LENGTH_MAX}
+          messageStatus={ReviewMessageStatus.ERROR_LENGTH_MAX}
+          messageText={ReviewMessage.MORE_LENGTH_MAX}
           onChange={() => {}}
         />
     ).toJSON();

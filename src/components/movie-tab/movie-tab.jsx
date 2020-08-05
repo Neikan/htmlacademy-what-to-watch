@@ -1,7 +1,7 @@
 // Импорт библиотек
 import React from "react";
 import PropTypes from "prop-types";
-import cn from 'classnames';
+import cn from "classnames";
 import {Link} from "react-router-dom";
 
 // Импорт типов, констант, утилит
@@ -29,7 +29,7 @@ const MovieTab = (props) => {
       className={className}
       onClick={handleTabSelect(tab, onTabSelect)}
     >
-      <Link to="#" className='movie-nav__link'>{tab}</Link>
+      <Link to="#" className="movie-nav__link">{tab}</Link>
     </li>
   );
 };

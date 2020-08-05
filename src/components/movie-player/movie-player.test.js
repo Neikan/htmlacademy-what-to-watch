@@ -1,9 +1,9 @@
 // Импорт библиотек
-import React from 'react';
+import React from "react";
 import renderer from "react-test-renderer";
 
 // Импорт компонентов
-import MoviePlayer from './movie-player.jsx';
+import MoviePlayer from "./movie-player.jsx";
 
 // Импорт типов, констант, утилит
 import {MOVIES, Time} from "../../consts/test-data.js";

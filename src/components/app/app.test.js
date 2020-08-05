@@ -3,132 +3,65 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import thunk from "redux-thunk";
 
 // Импорт компонентов
-import App from "./app.jsx";
+import {App} from "./app.jsx";
 
 // Импорт типов, констант, утилит
-import {CountMovies, MOVIES, GENRES, UserDatumState, UserDatumStateNoAuth} from "./../../consts/test-data";
-import {getMoviesByGenre} from "../../utils/common.js";
+import {
+  AuthStatus,
+  CountMovies,
+  DatumStateAfterStart,
+  GENRES,
+  MOVIES,
+  DatumUserState,
+  DatumReviewState,
+} from "./../../consts/test-data";
 import NameSpace from "../../store/name-space.js";
 
 
-const mockStore = configureStore([]);
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
+
+jest.mock(`react-router-dom`);
 
 
 describe(`Test App component`, () => {
   test(`App component is created and rendered correctly when page is Main`, () => {
     const store = mockStore({
-      [NameSpace.DATUM]: {
-        movies: MOVIES,
-        promoMovie: MOVIES[0],
-        likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
-        countShowedMovies: CountMovies.START,
-        isPlayingMovie: false,
-
-        genres: GENRES,
-        selectedGenre: GENRES[0].title
-      },
-      [NameSpace.DATUM_USER]: UserDatumState
+      [NameSpace.DATUM]: DatumStateAfterStart,
+      [NameSpace.DATUM_REVIEW]: DatumReviewState,
+      [NameSpace.DATUM_USER]: DatumUserState
     });
 
+    store.dispatch = jest.fn();
 
     const tree = renderer.create(
         <Provider store={store}>
-          <App />
-        </Provider>, {
-          createNodeMock: () => {
-            return {};
-          }
-        }
-    ).toJSON();
+          <App
+            authStatus={AuthStatus.AUTH}
+            countShowedMovies={CountMovies.START}
+            genres={GENRES}
 
-    expect(tree).toMatchSnapshot();
-  });
+            isLoadingMovies={false}
+            isLoadingPromo={false}
+            isPlayingMovie={false}
 
+            likedMovies={MOVIES}
+            movies={MOVIES}
 
-  test(`App component is created and rendered correctly when page is Movie`, () => {
-    const store = mockStore({
-      [NameSpace.DATUM]: {
-        movies: MOVIES,
-        promoMovie: MOVIES[0],
-        selectedMovie: MOVIES[1],
-        likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
-        countShowedMovies: CountMovies.START,
-        isPlayingMovie: false,
+            onFavoriteMovieSend={() => {}}
+            onGenreSelect={() => {}}
+            onLikedMoviesSet={() => {}}
+            onMovieChangePlaying={() => {}}
+            onShowMore={() => {}}
+            onStart={() => {}}
+            onUserDatumSubmit={() => {}}
 
-        genres: GENRES,
-        selectedGenre: GENRES[0].title
-      },
-      [NameSpace.DATUM_USER]: UserDatumState
-    });
-
-
-    const tree = renderer.create(
-        <Provider store={store}>
-          <App />
-        </Provider>, {
-          createNodeMock: () => {
-            return {};
-          }
-        }
-    ).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-
-  test(`App component is created and rendered correctly when select Genre`, () => {
-    const store = mockStore({
-      [NameSpace.DATUM]: {
-        movies: MOVIES,
-        promoMovie: MOVIES[0],
-        selectedMovie: MOVIES[0],
-        likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
-        countShowedMovies: CountMovies.START,
-        isPlayingMovie: false,
-
-        genres: GENRES,
-        selectedGenre: GENRES[1].title
-      },
-      [NameSpace.DATUM_USER]: UserDatumState
-    });
-
-
-    const tree = renderer.create(
-        <Provider store={store}>
-          <App />
-        </Provider>, {
-          createNodeMock: () => {
-            return {};
-          }
-        }
-    ).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-
-  test(`App component is created and rendered correctly when authStatus === NO_AUTH`, () => {
-    const store = mockStore({
-      [NameSpace.DATUM]: {
-        movies: MOVIES,
-        promoMovie: MOVIES[0],
-        selectedMovie: MOVIES[0],
-        likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
-        countShowedMovies: CountMovies.START,
-        isPlayingMovie: false,
-
-        genres: GENRES,
-        selectedGenre: GENRES[1].title
-      },
-      [NameSpace.DATUM_USER]: UserDatumStateNoAuth
-    });
-
-
-    const tree = renderer.create(
-        <Provider store={store}>
-          <App />
+            promoMovie={MOVIES[0]}
+            selectedGenre={GENRES[0]}
+          />
         </Provider>, {
           createNodeMock: () => {
             return {};

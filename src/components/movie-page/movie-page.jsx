@@ -22,7 +22,7 @@ import {MovieTabList, CountMovies} from "../../consts/common-data.js";
 import {getLikedMoviesByGenre} from "../../utils/common.js";
 
 // Импорт редьюсеров, селекторов
-import {Operation as OperationDatum} from '../../store/datum/operations.js';
+import {Operation as OperationDatum} from "../../store/datum/operations.js";
 import {getReviews} from "../../store/datum/selectors.js";
 
 

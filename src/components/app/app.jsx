@@ -9,7 +9,7 @@ import history from "../../history.js";
 import AddReview from "../add-review/add-review.jsx";
 import Loader from "../loader/loader.jsx";
 import Main from "../main/main.jsx";
-import MoviePage from '../movie-page/movie-page.jsx';
+import MoviePage from "../movie-page/movie-page.jsx";
 import MoviePlayer from "../movie-player/movie-player.jsx";
 import MyList from "../my-list/my-list.jsx";
 import PrivateRoute from "../private-route/private-route.jsx";
@@ -294,7 +294,7 @@ App.propTypes = {
   onUserDatumSubmit: PropTypes.func.isRequired,
 
   promoMovie: movieType,
-  selectedGenre: PropTypes.string.isRequired,
+  selectedGenre: PropTypes.string.isRequired
 };
 
 

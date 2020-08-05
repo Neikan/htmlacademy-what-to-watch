@@ -1,7 +1,7 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import history from '../../../../history.js';
+import history from "../../../../history.js";
 
 // Импорт типов, констант, утилит
 import {Page} from "../../../../consts/common-data.js";

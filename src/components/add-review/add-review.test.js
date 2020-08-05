@@ -10,7 +10,7 @@ import history from "../../history.js";
 import AddReview from "./add-review.jsx";
 
 // Импорт типов, констант, утилит
-import {MOVIES, UserDatumState, ReviewDatumState} from "./../../consts/test-data";
+import {MOVIES, DatumUserState, DatumReviewState} from "./../../consts/test-data";
 import NameSpace from "../../store/name-space.js";
 
 
@@ -19,13 +19,8 @@ const mockStore = configureStore([]);
 describe(`Test AddReview component`, () => {
   test(`AddReview component is created and rendered correctly`, () => {
     const store = mockStore({
-      [NameSpace.DATUM]: {
-        selectedMovie: MOVIES[0],
-      },
-
-      [NameSpace.DATUM_USER]: UserDatumState,
-
-      [NameSpace.DATUM_REVIEW]: ReviewDatumState
+      [NameSpace.DATUM_USER]: DatumUserState,
+      [NameSpace.DATUM_REVIEW]: DatumReviewState
     });
 
     const tree = renderer.create(

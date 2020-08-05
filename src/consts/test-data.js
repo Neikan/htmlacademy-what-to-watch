@@ -213,7 +213,7 @@ export const AuthStatus = {
 };
 
 
-export const UserDatumState = {
+export const DatumUserState = {
   authStatus: AuthStatus.AUTH,
   user: {
     id: `user-1`,
@@ -224,7 +224,7 @@ export const UserDatumState = {
 };
 
 
-export const UserDatumStateNoAuth = {
+export const DatumUserStateNoAuth = {
   authStatus: AuthStatus.NO_AUTH,
   user: {
     id: ``,
@@ -269,12 +269,13 @@ export const DatumStateAfterStart = {
   movies: MOVIES,
   promoMovie: MOVIES[0],
   reviews: MOVIES[1].reviews,
-  selectedGenre: ALL_GENRES
+  selectedGenre: GENRES[0].title
 };
 
 
 export const ReviewMessage = {
   DEFAULT: ``,
+  GOOD: `good good good good good good good good good good good good good good `,
   LESS_LENGTH_MIN: `less length min`,
   MORE_LENGTH_MAX: `more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max`,
   LENGTH_MIN: 50,
@@ -286,8 +287,7 @@ export const ReviewMessageStatus = {
   DEFAULT: ``,
   SUCCESS: `Ваш отзыв добавлен!`,
   ERROR_SENDING: `Извините, при добавлении Вашего отзыва возникла ошибка. Попробуйте позднее.`,
-  ERROR_LENGTH_MIN: `Ваше сообщение менее ${ReviewMessage.LENGTH_MIN} символов`,
-  ERROR_LENGTH_MAX: `Ваше сообщение более ${ReviewMessage.LENGTH_MAX} символов`
+  MESSAGE_LENGTH: `Текущая длина сообщения:`
 };
 
 
@@ -297,7 +297,7 @@ export const Rating = {
 };
 
 
-export const ReviewDatumState = {
+export const DatumReviewState = {
   isFormBlocked: false,
   messageText: ReviewMessage.DEFAULT,
   messageStatus: ReviewMessageStatus.DEFAULT,

@@ -14,7 +14,7 @@ import MyListEmpty from "../my-list-empty/my-list-empty.jsx";
 import {movieType} from "../../props/prop-types";
 
 // Импорт редьюсеров, селекторов
-import {Operation as OperationDatum} from '../../store/datum/operations.js';
+import {Operation as OperationDatum} from "../../store/datum/operations.js";
 import {getFavoriteMovies, getIsLoadingFavoriteMovies} from "../../store/datum/selectors.js";
 
 // Импорт хоков
@@ -96,7 +96,7 @@ MyList.propTypes = {
 
 const mapStateToProps = (state) => ({
   favoriteMovies: getFavoriteMovies(state),
-  isLoadingFavoriteMovies: getIsLoadingFavoriteMovies(state),
+  isLoadingFavoriteMovies: getIsLoadingFavoriteMovies(state)
 });
 
 

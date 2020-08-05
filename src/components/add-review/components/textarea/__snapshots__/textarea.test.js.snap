@@ -45,7 +45,7 @@ exports[`Test TextArea component Rendered correctly when message less than min l
     name="review-text"
     onChange={[Function]}
     placeholder="Введите сообщение не менее 50 и не более 400 символов"
-    value="Ваше сообщение менее 50 символов"
+    value="less length min"
   />
   <div
     className="add-review__submit"
@@ -56,9 +56,7 @@ exports[`Test TextArea component Rendered correctly when message less than min l
           "margin": "0 auto",
         }
       }
-    >
-      less length min
-    </div>
+    />
     <button
       className="add-review__btn"
       disabled={true}
@@ -80,7 +78,7 @@ exports[`Test TextArea component Rendered correctly when message more than max l
     name="review-text"
     onChange={[Function]}
     placeholder="Введите сообщение не менее 50 и не более 400 символов"
-    value="Ваше сообщение более 400 символов"
+    value="more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max"
   />
   <div
     className="add-review__submit"
@@ -91,9 +89,7 @@ exports[`Test TextArea component Rendered correctly when message more than max l
           "margin": "0 auto",
         }
       }
-    >
-      more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max
-    </div>
+    />
     <button
       className="add-review__btn"
       disabled={true}

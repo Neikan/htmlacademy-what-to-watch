@@ -2,7 +2,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import history from '../../history.js';
+import history from "../../history.js";
 
 // Импорт компонентов
 import Header from "../header/header.jsx";

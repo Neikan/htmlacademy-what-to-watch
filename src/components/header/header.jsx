@@ -1,7 +1,7 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import cn from 'classnames';
+import cn from "classnames";
 import {connect} from "react-redux";
 
 // Импорт компонентов

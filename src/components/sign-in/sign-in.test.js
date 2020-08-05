@@ -1,7 +1,7 @@
 // Импорт библиотек
-import React from 'react';
+import React from "react";
 import renderer from "react-test-renderer";
-import {Router} from 'react-router-dom';
+import {Router} from "react-router-dom";
 import history from "../../history.js";
 
 // Импорт компонентов
