@@ -31,8 +31,8 @@ const Main = (props) => {
     countShowedMovies,
     genres,
     movies,
+    onMovieChangeMyList,
     onMovieChangePlaying,
-    onMovieAddToList,
     onMovieSelect,
     onGenreSelect,
     onShowMore,
@@ -56,7 +56,7 @@ const Main = (props) => {
         <Promo
           movie={promoMovie}
           onChangePlaying={onMovieChangePlaying}
-          onAdd={onMovieAddToList}
+          onChangeMyList={onMovieChangeMyList}
           onSelect={onMovieSelect}
         />
       </section>
@@ -90,11 +90,13 @@ Main.propTypes = {
   countShowedMovies: PropTypes.number.isRequired,
   genres: PropTypes.arrayOf(genreType).isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
+
+  onMovieChangeMyList: PropTypes.func.isRequired,
   onMovieChangePlaying: PropTypes.func.isRequired,
-  onMovieAddToList: PropTypes.func.isRequired,
   onMovieSelect: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
   onShowMore: PropTypes.func.isRequired,
+
   promoMovie: movieType.isRequired
 };
 

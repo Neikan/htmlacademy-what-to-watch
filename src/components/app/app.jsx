@@ -11,6 +11,7 @@ import Loader from "../loader/loader.jsx";
 import Main from "../main/main.jsx";
 import MoviePage from '../movie-page/movie-page.jsx';
 import MoviePlayer from "../movie-player/movie-player.jsx";
+import MyList from "../my-list/my-list.jsx";
 import PrivateRoute from "../private-route/private-route.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 
@@ -20,6 +21,7 @@ import {ALL_GENRES, AuthStatus, Page} from "../../consts/common-data.js";
 
 // Импорт редьюсеров, селекторов
 import {ActionCreator as ActionCreatorDatum} from "../../store/datum/datum.js";
+import {Operation as OperationDatum} from '../../store/datum/operations.js';
 import {Operation as OperationDatumUser} from "../../store/datum-user/operations.js";
 import {getAuthStatus} from "../../store/datum-user/selectors.js";
 import {
@@ -40,8 +42,6 @@ import withPlayerControls from "../../hoc/with-player-controls/with-player-contr
 import withSelectedTab from "../../hoc/with-selected-tab/with-selected-tab.js";
 
 
-const handleMovieAddToList = () => {};
-
 const MoviePageWrapped = withSelectedTab(MoviePage);
 const MoviePlayerWrapped = withPlayerControls(MoviePlayer);
 const SignInWrapped = withErrors(SignIn);
@@ -58,6 +58,7 @@ class App extends PureComponent {
     this._renderMainPage = this._renderMainPage.bind(this);
     this._renderMoviePage = this._renderMoviePage.bind(this);
     this._renderMoviePlayer = this._renderMoviePlayer.bind(this);
+    this._renderMyList = this._renderMyList.bind(this);
     this._renderSignInPage = this._renderSignInPage.bind(this);
 
     this._handleMovieSelect = this._handleMovieSelect.bind(this);
@@ -89,11 +90,6 @@ class App extends PureComponent {
           />
 
           <Route exact
-            path={`/${Page.PLAYER}/:id`}
-            render={this._renderMoviePlayer}
-          />
-
-          <Route exact
             path={`/${Page.MOVIE}/:id`}
             render={this._renderMoviePage}
           />
@@ -102,9 +98,29 @@ class App extends PureComponent {
             path={`/${Page.MOVIE}/:id/${Page.ADD_REVIEW}`}
             render={this._renderAddReviewPage}
           />
+
+          <PrivateRoute exact
+            path={`/${Page.MY_LIST}`}
+            render={this._renderMyList}
+          />
+
+          <Route exact
+            path={`/${Page.PLAYER}/:id`}
+            render={this._renderMoviePlayer}
+          />
         </Switch>
       </Router>
     );
+  }
+
+
+  /**
+   * Метод, обеспечивающий загрузку начальных данных
+   */
+  componentDidMount() {
+    const {onStart} = this.props;
+
+    onStart();
   }
 
 
@@ -120,6 +136,7 @@ class App extends PureComponent {
       likedMovies,
       movies,
       onGenreSelect,
+      onFavoriteMovieSend,
       onMovieChangePlaying,
       onShowMore,
       promoMovie,
@@ -136,8 +153,8 @@ class App extends PureComponent {
           movies={renderedMovies}
           genres={genres}
           countShowedMovies={countShowedMovies}
+          onMovieChangeMyList={onFavoriteMovieSend}
           onMovieChangePlaying={onMovieChangePlaying}
-          onMovieAddToList={handleMovieAddToList}
           onMovieSelect={this._handleMovieSelect}
           onGenreSelect={onGenreSelect}
           onShowMore={onShowMore}
@@ -151,7 +168,13 @@ class App extends PureComponent {
    * @return {Object} страница фильма
    */
   _renderMoviePage(routeProps) {
-    const {authStatus, isLoadingMovies, likedMovies, onMovieChangePlaying} = this.props;
+    const {
+      authStatus,
+      isLoadingMovies,
+      likedMovies,
+      onMovieChangePlaying,
+      onFavoriteMovieSend
+    } = this.props;
 
     return isLoadingMovies
       ? <Loader />
@@ -160,6 +183,7 @@ class App extends PureComponent {
           authStatus={authStatus}
           movie={this._handleGetSelectedMovie(routeProps)}
           movies={likedMovies}
+          onMovieChangeMyList={onFavoriteMovieSend}
           onMovieSelect={this._handleMovieSelect}
           onMovieChangePlaying={onMovieChangePlaying}
         />);
@@ -215,6 +239,15 @@ class App extends PureComponent {
 
 
   /**
+   * Метод, обеспечивающий отображение страницы списка избранных фильмов
+   * @return {Object} страница списка избранных фильмов
+   */
+  _renderMyList() {
+    return <MyList onMovieSelect={this._handleMovieSelect} />;
+  }
+
+
+  /**
    * Метод, обеспечивающий получение маршрута и похожих фильмов для выбранного фильма
    * @param {Object} movie данные фильма
    */
@@ -244,16 +277,22 @@ App.propTypes = {
   authStatus: PropTypes.string.isRequired,
   countShowedMovies: PropTypes.number.isRequired,
   genres: PropTypes.arrayOf(genreType).isRequired,
+
   isLoadingMovies: PropTypes.bool.isRequired,
   isLoadingPromo: PropTypes.bool.isRequired,
   isPlayingMovie: PropTypes.bool.isRequired,
+
   likedMovies: PropTypes.arrayOf(movieType).isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
+
+  onFavoriteMovieSend: PropTypes.func.isRequired,
   onGenreSelect: PropTypes.func.isRequired,
   onLikedMoviesSet: PropTypes.func.isRequired,
   onMovieChangePlaying: PropTypes.func.isRequired,
   onShowMore: PropTypes.func.isRequired,
+  onStart: PropTypes.func.isRequired,
   onUserDatumSubmit: PropTypes.func.isRequired,
+
   promoMovie: movieType,
   selectedGenre: PropTypes.string.isRequired,
 };
@@ -261,14 +300,21 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),
+
   countShowedMovies: getCountShowedMovies(state),
+
   genres: getGenres(state),
+
   isLoadingMovies: getIsLoadingMovies(state),
   isLoadingPromo: getIsLoadingPromo(state),
   isPlayingMovie: getIsPlayingMovie(state),
+
   likedMovies: getLikedMovies(state),
+
   movies: getMovies(state),
+
   promoMovie: getPromoMovie(state),
+
   selectedGenre: getSelectedGenre(state)
 });
 
@@ -292,6 +338,16 @@ const mapDispatchToProps = (dispatch) => ({
 
   onUserDatumSubmit(userDatum) {
     dispatch(OperationDatumUser.login(userDatum));
+  },
+
+  onFavoriteMovieSend(movie) {
+    dispatch(OperationDatum.sendFavoriteMovie(movie));
+  },
+
+  onStart() {
+    dispatch(OperationDatum.loadPromoMovie());
+    dispatch(OperationDatum.loadMovies());
+    dispatch(OperationDatumUser.checkAuth());
   }
 });
 

@@ -18,6 +18,7 @@ const Operation = {
       })
   ),
 
+
   loadPromoMovie: () => (dispatch, getState, api) => (
     api.get(`/${Url.FILMS}/${Url.PROMO}`)
       .then((response) => moviesAdapter(response.data))
@@ -30,6 +31,7 @@ const Operation = {
       })
   ),
 
+
   loadReviews: (movie) => (dispatch, getState, api) => (
     api.get(`/${Url.REVIEWS}/${movie.id}`)
       .then((response) => {
@@ -41,7 +43,38 @@ const Operation = {
       .catch((err) => {
         throw err;
       })
-  )
+  ),
+
+
+  loadFavoriteMovies: () => (dispatch, getState, api) => (
+    api.get(`/${Url.FAVORITE}`)
+      .then((response) => {
+        dispatch(ActionCreator.loadFavoriteMovies(response.data.map((movie) => moviesAdapter(movie))));
+        dispatch(ActionCreator.isLoadingFavoriteMovies(false));
+      })
+      .catch((err) => {
+        dispatch(ActionCreator.isLoadingFavoriteMovies(true));
+        throw err;
+      })
+  ),
+
+
+  sendFavoriteMovie: (movie) => (dispatch, getState, api) => {
+    const {id, isFavorite} = movie;
+
+    const status = isFavorite ? 0 : 1;
+
+    return api.post(`${Url.FAVORITE}/${id}/${status}`, {
+      [`is_favorite`]: isFavorite,
+    })
+      .then((response) => moviesAdapter(response.data))
+      .then((movieDatum) => {
+        dispatch(ActionCreator.updateMovies(movieDatum));
+      })
+      .catch((err) => {
+        throw err;
+      });
+  },
 };
 
 

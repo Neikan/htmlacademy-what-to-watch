@@ -2,6 +2,7 @@
 import React, {PureComponent} from "react";
 
 // Импорт типов, констант, утилит
+import {movieType} from "../../props/prop-types.js";
 import {MovieTabList} from "../../consts/common-data.js";
 
 
@@ -16,7 +17,7 @@ const withSelectedTab = (Component) => {
       super(props);
 
       this.state = {
-        selectedTab: MovieTabList.OVERVIEW,
+        selectedTab: MovieTabList.OVERVIEW
       };
 
       this._handleTabSelect = this._handleTabSelect.bind(this);
@@ -39,6 +40,19 @@ const withSelectedTab = (Component) => {
 
 
     /**
+     * Метод, обеспечивающий сброс вкладки при переключении фильма
+     * @param {Object} prevProps параметры
+     */
+    componentDidUpdate(prevProps) {
+      if (prevProps.movie !== this.props.movie) {
+        this.setState({
+          selectedTab: MovieTabList.OVERVIEW
+        });
+      }
+    }
+
+
+    /**
      * Метод, обеспечивающий обновление состояния в соответствии с выбранной вкладкой
      * @param {string} tab выбранная вкладка
      */
@@ -48,6 +62,11 @@ const withSelectedTab = (Component) => {
       });
     }
   }
+
+
+  WithSelectedTab.propTypes = {
+    movie: movieType.isRequired
+  };
 
 
   return WithSelectedTab;

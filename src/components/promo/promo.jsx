@@ -3,9 +3,8 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 // Импорт компонентов
-import BtnAddToFavorite from "../btn-add-to-favorite/btn-add-to-favorite.jsx";
+import BtnChangeFavorite from "../btn-change-favorite/btn-change-favorite.jsx";
 import BtnPlay from "../btn-play/btn-play.jsx";
-
 
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
@@ -20,7 +19,6 @@ class Promo extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handleAdd = this._handleAdd.bind(this);
     this._handleChangePlaying = this._handleChangePlaying.bind(this);
     this._handleSelect = this._handleSelect.bind(this);
   }
@@ -31,7 +29,7 @@ class Promo extends PureComponent {
    * @return {Object} созданный компонент
    */
   render() {
-    const {movie} = this.props;
+    const {movie, onChangeMyList} = this.props;
     const {genre, id, poster, title, year} = movie;
 
     return (
@@ -61,7 +59,10 @@ class Promo extends PureComponent {
                 id={id}
                 onChangePlaying={this._handleChangePlaying}
               />
-              <BtnAddToFavorite />
+              <BtnChangeFavorite
+                movie={movie}
+                onChangeMyList={onChangeMyList}
+              />
             </div>
           </div>
         </div>
@@ -88,22 +89,13 @@ class Promo extends PureComponent {
 
     onChangePlaying();
   }
-
-
-  /**
-   * Метод, обеспечивающий добавление фильма в избранное
-   */
-  _handleAdd() {
-    const {movie, onAdd} = this.props;
-
-    onAdd(movie);
-  }
 }
 
 
 Promo.propTypes = {
   movie: movieType.isRequired,
-  onAdd: PropTypes.func.isRequired,
+
+  onChangeMyList: PropTypes.func.isRequired,
   onChangePlaying: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired
 };

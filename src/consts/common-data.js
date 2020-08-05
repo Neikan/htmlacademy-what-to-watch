@@ -52,6 +52,7 @@ export const Page = {
   MAIN: `/`,
   MOVIE: `films`,
   LOGIN: `login`,
+  MY_LIST: `mylist`,
   PLAYER: `player`,
   ADD_REVIEW: `review`
 };
@@ -128,6 +129,7 @@ export const Timeout = {
 
 export const Url = {
   WTW: `wtw`,
+  FAVORITE: `favorite`,
   FILMS: `films`,
   REVIEWS: `comments`,
   PROMO: `promo`,

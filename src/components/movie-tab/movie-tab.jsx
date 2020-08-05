@@ -38,7 +38,7 @@ const MovieTab = (props) => {
 /**
  * Помощник, обеспечивающий выбор вкладки
  * @param {Object} tab вкладка
- * @param {Object} onTabSelect помощник, обеспечивабщий передачу выбранной вкладки в хранилище
+ * @param {Object} onTabSelect помощник, обеспечивающий передачу выбранной вкладки в хранилище
  * @return {Function}
  */
 const handleTabSelect = (tab, onTabSelect) => {

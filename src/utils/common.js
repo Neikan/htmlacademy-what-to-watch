@@ -175,3 +175,22 @@ export const getTextualRating = (score) => {
  * @return {string} отформатированная дата
  */
 export const formatDate = (date, formatRule) => moment(date).format(formatRule);
+
+
+/**
+ * Приведение даты к необходмому формату
+ * @param {Array} movies массив с данными фильмов
+ * @param {Object} movieDatum обновленные данные фильма
+ * @return {Array} массив с обновленными данными фильмов
+ */
+export const updateMovies = (movies, movieDatum) =>
+  movies.map((movie) => movie.id === movieDatum.id ? movieDatum : movie);
+
+
+/**
+ * Приведение даты к необходмому формату
+ * @param {Object} promo данные промо-фильма
+ * @param {Object} movieDatum обновленные данные фильма
+ * @return {Object} данные фильма
+ */
+export const updatePromo = (promo, movieDatum) => promo.id === movieDatum.id ? movieDatum : promo;

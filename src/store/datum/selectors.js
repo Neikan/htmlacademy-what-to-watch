@@ -10,13 +10,19 @@ export const getCountShowedMovies = (state) => state[NAME_SPACE].countShowedMovi
 export const getGenres = (state) => state[NAME_SPACE].genres;
 
 
-export const getIsLoadingReviews = (state) => state[NAME_SPACE].isLoadingReviews;
+export const getFavoriteMovies = (state) => state[NAME_SPACE].favoriteMovies;
+
+
+export const getIsLoadingFavoriteMovies = (state) => state[NAME_SPACE].isLoadingFavoriteMovies;
 
 
 export const getIsLoadingMovies = (state) => state[NAME_SPACE].isLoadingMovies;
 
 
 export const getIsLoadingPromo = (state) => state[NAME_SPACE].isLoadingPromo;
+
+
+export const getIsLoadingReviews = (state) => state[NAME_SPACE].isLoadingReviews;
 
 
 export const getIsPlayingMovie = (state) => state[NAME_SPACE].isPlayingMovie;

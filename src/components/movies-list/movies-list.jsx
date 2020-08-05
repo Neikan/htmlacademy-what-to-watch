@@ -25,9 +25,9 @@ const MoviesList = (props) => {
   const {
     countShowedMovies,
     movies,
-    onMovieSelect,
     onMovieMouseEnter,
-    onMovieMouseLeave
+    onMovieMouseLeave,
+    onMovieSelect
   } = props;
 
   return (
@@ -37,9 +37,9 @@ const MoviesList = (props) => {
           <MovieCardWrapped
             key={movie.id}
             movie={movie}
-            onSelect={onMovieSelect}
             onPlay={onMovieMouseEnter}
             onPlayingStop={onMovieMouseLeave}
+            onSelect={onMovieSelect}
           />
         );
       })}
@@ -51,9 +51,9 @@ const MoviesList = (props) => {
 MoviesList.propTypes = {
   countShowedMovies: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
-  onMovieSelect: PropTypes.func.isRequired,
   onMovieMouseEnter: PropTypes.func.isRequired,
-  onMovieMouseLeave: PropTypes.func.isRequired
+  onMovieMouseLeave: PropTypes.func.isRequired,
+  onMovieSelect: PropTypes.func.isRequired
 };
 
 

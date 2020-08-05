@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 // Импорт компонентов
 import BtnAddReview from "../btn-add-review/btn-add-review.jsx";
-import BtnAddToFavorite from "../btn-add-to-favorite/btn-add-to-favorite.jsx";
+import BtnChangeFavorite from "../btn-change-favorite/btn-change-favorite.jsx";
 import BtnPlay from "../btn-play/btn-play.jsx";
 import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";
@@ -42,7 +42,7 @@ class MoviePage extends PureComponent {
    * @return {Object} созданный компонент
    */
   render() {
-    const {authStatus, movie, onTabSelect, reviews, selectedTab} = this.props;
+    const {authStatus, movie, onMovieChangeMyList, onTabSelect, reviews, selectedTab} = this.props;
     const {backgroundColor, backgroundImage, genre, id, poster, title, year} = movie;
 
     return (
@@ -72,7 +72,10 @@ class MoviePage extends PureComponent {
                     onChangePlaying={this._handleChangePlaying}
                   />
 
-                  <BtnAddToFavorite />
+                  <BtnChangeFavorite
+                    movie={movie}
+                    onChangeMyList={onMovieChangeMyList}
+                  />
                   <BtnAddReview
                     authStatus={authStatus}
                     id={id}
@@ -113,7 +116,7 @@ class MoviePage extends PureComponent {
 
 
   /**
-   * Метод, обеспечивабщий загрузку отзывов
+   * Метод, обеспечивающий загрузку отзывов
    */
   componentDidMount() {
     const {movie, onReviewsLoad} = this.props;
@@ -194,13 +197,18 @@ class MoviePage extends PureComponent {
 
 MoviePage.propTypes = {
   authStatus: PropTypes.string.isRequired,
+
   movie: movieType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
-  onMovieSelect: PropTypes.func.isRequired,
+
+  onMovieChangeMyList: PropTypes.func.isRequired,
   onMovieChangePlaying: PropTypes.func.isRequired,
+  onMovieSelect: PropTypes.func.isRequired,
   onReviewsLoad: PropTypes.func.isRequired,
   onTabSelect: PropTypes.func.isRequired,
+
   reviews: PropTypes.arrayOf(reviewType).isRequired,
+
   selectedTab: PropTypes.string.isRequired
 };
 

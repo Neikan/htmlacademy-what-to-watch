@@ -191,7 +191,6 @@ AddReview.propTypes = {
   authStatus: PropTypes.string.isRequired,
   user: userType.isRequired,
 
-  isSendingReview: PropTypes.bool.isRequired,
   isFormBlocked: PropTypes.bool.isRequired,
   messageStatus: PropTypes.string.isRequired,
   messageText: PropTypes.string.isRequired,
