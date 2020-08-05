@@ -4,7 +4,7 @@ import renderer from "react-test-renderer";
 
 // Импорт компонентов
 import InputStar from "./input-star.jsx";
-import { Rating } from "../../../../consts/common-data.js";
+import {Rating} from "../../../../consts/common-data.js";
 
 
 describe(`Test InputStar component`, () => {
