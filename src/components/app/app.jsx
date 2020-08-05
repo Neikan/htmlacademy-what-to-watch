@@ -115,16 +115,6 @@ class App extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий загрузку начальных данных
-   */
-  componentDidMount() {
-    const {onStart} = this.props;
-
-    onStart();
-  }
-
-
-  /**
    * Метод, обеспечивающий отображение главной страницы
    * @return {Object} главная страница
    */
@@ -290,7 +280,6 @@ App.propTypes = {
   onLikedMoviesSet: PropTypes.func.isRequired,
   onMovieChangePlaying: PropTypes.func.isRequired,
   onShowMore: PropTypes.func.isRequired,
-  onStart: PropTypes.func.isRequired,
   onUserDatumSubmit: PropTypes.func.isRequired,
 
   promoMovie: movieType,
@@ -342,12 +331,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   onFavoriteMovieSend(movie) {
     dispatch(OperationDatum.sendFavoriteMovie(movie));
-  },
-
-  onStart() {
-    dispatch(OperationDatum.loadPromoMovie());
-    dispatch(OperationDatum.loadMovies());
-    dispatch(OperationDatumUser.checkAuth());
   }
 });
 
