@@ -194,9 +194,11 @@ export const Time = {
 
 export const Page = {
   MAIN: `/`,
-  MOVIE: `/films`,
-  LOGIN: `/login`,
-  ADD_REVIEW: `/review`
+  MOVIE: `films`,
+  LOGIN: `login`,
+  MY_LIST: `mylist`,
+  PLAYER: `player`,
+  ADD_REVIEW: `review`
 };
 
 
