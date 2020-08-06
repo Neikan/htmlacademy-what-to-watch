@@ -2,7 +2,8 @@
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import {configure, mount} from "enzyme";
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 // Импорт компонентов
 import SignIn from "./sign-in.jsx";
@@ -14,17 +15,17 @@ configure({
 
 
 describe(`Test e2e SignIn component`, () => {
-  test(`Should 'sign-in'-button for form be pressed`, () => {
+  test(`Should "sign-in"-button for form be pressed`, () => {
     const handleSubmit = jest.fn();
 
     const signIn = mount(
-        <BrowserRouter>
+        <Router history={history}>
           <SignIn
             errorLogin={false}
             errorPassword={false}
             onSubmit={handleSubmit}
           />
-        </BrowserRouter>
+        </Router>
     );
 
     signIn.find(`form`).simulate(`submit`, {

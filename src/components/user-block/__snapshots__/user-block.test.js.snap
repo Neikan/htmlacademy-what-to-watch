@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test UserBlock component When the user is logged in component is created and rendered correctly 1`] = `
+<div
+  className="user-block"
+>
+  <div
+    className="user-block__avatar"
+  >
+    <a
+      href="/mylist"
+      onClick={[Function]}
+    >
+      <img
+        alt="Batman"
+        height="63"
+        src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
+        width="63"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Test UserBlock component When the user is not logged in component is created and rendered correctly 1`] = `
+<div
+  className="user-block"
+>
+  <a
+    className="user-block__link"
+    href="/login"
+    onClick={[Function]}
+  >
+    Sign in
+  </a>
+</div>
+`;

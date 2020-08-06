@@ -1,12 +1,36 @@
 // Импорт библиотек
 import React from "react";
+import PropTypes from "prop-types";
 
 // Импорт компонентов
 import MovieReview from "../movie-review/movie-review.jsx";
 
 // Импорт типов, констант, утилит
-import {movieType} from "../../props/prop-types.js";
+import {reviewType} from "../../props/prop-types.js";
 import {getIntervalForCols} from "../../utils/common.js";
+
+
+/**
+ * Создание компонента, обеспечивающего отображение вкладки с отзывами о фильме
+ * @param {Object} props параметры
+ * @return {Object} созданный компонент
+ */
+const MovieReviews = (props) => {
+  const {reviews} = props;
+
+  const intervals = getIntervalForCols(reviews);
+
+  return intervals ? renderReviews(intervals, reviews) : null;
+};
+
+
+const renderReviews = (intervals, reviews) => {
+  return (
+    <div className="movie-card__reviews movie-card__row">
+      {intervals.map((interval) => renderCol(interval, reviews))}
+    </div>
+  );
+};
 
 
 const renderReview = (review) => {
@@ -30,32 +54,8 @@ const renderCol = (interval, reviews) => {
 };
 
 
-const renderReviews = (intervals, reviews) => {
-  return (
-    <div className="movie-card__reviews movie-card__row">
-      {intervals.map((interval) => renderCol(interval, reviews))}
-    </div>
-  );
-};
-
-
-/**
- * Создание компонента, обеспечивающего отображение вкладки с комментариями о фильме
- * @param {Object} props параметры
- * @return {Object} созданный компонент
- */
-const MovieReviews = (props) => {
-  const {movie} = props;
-  const {reviews} = movie;
-
-  const intervals = getIntervalForCols(reviews);
-
-  return intervals ? renderReviews(intervals, reviews) : null;
-};
-
-
 MovieReviews.propTypes = {
-  movie: movieType.isRequired
+  reviews: PropTypes.arrayOf(reviewType).isRequired,
 };
 
 

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 
 /**
- * Создание компонента, обеспечивающего отрисовку дополнительны фильмов списка по требованию
+ * Создание компонента, обеспечивающего отображение дополнительны фильмов списка по требованию
  */
 class BtnShowMore extends PureComponent {
   constructor(props) {
@@ -15,7 +15,7 @@ class BtnShowMore extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
@@ -35,7 +35,9 @@ class BtnShowMore extends PureComponent {
      * Метод, обспечивающий выполнение помощника для отрисовки дополнительных фильмов
      */
   _handleShowMore() {
-    this.props.onShowMore();
+    const {onShowMore} = this.props;
+
+    onShowMore();
   }
 }
 

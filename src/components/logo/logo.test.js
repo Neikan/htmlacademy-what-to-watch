@@ -1,7 +1,8 @@
 // Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 // Импорт компонентов
 import Logo from "./logo.jsx";
@@ -13,11 +14,11 @@ import {LogoPosition} from "./../../consts/test-data";
 describe(`Test Logo component`, () => {
   test(`Logo component is created and rendered correctly`, () => {
     const tree = renderer.create(
-        <BrowserRouter>
+        <Router history={history}>
           <Logo
             logoPosition={LogoPosition.HEADER}
           />
-        </BrowserRouter>
+        </Router>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

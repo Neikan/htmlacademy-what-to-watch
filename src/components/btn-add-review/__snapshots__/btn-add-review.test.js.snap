@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test BtnAddReview component BtnAddReview component is created and rendered correctly 1`] = `
+<a
+  className="btn movie-card__button"
+  href="/films/mock-1/review"
+  onClick={[Function]}
+>
+  Add review
+</a>
+`;

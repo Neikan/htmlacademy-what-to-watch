@@ -1,6 +1,15 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 
+// Импорт типов, констант, утилит
+import {Timeout} from "../../consts/common-data";
 
+
+/**
+ * Создание компонента, обеспечивающего фиксацию фильма при наведении на него курсора
+ * @param {Object} Component "оборачиваемый" компонент
+ * @return {Object} созданный компонент
+ */
 const withSelectedMovie = (Component) => {
   class WithSelectedMovie extends PureComponent {
     constructor(props) {
@@ -18,7 +27,7 @@ const withSelectedMovie = (Component) => {
 
 
     /**
-     * Метод, обеспечивающий отрисовку компонента
+     * Метод, обеспечивающий отображение компонента
      * @return {Object} созданный компонент
      */
     render() {
@@ -49,7 +58,7 @@ const withSelectedMovie = (Component) => {
         this.setState({
           selectedMovie: movie
         });
-      }, 10000);
+      }, Timeout.WAIT);
     }
 
 

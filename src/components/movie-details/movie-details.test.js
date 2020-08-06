@@ -19,15 +19,4 @@ describe(`Test MovieDetails component`, () => {
 
     expect(tree).toMatchSnapshot();
   });
-
-
-  test(`When Movie is undefined`, () => {
-    const tree = renderer.create(
-        <MovieDetails
-          movie={null}
-        />
-    ).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
 });

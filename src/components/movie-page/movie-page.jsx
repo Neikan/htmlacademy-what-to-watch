@@ -1,9 +1,13 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
 // Импорт компонентов
+import BtnAddReview from "../btn-add-review/btn-add-review.jsx";
+import BtnChangeFavorite from "../btn-change-favorite/btn-change-favorite.jsx";
+import BtnPlay from "../btn-play/btn-play.jsx";
+import Footer from "../footer/footer.jsx";
 import Header from "../header/header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
@@ -13,8 +17,13 @@ import MoviesByGenre from "../movies-by-genre/movies-by-genre.jsx";
 import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 
 // Импорт типов, констант, утилит
-import {movieType} from "../../props/prop-types.js";
-import {MovieTabList, CountMovies, Page, AuthStatus} from "../../consts/common-data.js";
+import {movieType, reviewType} from "../../props/prop-types.js";
+import {MovieTabList, CountMovies} from "../../consts/common-data.js";
+import {getLikedMoviesByGenre} from "../../utils/common.js";
+
+// Импорт редьюсеров, селекторов
+import {Operation as OperationDatum} from "../../store/datum/operations.js";
+import {getReviews} from "../../store/datum/selectors.js";
 
 
 /**
@@ -29,12 +38,12 @@ class MoviePage extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
-    const {movie, selectedTab, onTabSelect} = this.props;
-    const {backgroundColor, backgroundImage, genre, poster, title, year} = movie;
+    const {authStatus, movie, onMovieChangeMyList, onTabSelect, reviews, selectedTab} = this.props;
+    const {backgroundColor, backgroundImage, genre, id, poster, title, year} = movie;
 
     return (
       <>
@@ -58,22 +67,19 @@ class MoviePage extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button
-                    onClick={this._handleChangePlaying}
-                    className="btn btn--play movie-card__button" type="button"
-                  >
-                    <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use xlinkHref="#play-s"></use>
-                    </svg>
-                    <span>Play</span>
-                  </button>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
-                    </svg>
-                    <span>My list</span>
-                  </button>
-                  {this._renderAddReviewLink()}
+                  <BtnPlay
+                    id={id}
+                    onChangePlaying={this._handleChangePlaying}
+                  />
+
+                  <BtnChangeFavorite
+                    movie={movie}
+                    onChangeMyList={onMovieChangeMyList}
+                  />
+                  <BtnAddReview
+                    authStatus={authStatus}
+                    id={id}
+                  />
                 </div>
               </div>
             </div>
@@ -87,10 +93,10 @@ class MoviePage extends PureComponent {
 
               <div className="movie-card__desc">
                 <MovieTabs
-                  tabs={MovieTabList}
-                  selectedTab={selectedTab}
+                  isReviews={reviews.length > 0 ? true : false}
                   onTabSelect={onTabSelect}
-                  isReviews={movie.reviews.length > 0 ? true : false}
+                  selectedTab={selectedTab}
+                  tabs={MovieTabList}
                 />
 
                 {this._renderMovieDesc()}
@@ -99,18 +105,45 @@ class MoviePage extends PureComponent {
           </div>
         </section>
 
-        {this._renderMoviesByGenre()}
+        <div className="page-content">
+          {this._renderMoviesByGenre()}
+
+          <Footer />
+        </div>
       </>
     );
   }
 
 
   /**
-   * Метод, обеспечивающий отрисовку содержимого выбранной вкладки
+   * Метод, обеспечивающий загрузку отзывов
+   */
+  componentDidMount() {
+    const {movie, onReviewsLoad} = this.props;
+
+    onReviewsLoad(movie);
+  }
+
+
+  /**
+   * Метод, обеспечивающий обновление загруженных отзывов
+   * @param {Object} nextProps
+   */
+  componentDidUpdate(nextProps) {
+    const {movie, onReviewsLoad} = this.props;
+
+    if (nextProps.movie !== movie) {
+      onReviewsLoad(movie);
+    }
+  }
+
+
+  /**
+   * Метод, обеспечивающий отображение содержимого выбранной вкладки
    * @return {Object} созданный компонент
    */
   _renderMovieDesc() {
-    const {movie, selectedTab} = this.props;
+    const {movie, reviews, selectedTab} = this.props;
 
     switch (selectedTab) {
       case MovieTabList.OVERVIEW:
@@ -120,7 +153,7 @@ class MoviePage extends PureComponent {
         return <MovieDetails movie={movie} />;
 
       case MovieTabList.REVIEWS:
-        return <MovieReviews movie={movie} />;
+        return <MovieReviews reviews={reviews} />;
 
       default:
         return null;
@@ -129,30 +162,25 @@ class MoviePage extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку списка похожих фильмов
+   * Метод, обеспечивающий отображение списка похожих фильмов
    * @return {Object} созданный компонент
    */
   _renderMoviesByGenre() {
-    const {movies, onMovieSelect} = this.props;
+    const {movie, movies, onMovieSelect} = this.props;
 
-    if (!movies.length || movies.length === 0) {
+    const likedMovies = getLikedMoviesByGenre(movies, movie.id);
+
+    if (!likedMovies.length || likedMovies.length === 0) {
       return null;
     }
 
     return (
       <MoviesByGenre
-        movies={movies}
         countShowedMovies={CountMovies.LIKED_BY_GENRE}
+        movies={getLikedMoviesByGenre(movies, movie.id)}
         onMovieSelect={onMovieSelect}
       />
     );
-  }
-
-
-  _renderAddReviewLink() {
-    return this.props.authStatus === AuthStatus.AUTH
-      ? <Link to={Page.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
-      : null;
   }
 
 
@@ -160,21 +188,42 @@ class MoviePage extends PureComponent {
    * Метод, обеспечивающий управление проигрывателем фильма
    */
   _handleChangePlaying() {
-    this.props.onMovieChangePlaying();
+    const {onMovieChangePlaying} = this.props;
+
+    onMovieChangePlaying();
   }
 }
 
 
 MoviePage.propTypes = {
   authStatus: PropTypes.string.isRequired,
+
   movie: movieType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
-  onMovieSelect: PropTypes.func.isRequired,
-  onMovieChangePlaying: PropTypes.func.isRequired,
 
-  selectedTab: PropTypes.string.isRequired,
-  onTabSelect: PropTypes.func.isRequired
+  onMovieChangeMyList: PropTypes.func.isRequired,
+  onMovieChangePlaying: PropTypes.func.isRequired,
+  onMovieSelect: PropTypes.func.isRequired,
+  onReviewsLoad: PropTypes.func.isRequired,
+  onTabSelect: PropTypes.func.isRequired,
+
+  reviews: PropTypes.arrayOf(reviewType).isRequired,
+
+  selectedTab: PropTypes.string.isRequired
 };
 
 
-export default MoviePage;
+const mapStateToProps = (state) => ({
+  reviews: getReviews(state)
+});
+
+
+const mapDispatchToProps = (dispatch) => ({
+  onReviewsLoad(movie) {
+    dispatch(OperationDatum.loadReviews(movie));
+  },
+});
+
+
+export {MoviePage};
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

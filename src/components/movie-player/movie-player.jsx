@@ -20,29 +20,28 @@ import {movieType, timeType} from "../../props/prop-types.js";
 const MoviePlayer = (props) => {
   const {
     children,
-    movie,
-    time,
     isPlaying,
-    onClose,
+    movie,
     onChangePlaying,
-    onSetFullScreen
+    onClose,
+    onSetFullScreen,
+    time
   } = props;
 
-  const {title} = movie;
+  const {id, title} = movie;
 
   return (
     <div className="player">
       {children}
 
       <BtnExit
+        id={id}
         onClose={onClose}
       />
 
       <div className="player__controls">
         <div className="player__controls-row">
-          <ScaleTime
-            time={time}
-          />
+          <ScaleTime time={time} />
         </div>
 
         <div className="player__controls-row">
@@ -50,10 +49,10 @@ const MoviePlayer = (props) => {
             isPlaying={isPlaying}
             onChangePlaying={onChangePlaying}
           />
+
           <div className="player__name">{title}</div>
-          <BtnFullScreen
-            onSet={onSetFullScreen}
-          />
+
+          <BtnFullScreen onSet={onSetFullScreen} />
         </div>
       </div>
     </div>
@@ -63,12 +62,12 @@ const MoviePlayer = (props) => {
 
 MoviePlayer.propTypes = {
   children: PropTypes.element.isRequired,
-  movie: movieType.isRequired,
-  time: timeType.isRequired,
   isPlaying: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
+  movie: movieType.isRequired,
   onChangePlaying: PropTypes.func.isRequired,
-  onSetFullScreen: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  onSetFullScreen: PropTypes.func.isRequired,
+  time: timeType.isRequired
 };
 
 

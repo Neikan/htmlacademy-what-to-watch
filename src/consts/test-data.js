@@ -1,3 +1,10 @@
+// Импорт типов, констант, утилит
+import {getMoviesByGenre} from "../utils/common";
+
+
+export const ALL_GENRES = `All genres`;
+
+
 export const LogoPosition = {
   HEADER: `header`,
   FOOTER: `footer`
@@ -129,6 +136,9 @@ export const MOVIES = [
 ];
 
 
+export const FAVORITE_MOVIES = [MOVIES[0], MOVIES[1]];
+
+
 export const GENRES = [
   {
     id: `g1`,
@@ -184,9 +194,11 @@ export const Time = {
 
 export const Page = {
   MAIN: `/`,
-  MOVIE: `/films`,
-  LOGIN: `/login`,
-  ADD_REVIEW: `/review`
+  MOVIE: `films`,
+  LOGIN: `login`,
+  MY_LIST: `mylist`,
+  PLAYER: `player`,
+  ADD_REVIEW: `review`
 };
 
 
@@ -203,7 +215,7 @@ export const AuthStatus = {
 };
 
 
-export const UserDatumState = {
+export const DatumUserState = {
   authStatus: AuthStatus.AUTH,
   user: {
     id: `user-1`,
@@ -214,19 +226,58 @@ export const UserDatumState = {
 };
 
 
-export const UserDatumStateNoAuth = {
+export const DatumUserStateNoAuth = {
   authStatus: AuthStatus.NO_AUTH,
   user: {
-    id: `user-1`,
-    email: `sladkov.e.m@outlook.com`,
-    name: `Batman`,
-    avatarUrl: `https://4.react.pages.academy/wtw/static/avatar/5.jpg`
+    id: ``,
+    email: ``,
+    name: ``,
+    avatarUrl: ``
   }
+};
+
+
+export const DatumStateInitial = {
+  countShowedMovies: CountMovies.START,
+  favoriteMovies: [],
+  genres: [],
+
+  isLoadingFavoriteMovies: true,
+  isLoadingMovies: true,
+  isLoadingPromo: true,
+  isLoadingReviews: true,
+  isPlayingMovie: false,
+
+  likedMovies: [],
+  movies: [],
+  promoMovie: null,
+  reviews: [],
+  selectedGenre: ALL_GENRES
+};
+
+
+export const DatumStateAfterStart = {
+  countShowedMovies: CountMovies.START,
+  favoriteMovies: FAVORITE_MOVIES,
+  genres: GENRES,
+
+  isLoadingFavoriteMovies: false,
+  isLoadingMovies: false,
+  isLoadingPromo: false,
+  isLoadingReviews: false,
+  isPlayingMovie: false,
+
+  likedMovies: getMoviesByGenre(MOVIES, GENRES[1]),
+  movies: MOVIES,
+  promoMovie: MOVIES[0],
+  reviews: MOVIES[1].reviews,
+  selectedGenre: GENRES[0].title
 };
 
 
 export const ReviewMessage = {
   DEFAULT: ``,
+  GOOD: `good good good good good good good good good good good good good good `,
   LESS_LENGTH_MIN: `less length min`,
   MORE_LENGTH_MAX: `more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max`,
   LENGTH_MIN: 50,
@@ -236,10 +287,9 @@ export const ReviewMessage = {
 
 export const ReviewMessageStatus = {
   DEFAULT: ``,
-  SUCCESS: `Ваш комментарий добавлен!`,
-  ERROR_SENDING: `Извините, при добавлении Вашего комментария возникла ошибка. Попробуйте позднее.`,
-  ERROR_LENGTH_MIN: `Ваше сообщение менее ${ReviewMessage.LENGTH_MIN} символов`,
-  ERROR_LENGTH_MAX: `Ваше сообщение более ${ReviewMessage.LENGTH_MAX} символов`
+  SUCCESS: `Ваш отзыв добавлен!`,
+  ERROR_SENDING: `Извините, при добавлении Вашего отзыва возникла ошибка. Попробуйте позднее.`,
+  MESSAGE_LENGTH: `Текущая длина сообщения:`
 };
 
 
@@ -249,7 +299,7 @@ export const Rating = {
 };
 
 
-export const ReviewDatumState = {
+export const DatumReviewState = {
   isFormBlocked: false,
   messageText: ReviewMessage.DEFAULT,
   messageStatus: ReviewMessageStatus.DEFAULT,

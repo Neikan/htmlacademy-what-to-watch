@@ -2,6 +2,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import history from "../../history.js";
 
 // Импорт компонентов
 import Header from "../header/header.jsx";
@@ -20,7 +21,6 @@ import {
 
 // Импорт редьюсеров, селекторов
 import {ActionCreator} from "../../store/datum-review/datum-review.js";
-import {getSelectedMovie} from "../../store/datum/selectors.js";
 import {getAuthStatus, getUserDatum} from "../../store/datum-user/selectors.js";
 import {
   getIsFormBlocked,
@@ -46,24 +46,27 @@ class AddReview extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
     const {
       authStatus,
-      user,
-      selectedMovie,
       isFormBlocked,
       messageStatus,
       messageText,
-      rating
+      movie,
+      rating,
+      user
     } = this.props;
 
-    const {backgroundColor, backgroundImage, poster, title} = selectedMovie;
+    const {backgroundColor, backgroundImage, poster, title} = movie;
 
     return (
-      <section className="movie-card movie-card--full" style={{backgroundColor: `${backgroundColor}`}}>
+      <section
+        className="movie-card movie-card--full"
+        style={{backgroundColor: `${backgroundColor}`}}
+      >
         <div className="movie-card__header">
           <MovieBackground
             backgroundImage={backgroundImage}
@@ -74,7 +77,7 @@ class AddReview extends PureComponent {
 
           <Header
             authStatus={authStatus}
-            selectedMovie={selectedMovie}
+            movie={movie}
             user={user}
           />
 
@@ -106,6 +109,8 @@ class AddReview extends PureComponent {
               messageText={messageText}
               onChange={this._handleMessageStatusUpdate}
             />
+
+            {this._handleGoToMoviePage()}
           </form>
         </div>
       </section>
@@ -133,15 +138,11 @@ class AddReview extends PureComponent {
    */
   _handleMessageStatusUpdate(messageText) {
     const {onMessageTextUpdate, onMessageStatusUpdate} = this.props;
+    const length = messageText.length;
 
-    if (messageText.length < ReviewMessage.LENGTH_MIN) {
+    if (length < ReviewMessage.LENGTH_MIN || length > ReviewMessage.LENGTH_MAX) {
       onMessageTextUpdate(messageText);
-      return onMessageStatusUpdate(ReviewMessageStatus.ERROR_LENGTH_MIN);
-    }
-
-    if (messageText.length > ReviewMessage.LENGTH_MAX) {
-      onMessageTextUpdate(messageText);
-      return onMessageStatusUpdate(ReviewMessageStatus.ERROR_LENGTH_MAX);
+      return onMessageStatusUpdate(`${ReviewMessageStatus.MESSAGE_LENGTH} ${length}`);
     }
 
     onMessageTextUpdate(messageText);
@@ -155,42 +156,51 @@ class AddReview extends PureComponent {
    * @param {Object} evt событие
    */
   _handleSubmit(evt) {
-    const {messageText, onReviewSend, selectedMovie} = this.props;
+    const {messageText, movie, onReviewSend, rating} = this.props;
 
     evt.preventDefault();
 
     onReviewSend({
       messageText,
-      rating: this.props.rating * Rating.WEIGHT,
+      rating: rating * Rating.WEIGHT,
     },
-    selectedMovie);
+    movie);
+  }
+
+
+  /**
+   * Метод, обеспечивающий возврат на страницу фильма после отправки отзыва
+   */
+  _handleGoToMoviePage() {
+    const {messageStatus} = this.props;
+
+    if (messageStatus === ReviewMessageStatus.SUCCESS) {
+      history.goBack();
+    }
   }
 }
 
 
 AddReview.propTypes = {
+  movie: movieType.isRequired,
+  onMessageStatusUpdate: PropTypes.func.isRequired,
+  onMessageTextUpdate: PropTypes.func.isRequired,
+  onRatingChange: PropTypes.func.isRequired,
+  onReviewSend: PropTypes.func.isRequired,
+
   authStatus: PropTypes.string.isRequired,
   user: userType.isRequired,
-
-  selectedMovie: movieType.isRequired,
 
   isFormBlocked: PropTypes.bool.isRequired,
   messageStatus: PropTypes.string.isRequired,
   messageText: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-
-  onMessageStatusUpdate: PropTypes.func.isRequired,
-  onMessageTextUpdate: PropTypes.func.isRequired,
-  onRatingChange: PropTypes.func.isRequired,
-  onReviewSend: PropTypes.func.isRequired
+  rating: PropTypes.number.isRequired
 };
 
 
 const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),
   user: getUserDatum(state),
-
-  selectedMovie: getSelectedMovie(state),
 
   isFormBlocked: getIsFormBlocked(state),
   messageStatus: getMessageStatus(state),

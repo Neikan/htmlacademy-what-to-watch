@@ -2,6 +2,10 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+// Импорт компонентов
+import BtnChangeFavorite from "../btn-change-favorite/btn-change-favorite.jsx";
+import BtnPlay from "../btn-play/btn-play.jsx";
+
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
 
@@ -15,19 +19,18 @@ class Promo extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handleAdd = this._handleAdd.bind(this);
     this._handleChangePlaying = this._handleChangePlaying.bind(this);
     this._handleSelect = this._handleSelect.bind(this);
   }
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
-    const {movie} = this.props;
-    const {genre, poster, title, year} = movie;
+    const {movie, onChangeMyList} = this.props;
+    const {genre, id, poster, title, year} = movie;
 
     return (
       <div className="movie-card__wrap">
@@ -52,24 +55,14 @@ class Promo extends PureComponent {
             </p>
 
             <div className="movie-card__buttons">
-              <button
-                onClick={this._handleChangePlaying}
-                className="btn btn--play movie-card__button" type="button"
-              >
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-              <button
-                onClick={this._handleAdd}
-                className="btn btn--list movie-card__button" type="button"
-              >
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
+              <BtnPlay
+                id={id}
+                onChangePlaying={this._handleChangePlaying}
+              />
+              <BtnChangeFavorite
+                movie={movie}
+                onChangeMyList={onChangeMyList}
+              />
             </div>
           </div>
         </div>
@@ -92,24 +85,17 @@ class Promo extends PureComponent {
    * Метод, обеспечивающий управление проигрывателем фильма
    */
   _handleChangePlaying() {
-    this.props.onChangePlaying();
-  }
+    const {onChangePlaying} = this.props;
 
-
-  /**
-   * Метод, обеспечивающий добавление фильма в избранное
-   */
-  _handleAdd() {
-    const {movie, onAdd} = this.props;
-
-    onAdd(movie);
+    onChangePlaying();
   }
 }
 
 
 Promo.propTypes = {
   movie: movieType.isRequired,
-  onAdd: PropTypes.func.isRequired,
+
+  onChangeMyList: PropTypes.func.isRequired,
   onChangePlaying: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired
 };

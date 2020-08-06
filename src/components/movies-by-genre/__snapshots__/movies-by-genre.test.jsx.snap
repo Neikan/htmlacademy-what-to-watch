@@ -1,89 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test MoviesByGenre component MoviesByGenre component is created and rendered correctly 1`] = `
-<div
-  className="page-content"
+<section
+  className="catalog catalog--like-this"
 >
-  <section
-    className="catalog catalog--like-this"
+  <h2
+    className="catalog__title"
   >
-    <h2
-      className="catalog__title"
+    More like this
+  </h2>
+  <div
+    className="catalog__movies-list"
+  >
+    <article
+      className="small-movie-card catalog__movies-card"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
-      More like this
-    </h2>
-    <div
-      className="catalog__movies-list"
-    >
-      <article
-        className="small-movie-card catalog__movies-card"
-        id="mock-1"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
+      <div
+        className="small-movie-card__image"
       >
-        <div
-          className="small-movie-card__image"
+        <video
+          height="175"
+          poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/moonrise-kingdom2.jpg"
+          type="video/webm"
+          width="280"
         >
-          <video
-            height="175"
-            poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/moonrise-kingdom2.jpg"
-            type="video/webm"
-            width="280"
-          >
-            Sorry, your browser doesn\`t support embedded videos
-          </video>
-        </div>
-        <h3
-          className="small-movie-card__title"
+          Sorry, your browser doesn\`t support embedded videos
+        </video>
+      </div>
+      <h3
+        className="small-movie-card__title"
+        onClick={[Function]}
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/mock-1"
           onClick={[Function]}
         >
-          <a
-            className="small-movie-card__link"
-            href="/films/mock-1"
-            onClick={[Function]}
-          >
-            Fantastic Beasts: The Crimes of Grindelwald
-          </a>
-        </h3>
-      </article>
-    </div>
-  </section>
-  <footer
-    className="page-footer"
-  >
-    <div
-      className="logo"
-    >
-      <a
-        className="logo__link logo__link--light"
-        href="/"
-        onClick={[Function]}
-      >
-        <span
-          className="logo__letter logo__letter--1"
-        >
-          W
-        </span>
-        <span
-          className="logo__letter logo__letter--2"
-        >
-          T
-        </span>
-        <span
-          className="logo__letter logo__letter--3"
-        >
-          W
-        </span>
-      </a>
-    </div>
-    <div
-      className="copyright"
-    >
-      <p>
-        © 2019 What to watch Ltd.
-      </p>
-    </div>
-  </footer>
-</div>
+          Fantastic Beasts: The Crimes of Grindelwald
+        </a>
+      </h3>
+    </article>
+  </div>
+</section>
 `;

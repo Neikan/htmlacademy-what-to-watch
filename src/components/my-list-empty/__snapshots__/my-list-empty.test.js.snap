@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MyListEmpty component MyListEmpty component is created and rendered correctly 1`] = `
+Array [
+  <p>
+    Your favorites list is empty...
+  </p>,
+  <p>
+    Please add your first movie!
+  </p>,
+]
+`;

@@ -1,32 +1,46 @@
 // Импорт типов, констант, утилит
-import {Page, CountMovies, ALL_GENRES} from "../../consts/common-data";
-import {getLikedMoviesByGenre, getMoviesByGenre, updateGenres, getUniqueGenres} from "../../utils/common";
+import {CountMovies, ALL_GENRES} from "../../consts/common-data";
+import {getMoviesByGenre, updateGenres, getUniqueGenres, updateMovies, updatePromo} from "../../utils/common";
 import {updateState} from "../../utils/reducer";
 
 
 const initialState = {
-  page: Page.MAIN,
-
-  movies: [],
-  promoMovie: null,
-  selectedMovie: null,
-  likedMovies: [],
   countShowedMovies: CountMovies.START,
+  favoriteMovies: [],
+  genres: [],
+
+  isLoadingFavoriteMovies: true,
+  isLoadingMovies: true,
+  isLoadingPromo: true,
+  isLoadingReviews: true,
   isPlayingMovie: false,
 
-  genres: [],
+  likedMovies: [],
+  movies: [],
+  promoMovie: null,
+  reviews: [],
   selectedGenre: ALL_GENRES
 };
 
 
 const ActionType = {
   CHANGE_PLAYING_MOVIE: `change playing movie`,
+
+  IS_LOADING_FAVORITE_MOVIES: `is loading favorite movies`,
+  IS_LOADING_MOVIES: `is loading movies`,
+  IS_LOADING_PROMO_MOVIE: `is loading promo movie`,
+  IS_LOADING_REVIEWS: `is loading reviews`,
+
+  LOAD_FAVORITE_MOVIES: `load favorite movies`,
   LOAD_MOVIES: `load movies`,
   LOAD_PROMO_MOVIE: `load promo movie`,
+
   SELECT_GENRE: `select genre`,
-  SELECT_MOVIE: `select movie`,
-  SET_MAIN_PAGE: `set main page`,
-  SHOW_MORE: `show more`
+  SET_LIKED_MOVIES: `set liked movies`,
+  SHOW_MORE: `show more`,
+  SET_REVIEWS: `set reviews`,
+
+  UPDATE_MOVIES: `update movies`
 };
 
 
@@ -34,6 +48,31 @@ const ActionCreator = {
   changePlayingMovie: () => ({
     type: ActionType.CHANGE_PLAYING_MOVIE,
     payload: null
+  }),
+
+  isLoadingFavoriteMovies: (flag) => ({
+    type: ActionType.IS_LOADING_FAVORITE_MOVIES,
+    payload: flag
+  }),
+
+  isLoadingMovies: (flag) => ({
+    type: ActionType.IS_LOADING_MOVIES,
+    payload: flag
+  }),
+
+  isLoadingPromo: (flag) => ({
+    type: ActionType.IS_LOADING_PROMO_MOVIE,
+    payload: flag
+  }),
+
+  isLoadingReviews: (flag) => ({
+    type: ActionType.IS_LOADING_REVIEWS,
+    payload: flag
+  }),
+
+  loadFavoriteMovies: (movies) => ({
+    type: ActionType.LOAD_FAVORITE_MOVIES,
+    payload: movies
   }),
 
   loadMovies: (movies) => ({
@@ -51,19 +90,24 @@ const ActionCreator = {
     payload: genre
   }),
 
-  selectMovie: (movie) => ({
-    type: ActionType.SELECT_MOVIE,
+  setLikedMovies: (movie) => ({
+    type: ActionType.SET_LIKED_MOVIES,
     payload: movie
   }),
 
-  setMainPage: () => ({
-    type: ActionType.SET_MAIN_PAGE,
-    payload: Page.MAIN
+  setReviews: (reviews) => ({
+    type: ActionType.SET_REVIEWS,
+    payload: reviews
   }),
 
   showMore: () => ({
     type: ActionType.SHOW_MORE,
     payload: CountMovies.START
+  }),
+
+  updateMovies: (movie) => ({
+    type: ActionType.UPDATE_MOVIES,
+    payload: movie
   })
 };
 
@@ -75,6 +119,31 @@ const reducer = (state = initialState, action) => {
         isPlayingMovie: !state.isPlayingMovie
       });
 
+    case ActionType.IS_LOADING_FAVORITE_MOVIES:
+      return updateState(state, {
+        isLoadingFavoriteMovies: action.payload
+      });
+
+    case ActionType.IS_LOADING_MOVIES:
+      return updateState(state, {
+        isLoadingMovies: action.payload
+      });
+
+    case ActionType.IS_LOADING_PROMO_MOVIE:
+      return updateState(state, {
+        isLoadingPromo: action.payload
+      });
+
+    case ActionType.IS_LOADING_REVIEWS:
+      return updateState(state, {
+        isLoadingReviews: action.payload
+      });
+
+    case ActionType.LOAD_FAVORITE_MOVIES:
+      return updateState(state, {
+        favoriteMovies: action.payload
+      });
+
     case ActionType.LOAD_MOVIES:
       return updateState(state, {
         movies: action.payload,
@@ -84,8 +153,7 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.LOAD_PROMO_MOVIE:
       return updateState(state, {
-        promoMovie: action.payload,
-        selectedMovie: action.payload
+        promoMovie: action.payload
       });
 
     case ActionType.SELECT_GENRE:
@@ -96,21 +164,25 @@ const reducer = (state = initialState, action) => {
         countShowedMovies: CountMovies.START
       });
 
-    case ActionType.SELECT_MOVIE:
+    case ActionType.SET_LIKED_MOVIES:
       return updateState(state, {
-        page: Page.MOVIE,
-        selectedMovie: action.payload,
-        likedMovies: getLikedMoviesByGenre(state.movies, action.payload.genre, action.payload.id),
+        likedMovies: getMoviesByGenre(state.movies, action.payload.genre),
       });
 
-    case ActionType.SET_MAIN_PAGE:
+    case ActionType.SET_REVIEWS:
       return updateState(state, {
-        page: action.payload
+        reviews: action.payload
       });
 
     case ActionType.SHOW_MORE:
       return updateState(state, {
         countShowedMovies: state.countShowedMovies + action.payload
+      });
+
+    case ActionType.UPDATE_MOVIES:
+      return updateState(state, {
+        movies: updateMovies(state.movies, action.payload),
+        promoMovie: updatePromo(state.promoMovie, action.payload)
       });
 
     default:

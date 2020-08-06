@@ -24,15 +24,12 @@ export const getMoviesByGenre = (movies, genre) =>
 /**
  * Получение поможих фильмов по жанру
  * @param {Array} movies данные фильмов
- * @param {string} genre жанр
  * @param {string} id идентификатор фильма
  * @param {Number} count количество похожих фильмов
  * @return {Array} массив фильмов того же жанра, что и выбранный
  */
-export const getLikedMoviesByGenre = (movies, genre, id, count = CountMovies.LIKED_BY_GENRE) =>
-  getMoviesByGenre(movies, genre)
-    .filter((movie) => movie.id !== id)
-    .slice(0, count);
+export const getLikedMoviesByGenre = (movies, id, count = CountMovies.LIKED_BY_GENRE) =>
+  movies.filter((movie) => movie.id !== id).slice(0, count);
 
 
 /**
@@ -67,13 +64,6 @@ export const getIntervalForCols = (array) => {
 
 
 /**
- * Генерация идентификатора для фильмов и комментариев
- * @return {string}
- */
-export const generateId = () => `f${(+new Date()).toString(16)}${Math.random() * 1e8}`;
-
-
-/**
  * Обновление свойства isActive для жанров
  * @param {Array} genres массив жанров
  * @param {string} selectedGenre выбранный жанр
@@ -100,9 +90,9 @@ export const getUniqueGenres = (movies) => {
     }
   });
 
-  return uniqueGenres.map((genre) => {
+  return uniqueGenres.map((genre, index) => {
     return {
-      [`id`]: generateId(),
+      [`id`]: `${genre}-${index}`,
       [`title`]: genre,
       [`isActive`]: genre === ALL_GENRES
     };
@@ -178,3 +168,22 @@ export const getTextualRating = (score) => {
  * @return {string} отформатированная дата
  */
 export const formatDate = (date, formatRule) => moment(date).format(formatRule);
+
+
+/**
+ * Приведение даты к необходмому формату
+ * @param {Array} movies массив с данными фильмов
+ * @param {Object} movieDatum обновленные данные фильма
+ * @return {Array} массив с обновленными данными фильмов
+ */
+export const updateMovies = (movies, movieDatum) =>
+  movies.map((movie) => movie.id === movieDatum.id ? movieDatum : movie);
+
+
+/**
+ * Приведение даты к необходмому формату
+ * @param {Object} promo данные промо-фильма
+ * @param {Object} movieDatum обновленные данные фильма
+ * @return {Object} данные фильма
+ */
+export const updatePromo = (promo, movieDatum) => promo.id === movieDatum.id ? movieDatum : promo;

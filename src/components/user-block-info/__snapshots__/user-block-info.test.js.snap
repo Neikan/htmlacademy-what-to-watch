@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test UserBlockInfo component UserBlockInfo component is created and rendered correctly 1`] = `
+<div
+  className="user-block__avatar"
+>
+  <a
+    href="/mylist"
+    onClick={[Function]}
+  >
+    <img
+      alt="Batman"
+      height="63"
+      src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
+      width="63"
+    />
+  </a>
+</div>
+`;

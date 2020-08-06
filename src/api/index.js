@@ -2,10 +2,7 @@
 import axios from "axios";
 
 // Импорт типов, констант, утилит
-import {BASE_URL, Url, RequestStatusCode} from "../consts/common-data";
-
-
-const REQUEST_TIMEOUT = 5000;
+import {BASE_URL, RequestStatusCode, Timeout, Url} from "../consts/common-data";
 
 
 /**
@@ -16,7 +13,7 @@ const REQUEST_TIMEOUT = 5000;
 const createAPI = (onUnauthorized) => {
   const api = axios.create({
     baseURL: `${BASE_URL}/${Url.WTW}`,
-    timeout: REQUEST_TIMEOUT,
+    timeout: Timeout.REQUEST,
     withCredentials: true,
   });
 
@@ -27,8 +24,6 @@ const createAPI = (onUnauthorized) => {
 
     if (response.status === RequestStatusCode.UNAUTHORIZED) {
       onUnauthorized();
-
-      throw err;
     }
 
     throw err;

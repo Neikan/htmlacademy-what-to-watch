@@ -4,13 +4,14 @@ import Adapter from "enzyme-adapter-react-16";
 import {configure, mount} from "enzyme";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 // Импорт компонентов
 import Main from "./main.jsx";
 
 // Импорт типов, констант, утилит
-import {MarkupElement, MOVIES, GENRES, UserDatumState} from "./../../consts/test-data";
+import {MarkupElement, MOVIES, GENRES, DatumStateAfterStart, DatumUserState} from "./../../consts/test-data";
 import NameSpace from "../../store/name-space.js";
 
 
@@ -24,60 +25,35 @@ const mockStore = configureStore([]);
 
 describe(`Test e2e Main component`, () => {
   const store = mockStore({
-    [NameSpace.DATUM_USER]: UserDatumState
-  });
-
-  test(`Should 'play'-button for promo-movie be pressed`, () => {
-    const handleMovieChangePlaying = jest.fn();
-
-    const main = mount(
-        <BrowserRouter>
-          <Provider store={store}>
-            <Main
-              promoMovie={MOVIES[0]}
-              movies={MOVIES}
-              genres={GENRES}
-              countShowedMovies={1}
-              onMovieChangePlaying={handleMovieChangePlaying}
-              onMovieAddToList={() => {}}
-              onMovieSelect={() => {}}
-              onGenreSelect={() => {}}
-              onShowMore={() => {}}
-            />
-          </Provider>
-        </BrowserRouter>
-    );
-
-    main.find(`.${MarkupElement.PROMO_BTN_PLAY}`).props().onClick();
-
-    expect(handleMovieChangePlaying.mock.calls.length).toBe(1);
+    [NameSpace.DATUM]: DatumStateAfterStart,
+    [NameSpace.DATUM_USER]: DatumUserState
   });
 
 
   test(`Should 'add to list'-button for promo-movie be pressed`, () => {
-    const handleMovieAddToList = jest.fn();
+    const handleMovieChangeMyList = jest.fn();
 
     const main = mount(
-        <BrowserRouter>
-          <Provider store={store}>
+        <Provider store={store}>
+          <Router history={history}>
             <Main
               promoMovie={MOVIES[0]}
               movies={MOVIES}
               genres={GENRES}
               countShowedMovies={1}
+              onMovieChangeMyList={handleMovieChangeMyList}
               onMovieChangePlaying={() => {}}
-              onMovieAddToList={handleMovieAddToList}
               onMovieSelect={() => {}}
               onGenreSelect={() => {}}
               onShowMore={() => {}}
             />
-          </Provider>
-        </BrowserRouter>
+          </Router>
+        </Provider>
     );
 
-    main.find(`.${MarkupElement.PROMO_BTN_ADD_TO_LIST}`).props().onClick();
+    main.find(Main).find(`.${MarkupElement.PROMO_BTN_ADD_TO_LIST}`).props().onClick();
 
-    expect(handleMovieAddToList.mock.calls.length).toBe(1);
+    expect(handleMovieChangeMyList.mock.calls.length).toBe(1);
   });
 
 
@@ -86,25 +62,25 @@ describe(`Test e2e Main component`, () => {
     const countShowedMovies = 1;
 
     const main = mount(
-        <BrowserRouter>
-          <Provider store={store}>
+        <Provider store={store}>
+          <Router history={history}>
             <Main
               promoMovie={MOVIES[0]}
               movies={MOVIES}
               genres={GENRES}
               countShowedMovies={countShowedMovies}
+              onMovieChangeMyList={() => {}}
               onMovieChangePlaying={() => {}}
-              onMovieAddToList={() => {}}
               onMovieSelect={handleMovieSelect}
               onGenreSelect={() => {}}
               onShowMore={() => {}}
             />
-          </Provider>
-        </BrowserRouter>
+          </Router>
+        </Provider>
     );
 
-    main.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).map((movie) => movie.props().onClick());
-    main.find(`.${MarkupElement.MOVIE_CARD}`).map((movie) => movie.props().onClick());
+    main.find(Main).find(`.${MarkupElement.MOVIE_CARD_TITLE}`).map((movie) => movie.props().onClick());
+    main.find(Main).find(`.${MarkupElement.MOVIE_CARD}`).map((movie) => movie.props().onClick());
 
     expect(handleMovieSelect.mock.calls.length).toBe(countShowedMovies * 2);
   });
@@ -114,24 +90,24 @@ describe(`Test e2e Main component`, () => {
     const handleGenreSelect = jest.fn();
 
     const main = mount(
-        <BrowserRouter>
-          <Provider store={store}>
+        <Provider store={store}>
+          <Router history={history}>
             <Main
               promoMovie={MOVIES[0]}
               movies={MOVIES}
               genres={GENRES}
               countShowedMovies={1}
+              onMovieChangeMyList={() => {}}
               onMovieChangePlaying={() => {}}
-              onMovieAddToList={() => {}}
               onMovieSelect={() => {}}
               onGenreSelect={handleGenreSelect}
               onShowMore={() => {}}
             />
-          </Provider>
-        </BrowserRouter>
+          </Router>
+        </Provider>
     );
 
-    main.find(`.${MarkupElement.GENRE_LINK}`).map((genre) => genre.simulate(`click`, {
+    main.find(Main).find(`.${MarkupElement.GENRE_LINK}`).map((genre) => genre.simulate(`click`, {
       preventDefault() {}
     }));
 
@@ -143,24 +119,24 @@ describe(`Test e2e Main component`, () => {
     const handleShowMore = jest.fn();
 
     const main = mount(
-        <BrowserRouter>
-          <Provider store={store}>
+        <Provider store={store}>
+          <Router history={history}>
             <Main
               promoMovie={MOVIES[0]}
               movies={MOVIES}
               genres={GENRES}
               countShowedMovies={1}
+              onMovieChangeMyList={() => {}}
               onMovieChangePlaying={() => {}}
-              onMovieAddToList={() => {}}
               onMovieSelect={() => {}}
               onGenreSelect={() => {}}
               onShowMore={handleShowMore}
             />
-          </Provider>
-        </BrowserRouter>
+          </Router>
+        </Provider>
     );
 
-    main.find(`.${MarkupElement.BTN_SHOW_MORE}`).simulate(`click`);
+    main.find(Main).find(`.${MarkupElement.BTN_SHOW_MORE}`).simulate(`click`);
 
     expect(handleShowMore.mock.calls.length).toBe(1);
   });

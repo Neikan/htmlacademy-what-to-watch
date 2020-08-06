@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test PrivateRoute component Should render Loader 1`] = `null`;
+
+exports[`Test PrivateRoute component Should render MockComponent 1`] = `null`;

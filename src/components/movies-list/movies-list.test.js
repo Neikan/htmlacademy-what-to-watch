@@ -1,7 +1,8 @@
 // Импорт библиотек
 import React from "react";
 import renderer from "react-test-renderer";
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 // Импорт компонентов
 import MoviesList from "./movies-list.jsx";
@@ -13,7 +14,7 @@ import {MOVIES} from "../../consts/test-data.js";
 describe(`Test MoviesList component`, () => {
   test(`When Movies is correctly`, () => {
     const tree = renderer.create(
-        <BrowserRouter>
+        <Router history={history}>
           <MoviesList
             movies={MOVIES}
             countShowedMovies={1}
@@ -21,7 +22,7 @@ describe(`Test MoviesList component`, () => {
             onMovieMouseEnter={() => {}}
             onMovieMouseLeave={() => {}}
           />
-        </BrowserRouter>
+        </Router>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

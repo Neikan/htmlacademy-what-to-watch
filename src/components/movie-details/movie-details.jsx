@@ -13,8 +13,8 @@ import {movieType} from "../../props/prop-types.js";
 const MovieDetails = (props) => {
   const {movie} = props;
   if (movie) {
-    const {description, director, actors, rating} = movie;
-    const {score, level, countVotes} = rating;
+    const {actors, description, director, rating} = movie;
+    const {countVotes, level, score} = rating;
 
     return (
       <>

@@ -19,15 +19,4 @@ describe(`Test MovieOverView component`, () => {
 
     expect(tree).toMatchSnapshot();
   });
-
-
-  test(`When Movie is undefined`, () => {
-    const tree = renderer.create(
-        <MovieOverView
-          movie={null}
-        />
-    ).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
 });

@@ -6,7 +6,6 @@ exports[`Test MoviesList component When Movies is correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    id="mock-1"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}

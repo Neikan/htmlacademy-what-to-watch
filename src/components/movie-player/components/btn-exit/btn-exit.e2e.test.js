@@ -7,7 +7,7 @@ import {configure, shallow} from "enzyme";
 import BtnExit from "./btn-exit.jsx";
 
 // Импорт типов, констант, утилит
-import {MarkupElement} from "../../../../consts/test-data.js";
+import {MarkupElement, MOVIES} from "../../../../consts/test-data.js";
 
 
 configure({
@@ -21,6 +21,7 @@ describe(`Test e2e BtnExit component`, () => {
 
     const btnExit = shallow(
         <BtnExit
+          id={MOVIES[0].id}
           onClose={handleClose}
         />
     );

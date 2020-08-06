@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MyList component MyList component is created and rendered correctly 1`] = `
+<div
+  className="user-page"
+>
+  <header
+    className="page-header user-page__head"
+  >
+    <div
+      className="logo"
+    />
+    <h1
+      className="page-title user-page__title"
+    >
+      My list
+    </h1>
+    <div
+      className="user-block"
+    />
+  </header>
+  <section
+    className="catalog"
+  >
+    <h2
+      className="catalog__title visually-hidden"
+    >
+      Catalog
+    </h2>
+    <div
+      className="catalog__movies-list"
+    >
+      <article
+        className="small-movie-card catalog__movies-card"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height="175"
+            poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/moonrise-kingdom2.jpg"
+            type="video/webm"
+            width="280"
+          >
+            Sorry, your browser doesn\`t support embedded videos
+          </video>
+        </div>
+        <h3
+          className="small-movie-card__title"
+          onClick={[Function]}
+        />
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height="175"
+            poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york2.jpg"
+            type="video/webm"
+            width="280"
+          >
+            Sorry, your browser doesn\`t support embedded videos
+          </video>
+        </div>
+        <h3
+          className="small-movie-card__title"
+          onClick={[Function]}
+        />
+      </article>
+    </div>
+  </section>
+  <footer
+    className="page-footer"
+  >
+    <div
+      className="logo"
+    />
+    <div
+      className="copyright"
+    >
+      <p>
+        © 2020 What to watch Ltd.
+      </p>
+    </div>
+  </footer>
+</div>
+`;

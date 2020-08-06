@@ -3,7 +3,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 // Импорт типов, констант, утилит
-import {ReviewMessage} from "../../../../consts/common-data";
+import {ReviewMessage, REVIEW_PLACEHOLDER} from "../../../../consts/common-data";
 
 
 /**
@@ -19,7 +19,7 @@ class TextArea extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
@@ -32,7 +32,7 @@ class TextArea extends PureComponent {
     return (
       <div className="add-review__text">
         <textarea className="add-review__textarea" name="review-text"
-          id="review-text" placeholder="Review text"
+          id="review-text" placeholder={REVIEW_PLACEHOLDER}
           value={messageText} onChange={this._handleTextChange}
         />
         <div className="add-review__submit">

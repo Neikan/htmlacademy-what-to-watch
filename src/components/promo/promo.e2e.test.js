@@ -1,13 +1,19 @@
 // Импорт библиотек
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
-import {configure, shallow} from "enzyme";
+import {configure, mount} from "enzyme";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
+
 
 // Импорт компонентов
 import Promo from "./promo.jsx";
 
 // Импорт типов, констант, утилит
-import {MarkupElement, MOVIES} from "./../../consts/test-data";
+import {MarkupElement, MOVIES, DatumStateAfterStart, DatumUserState} from "./../../consts/test-data";
+import NameSpace from "../../store/name-space.js";
 
 
 configure({
@@ -15,38 +21,33 @@ configure({
 });
 
 
+const mockStore = configureStore([]);
+
+
 describe(`Test e2e Promo component`, () => {
-  test(`Should 'play'-button for promo-movie be pressed`, () => {
-    const handleChangePlaying = jest.fn();
-
-    const promo = shallow(
-        <Promo
-          movie={MOVIES[0]}
-          onChangePlaying={handleChangePlaying}
-          onAdd={() => {}}
-          onSelect={() => {}}
-        />
-    );
-
-    promo.find(`.${MarkupElement.PROMO_BTN_PLAY}`).props().onClick();
-
-    expect(handleChangePlaying.mock.calls.length).toBe(1);
+  const store = mockStore({
+    [NameSpace.DATUM]: DatumStateAfterStart,
+    [NameSpace.DATUM_USER]: DatumUserState
   });
 
 
   test(`Should 'add to list'-button for promo-movie be pressed`, () => {
     const handleMovieAddToList = jest.fn();
 
-    const promo = shallow(
-        <Promo
-          movie={MOVIES[0]}
-          onChangePlaying={() => {}}
-          onAdd={handleMovieAddToList}
-          onSelect={() => {}}
-        />
+    const promo = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <Promo
+              movie={MOVIES[0]}
+              onChangeMyList={handleMovieAddToList}
+              onChangePlaying={() => {}}
+              onSelect={() => {}}
+            />
+          </Router>
+        </Provider>
     );
 
-    promo.find(`.${MarkupElement.PROMO_BTN_ADD_TO_LIST}`).props().onClick();
+    promo.find(Promo).find(`.${MarkupElement.PROMO_BTN_ADD_TO_LIST}`).props().onClick();
 
     expect(handleMovieAddToList.mock.calls.length).toBe(1);
   });
@@ -55,16 +56,20 @@ describe(`Test e2e Promo component`, () => {
   test(`Should poster for promo-movie be pressed`, () => {
     const handleMovieSelect = jest.fn();
 
-    const promo = shallow(
-        <Promo
-          movie={MOVIES[0]}
-          onAdd={() => {}}
-          onChangePlaying={() => {}}
-          onSelect={handleMovieSelect}
-        />
+    const promo = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <Promo
+              movie={MOVIES[0]}
+              onChangeMyList={() => {}}
+              onChangePlaying={() => {}}
+              onSelect={handleMovieSelect}
+            />
+          </Router>
+        </Provider>
     );
 
-    promo.find(`.${MarkupElement.PROMO_POSTER}`).props().onClick();
+    promo.find(Promo).find(`.${MarkupElement.PROMO_POSTER}`).props().onClick();
 
     expect(handleMovieSelect.mock.calls.length).toBe(1);
   });
@@ -73,16 +78,20 @@ describe(`Test e2e Promo component`, () => {
   test(`Should title for promo-movie be pressed`, () => {
     const handleMovieSelect = jest.fn();
 
-    const promo = shallow(
-        <Promo
-          movie={MOVIES[0]}
-          onAdd={() => {}}
-          onChangePlaying={() => {}}
-          onSelect={handleMovieSelect}
-        />
+    const promo = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <Promo
+              movie={MOVIES[0]}
+              onChangeMyList={() => {}}
+              onChangePlaying={() => {}}
+              onSelect={handleMovieSelect}
+            />
+          </Router>
+        </Provider>
     );
 
-    promo.find(`.${MarkupElement.PROMO_TITLE}`).props().onClick();
+    promo.find(Promo).find(`.${MarkupElement.PROMO_TITLE}`).props().onClick();
 
     expect(handleMovieSelect.mock.calls.length).toBe(1);
   });

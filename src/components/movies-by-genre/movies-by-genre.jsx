@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // Импорт компонентов
-import Footer from "../footer/footer.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 
 // Импорт типов, констант, утилит
@@ -22,29 +21,25 @@ const MoviesListWrapped = withSelectedMovie(MoviesList);
  * @return {Object} созданный компонент
  */
 const MoviesByGenre = (props) => {
-  const {movies, countShowedMovies, onMovieSelect} = props;
+  const {countShowedMovies, movies, onMovieSelect} = props;
 
   return (
-    <div className="page-content">
-      <section className="catalog catalog--like-this">
-        <h2 className="catalog__title">More like this</h2>
+    <section className="catalog catalog--like-this">
+      <h2 className="catalog__title">More like this</h2>
 
-        <MoviesListWrapped
-          movies={movies}
-          countShowedMovies={countShowedMovies}
-          onMovieSelect={onMovieSelect}
-        />
-      </section>
-
-      <Footer />
-    </div>
+      <MoviesListWrapped
+        countShowedMovies={countShowedMovies}
+        movies={movies}
+        onMovieSelect={onMovieSelect}
+      />
+    </section>
   );
 };
 
 
 MoviesByGenre.propTypes = {
-  movies: PropTypes.arrayOf(movieType).isRequired,
   countShowedMovies: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieSelect: PropTypes.func.isRequired
 };
 

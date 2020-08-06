@@ -4,7 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 import {configure, shallow} from "enzyme";
 
 // Импорт типов, констант, утилит
-import {MovieTabList} from "../../consts/test-data.js";
+import {MovieTabList, MOVIES} from "../../consts/test-data.js";
 
 // Импорт хоков
 import withSelectedTab from "./with-selected-tab.js";
@@ -23,6 +23,7 @@ describe(`Test e2e withSelectedTab component`, () => {
   test(`Should change selected tab`, () => {
     const tree = shallow(
         <MockComponentWrapped
+          movie={MOVIES[0]}
           selectedTab={MovieTabList.OVERVIEW}
           onTabSelect={() => {}}
         />

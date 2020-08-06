@@ -15,7 +15,7 @@ class BtnFullScreen extends PureComponent {
 
 
   /**
-   * Метод, обеспечивающий отрисовку компонента
+   * Метод, обеспечивающий отображение компонента
    * @return {Object} созданный компонент
    */
   render() {
@@ -33,10 +33,12 @@ class BtnFullScreen extends PureComponent {
 
 
   /**
-   * Метод, обеспечивабщий перевод проигрывателя в полноэкранный режим
+   * Метод, обеспечивающий перевод проигрывателя в полноэкранный режим
    */
   _handleSetFullScreen() {
-    this.props.onSet();
+    const {onSet} = this.props;
+
+    onSet();
   }
 }
 

@@ -1,8 +1,16 @@
+// Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+
+// Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
 
 
+/**
+ * Создание компонента, обеспечивающего воспроизведение трейлера фильма
+ * @param {Object} Component "оборачиваемый" компонент
+ * @return {Object} созданный компонент
+ */
 const withActivePlayer = (Component) => {
   class WithActivePlayer extends PureComponent {
     constructor(props) {
@@ -18,7 +26,7 @@ const withActivePlayer = (Component) => {
 
 
     /**
-     * Метод, обеспечивающий отрисовку компонента
+     * Метод, обеспечивающий отображение компонента
      * @return {Object} созданный компонент
      */
     render() {

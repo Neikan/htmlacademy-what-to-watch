@@ -87,12 +87,17 @@ exports[`Test AddReview component AddReview component is created and rendered co
         <div
           className="user-block__avatar"
         >
-          <img
-            alt="Batman"
-            height="63"
-            src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
-            width="63"
-          />
+          <a
+            href="/mylist"
+            onClick={[Function]}
+          >
+            <img
+              alt="Batman"
+              height="63"
+              src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
+              width="63"
+            />
+          </a>
         </div>
       </div>
     </header>
@@ -206,7 +211,7 @@ exports[`Test AddReview component AddReview component is created and rendered co
           id="review-text"
           name="review-text"
           onChange={[Function]}
-          placeholder="Review text"
+          placeholder="Введите сообщение не менее 50 и не более 400 символов"
           value=""
         />
         <div

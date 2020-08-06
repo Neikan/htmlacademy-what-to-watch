@@ -9,7 +9,7 @@ import React from "react";
 const Loader = () => {
   return (
     <section>
-      <h2 className='loader'>Loading... Please wait</h2>
+      <h2 className="loader">Loading... Please wait</h2>
     </section>
   );
 };

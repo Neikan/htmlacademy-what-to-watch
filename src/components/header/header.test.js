@@ -3,7 +3,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 // Импорт компонентов
 import Header from "./header.jsx";
@@ -31,13 +32,13 @@ describe(`Test Header component`, () => {
     });
 
     const tree = renderer.create(
-        <BrowserRouter>
+        <Router history={history}>
           <Provider store={store}>
             <Header
               logoPosition={LogoPosition.HEADER}
             />
           </Provider>
-        </BrowserRouter>, {
+        </Router>, {
           createNodeMock: () => {
             return {};
           }
@@ -62,13 +63,13 @@ describe(`Test Header component`, () => {
     });
 
     const tree = renderer.create(
-        <BrowserRouter>
+        <Router history={history}>
           <Provider store={store}>
             <Header
               logoPosition={LogoPosition.HEADER}
             />
           </Provider>
-        </BrowserRouter>, {
+        </Router>, {
           createNodeMock: () => {
             return {};
           }

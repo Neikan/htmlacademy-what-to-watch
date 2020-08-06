@@ -13,7 +13,7 @@ describe(`Test MovieReviews component`, () => {
   test(`MovieReviews component is created and rendered correctly (reviews.length = 0)`, () => {
     const tree = renderer.create(
         <MovieReviews
-          movie={MOVIES[0]}
+          reviews={MOVIES[0].reviews}
         />
     ).toJSON();
 
@@ -24,7 +24,7 @@ describe(`Test MovieReviews component`, () => {
   test(`MovieReviews component is created and rendered correctly when (reviews.length = 1)`, () => {
     const tree = renderer.create(
         <MovieReviews
-          movie={MOVIES[1]}
+          reviews={MOVIES[1].reviews}
         />
     ).toJSON();
 
@@ -35,7 +35,7 @@ describe(`Test MovieReviews component`, () => {
   test(`MovieReviews component is created and rendered correctly when (reviews.length >= 2)`, () => {
     const tree = renderer.create(
         <MovieReviews
-          movie={MOVIES[2]}
+          reviews={MOVIES[2].reviews}
         />
     ).toJSON();
 
