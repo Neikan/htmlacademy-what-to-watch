@@ -18,6 +18,9 @@ const Operation = {
         dispatch(ActionCreator.updateMessageStatus(ReviewMessageStatus.SUCCESS));
         dispatch(ActionCreator.blockForm(false));
       })
+      .then(() => {
+        dispatch(ActionCreator.updateMessageStatus(ReviewMessageStatus.DEFAULT));
+      })
       .catch(() => {
         dispatch(ActionCreator.updateMessageStatus(ReviewMessageStatus.ERROR_SENDING));
         dispatch(ActionCreator.blockForm(false));

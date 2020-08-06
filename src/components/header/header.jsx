@@ -1,5 +1,5 @@
 // Импорт библиотек
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import {connect} from "react-redux";
@@ -20,36 +20,31 @@ import {getAuthStatus, getUserDatum} from "../../store/datum-user/selectors.js";
 
 /**
  * Создание компонента, обеспечивающего отображение "шапки" приложения
+ * @param {Object} props параметры
  * @return {Object} созданный компонент
  */
-class Header extends PureComponent {
-  /**
-   * Метод, обеспечивающий отображение компонента
-   * @return {Object} созданный компонент
-   */
-  render() {
-    const {authStatus, isMyList, movie, user} = this.props;
+const Header = (props) => {
+  const {authStatus, isMyList, movie, user} = props;
 
-    const className = cn(`page-header`, {
-      'movie-card__head': !isMyList,
-      'user-page__head': isMyList
-    });
+  const className = cn(`page-header`, {
+    'movie-card__head': !isMyList,
+    'user-page__head': isMyList
+  });
 
-    return (
-      <header className={className}>
-        <Logo logoPosition={LogoPosition.HEADER} />
+  return (
+    <header className={className}>
+      <Logo logoPosition={LogoPosition.HEADER} />
 
-        {movie ? <LinKMoviePage movie={movie}/> : null}
-        {isMyList ? <MyListTitle /> : null}
+      {movie ? <LinKMoviePage movie={movie}/> : null}
+      {isMyList ? <MyListTitle /> : null}
 
-        <UserBlock
-          authStatus={authStatus}
-          user={user}
-        />
-      </header>
-    );
-  }
-}
+      <UserBlock
+        authStatus={authStatus}
+        user={user}
+      />
+    </header>
+  );
+};
 
 
 Header.propTypes = {
