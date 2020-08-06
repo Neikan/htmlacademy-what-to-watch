@@ -1,5 +1,5 @@
 // Импорт библиотек
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 // Импорт компонентов
@@ -13,25 +13,20 @@ import {AuthStatus} from "../../consts/common-data.js";
 
 /**
  * Создание компонента, обеспечивающего отображение блока информации о пользователе
+ * @param {Object} props параметры
  * @return {Object} созданный компонент
  */
-class UserBlock extends PureComponent {
-  /**
-   * Метод, обеспечивающий отображение компонента
-   * @return {Object} созданный компонент
-   */
-  render() {
-    const {authStatus, user} = this.props;
+const UserBlock = (props) => {
+  const {authStatus, user} = props;
 
-    return (
-      <div className="user-block">
-        {authStatus === AuthStatus.AUTH
-          ? <UserBlockInfo user={user} />
-          : <LinkSignIn />}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="user-block">
+      {authStatus === AuthStatus.AUTH
+        ? <UserBlockInfo user={user} />
+        : <LinkSignIn />}
+    </div>
+  );
+};
 
 
 UserBlock.propTypes = {
