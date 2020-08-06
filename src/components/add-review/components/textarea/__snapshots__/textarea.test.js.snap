@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test TextArea component Rendered correctly when message is default 1`] = `
+<div
+  className="add-review__text"
+>
+  <textarea
+    className="add-review__textarea"
+    id="review-text"
+    name="review-text"
+    onChange={[Function]}
+    placeholder="Review text"
+    value=""
+  />
+  <div
+    className="add-review__submit"
+  >
+    <div
+      style={
+        Object {
+          "margin": "0 auto",
+        }
+      }
+    >
+      
+    </div>
+    <button
+      className="add-review__btn"
+      disabled={true}
+      type="submit"
+    >
+      Post
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Test TextArea component Rendered correctly when message less than min length 1`] = `
+<div
+  className="add-review__text"
+>
+  <textarea
+    className="add-review__textarea"
+    id="review-text"
+    name="review-text"
+    onChange={[Function]}
+    placeholder="Review text"
+    value="Ваше сообщение менее 50 символов"
+  />
+  <div
+    className="add-review__submit"
+  >
+    <div
+      style={
+        Object {
+          "margin": "0 auto",
+        }
+      }
+    >
+      less length min
+    </div>
+    <button
+      className="add-review__btn"
+      disabled={true}
+      type="submit"
+    >
+      Post
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Test TextArea component Rendered correctly when message more than max length 1`] = `
+<div
+  className="add-review__text"
+>
+  <textarea
+    className="add-review__textarea"
+    id="review-text"
+    name="review-text"
+    onChange={[Function]}
+    placeholder="Review text"
+    value="Ваше сообщение более 400 символов"
+  />
+  <div
+    className="add-review__submit"
+  >
+    <div
+      style={
+        Object {
+          "margin": "0 auto",
+        }
+      }
+    >
+      more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max more length max
+    </div>
+    <button
+      className="add-review__btn"
+      disabled={true}
+      type="submit"
+    >
+      Post
+    </button>
+  </div>
+</div>
+`;

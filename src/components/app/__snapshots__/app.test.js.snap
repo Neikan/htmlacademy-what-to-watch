@@ -27,6 +27,7 @@ Array [
         <a
           className="logo__link"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -51,6 +52,7 @@ Array [
         <a
           className="user-block__link"
           href="/login"
+          onClick={[Function]}
         >
           Sign in
         </a>
@@ -159,7 +161,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             All genres
@@ -170,7 +172,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Comedies
@@ -181,7 +183,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Crime
@@ -203,6 +205,7 @@ Array [
         <a
           className="logo__link logo__link--light"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -260,6 +263,7 @@ Array [
         <a
           className="logo__link"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -285,7 +289,7 @@ Array [
           className="user-block__avatar"
         >
           <img
-            alt="User avatar"
+            alt="Batman"
             height="63"
             src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
             width="63"
@@ -396,7 +400,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             All genres
@@ -407,7 +411,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Comedies
@@ -418,7 +422,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Crime
@@ -454,7 +458,8 @@ Array [
             >
               <a
                 className="small-movie-card__link"
-                href="movie-page.html"
+                href="/films/mock-1"
+                onClick={[Function]}
               >
                 Fantastic Beasts: The Crimes of Grindelwald
               </a>
@@ -485,7 +490,8 @@ Array [
             >
               <a
                 className="small-movie-card__link"
-                href="movie-page.html"
+                href="/films/mock-2"
+                onClick={[Function]}
               >
                 Bohemian Rhapsody
               </a>
@@ -516,7 +522,8 @@ Array [
             >
               <a
                 className="small-movie-card__link"
-                href="movie-page.html"
+                href="/films/mock-3"
+                onClick={[Function]}
               >
                 Macbeth
               </a>
@@ -534,6 +541,7 @@ Array [
         <a
           className="logo__link logo__link--light"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -598,6 +606,7 @@ exports[`Test App component App component is created and rendered correctly when
         <a
           className="logo__link"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -623,7 +632,7 @@ exports[`Test App component App component is created and rendered correctly when
           className="user-block__avatar"
         >
           <img
-            alt="User avatar"
+            alt="Batman"
             height="63"
             src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
             width="63"
@@ -696,7 +705,8 @@ exports[`Test App component App component is created and rendered correctly when
           </button>
           <a
             className="btn movie-card__button"
-            href="add-review.html"
+            href="/review"
+            onClick={[Function]}
           >
             Add review
           </a>
@@ -735,7 +745,8 @@ exports[`Test App component App component is created and rendered correctly when
             >
               <a
                 className="movie-nav__link"
-                href="#"
+                href="/"
+                onClick={[Function]}
               >
                 Overview
               </a>
@@ -746,7 +757,8 @@ exports[`Test App component App component is created and rendered correctly when
             >
               <a
                 className="movie-nav__link"
-                href="#"
+                href="/"
+                onClick={[Function]}
               >
                 Details
               </a>
@@ -757,7 +769,8 @@ exports[`Test App component App component is created and rendered correctly when
             >
               <a
                 className="movie-nav__link"
-                href="#"
+                href="/"
+                onClick={[Function]}
               >
                 Reviews
               </a>
@@ -889,6 +902,7 @@ Array [
         <a
           className="logo__link"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -914,7 +928,7 @@ Array [
           className="user-block__avatar"
         >
           <img
-            alt="User avatar"
+            alt="Batman"
             height="63"
             src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
             width="63"
@@ -1025,7 +1039,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             All genres
@@ -1036,7 +1050,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Comedies
@@ -1047,7 +1061,7 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Crime
@@ -1069,6 +1083,7 @@ Array [
         <a
           className="logo__link logo__link--light"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"

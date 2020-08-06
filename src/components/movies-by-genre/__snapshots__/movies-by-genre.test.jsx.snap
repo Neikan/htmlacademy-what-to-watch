@@ -40,7 +40,8 @@ exports[`Test MoviesByGenre component MoviesByGenre component is created and ren
         >
           <a
             className="small-movie-card__link"
-            href="movie-page.html"
+            href="/films/mock-1"
+            onClick={[Function]}
           >
             Fantastic Beasts: The Crimes of Grindelwald
           </a>
@@ -57,6 +58,7 @@ exports[`Test MoviesByGenre component MoviesByGenre component is created and ren
       <a
         className="logo__link logo__link--light"
         href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"

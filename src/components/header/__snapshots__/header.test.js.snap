@@ -10,6 +10,7 @@ exports[`Test Header component Header component is created and rendered correctl
     <a
       className="logo__link"
       href="/"
+      onClick={[Function]}
     >
       <span
         className="logo__letter logo__letter--1"
@@ -35,7 +36,7 @@ exports[`Test Header component Header component is created and rendered correctl
       className="user-block__avatar"
     >
       <img
-        alt="User avatar"
+        alt="Batman"
         height="63"
         src="https://4.react.pages.academy/wtw/static/avatar/5.jpg"
         width="63"
@@ -55,6 +56,7 @@ exports[`Test Header component Header component is created and rendered correctl
     <a
       className="logo__link"
       href="/"
+      onClick={[Function]}
     >
       <span
         className="logo__letter logo__letter--1"
@@ -79,6 +81,7 @@ exports[`Test Header component Header component is created and rendered correctl
     <a
       className="user-block__link"
       href="/login"
+      onClick={[Function]}
     >
       Sign in
     </a>

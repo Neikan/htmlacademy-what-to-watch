@@ -1,6 +1,7 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 // Импорт компонентов
 import Header from "../header/header.jsx";
@@ -13,7 +14,7 @@ import MovieTabs from "../movie-tabs/movie-tabs.jsx";
 
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types.js";
-import {MovieTabList, CountMovies} from "../../consts/common-data.js";
+import {MovieTabList, CountMovies, Page, AuthStatus} from "../../consts/common-data.js";
 
 
 /**
@@ -33,7 +34,7 @@ class MoviePage extends PureComponent {
    */
   render() {
     const {movie, selectedTab, onTabSelect} = this.props;
-    const {backgroundColor, backgroundImage, genre, poster, title, year} = this.props.movie;
+    const {backgroundColor, backgroundImage, genre, poster, title, year} = movie;
 
     return (
       <>
@@ -72,7 +73,7 @@ class MoviePage extends PureComponent {
                     </svg>
                     <span>My list</span>
                   </button>
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  {this._renderAddReviewLink()}
                 </div>
               </div>
             </div>
@@ -148,6 +149,13 @@ class MoviePage extends PureComponent {
   }
 
 
+  _renderAddReviewLink() {
+    return this.props.authStatus === AuthStatus.AUTH
+      ? <Link to={Page.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
+      : null;
+  }
+
+
   /**
    * Метод, обеспечивающий управление проигрывателем фильма
    */
@@ -158,6 +166,7 @@ class MoviePage extends PureComponent {
 
 
 MoviePage.propTypes = {
+  authStatus: PropTypes.string.isRequired,
   movie: movieType.isRequired,
   movies: PropTypes.arrayOf(movieType).isRequired,
   onMovieSelect: PropTypes.func.isRequired,

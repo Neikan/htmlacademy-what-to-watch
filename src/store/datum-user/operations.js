@@ -1,8 +1,8 @@
 // Импорт типов, констант, утилит
+import {AuthStatus, Url} from "../../consts/common-data";
 import userAdapter from "./adapter";
 
 // Импорт редьюсеров, селекторов
-import {AuthStatus, Url} from "../../consts/common-data";
 import {ActionCreator} from "./datum-user.js";
 
 
@@ -18,10 +18,10 @@ const Operation = {
       })
   ),
 
-  login: (authData) => (dispatch, getState, api) => (
+  login: (userDatum) => (dispatch, getState, api) => (
     api.post(`/${Url.LOGIN}`, {
-      email: authData.login,
-      password: authData.password
+      email: userDatum.login,
+      password: userDatum.password
     })
     .then((response) => {
       dispatch(ActionCreator.requireAuth(AuthStatus.AUTH));

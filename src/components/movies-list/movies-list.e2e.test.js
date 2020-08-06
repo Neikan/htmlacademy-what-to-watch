@@ -2,6 +2,7 @@
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import {configure, mount} from "enzyme";
+import {BrowserRouter} from "react-router-dom";
 
 // Импорт компонентов
 import MoviesList from "./movies-list.jsx";
@@ -21,13 +22,15 @@ describe(`Test e2e MoviesList component`, () => {
     const countShowedMovies = 1;
 
     const moviesList = mount(
-        <MoviesList
-          movies={MOVIES}
-          countShowedMovies={countShowedMovies}
-          onMovieSelect={handleMovieSelect}
-          onMovieMouseEnter={() => {}}
-          onMovieMouseLeave={() => {}}
-        />
+        <BrowserRouter>
+          <MoviesList
+            movies={MOVIES}
+            countShowedMovies={countShowedMovies}
+            onMovieSelect={handleMovieSelect}
+            onMovieMouseEnter={() => {}}
+            onMovieMouseLeave={() => {}}
+          />
+        </BrowserRouter>
     );
 
     moviesList.find(`.${MarkupElement.MOVIE_CARD_TITLE}`).map((movie) => movie.props().onClick());

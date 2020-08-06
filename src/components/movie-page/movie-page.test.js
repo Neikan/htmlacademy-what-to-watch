@@ -3,6 +3,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
 
 // Импорт компонентов
 import MoviePage from "./movie-page.jsx";
@@ -30,17 +31,20 @@ describe(`Test MoviePage component`, () => {
 
   test(`MoviePage component is created and rendered correctly`, () => {
     const tree = renderer.create(
-        <Provider store={store}>
-          <MoviePage
-            movie={MOVIES[0]}
-            movies={MOVIES}
-            countShowedMovies={4}
-            onMovieSelect={() => {}}
-            onMovieChangePlaying={() => {}}
-            selectedTab={MovieTabList.OVERVIEW}
-            onTabSelect={() => {}}
-          />
-        </Provider>, {
+        <BrowserRouter>
+          <Provider store={store}>
+            <MoviePage
+              authStatus={AuthStatus.NO_AUTH}
+              movie={MOVIES[0]}
+              movies={MOVIES}
+              countShowedMovies={4}
+              onMovieSelect={() => {}}
+              onMovieChangePlaying={() => {}}
+              selectedTab={MovieTabList.OVERVIEW}
+              onTabSelect={() => {}}
+            />
+          </Provider>
+        </BrowserRouter>, {
           createNodeMock: () => {
             return {};
           }

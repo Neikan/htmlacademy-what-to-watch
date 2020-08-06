@@ -2,12 +2,13 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 // Импорт компонентов
 import Logo from "./../logo/logo.jsx";
 
 // Импорт типов, констант, утилит
-import {userType} from "../../props/prop-types.js";
+import {userType, movieType} from "../../props/prop-types.js";
 import {AuthStatus, LogoPosition, Page} from "../../consts/common-data.js";
 
 // Импорт редьюсеров, селекторов
@@ -28,6 +29,7 @@ class Header extends PureComponent {
       <header className="page-header movie-card__head">
         <Logo logoPosition={LogoPosition.HEADER} />
 
+        {this.props.selectedMovie ? this._renderNavLink() : null}
         {this._renderUserBlock()}
       </header>
     );
@@ -56,9 +58,11 @@ class Header extends PureComponent {
    * @return {Object} блок с аватаром бользователя
    */
   _renderAvatar() {
+    const {avatarUrl, name} = this.props.user;
+
     return (
       <div className="user-block__avatar">
-        <img src={this.props.user.avatarUrl} alt="User avatar" width="63" height="63"/>
+        <img src={avatarUrl} alt={name} width="63" height="63"/>
       </div>
     );
   }
@@ -69,7 +73,29 @@ class Header extends PureComponent {
    * @return {Object} блок с ссылкой на страницу авторизации
    */
   _renderNoAvatar() {
-    return <a href={Page.LOGIN} className="user-block__link">Sign in</a>;
+    return <Link to={Page.LOGIN} className="user-block__link">Sign in</Link>;
+  }
+
+
+  /**
+   * Метод, обеспечивабщий отрисовку навигации для страницы отправки отзыва
+   * @return {Object} блок с ссылкой на страницу фильма
+   */
+  _renderNavLink() {
+    const {id, title} = this.props.selectedMovie;
+
+    return (
+      <nav className="breadcrumbs">
+        <ul className="breadcrumbs__list">
+          <li className="breadcrumbs__item">
+            <Link to={`${Page.MOVIE}/${id}`} className="breadcrumbs__link">{title}</Link>
+          </li>
+          <li className="breadcrumbs__item">
+            <a className="breadcrumbs__link">Add review</a>
+          </li>
+        </ul>
+      </nav>
+    );
   }
 }
 
@@ -77,6 +103,7 @@ class Header extends PureComponent {
 Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
   isNoSignIn: PropTypes.bool,
+  selectedMovie: movieType,
   user: userType.isRequired
 };
 

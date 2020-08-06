@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 // Импорт компонентов
+import AddReview from "../add-review/add-review.jsx";
 import Loader from "../loader/loader.jsx";
 import Main from "../main/main.jsx";
 import MoviePage from '../movie-page/movie-page.jsx';
@@ -53,7 +54,9 @@ class App extends PureComponent {
    * @return {Object} страница приложения
    */
   render() {
-    if (!this.props.promoMovie) {
+    const {promoMovie, selectedMovie} = this.props;
+
+    if (!promoMovie) {
       return <Loader />;
     }
 
@@ -64,12 +67,16 @@ class App extends PureComponent {
             {this._renderPage()}
           </Route>
 
-          <Route exact path={`${Page.MOVIE}`}>
+          <Route exact path={`${Page.MOVIE}/${selectedMovie.id}`}>
             {this._renderMoviePage()}
           </Route>
 
           <Route exact path={`${Page.LOGIN}`}>
-            {this._renderSignIn()}
+            {this._renderSignInPage()}
+          </Route>
+
+          <Route exact path={`${Page.ADD_REVIEW}`}>
+            {this._renderAddReviewPage()}
           </Route>
         </Switch>
       </BrowserRouter>
@@ -82,16 +89,22 @@ class App extends PureComponent {
    * @return {Object} страница приложения
    */
   _renderPage() {
-    if (this.props.isPlayingMovie) {
+    const {isPlayingMovie, page} = this.props;
+
+
+    if (isPlayingMovie) {
       return this._renderMoviePlayer();
     }
 
-    switch (this.props.page) {
+    switch (page) {
       case (Page.MAIN):
         return this._renderMainPage();
 
       case (Page.MOVIE):
         return this._renderMoviePage();
+
+      case (Page.ADD_REVIEW):
+        return this._renderAddReviewPage();
 
       default:
         return null;
@@ -138,9 +151,10 @@ class App extends PureComponent {
    * @return {Object} страница фильма
    */
   _renderMoviePage() {
-    const {selectedMovie, likedMovies, onMovieSelect, onMovieChangePlaying} = this.props;
+    const {authStatus, selectedMovie, likedMovies, onMovieSelect, onMovieChangePlaying} = this.props;
 
     return <MoviePageWrapped
+      authStatus={authStatus}
       movie={selectedMovie}
       movies={likedMovies}
       onMovieSelect={onMovieSelect}
@@ -169,13 +183,13 @@ class App extends PureComponent {
    * Метод, обеспечивающий отрисовку страницы авторизации
    * @return {Object} страница авторизации
    */
-  _renderSignIn() {
-    const {authStatus, login} = this.props;
+  _renderSignInPage() {
+    const {authStatus, onUserDatumSubmit} = this.props;
 
     if (authStatus === AuthStatus.NO_AUTH) {
       return (
         <SignInWrapped
-          onSubmit={login}
+          onSubmit={onUserDatumSubmit}
         />
       );
     }
@@ -185,6 +199,17 @@ class App extends PureComponent {
     }
 
     return null;
+  }
+
+
+  /**
+   * Метод, обеспечивающий отрисовку страницы отправки отзыва
+   * @return {Object} страница отправки отзыва
+   */
+  _renderAddReviewPage() {
+    return (
+      <AddReview />
+    );
   }
 }
 
@@ -209,7 +234,7 @@ App.propTypes = {
   onShowMore: PropTypes.func.isRequired,
 
   authStatus: PropTypes.string.isRequired,
-  login: PropTypes.func.isRequired
+  onUserDatumSubmit: PropTypes.func.isRequired
 };
 
 
@@ -229,6 +254,7 @@ const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state)
 });
 
+
 const mapDispatchToProps = (dispatch) => ({
   onGenreSelect(genre) {
     dispatch(ActionCreatorDatum.selectGenre(genre));
@@ -246,9 +272,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreatorDatum.showMore());
   },
 
-  login(authData) {
-    dispatch(OperationDatumUser.login(authData));
-    dispatch(ActionCreatorDatum.setMainPage);
+  onUserDatumSubmit(userDatum) {
+    dispatch(OperationDatumUser.login(userDatum));
+    dispatch(ActionCreatorDatum.setMainPage());
   }
 });
 

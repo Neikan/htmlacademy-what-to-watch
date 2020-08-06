@@ -13,6 +13,7 @@ exports[`Test SignIn component SignIn component is created and rendered correctl
       <a
         className="logo__link"
         href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -111,6 +112,7 @@ exports[`Test SignIn component SignIn component is created and rendered correctl
       <a
         className="logo__link logo__link--light"
         href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -153,6 +155,7 @@ exports[`Test SignIn component SignIn component is created and rendered correctl
       <a
         className="logo__link"
         href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -253,6 +256,7 @@ exports[`Test SignIn component SignIn component is created and rendered correctl
       <a
         className="logo__link logo__link--light"
         href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -295,6 +299,7 @@ exports[`Test SignIn component SignIn component is created and rendered correctl
       <a
         className="logo__link"
         href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -389,6 +394,7 @@ exports[`Test SignIn component SignIn component is created and rendered correctl
       <a
         className="logo__link logo__link--light"
         href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"

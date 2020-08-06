@@ -35,6 +35,7 @@ Array [
           <a
             className="logo__link"
             href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -59,6 +60,7 @@ Array [
           <a
             className="user-block__link"
             href="/login"
+            onClick={[Function]}
           >
             Sign in
           </a>
@@ -127,12 +129,6 @@ Array [
                 My list
               </span>
             </button>
-            <a
-              className="btn movie-card__button"
-              href="add-review.html"
-            >
-              Add review
-            </a>
           </div>
         </div>
       </div>
@@ -168,7 +164,8 @@ Array [
               >
                 <a
                   className="movie-nav__link"
-                  href="#"
+                  href="/"
+                  onClick={[Function]}
                 >
                   Overview
                 </a>
@@ -179,7 +176,8 @@ Array [
               >
                 <a
                   className="movie-nav__link"
-                  href="#"
+                  href="/"
+                  onClick={[Function]}
                 >
                   Details
                 </a>
@@ -190,7 +188,8 @@ Array [
               >
                 <a
                   className="movie-nav__link"
-                  href="#"
+                  href="/"
+                  onClick={[Function]}
                 >
                   Reviews
                 </a>
@@ -322,7 +321,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-1"
+              onClick={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -353,7 +353,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-2"
+              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -384,7 +385,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-3"
+              onClick={[Function]}
             >
               Macbeth
             </a>
@@ -401,6 +403,7 @@ Array [
         <a
           className="logo__link logo__link--light"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"

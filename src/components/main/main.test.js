@@ -3,6 +3,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
 
 // Импорт компонентов
 import Main from "./main.jsx";
@@ -30,19 +31,21 @@ describe(`Test Main component`, () => {
     });
 
     const tree = renderer.create(
-        <Provider store={store}>
-          <Main
-            promoMovie={MOVIES[0]}
-            movies={MOVIES}
-            genres={GENRES}
-            countShowedMovies={1}
-            onMovieChangePlaying={() => {}}
-            onMovieAddToList={() => {}}
-            onMovieSelect={() => {}}
-            onGenreSelect={() => {}}
-            onShowMore={() => {}}
-          />
-        </Provider>, {
+        <BrowserRouter>
+          <Provider store={store}>
+            <Main
+              promoMovie={MOVIES[0]}
+              movies={MOVIES}
+              genres={GENRES}
+              countShowedMovies={1}
+              onMovieChangePlaying={() => {}}
+              onMovieAddToList={() => {}}
+              onMovieSelect={() => {}}
+              onGenreSelect={() => {}}
+              onShowMore={() => {}}
+            />
+          </Provider>
+        </BrowserRouter>, {
           createNodeMock: () => {
             return {};
           }

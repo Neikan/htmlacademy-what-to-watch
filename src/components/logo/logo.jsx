@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from 'classnames';
+import {Link} from "react-router-dom";
 
 // Импорт типов, констант, утилит
 import {LogoPosition, Page} from "../../consts/common-data";
@@ -21,11 +22,11 @@ const Logo = (props) => {
 
   return (
     <div className="logo">
-      <a className={className} href={Page.MAIN}>
+      <Link className={className} to={Page.MAIN}>
         <span className="logo__letter logo__letter--1">W</span>
         <span className="logo__letter logo__letter--2">T</span>
         <span className="logo__letter logo__letter--3">W</span>
-      </a>
+      </Link>
     </div>
   );
 };
