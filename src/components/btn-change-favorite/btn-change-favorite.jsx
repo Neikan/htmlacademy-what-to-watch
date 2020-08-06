@@ -1,9 +1,13 @@
 // Импорт библиотек
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import history from "../../history.js";
 
 // Импорт типов, констант, утилит
 import {movieType} from "../../props/prop-types";
+import {AuthStatus, Page} from "../../consts/common-data";
+import {getAuthStatus} from "../../store/datum-user/selectors";
 
 
 /**
@@ -46,19 +50,26 @@ class BtnChangeFavorite extends PureComponent {
 
   /**
    * Метод, обеспечивающий добавление/удаление фильма из списка избранных
+   * @return {*}
    */
   _handleChange() {
-    const {movie, onChangeMyList} = this.props;
+    const {authStatus, movie, onChangeMyList} = this.props;
 
-    onChangeMyList(movie);
+    return authStatus === AuthStatus.AUTH ? onChangeMyList(movie) : history.push(`/${Page.LOGIN}`);
   }
 }
 
 
 BtnChangeFavorite.propTypes = {
+  authStatus: PropTypes.string.isRequired,
   movie: movieType.isRequired,
   onChangeMyList: PropTypes.func.isRequired
 };
 
 
-export default BtnChangeFavorite;
+const mapStateToProps = (state) => ({
+  authStatus: getAuthStatus(state)
+});
+
+export {BtnChangeFavorite};
+export default connect(mapStateToProps)(BtnChangeFavorite);

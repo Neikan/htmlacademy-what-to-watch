@@ -56,7 +56,9 @@ exports[`Test TextArea component Rendered correctly when message less than min l
           "margin": "0 auto",
         }
       }
-    />
+    >
+      Текущая длина сообщения: 15
+    </div>
     <button
       className="add-review__btn"
       disabled={true}
@@ -89,7 +91,9 @@ exports[`Test TextArea component Rendered correctly when message more than max l
           "margin": "0 auto",
         }
       }
-    />
+    >
+      Текущая длина сообщения: 1199
+    </div>
     <button
       className="add-review__btn"
       disabled={true}

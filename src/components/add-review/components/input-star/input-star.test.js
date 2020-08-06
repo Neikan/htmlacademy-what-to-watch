@@ -4,6 +4,8 @@ import renderer from "react-test-renderer";
 
 // Импорт компонентов
 import InputStar from "./input-star.jsx";
+
+// Импорт типов, констант, утилит
 import {Rating} from "../../../../consts/common-data.js";
 
 
