@@ -3,7 +3,8 @@ export const ALL_GENRES = `All genres`;
 
 export const AuthStatus = {
   AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
+  DEFAULT: `DEFAULT`,
+  NO_AUTH: `NO_AUTH`
 };
 
 
