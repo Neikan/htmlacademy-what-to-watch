@@ -211,7 +211,8 @@ export const CountMovies = {
 
 export const AuthStatus = {
   AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
+  DEFAULT: `DEFAULT`,
+  NO_AUTH: `NO_AUTH`
 };
 
 

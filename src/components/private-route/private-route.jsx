@@ -28,7 +28,7 @@ const PrivateRoute = (props) => {
       exact={exact}
       path={path}
       render={(routeProps) => {
-        if (authStatus === AuthStatus.NO_AUTH) {
+        if (authStatus !== AuthStatus.AUTH) {
           return <Redirect to={`/${Page.LOGIN}`} />;
         }
 

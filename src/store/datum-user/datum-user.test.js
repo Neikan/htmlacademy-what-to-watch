@@ -8,7 +8,7 @@ import {ActionType, reducer, ActionCreator} from "./datum-user.js";
 describe(`Get initial state`, () => {
   test(`Return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
-      authStatus: AuthStatus.NO_AUTH,
+      authStatus: AuthStatus.DEFAULT,
       user: {
         id: ``,
         email: ``,

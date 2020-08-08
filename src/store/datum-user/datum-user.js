@@ -4,7 +4,7 @@ import {updateState} from "../../utils/reducer";
 
 
 const initialState = {
-  authStatus: AuthStatus.NO_AUTH,
+  authStatus: AuthStatus.DEFAULT,
   user: {
     id: ``,
     email: ``,
