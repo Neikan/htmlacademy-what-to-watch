@@ -13,8 +13,8 @@ const Operation = {
         dispatch(ActionCreator.requireAuth(AuthStatus.AUTH));
         dispatch(ActionCreator.setUserDatum(userAdapter(response.data)));
       })
-      .catch((err) => {
-        throw err;
+      .catch(() => {
+        dispatch(ActionCreator.requireAuth(AuthStatus.NO_AUTH));
       })
   ),
 
@@ -27,8 +27,8 @@ const Operation = {
       dispatch(ActionCreator.requireAuth(AuthStatus.AUTH));
       dispatch(ActionCreator.setUserDatum(userAdapter(response.data)));
     })
-    .catch((err) => {
-      throw err;
+    .catch(() => {
+      dispatch(ActionCreator.requireAuth(AuthStatus.NO_AUTH));
     })
   )
 };
